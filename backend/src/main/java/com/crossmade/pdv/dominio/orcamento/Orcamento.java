@@ -7,12 +7,7 @@ import java.util.List;
 import com.crossmade.pdv.dominio.cliente.Cliente;
 import com.crossmade.pdv.dominio.produto.Produto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "orcamentos")
@@ -22,6 +17,8 @@ public class Orcamento {
     private Integer id;
     @ManyToMany
     private List<Produto> produtos;
+    @ManyToOne()
+    @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private Date validade;
     private BigDecimal total;

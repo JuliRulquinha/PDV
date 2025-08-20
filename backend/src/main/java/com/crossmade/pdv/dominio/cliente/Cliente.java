@@ -1,17 +1,13 @@
 package com.crossmade.pdv.dominio.cliente;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.crossmade.pdv.dominio.contato.Contato;
 import com.crossmade.pdv.dominio.endereco.Endereco;
+import com.crossmade.pdv.dominio.orcamento.Orcamento;
 import com.crossmade.pdv.dominio.pedido.Pedido;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "clientes")
@@ -20,25 +16,34 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Contato contato;
-    private Endereco endereco;
+    private String telefone;
+    private String email;
+    @ElementCollection
+    @CollectionTable(name = "cliente_enderecos",
+            joinColumns = @JoinColumn(name = "cliente_id"))
+    private List<Endereco> enderecos = new ArrayList<>();
     @OneToMany(mappedBy = "cliente")
     private List<Pedido> pedidos;
+
+    @OneToMany(mappedBy = "cliente")
+    private List<Orcamento> orcamentos;
     
 
   
     public Cliente() {
     }
-    public Cliente(String name, Contato contato, Endereco endereco) {
+    public Cliente(String name, String telefone, String email, Endereco endereco) {
         this.name = name;
-        this.contato = contato;
-        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+
     }
-    public Cliente(Integer id, String name, Contato contato, Endereco endereco) {
+    public Cliente(Integer id, String name, String telefone, String email, List<Endereco> enderecos) {
         this.id = id;
         this.name = name;
-        this.contato = contato;
-        this.endereco = endereco;
+        this.telefone = telefone;
+        this.email = email;
+        this.enderecos = enderecos;
     }
     public Integer getId() {
         return id;
@@ -51,18 +56,6 @@ public class Cliente {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public Contato getContato() {
-        return contato;
-    }
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
-    public Endereco getEndereco() {
-        return endereco;
-    }
-    public void setEndereco(Endereco endereco) {
-        this.endereco = endereco;
     }
       public List<Pedido> getPedidos() {
         return pedidos;

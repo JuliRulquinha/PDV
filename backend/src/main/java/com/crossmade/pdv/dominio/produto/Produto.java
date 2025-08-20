@@ -3,8 +3,8 @@ package com.crossmade.pdv.dominio.produto;
 import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
-import java.util.Locale.Category;
 
+import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.dominio.pedido.Pedido;
 
@@ -29,7 +29,7 @@ public class Produto {
     private Fornecedor fornecedor;
     @ManyToOne()
     @JoinColumn(name = "categoria_id")
-    private Category category;
+    private Categoria categoria;
     private String marca;
     private String modelo;
     private int quantidade;
@@ -45,11 +45,11 @@ public class Produto {
     }
 
 
-    public Produto(Integer id, String nome, Fornecedor fornecedor, Category category, String marca, String modelo, int quantidade,
+    public Produto(Integer id, String nome, Fornecedor fornecedor, Categoria categoria, String marca, String modelo, int quantidade,
             BigDecimal valorCusto, BigDecimal valorVenda, String imageUrl, Date validade, Dimensoes dimensoes) {
         this.id = id;
         this.nome = nome;
-        this.category = category;
+        this.categoria = categoria;
         this.marca = marca;
         this.modelo = modelo;
         this.quantidade = quantidade;
@@ -63,10 +63,10 @@ public class Produto {
 
 
 
-    public Produto(String nome,Fornecedor fornecedor, Category category, String marca, String modelo, int quantidade, BigDecimal valorCusto,
+    public Produto(String nome,Fornecedor fornecedor, Categoria categoria, String marca, String modelo, int quantidade, BigDecimal valorCusto,
             BigDecimal valorVenda, String imageUrl, Date validade, Dimensoes dimensoes) {
         this.nome = nome;
-        this.category = category;
+        this.categoria = categoria;
         this.marca = marca;
         this.modelo = modelo;
         this.quantidade = quantidade;
@@ -89,11 +89,11 @@ public class Produto {
     public void setNome(String nome) {
         this.nome = nome;
     }
-    public Category getCategory() {
-        return category;
+    public Categoria getCategoria() {
+        return categoria;
     }
-    public void setCategory(Category category) {
-        this.category = category;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
     public String getMarca() {
         return marca;

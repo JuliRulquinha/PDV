@@ -1,12 +1,13 @@
 package com.crossmade.pdv.dominio.endereco;
 
+import jakarta.persistence.Embeddable;
+
+@Embeddable
 public class Endereco {
     private String rua;
     private int numero;
     private String cep;
     private String complemento;
-
-    
 
     public Endereco() {
     }

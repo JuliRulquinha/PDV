@@ -1,17 +1,13 @@
 package com.crossmade.pdv.dominio.fornecedor;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import com.crossmade.pdv.dominio.contato.Contato;
+
 import com.crossmade.pdv.dominio.endereco.Endereco;
 import com.crossmade.pdv.dominio.produto.Produto;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "fornecedores")
@@ -20,7 +16,12 @@ public class Fornecedor {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    private Contato contato;
+    private String telefone;
+    private String email;
+    @ElementCollection
+    @CollectionTable(name = "fornecedor_enderecos",
+            joinColumns = @JoinColumn(name = "fornecedor_id"))
+    private List<Endereco> enderecos = new ArrayList<>();
     private Endereco endereco;
     @OneToMany(mappedBy = "fornecedor")
     private List<Produto> produtos;
@@ -28,35 +29,46 @@ public class Fornecedor {
     public Fornecedor() {
     }
 
+    public String getTelefone() {
+        return telefone;
+    }
 
-    public Fornecedor(Integer id, String name, Contato contato, Endereco endereco) {
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
+    public Fornecedor(Integer id, String name, String telefone, String email, Endereco endereco) {
         this.id = id;
         this.name = name;
-        this.contato = contato;
+        this.telefone = telefone;
+        this.email = email;
         this.endereco = endereco;
     }
 
 
 
-    public Fornecedor(String name, Contato contato, Endereco endereco) {
+    public Fornecedor(String name, String telefone, String email, Endereco endereco) {
         this.name = name;
-        this.contato = contato;
+        this.telefone = telefone;
+        this.email = email;
         this.endereco = endereco;
     }
 
 
 
-    public Fornecedor(String name, Contato contato, Endereco endereco, List<Produto> produtos) {
+    public Fornecedor(String name, String telefone, String email, Endereco endereco, List<Produto> produtos) {
         this.name = name;
-        this.contato = contato;
+        this.telefone = telefone;
+        this.email = email;
         this.endereco = endereco;
         this.produtos = produtos;
     }
 
-    public Fornecedor(Integer id, String name, Contato contato, Endereco endereco, List<Produto> produtos) {
+    public Fornecedor(Integer id, String name, String telefone, String email, Endereco endereco, List<Produto> produtos) {
         this.id = id;
         this.name = name;
-        this.contato = contato;
+        this.telefone = telefone;
+        this.email = email;
         this.endereco = endereco;
         this.produtos = produtos;
     }
@@ -72,12 +84,7 @@ public class Fornecedor {
     public void setName(String name) {
         this.name = name;
     }
-    public Contato getContato() {
-        return contato;
-    }
-    public void setContato(Contato contato) {
-        this.contato = contato;
-    }
+
     public Endereco getEndereco() {
         return endereco;
     }
