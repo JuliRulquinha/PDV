@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface ProdutoRepositorio {
     Produto salvar(Produto produto);
     Optional<Produto> buscarPorId(Integer id);
-    List<Produto> listarTodas();
-    void cancelar(Integer id);
+    List<Produto> listarTodos();
+    void deletar(Integer id);
 }

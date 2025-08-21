@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface OrcamentoRepositorio {
     Orcamento salvar(Orcamento orcamento);
     Optional<Orcamento> buscarPorId(Integer id);
-    List<Orcamento> listarTodas();
+    List<Orcamento> listarTodos();
     void cancelar(Integer id);
 }

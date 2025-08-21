@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface ClienteRepositorio {
     Cliente salvar(Cliente cliente);
     Optional<Cliente> buscarPorId(Integer id);
-    List<Cliente> listarTodas();
+    List<Cliente> listarTodos();
     void deletar(Integer id);
 }

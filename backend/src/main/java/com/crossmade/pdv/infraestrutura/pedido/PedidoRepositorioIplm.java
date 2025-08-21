@@ -20,20 +20,17 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
 
     @Override
     public Pedido salvar(Pedido pedido) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+       return repositorio.save(pedido);
     }
 
     @Override
     public Optional<Pedido> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+       return repositorio.findById(id);
     }
 
     @Override
-    public List<Pedido> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+    public List<Pedido> listarTodos() {
+        return repositorio.findAll();
     }
 
     @Override

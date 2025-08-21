@@ -20,20 +20,17 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
 
     @Override
     public Orcamento salvar(Orcamento orcamento) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+        return repositorio.save(orcamento);
     }
 
     @Override
     public Optional<Orcamento> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        return repositorio.findById(id);
     }
 
     @Override
-    public List<Orcamento> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+    public List<Orcamento> listarTodos() {
+        return repositorio.findAll();
     }
 
     @Override

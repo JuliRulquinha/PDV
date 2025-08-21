@@ -20,26 +20,22 @@ public class FornecedorRepositorioIplm implements FornecedorRepositorio{
 
     @Override
     public Fornecedor salvar(Fornecedor fornecedor) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+        return repositorio.save(fornecedor);
     }
 
     @Override
     public Optional<Fornecedor> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        return repositorio.findById(id);
     }
 
     @Override
-    public List<Fornecedor> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+    public List<Fornecedor> listarTodos() {
+        return repositorio.findAll();
     }
 
     @Override
     public void deletar(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        repositorio.deleteById(id);
     }
 
 }

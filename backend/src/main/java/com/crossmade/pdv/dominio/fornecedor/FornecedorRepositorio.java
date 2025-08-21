@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface FornecedorRepositorio {
     Fornecedor salvar(Fornecedor fornecedor);
     Optional<Fornecedor> buscarPorId(Integer id);
-    List<Fornecedor> listarTodas();
+    List<Fornecedor> listarTodos();
     void deletar(Integer id);
 }

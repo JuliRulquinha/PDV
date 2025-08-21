@@ -19,26 +19,22 @@ public class CategoriaRepositorioIplm implements CategoriaRepositorio{
 
     @Override
     public Categoria salvar(Categoria categoria) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+        return repositorio.save(categoria);
     }
 
     @Override
     public Optional<Categoria> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        return repositorio.findById(id);
     }
 
     @Override
     public List<Categoria> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+       return repositorio.findAll();
     }
 
     @Override
     public void deletar(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        repositorio.deleteById(id);
     }
 
 }

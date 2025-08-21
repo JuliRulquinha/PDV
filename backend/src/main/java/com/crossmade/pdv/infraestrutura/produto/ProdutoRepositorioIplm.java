@@ -19,26 +19,22 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
 
     @Override
     public Produto salvar(Produto produto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+        return repositorio.save(produto);
     }
 
     @Override
     public Optional<Produto> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+        return repositorio.findById(id);
     }
 
     @Override
-    public List<Produto> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+    public List<Produto> listarTodos() {
+       return repositorio.findAll();
     }
 
     @Override
-    public void cancelar(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cancelar'");
+    public void deletar(Integer id) {
+        repositorio.deleteById(id);
     }
 
 }

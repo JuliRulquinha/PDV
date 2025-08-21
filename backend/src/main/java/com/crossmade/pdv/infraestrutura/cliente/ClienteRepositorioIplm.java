@@ -20,26 +20,22 @@ public class ClienteRepositorioIplm implements ClienteRepositorio{
 
     @Override
     public Cliente salvar(Cliente cliente) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'salvar'");
+        return repositorio.save(cliente);
     }
 
     @Override
     public Optional<Cliente> buscarPorId(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarPorId'");
+       return repositorio.findById(id);
     }
 
     @Override
-    public List<Cliente> listarTodas() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'listarTodas'");
+    public List<Cliente> listarTodos() {
+        return repositorio.findAll();
     }
 
     @Override
     public void deletar(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deletar'");
+        repositorio.deleteById(id);
     }
 
 }

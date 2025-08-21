@@ -6,6 +6,6 @@ import java.util.Optional;
 public interface PedidoRepositorio {
     Pedido salvar(Pedido pedido);
     Optional<Pedido> buscarPorId(Integer id);
-    List<Pedido> listarTodas();
+    List<Pedido> listarTodos();
     void cancelar(Integer id);
 }
