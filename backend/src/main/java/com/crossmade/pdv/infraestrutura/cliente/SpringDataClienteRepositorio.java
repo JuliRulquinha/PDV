@@ -6,4 +6,5 @@ import com.crossmade.pdv.dominio.cliente.Cliente;
 
 public interface SpringDataClienteRepositorio extends JpaRepository<Cliente, Integer>{
 
+  
 }

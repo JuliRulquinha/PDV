@@ -1,7 +1,6 @@
 package com.crossmade.pdv.infraestrutura.produto;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -23,8 +22,8 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
     }
 
     @Override
-    public Optional<Produto> buscarPorId(Integer id) {
-        return repositorio.findById(id);
+    public Produto buscarPorId(Integer id) {
+        return repositorio.findById(id).orElse(null);
     }
 
     @Override
@@ -35,6 +34,16 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
     @Override
     public void deletar(Integer id) {
         repositorio.deleteById(id);
+    }
+
+    @Override
+    public List<Produto> buscarPorNome(String nome) {
+        return repositorio.findByNome(nome);
+    }
+
+    @Override
+    public List<Produto> buscarPorCategoria(String categoria) {
+        return repositorio.findByCategoriaNome(categoria);
     }
 
 }

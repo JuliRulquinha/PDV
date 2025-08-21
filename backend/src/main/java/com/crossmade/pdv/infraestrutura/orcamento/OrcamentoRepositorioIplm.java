@@ -1,7 +1,6 @@
 package com.crossmade.pdv.infraestrutura.orcamento;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +23,8 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
     }
 
     @Override
-    public Optional<Orcamento> buscarPorId(Integer id) {
-        return repositorio.findById(id);
+    public Orcamento buscarPorId(Integer id) {
+        return repositorio.findById(id).orElse(null);
     }
 
     @Override

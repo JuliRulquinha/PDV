@@ -3,6 +3,7 @@ package com.crossmade.pdv.dominio.categoria;
 import java.util.List;
 
 import com.crossmade.pdv.dominio.produto.Produto;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -20,6 +21,7 @@ public class Categoria {
     private String nome;
     private String descricao;
     @OneToMany(mappedBy = "categoria")
+    @JsonIgnore
     private List<Produto> produtos;
 
     public Categoria() {

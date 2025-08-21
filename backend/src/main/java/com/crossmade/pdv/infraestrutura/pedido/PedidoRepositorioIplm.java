@@ -1,7 +1,7 @@
 package com.crossmade.pdv.infraestrutura.pedido;
 
 import java.util.List;
-import java.util.Optional;
+
 
 import org.springframework.stereotype.Repository;
 
@@ -24,8 +24,8 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
     }
 
     @Override
-    public Optional<Pedido> buscarPorId(Integer id) {
-       return repositorio.findById(id);
+    public Pedido buscarPorId(Integer id) {
+       return repositorio.findById(id).orElse(null);
     }
 
     @Override
