@@ -10,7 +10,7 @@ import com.crossmade.pdv.dominio.produto.Produto;
 import com.crossmade.pdv.infraestrutura.produto.ProdutoRepositorioIplm;
 
 @RestController
-@RequestMapping("api/produtos/cadastrar")
+@RequestMapping("api/produtos")
 public class CadastrarProdutoEndpoint {
 
     private final ProdutoRepositorioIplm repositorio;

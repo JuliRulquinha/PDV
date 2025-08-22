@@ -11,8 +11,11 @@ import com.crossmade.pdv.dominio.produto.Produto;
 public interface SpringDataProdutoRepositorio extends JpaRepository<Produto, Integer>{
   @Query(   
         value = """
-            SELECT * FROM produtos p
-            JOIN category c ON c.id = p.categoria_id
+            SELECT p.id, p.nome, p.fornecedor_id, p.categoria_id, p.marca, p.modelo,
+            p.quantidade, p.valor_custo, p.valor_venda, p.image_url, p.validade,
+            p.peso, p.altura, p.largura
+            FROM produtos p
+            JOIN categorias c ON c.id = p.categoria_id
             WHERE c.nome = :nomeDaCategoria
         """,
         nativeQuery = true

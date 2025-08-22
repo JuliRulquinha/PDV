@@ -1,14 +1,19 @@
 package com.crossmade.pdv.dominio.produto;
 
-import jakarta.persistence.Embeddable;
-
 import java.math.BigDecimal;
+
+import jakarta.persistence.Embeddable;
 
 @Embeddable
 public class Dimensoes {
     private BigDecimal peso;
     private BigDecimal altura;
     private BigDecimal largura;
+
+
+    public Dimensoes(){
+        
+    }
 
     public Dimensoes(BigDecimal peso, BigDecimal altura, BigDecimal largura) {
         this.peso = peso;

@@ -7,7 +7,15 @@ import com.crossmade.pdv.dominio.endereco.Endereco;
 import com.crossmade.pdv.dominio.orcamento.Orcamento;
 import com.crossmade.pdv.dominio.pedido.Pedido;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CollectionTable;
+import jakarta.persistence.ElementCollection;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 
 @Entity
 @Table(name = "clientes")
@@ -38,6 +46,15 @@ public class Cliente {
         this.email = email;
 
     }
+
+      public Cliente( String name, String telefone, String email, List<Endereco> enderecos) {
+        
+        this.name = name;
+        this.telefone = telefone;
+        this.email = email;
+        this.enderecos = enderecos;
+    }
+
     public Cliente(Integer id, String name, String telefone, String email, List<Endereco> enderecos) {
         this.id = id;
         this.name = name;

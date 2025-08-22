@@ -22,6 +22,20 @@ public class BuscarProdutoEndpoint {
         this.repositorio = repositorio;
     }
 
+
+    @GetMapping
+    public ResponseEntity<List<Produto>> buscarTodos(){
+
+        try {
+            var produtosDeDb = repositorio.buscarTodos();
+            return ResponseEntity.ok(produtosDeDb);
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
+
+        return ResponseEntity.badRequest().build();
+    }
+
     @GetMapping("/{id}")
     public ResponseEntity<Produto> buscarPorId(@PathVariable Integer id){
 
@@ -47,7 +61,7 @@ public class BuscarProdutoEndpoint {
         return ResponseEntity.badRequest().build();
     }
 
-    @GetMapping("/categoria?{valor}")
+    @GetMapping("/categoria")
     public ResponseEntity<List<Produto>>buscarPorCategoria(@RequestParam String valor) { 
         try {
             var produtoDeDb = repositorio.buscarPorCategoria(valor);

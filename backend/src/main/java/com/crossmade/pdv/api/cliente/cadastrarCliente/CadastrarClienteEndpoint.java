@@ -11,7 +11,7 @@ import com.crossmade.pdv.infraestrutura.cliente.ClienteRepositorioIplm;
 
 
 @RestController
-@RequestMapping("api/clientes/cadastrar")
+@RequestMapping("api/clientes")
 public class CadastrarClienteEndpoint {
 
     private final ClienteRepositorioIplm repositorio;

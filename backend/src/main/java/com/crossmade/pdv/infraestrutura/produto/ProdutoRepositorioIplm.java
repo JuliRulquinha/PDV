@@ -46,4 +46,9 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
         return repositorio.findByCategoriaNome(categoria);
     }
 
+    @Override
+    public List<Produto> buscarTodos() {
+        return repositorio.findAll();
+    }
+
 }

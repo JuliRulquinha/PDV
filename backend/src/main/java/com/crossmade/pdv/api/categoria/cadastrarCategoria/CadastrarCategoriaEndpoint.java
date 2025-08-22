@@ -10,7 +10,7 @@ import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.infraestrutura.categoria.CategoriaRepositorioIplm;
 
 @RestController
-@RequestMapping("api/categorias/cadastrar")
+@RequestMapping("api/categorias")
 public class CadastrarCategoriaEndpoint {
     private final CategoriaRepositorioIplm repositorio;
 

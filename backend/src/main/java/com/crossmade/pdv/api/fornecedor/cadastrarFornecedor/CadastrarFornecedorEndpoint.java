@@ -10,7 +10,7 @@ import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.infraestrutura.fornecedor.FornecedorRepositorioIplm;
 
 @RestController
-@RequestMapping("api/fornecedores/cadastrar")
+@RequestMapping("api/fornecedores")
 public class CadastrarFornecedorEndpoint {
     
     private final FornecedorRepositorioIplm repositorio;
