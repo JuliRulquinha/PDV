@@ -23,7 +23,7 @@ public class Fornecedor {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String nome;
     private String telefone;
     private String email;
     @ElementCollection
@@ -45,33 +45,33 @@ public class Fornecedor {
         this.telefone = telefone;
     }
 
-    public Fornecedor(Integer id, String name, String telefone, String email) {
+    public Fornecedor(Integer id, String nome, String telefone, String email) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
     }
 
 
 
-    public Fornecedor(String name, String telefone, String email) {
-        this.name = name;
+    public Fornecedor(String nome, String telefone, String email) {
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
     }
 
 
 
-    public Fornecedor(String name, String telefone, String email,  List<Produto> produtos) {
-        this.name = name;
+    public Fornecedor(String nome, String telefone, String email,  List<Produto> produtos) {
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.produtos = produtos;
     }
 
-    public Fornecedor(Integer id, String name, String telefone, String email,  List<Produto> produtos) {
+    public Fornecedor(Integer id, String nome, String telefone, String email,  List<Produto> produtos) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.produtos = produtos;
@@ -82,11 +82,11 @@ public class Fornecedor {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getNome() {
+        return nome;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
     public List<Produto> getProdutos() {

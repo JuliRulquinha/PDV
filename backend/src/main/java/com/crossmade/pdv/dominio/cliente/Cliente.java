@@ -40,7 +40,7 @@ public class Cliente {
   
     public Cliente() {
     }
-    public Cliente(String name, String telefone, String email, Endereco endereco) {
+    public Cliente(String name, String telefone, String email) {
         this.name = name;
         this.telefone = telefone;
         this.email = email;
