@@ -6,23 +6,27 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crossmade.pdv.aplicacao.categoria.command.cadastrar.CadastrarCategoriaCommand;
+import com.crossmade.pdv.aplicacao.categoria.command.cadastrar.CadastrarCategoriaHandler;
 import com.crossmade.pdv.dominio.categoria.Categoria;
-import com.crossmade.pdv.infraestrutura.categoria.CategoriaRepositorioIplm;
+
 
 @RestController
 @RequestMapping("api/categorias")
 public class CadastrarCategoriaEndpoint {
-    private final CategoriaRepositorioIplm repositorio;
+  
 
-    public CadastrarCategoriaEndpoint(CategoriaRepositorioIplm repositorio){
-        this.repositorio = repositorio;
+    private final CadastrarCategoriaHandler handler;
+
+    public CadastrarCategoriaEndpoint(CadastrarCategoriaHandler handler){
+        this.handler = handler;
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> cadastrar(@RequestBody Categoria categoria){
+    public ResponseEntity<Categoria> cadastrar(@RequestBody CadastrarCategoriaCommand comando){
         try {
-            var categoriaSalva = repositorio.salvar(categoria);
-            return ResponseEntity.ok(categoriaSalva);
+            var categoria = handler.handle(comando);
+            return ResponseEntity.ok(categoria);
 
         } catch (Exception e) {
            System.out.println(e.getMessage());

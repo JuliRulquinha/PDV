@@ -1,8 +1,11 @@
 package com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar;
 
+import org.springframework.stereotype.Component;
+
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.infraestrutura.fornecedor.FornecedorRepositorioIplm;
 
+@Component
 public class CadastrarFornecedorHandler {
 
     private final FornecedorRepositorioIplm repositorio;
@@ -13,6 +16,7 @@ public class CadastrarFornecedorHandler {
 
     public Fornecedor handle(CadastrarFornecedorCommand command) {
         Fornecedor fornecedor = new Fornecedor(command.nome(), command.telefone(),command.email());
+        fornecedor.setEnderecos(command.enderecos());
         return repositorio.salvar(fornecedor);
     }
 }

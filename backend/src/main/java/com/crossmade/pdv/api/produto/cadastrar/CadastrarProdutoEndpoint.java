@@ -6,24 +6,26 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crossmade.pdv.aplicacao.produto.command.cadastrar.CadastrarProdutoCommand;
+import com.crossmade.pdv.aplicacao.produto.command.cadastrar.CadastrarProdutoHandler;
 import com.crossmade.pdv.dominio.produto.Produto;
-import com.crossmade.pdv.infraestrutura.produto.ProdutoRepositorioIplm;
+
 
 @RestController
 @RequestMapping("api/produtos")
 public class CadastrarProdutoEndpoint {
 
-    private final ProdutoRepositorioIplm repositorio;
+    private final CadastrarProdutoHandler handler;
 
-    public CadastrarProdutoEndpoint(ProdutoRepositorioIplm repositorio){
-        this.repositorio = repositorio;
+    public CadastrarProdutoEndpoint(CadastrarProdutoHandler handler){
+        this.handler = handler;
     }
 
     @PostMapping
-    public ResponseEntity<Produto> cadastrar(@RequestBody Produto produto){
+    public ResponseEntity<Produto> cadastrar(@RequestBody CadastrarProdutoCommand comando){
         try {
-            var produtoSalvo = repositorio.salvar(produto);
-            return ResponseEntity.ok(produtoSalvo);
+            var produto = handler.handle(comando);
+            return ResponseEntity.ok(produto);
 
         } catch (Exception e) {
            System.out.println(e.getMessage());

@@ -1,10 +1,13 @@
 package com.crossmade.pdv.aplicacao.produto.command.cadastrar;
 
+import org.springframework.stereotype.Component;
+
 import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.dominio.produto.Produto;
 import com.crossmade.pdv.infraestrutura.produto.ProdutoRepositorioIplm;
 
+@Component
 public class CadastrarProdutoHandler {
     private final ProdutoRepositorioIplm repositorio;
 

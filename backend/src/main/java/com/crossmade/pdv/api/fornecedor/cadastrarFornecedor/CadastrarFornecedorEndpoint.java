@@ -6,24 +6,25 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar.CadastrarFornecedorCommand;
+import com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar.CadastrarFornecedorHandler;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
-import com.crossmade.pdv.infraestrutura.fornecedor.FornecedorRepositorioIplm;
 
 @RestController
 @RequestMapping("api/fornecedores")
 public class CadastrarFornecedorEndpoint {
-    
-    private final FornecedorRepositorioIplm repositorio;
+   
+    private final CadastrarFornecedorHandler handler;
 
-    public CadastrarFornecedorEndpoint(FornecedorRepositorioIplm repositorio){
-        this.repositorio = repositorio;
+    public CadastrarFornecedorEndpoint(CadastrarFornecedorHandler handler){
+        this.handler = handler;
     }
 
     @PostMapping
-    public ResponseEntity<Fornecedor> cadastrar(@RequestBody Fornecedor fornecedor){
+    public ResponseEntity<Fornecedor> cadastrar(@RequestBody CadastrarFornecedorCommand comando){
         try {
-            var fornecedorSalvo = repositorio.salvar(fornecedor);
-            return ResponseEntity.ok(fornecedorSalvo);
+            var fornecedor = handler.handle(comando);
+            return ResponseEntity.ok(fornecedor);
 
         } catch (Exception e) {
            System.out.println(e.getMessage());

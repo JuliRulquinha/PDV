@@ -6,25 +6,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteCommand;
+import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteHandler;
 import com.crossmade.pdv.dominio.cliente.Cliente;
-import com.crossmade.pdv.infraestrutura.cliente.ClienteRepositorioIplm;
+
 
 
 @RestController
 @RequestMapping("api/clientes")
 public class CadastrarClienteEndpoint {
 
-    private final ClienteRepositorioIplm repositorio;
+    private final CadastrarClienteHandler handler;
 
-    public CadastrarClienteEndpoint(ClienteRepositorioIplm repositorio){
-        this.repositorio = repositorio;
+    public CadastrarClienteEndpoint(CadastrarClienteHandler handler){
+        this.handler = handler;
+        
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> cadastrar(@RequestBody Cliente cliente){
+    public ResponseEntity<Cliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
         try {
-            var clienteSalvo = repositorio.salvar(cliente);
-            return ResponseEntity.ok(clienteSalvo);
+            var cliente = handler.handle(comando);
+            return ResponseEntity.ok(cliente);
 
         } catch (Exception e) {
            System.out.println(e.getMessage());
