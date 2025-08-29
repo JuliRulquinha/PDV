@@ -1,0 +1,29 @@
+<mat-toolbar>
+  <mat-button-toggle matIconButton [matMenuTriggerFor]="menuHamburguer" class="example-icon" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </mat-button-toggle>
+  <span>Doctor's Appointment</span>
+  <span class="example-spacer"></span>
+  
+ <mat-menu #menuHamburguer="matMenu">
+  <button mat-menu-item routerLink="/calendar">
+    <mat-icon>home</mat-icon>
+    <span>home</span>
+    
+  </button>
+
+</mat-menu>
+
+  <mat-button-toggle matIconButton [matMenuTriggerFor]="accountMenu"  class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>account_circle</mat-icon>
+    
+  </mat-button-toggle>
+
+  <mat-menu #accountMenu="matMenu">
+  <button mat-menu-item routerLink="/login">
+    <mat-icon>login</mat-icon>
+    <span>Sign In</span>
+  </button>
+ 
+</mat-menu>
+</mat-toolbar>
