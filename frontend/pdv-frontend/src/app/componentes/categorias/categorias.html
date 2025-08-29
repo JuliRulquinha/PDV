@@ -1,0 +1,16 @@
+<div class="categorias-wrapper">
+  <button class="scroll-btn left" (click)="scrollLeft()">❮</button>
+
+  <div class="categorias-scroll" #scrollContainer>
+    @for (categoria of categorias; track $index) {
+      <div class="categoria-item">
+        <button mat-fab>
+          <mat-icon>{{ categoria.icone }}</mat-icon>
+        </button>
+        <span>{{ categoria.nome }}</span>
+      </div>
+    }
+  </div>
+
+  <button class="scroll-btn right" (click)="scrollRight()">❯</button>
+</div>

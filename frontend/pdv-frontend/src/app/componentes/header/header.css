@@ -1,3 +1,15 @@
 .example-spacer{
     flex: 1 1 auto;
 }
+
+.header-style{
+    background-color: orange;
+    box-shadow: black 2px 3px 1px;
+}
+
+.under-header{
+   
+    height: 40px;
+    background-color: rgb(190, 124, 0);
+
+}
