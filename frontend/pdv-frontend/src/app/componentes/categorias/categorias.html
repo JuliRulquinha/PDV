@@ -1,0 +1,22 @@
+<div class="categorias-wrapper d-flex justify-content-center mt-3">
+  
+  @if (showLeftArrow) {
+    <button class="scroll-btn left d-block d-xl-none" (click)="scrollLeft()">❮</button>
+  }
+
+  <div class="categorias-scroll" #scrollContainer (scroll)="onScroll()">
+    @for (categoria of categorias; track $index) {
+      <div class="categoria-item">
+        <button mat-fab>
+          <mat-icon>{{ categoria.icone }}</mat-icon>
+        </button>
+        <span>{{ categoria.nome }}</span>
+      </div>
+    }
+  </div>
+
+  @if (showRightArrow) {
+    <button class="scroll-btn right d-block d-xl-none" (click)="scrollRight()">❯</button>
+  }
+
+</div>

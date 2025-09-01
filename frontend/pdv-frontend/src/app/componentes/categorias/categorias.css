@@ -1,0 +1,68 @@
+.example-flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* espaço entre categorias */
+  justify-content: center;
+}
+
+.categoria-item button {
+  width: 60px;       /* largura do círculo */
+  height: 60px;      /* altura igual à largura */
+  border-radius: 50%; /* deixa redondo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 3px 5px rgba(0,0,0,0.2); 
+  color: rgb(255, 123, 0);/* sombra opcional */
+  background-color: rgb(250, 225, 86);
+}
+
+.categorias-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.categorias-scroll {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+  scrollbar-width: none;
+   -ms-overflow-style: none;
+}
+
+.categorias-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.categoria-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 0 0 auto; 
+  min-width: 100px;
+}
+
+.scroll-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+.scroll-btn.left {
+  left: 5px;
+}
+
+.scroll-btn.right {
+  right: 5px;
+}
