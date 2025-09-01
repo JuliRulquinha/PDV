@@ -3,6 +3,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
+import { BarraDePesquisa } from '../barra-de-pesquisa/barra-de-pesquisa';
 
 export interface Categoria {
   id?: number

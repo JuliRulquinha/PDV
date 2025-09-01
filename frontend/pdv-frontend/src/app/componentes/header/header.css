@@ -3,6 +3,7 @@
 }
 
 .header-style{
+    height: 100px;
     background-color: orange;
     box-shadow: black 2px 3px 1px;
 }

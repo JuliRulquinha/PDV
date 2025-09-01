@@ -1,1 +1,22 @@
-<p>barra-de-pesquisa works!</p>
+
+<div class="p-3 m-3 align-items-center"> 
+    
+    @if(!barraDePesquisaAtivada){
+        <mat-button-toggle (click)="ativarBarraDePesquisa()">
+            <mat-icon>search</mat-icon>
+        </mat-button-toggle>
+    } @else {
+
+       <mat-button-toggle style="margin-right: 1rem;" (click)="ativarBarraDePesquisa()">
+  <mat-icon>arrow_forward</mat-icon>
+</mat-button-toggle>
+
+<mat-form-field appearance="outline" class="ml-3">
+  <input matInput type="search" placeholder="Pesquisar">
+  <button matSuffix mat-icon-button aria-label="Search">
+    <mat-icon>search</mat-icon>
+  </button>
+</mat-form-field>
+    }
+    
+</div>
