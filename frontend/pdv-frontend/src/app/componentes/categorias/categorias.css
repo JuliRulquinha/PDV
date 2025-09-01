@@ -6,8 +6,8 @@
 }
 
 .categoria-item button {
-  width: 70px;       /* largura do círculo */
-  height: 70px;      /* altura igual à largura */
+  width: 60px;       /* largura do círculo */
+  height: 60px;      /* altura igual à largura */
   border-radius: 50%; /* deixa redondo */
   display: flex;
   align-items: center;
@@ -29,19 +29,40 @@
   scroll-behavior: smooth;
   gap: 20px;
   padding: 10px;
-   scrollbar-width: none;
+  scrollbar-width: none;
+   -ms-overflow-style: none;
+}
+
+.categorias-scroll::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .categoria-item {
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 0 0 auto; 
   min-width: 100px;
 }
 
 .scroll-btn {
-  background: none;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.8);
   border: none;
   font-size: 2rem;
   cursor: pointer;
+  padding: 5px 10px;
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  z-index: 5;
+}
+
+.scroll-btn.left {
+  left: 5px;
+}
+
+.scroll-btn.right {
+  right: 5px;
 }

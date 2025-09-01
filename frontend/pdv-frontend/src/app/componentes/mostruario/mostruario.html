@@ -1,1 +1,8 @@
-<p>mostruario works!</p>
+<div class="container">
+    @for(produto of produtos; track $index){
+        <div>
+            <h3>{{produto.nome}}</h3>
+            <img [src]="produto.imageUrl" />
+        </div>
+    }
+</div>

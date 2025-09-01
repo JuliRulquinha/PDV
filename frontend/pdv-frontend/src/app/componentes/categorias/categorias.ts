@@ -5,6 +5,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTabsModule } from '@angular/material/tabs';
 
 export interface Categoria {
+  id?: number
   nome : string;
   descricao: string;
   icone: string;
@@ -18,16 +19,40 @@ export interface Categoria {
 })
 export class Categorias {
 
-  @ViewChild('scrollContainer') scrollContainer!: ElementRef;
+
+
+   @ViewChild('scrollContainer', { static: true }) scrollContainer!: ElementRef<HTMLDivElement>;
+
+  showLeftArrow = false;
+  showRightArrow = false;
+ 
+  ngAfterViewInit() {
+    this.updateArrows();
+  }
+
+  onScroll() {
+    this.updateArrows();
+  }
+
+  updateArrows() {
+    const el = this.scrollContainer.nativeElement;
+    const maxScrollLeft = el.scrollWidth - el.clientWidth;
+
+    this.showLeftArrow = el.scrollLeft > 0;
+    this.showRightArrow = el.scrollLeft < maxScrollLeft;
+  }
 
   scrollLeft() {
-    this.scrollContainer.nativeElement.scrollBy({ left: -200, behavior: 'smooth' });
+    const el = this.scrollContainer.nativeElement;
+    el.scrollBy({ left: -200, behavior: 'smooth' });
+    this.updateArrows();
   }
 
   scrollRight() {
-    this.scrollContainer.nativeElement.scrollBy({ left: 200, behavior: 'smooth' });
+    const el = this.scrollContainer.nativeElement;
+    el.scrollBy({ left: 200, behavior: 'smooth' });
+    this.updateArrows();
   }
-
   categorias: Categoria[] = [
     { nome: 'Tecnologia', descricao: 'Produtos e serviços de tecnologia.', icone: 'devices' },
     { nome: 'Esportes', descricao: 'Artigos e equipamentos esportivos.', icone: 'sports_soccer' },
