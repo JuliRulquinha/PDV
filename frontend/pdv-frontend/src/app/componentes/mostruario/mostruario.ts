@@ -8,7 +8,8 @@ export interface Dimensoes {
 }
 
 export interface Produto {
-  id?: number;        
+  id?: number;
+  preco: number;        
   nome: string;
   categoria: Categoria; 
   marca: string;
@@ -39,9 +40,10 @@ export class Mostruario {
   { nome: 'Automóveis', descricao: 'Peças e acessórios para veículos.', icone: 'directions_car' }
 ];
 
-  produtos: Produto[] = [
+ produtos: Produto[] = [
   {
     id: 1,
+    preco: 4500,
     nome: "Notebook Dell Inspiron",
     categoria: this.categorias[0],
     marca: "Dell",
@@ -52,6 +54,7 @@ export class Mostruario {
   },
   {
     id: 2,
+    preco: 3500,
     nome: "Smartphone Samsung Galaxy",
     categoria: this.categorias[0],
     marca: "Samsung",
@@ -62,6 +65,7 @@ export class Mostruario {
   },
   {
     id: 3,
+    preco: 150,
     nome: "Bola de Futebol Nike",
     categoria: this.categorias[1],
     marca: "Nike",
@@ -72,6 +76,7 @@ export class Mostruario {
   },
   {
     id: 4,
+    preco: 600,
     nome: "Tênis de Corrida Adidas",
     categoria: this.categorias[1],
     marca: "Adidas",
@@ -82,6 +87,7 @@ export class Mostruario {
   },
   {
     id: 5,
+    preco: 120,
     nome: "Camisa Social Masculina",
     categoria: this.categorias[2],
     marca: "Zara",
@@ -92,6 +98,7 @@ export class Mostruario {
   },
   {
     id: 6,
+    preco: 180,
     nome: "Vestido Feminino Longo",
     categoria: this.categorias[2],
     marca: "H&M",
@@ -102,6 +109,7 @@ export class Mostruario {
   },
   {
     id: 7,
+    preco: 80,
     nome: "Caixa de Chocolates Lindt",
     categoria: this.categorias[3],
     marca: "Lindt",
@@ -112,6 +120,7 @@ export class Mostruario {
   },
   {
     id: 8,
+    preco: 25,
     nome: "Pacote de Café Pilão",
     categoria: this.categorias[3],
     marca: "Pilão",
@@ -122,6 +131,7 @@ export class Mostruario {
   },
   {
     id: 9,
+    preco: 2200,
     nome: "Sofá de 3 Lugares",
     categoria: this.categorias[4],
     marca: "Tok&Stok",
@@ -132,6 +142,7 @@ export class Mostruario {
   },
   {
     id: 10,
+    preco: 1500,
     nome: "Cadeira Gamer",
     categoria: this.categorias[4],
     marca: "DXRacer",
@@ -142,6 +153,7 @@ export class Mostruario {
   },
   {
     id: 11,
+    preco: 90,
     nome: "Livro Senhor dos Anéis",
     categoria: this.categorias[5],
     marca: "HarperCollins",
@@ -152,6 +164,7 @@ export class Mostruario {
   },
   {
     id: 12,
+    preco: 450,
     nome: "Kindle Paperwhite",
     categoria: this.categorias[5],
     marca: "Amazon",
@@ -162,6 +175,7 @@ export class Mostruario {
   },
   {
     id: 13,
+    preco: 700,
     nome: "Violão Acústico Yamaha",
     categoria: this.categorias[6],
     marca: "Yamaha",
@@ -172,6 +186,7 @@ export class Mostruario {
   },
   {
     id: 14,
+    preco: 3500,
     nome: "Bateria Eletrônica Roland",
     categoria: this.categorias[6],
     marca: "Roland",
@@ -182,6 +197,7 @@ export class Mostruario {
   },
   {
     id: 15,
+    preco: 70,
     nome: "Batom Vermelho",
     categoria: this.categorias[7],
     marca: "MAC",
@@ -192,6 +208,7 @@ export class Mostruario {
   },
   {
     id: 16,
+    preco: 35,
     nome: "Creme Hidratante Nivea",
     categoria: this.categorias[7],
     marca: "Nivea",
@@ -202,6 +219,7 @@ export class Mostruario {
   },
   {
     id: 17,
+    preco: 500,
     nome: "Lego Star Wars",
     categoria: this.categorias[8],
     marca: "LEGO",
@@ -212,6 +230,7 @@ export class Mostruario {
   },
   {
     id: 18,
+    preco: 120,
     nome: "Quebra-Cabeça 1000 Peças",
     categoria: this.categorias[8],
     marca: "Grow",
@@ -222,6 +241,7 @@ export class Mostruario {
   },
   {
     id: 19,
+    preco: 800,
     nome: "Pneu Michelin Aro 16",
     categoria: this.categorias[9],
     marca: "Michelin",
@@ -232,6 +252,7 @@ export class Mostruario {
   },
   {
     id: 20,
+    preco: 200,
     nome: "Kit Óleo de Motor",
     categoria: this.categorias[9],
     marca: "Mobil",
@@ -241,5 +262,6 @@ export class Mostruario {
     dimensoes: { altura: 30, largura: 15, peso: 4 }
   }
 ];
+
 
 }
