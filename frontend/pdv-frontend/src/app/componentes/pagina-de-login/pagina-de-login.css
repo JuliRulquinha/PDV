@@ -1,0 +1,14 @@
+.html-style{
+    background-color: rgb(213, 255, 185);
+}
+
+.button-style{
+    background-color: rgb(60, 163, 0);
+    color: rgb(0, 32, 0);
+}
+
+.custom-checkbox:checked {
+  background-color: rgb(60, 163, 0);
+  border-color: #1d9b21;
+
+}
