@@ -1,0 +1,6 @@
+.checkout-style{
+    display: flex;
+    border-radius: 5px;
+    padding: 25px;
+    background-color: rgb(187, 255, 147);
+}

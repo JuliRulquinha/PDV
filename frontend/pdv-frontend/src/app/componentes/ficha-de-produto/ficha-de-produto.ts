@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { Produto } from '../mostruario/mostruario';
+import { ListaDeProdutos } from '../lista-de-produtos/lista-de-produtos';
 
 @Component({
   selector: 'app-ficha-de-produto',
-  imports: [],
+  imports: [ ListaDeProdutos],
   templateUrl: './ficha-de-produto.html',
   styleUrl: './ficha-de-produto.css'
 })
