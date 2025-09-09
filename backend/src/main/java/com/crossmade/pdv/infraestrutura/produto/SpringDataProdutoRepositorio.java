@@ -23,12 +23,5 @@ public interface SpringDataProdutoRepositorio extends JpaRepository<Produto, Int
     public List<Produto> findByCategoriaNome(@Param(value = "nomeDaCategoria") String nomeDaCategoria);
 
 
-    @Query(
-        value = """
-            SELECT * FROM produtos p
-            WHERE p.nome = :nome
-        """,
-        nativeQuery = true
-    )
-    public List<Produto> findByNome(@Param(value = "nome") String nome);
+    public List<Produto> findByNomeContaining(String nome);
 }
