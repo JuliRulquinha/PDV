@@ -1,6 +1,7 @@
+<app-barra-pesquisa (produtoEvent)="onMessageReceived($event)"></app-barra-pesquisa>
 <div class="container-fluid">
 
-    <app-barra-pesquisa></app-barra-pesquisa>
+    
 
     @if(produto != null){
         <div class="p-nome">
@@ -18,15 +19,15 @@
                 <div class="col-6 d-flex flex-column gap-4">
                     <div class="p-values">
                         <header class="p-header">CÓDIGO DE BARRAS</header>
-                        {{produto.nome}}
+                        {{produto.id}}
                     </div>
                     <div class="p-values">
                         <header class="p-header">VALOR UNITÁRIO</header>
-                        {{produto.nome}}
+                        {{produto.preco}}
                     </div>
                     <div class="p-values">
                         <header class="p-header">TOTAL DO ITEM</header>
-                        {{produto.nome}}
+                        {{produto.preco}}
                     </div>
                 </div>
             </div>
@@ -35,13 +36,13 @@
             <div class="row mt-3">
                 <div class="col-12 d-flex">
                     <div class="p-values-2 ">
-                        <header class="p-header">CÓDIGO</header>
-                        {{produto.nome}}
+                        <header class="p-header">MARCA</header>
+                        {{produto.marca}}
                     </div>
                     <div class="spacer"></div>
                     <div class="p-values-2 ">
-                        <header class="p-header"> </header>
-                        {{produto.nome}}
+                        <header class="p-header">MODELO</header>
+                        {{produto.modelo}}
                     </div>
 
                 </div>
@@ -82,12 +83,12 @@
             <div class="row mt-3">
                 <div class="col-12 d-flex">
                     <div class="p-values-2 ">
-                        <header class="p-header">CÓDIGO</header>
+                        <header class="p-header">MARCA</header>
                        
                     </div>
                     <div class="spacer"></div>
                     <div class="p-values-2 ">
-                        <header class="p-header"> </header>
+                        <header class="p-header">MODELO</header>
                         
                     </div>
 

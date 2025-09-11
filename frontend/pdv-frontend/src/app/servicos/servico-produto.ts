@@ -14,4 +14,8 @@ export class ServicoProduto {
     return this.http.get<Produto>(this.url+"/api/produtos/"+id);
   }
 
+
+  tragaTodos():Observable<Produto[]>{
+    return this.http.get<Produto[]>(this.url+"/api/produtos");
+  }
 }

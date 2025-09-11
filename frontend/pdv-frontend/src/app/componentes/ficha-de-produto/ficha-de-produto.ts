@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Produto } from '../mostruario/mostruario';
 import { ListaDeProdutos } from '../lista-de-produtos/lista-de-produtos';
 import { BarraPesquisa } from '../barra-pesquisa/barra-pesquisa';
@@ -11,5 +11,9 @@ import { BarraPesquisa } from '../barra-pesquisa/barra-pesquisa';
 })
 export class FichaDeProduto {
 
-  produto!: Produto;
+  @Input() produto?: Produto;
+
+   onMessageReceived(value: Produto) {
+    this.produto = value;
+  }
 }

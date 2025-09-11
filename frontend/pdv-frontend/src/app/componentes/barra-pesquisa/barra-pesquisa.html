@@ -1,6 +1,6 @@
 <mat-form-field appearance="outline" style="width: 300px;">
   <mat-label>Search</mat-label>
-  <input matInput placeholder="Type to search..." #searchInput type="number">
+  <input matInput placeholder="Type to search..." #searchInput type="number" min="1" (input)="searchInput.value = searchInput.value && +searchInput.value < 1 ? '1' : searchInput.value">
   <button  mat-icon-button matSuffix aria-label="Search" (click)="onSearch(searchInput.value)">
     <mat-icon>search</mat-icon>
   </button>
