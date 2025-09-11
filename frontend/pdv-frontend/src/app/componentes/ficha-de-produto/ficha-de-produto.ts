@@ -12,8 +12,10 @@ import { BarraPesquisa } from '../barra-pesquisa/barra-pesquisa';
 export class FichaDeProduto {
 
   @Input() produto?: Produto;
+  @Input() produtos: Produto[] = [];
 
    onMessageReceived(value: Produto) {
     this.produto = value;
+    this.produtos.push(this.produto);
   }
 }
