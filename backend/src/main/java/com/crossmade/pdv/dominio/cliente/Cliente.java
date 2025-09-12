@@ -23,7 +23,7 @@ public class Cliente {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String name;
+    private String nome;
     private String telefone;
     private String email;
     @ElementCollection
@@ -40,24 +40,24 @@ public class Cliente {
   
     public Cliente() {
     }
-    public Cliente(String name, String telefone, String email) {
-        this.name = name;
+    public Cliente(String nome, String telefone, String email) {
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
 
     }
 
-      public Cliente( String name, String telefone, String email, List<Endereco> enderecos) {
+      public Cliente( String nome, String telefone, String email, List<Endereco> enderecos) {
         
-        this.name = name;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.enderecos = enderecos;
     }
 
-    public Cliente(Integer id, String name, String telefone, String email, List<Endereco> enderecos) {
+    public Cliente(Integer id, String nome, String telefone, String email, List<Endereco> enderecos) {
         this.id = id;
-        this.name = name;
+        this.nome = nome;
         this.telefone = telefone;
         this.email = email;
         this.enderecos = enderecos;
@@ -68,11 +68,11 @@ public class Cliente {
     public void setId(Integer id) {
         this.id = id;
     }
-    public String getName() {
-        return name;
+    public String getnome() {
+        return nome;
     }
-    public void setName(String name) {
-        this.name = name;
+    public void setnome(String nome) {
+        this.nome = nome;
     }
       public List<Pedido> getPedidos() {
         return pedidos;

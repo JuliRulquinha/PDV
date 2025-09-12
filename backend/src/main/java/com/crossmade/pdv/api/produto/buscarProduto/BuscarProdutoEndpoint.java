@@ -2,6 +2,7 @@ package com.crossmade.pdv.api.produto.buscarProduto;
 
 import java.util.List;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -54,9 +55,10 @@ public class BuscarProdutoEndpoint {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable BuscarPorIdQuery query){
+    public ResponseEntity<Produto> buscarPorId(@PathVariable Integer id){
 
         try {
+            var query = new BuscarPorIdQuery(id);
             var produtoDeDb = buscarPorIdHandler.handle(query);
             return ResponseEntity.ok(produtoDeDb);
         } catch (Exception e) {
@@ -68,14 +70,16 @@ public class BuscarProdutoEndpoint {
 
 
     @GetMapping("/nome")
-    public ResponseEntity<List<Produto>>buscarPorNome(@RequestParam BuscarPorNomeQuery query) { 
+    public ResponseEntity<List<Produto>>buscarPorNome(@RequestParam String nome) {
         try {
+            var query = new BuscarPorNomeQuery(nome);
             var produtoDeDb = buscarPorNomeHandler.handle(query);
             return ResponseEntity.ok(produtoDeDb);
         } catch (Exception e) {
-            System.out.println(e.getMessage());
+            e.printStackTrace(); // melhor para debug
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
-        return ResponseEntity.badRequest().build();
+
     }
 
     @GetMapping("/categoria")
