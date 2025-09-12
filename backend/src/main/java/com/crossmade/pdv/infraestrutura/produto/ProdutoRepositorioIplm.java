@@ -38,7 +38,7 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
 
     @Override
     public List<Produto> buscarPorNome(String nome) {
-        return repositorio.findByNome(nome);
+        return repositorio.findByNomeContaining(nome);
     }
 
     @Override
