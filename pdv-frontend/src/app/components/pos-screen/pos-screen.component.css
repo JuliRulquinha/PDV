@@ -1,0 +1,45 @@
+.pos-container {
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 24px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
+.pos-products table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+.pos-products th, .pos-products td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+}
+.pos-summary {
+  font-size: 1.2em;
+  margin-bottom: 16px;
+  display: flex;
+  justify-content: space-between;
+}
+.pos-total {
+  font-weight: bold;
+  color: #2e7d32;
+}
+.pos-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+.pos-actions button {
+  padding: 8px 16px;
+  font-size: 1em;
+  border: none;
+  border-radius: 4px;
+  background: #1976d2;
+  color: #fff;
+  cursor: pointer;
+}
+.pos-actions button:last-child {
+  background: #b71c1c;
+}
