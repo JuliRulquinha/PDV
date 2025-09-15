@@ -1,0 +1,35 @@
+<div class="pos-container">
+  <h2>Ponto de Vendas</h2>
+  <div class="pos-products">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Produto</th>
+          <th>Preço</th>
+          <th>Qtd</th>
+          <th>Total</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (p of products; track p.id) {
+        <tr>
+          <td>{{ p.id }}</td>
+          <td>{{ p.nome }}</td>
+          <td>R$ {{ p.valorVenda.toFixed(2) }}</td>
+          <td>{{ p.quantidade }}</td>
+          <td>R$ {{ (p.valorVenda * p.quantidade).toFixed(2) }}</td>
+        </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+  <div class="pos-summary">
+    <label>Total da Compra:</label>
+    <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
+  </div>
+  <div class="pos-actions">
+    <button (click)="finalizarVenda()">Finalizar Venda</button>
+    <button (click)="cancelar()">Cancelar</button>
+  </div>
+</div>

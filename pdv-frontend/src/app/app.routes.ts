@@ -1,8 +1,15 @@
-
 import { Routes } from '@angular/router';
-import { PosScreenComponent } from './components/pos-screen/pos-screen.component';
-
+import { PosComponent } from './components/pos/pos.component';
 
 export const routes: Routes = [
-	{ path: '', component: PosScreenComponent },
+    {
+        path: '',
+        redirectTo: '/checkout',
+        pathMatch: 'full'
+    },
+    {
+        path: 'checkout',
+        component: PosComponent,
+        pathMatch: 'full'
+    }
 ];
