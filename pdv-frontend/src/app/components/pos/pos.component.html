@@ -1,35 +1,46 @@
+
 <div class="pos-container">
-  <h2>Ponto de Vendas</h2>
-  <div class="pos-products">
-    <table>
-      <thead>
-        <tr>
-          <th>Código</th>
-          <th>Produto</th>
-          <th>Preço</th>
-          <th>Qtd</th>
-          <th>Total</th>
-        </tr>
-      </thead>
-      <tbody>
-        @for (p of products; track p.id) {
-        <tr>
-          <td>{{ p.id }}</td>
-          <td>{{ p.nome }}</td>
-          <td>R$ {{ p.valorVenda.toFixed(2) }}</td>
-          <td>{{ p.quantidade }}</td>
-          <td>R$ {{ (p.valorVenda * p.quantidade).toFixed(2) }}</td>
-        </tr>
-        }
-      </tbody>
-    </table>
-  </div>
-  <div class="pos-summary">
-    <label>Total da Compra:</label>
-    <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
-  </div>
-  <div class="pos-actions">
-    <button (click)="finalizarVenda()">Finalizar Venda</button>
-    <button (click)="cancelar()">Cancelar</button>
+  <h2 class="pos-title">Caixa Supermercado</h2>
+  <div class="pos-main">
+    <div class="pos-products-card">
+      <table>
+        <thead>
+          <tr>
+            <th>Código</th>
+            <th>Produto</th>
+            <th>Preço</th>
+            <th>Qtd</th>
+            <th>Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let p of products; trackBy: trackById">
+            <td>{{ p.id }}</td>
+            <td>{{ p.nome }}</td>
+            <td>R$ {{ p.valorVenda.toFixed(2) }}</td>
+            <td>{{ p.quantidade }}</td>
+            <td>R$ {{ (p.valorVenda * p.quantidade).toFixed(2) }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="pos-side-panel">
+      <div class="pos-keypad">
+        <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" />
+        <div class="keypad-grid">
+          <button *ngFor="let n of [1,2,3,4,5,6,7,8,9,0]" (click)="codigoProduto += n">{{n}}</button>
+          <button (click)="codigoProduto = codigoProduto.slice(0, -1)">⌫</button>
+        </div>
+        <button class="add-btn" (click)="adicionarProduto()">Adicionar Produto</button>
+      </div>
+      <div class="pos-summary">
+        <label>Total:</label>
+        <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
+      </div>
+      <div class="pos-actions">
+        <button (click)="finalizarVenda()">Finalizar Venda</button>
+        <button (click)="cancelar()">Cancelar</button>
+      </div>
+    </div>
   </div>
 </div>

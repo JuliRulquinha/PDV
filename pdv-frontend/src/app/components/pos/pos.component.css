@@ -1,30 +1,104 @@
+
 .pos-container {
-  max-width: 500px;
+  max-width: 900px;
   margin: 40px auto;
-  padding: 24px;
+  padding: 32px;
+  background: #f7f7f7;
+  border-radius: 12px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
+}
+.pos-title {
+  text-align: center;
+  font-size: 2em;
+  font-weight: bold;
+  margin-bottom: 24px;
+  color: #1976d2;
+}
+.pos-main {
+  display: flex;
+  gap: 32px;
+}
+.pos-products-card {
+  flex: 2;
   background: #fff;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px;
 }
-.pos-products table {
+.pos-products-card table {
   width: 100%;
   border-collapse: collapse;
-  margin-bottom: 16px;
 }
-.pos-products th, .pos-products td {
+.pos-products-card th, .pos-products-card td {
   border: 1px solid #ddd;
-  padding: 8px;
+  padding: 10px;
   text-align: center;
+  font-size: 1.1em;
+}
+.pos-side-panel {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+.pos-keypad {
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 16px;
+  margin-bottom: 8px;
+}
+.pos-input {
+  width: 100%;
+  padding: 8px;
+  font-size: 1.2em;
+  margin-bottom: 12px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+.keypad-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.keypad-grid button {
+  padding: 16px;
+  font-size: 1.2em;
+  border: none;
+  border-radius: 4px;
+  background: #e0e0e0;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.keypad-grid button:hover {
+  background: #bdbdbd;
+}
+.add-btn {
+  width: 100%;
+  padding: 10px;
+  font-size: 1.1em;
+  background: #43a047;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 8px;
+}
+.add-btn:hover {
+  background: #388e3c;
 }
 .pos-summary {
-  font-size: 1.2em;
+  font-size: 1.3em;
   margin-bottom: 16px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 .pos-total {
   font-weight: bold;
   color: #2e7d32;
+  font-size: 1.4em;
 }
 .pos-actions {
   display: flex;
@@ -32,13 +106,17 @@
   justify-content: flex-end;
 }
 .pos-actions button {
-  padding: 8px 16px;
-  font-size: 1em;
+  padding: 10px 20px;
+  font-size: 1.1em;
   border: none;
   border-radius: 4px;
   background: #1976d2;
   color: #fff;
   cursor: pointer;
+  transition: background 0.2s;
+}
+.pos-actions button:hover {
+  background: #1565c0;
 }
 .pos-actions button:last-child {
   background: #b71c1c;
