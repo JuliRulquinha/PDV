@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 
 export interface Produto {
   id: number;
@@ -41,6 +42,7 @@ export interface Dimensoes {
   selector: 'app-pos',
   standalone: true,
   imports: [
+    CommonModule,
     FormsModule // <-- aqui
   ],
   templateUrl: './pos.component.html',
