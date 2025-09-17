@@ -99,11 +99,11 @@ html, body {
 /* Horizontal payment/troco panel styles */
 .pos-payment-horizontal-panel {
   width: 100%;
-  max-width: 420px;
+  max-width: 700px;
   margin: 8px 0 0 0;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  align-items: stretch;
 }
 /* Info cards grid: 2x2 */
 .pos-info-cards-grid {

@@ -54,8 +54,8 @@
         </table>
       </div>
       <div class="pos-payment-horizontal-panel">
-        <div style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:18px 24px;background:#f5f5f5;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin:8px 0 0 0;">
-          <div style="display:flex;flex-direction:column;gap:8px;min-width:220px;">
+        <div style="display:flex;align-items:flex-start;justify-content:flex-start;width:100%;padding:18px 24px;background:#f5f5f5;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin:8px 0 0 0;gap:32px;">
+          <div style="display:flex;flex-direction:column;gap:8px;min-width:220px;max-width:320px;flex:1;">
             <label for="tipoPagamento" style="font-weight:bold;">Tipo de pagamento:</label>
             <select id="tipoPagamento" class="pos-input" [(ngModel)]="tipoPagamento" style="margin-bottom:8px;width:180px;">
               <option value="dinheiro">Dinheiro</option>
@@ -65,14 +65,18 @@
             <label for="valorRecebido" style="font-weight:bold;">Valor recebido:</label>
             <input id="valorRecebido" type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" placeholder="Valor recebido" style="margin-bottom:8px;width:180px;" />
           </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:120px;">
-            <div class="pos-summary">
-              <label>Total:</label>
-              <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
+          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:180px;max-width:300px;flex:1;">
+            <div class="pos-troco-panel" style="margin-bottom:12px;">
+              <div style="display:flex;flex-direction:row;align-items:center;gap:12px;width:100%;max-width:340px;margin-top:24px;">
+                <span style="font-weight:bold;font-size:1.3em;">Troco:</span>
+                <span style="font-size:1.7em;color:#2e7d32;white-space:nowrap;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</span>
+              </div>
             </div>
-            <div class="pos-troco-panel">
-              <div style="font-weight:bold;">Troco:</div>
-              <div style="font-size:1.2em;color:#2e7d32;margin-bottom:8px;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</div>
+            <div class="pos-summary" style="font-size:1.7em;white-space:nowrap;">
+              <div style="display:flex;flex-direction:row;align-items:center;gap:16px;">
+                <label style="vertical-align:middle;">Total:</label>
+                <span class="pos-total" style="font-size:1.3em;vertical-align:middle;">R$ {{ total.toFixed(2) }}</span>
+              </div>
             </div>
           </div>
         </div>
