@@ -45,7 +45,7 @@
           <tbody>
             <tr *ngFor="let p of products; trackBy: trackById">
               <td>{{ p.id }}</td>
-              <td>{{ p.nome }}</td>
+              <td>{{ p.nome.length > 10 ? (p.nome | slice:0:10) + '...' : p.nome }}</td>
               <td>R$ {{ p.valorVenda != null ? p.valorVenda.toFixed(2) : '-' }}</td>
               <td>{{ p.quantidade }}</td>
               <td>R$ {{ p.valorVenda != null ? (p.valorVenda * p.quantidade).toFixed(2) : '-' }}</td>
