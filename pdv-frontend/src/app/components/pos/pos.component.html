@@ -5,7 +5,7 @@
     <ng-container *ngIf="products[products.length-1] as lastProduct">
       <div *ngIf="lastProduct.imageUrl" class="pos-product-preview" style="display:flex;align-items:center;justify-content:center;margin-bottom:16px;gap:32px;">
         <div>
-          <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:220px;max-height:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
+          <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:320px;max-height:320px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
           <div style="font-weight:bold;font-size:1.2em;margin-top:8px;">{{ lastProduct.nome }}</div>
         </div>
         <div class="pos-info-cards-grid">
@@ -84,7 +84,7 @@
     </div>
     <div class="pos-side-panel">
       <div class="pos-keypad">
-        <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" />
+  <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:180px;" />
         <div class="keypad-grid">
           <button *ngFor="let n of [1,2,3,4,5,6,7,8,9,0]" (click)="codigoProduto += n">{{n}}</button>
           <button (click)="codigoProduto = codigoProduto.slice(0, -1)">⌫</button>

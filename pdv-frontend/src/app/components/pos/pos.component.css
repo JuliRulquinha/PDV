@@ -201,18 +201,21 @@ html, body {
   display: flex;
   flex-direction: column;
   gap: 16px;
-  max-width: 180px;
+  max-width: 240px;
   margin-left: 32px;
+  align-items: flex-end;
 }
 .pos-keypad {
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-    padding: 20px 18px 18px 18px;
-    margin-bottom: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  padding: 20px 28px 18px 28px;
+  margin-bottom: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 200px;
+  max-width: 240px;
 }
 .pos-input {
     width: 120px;
@@ -231,9 +234,9 @@ html, body {
     justify-content: center;
 }
 .keypad-grid button {
-  width: 48px;
-  height: 48px;
-  font-size: 1.2em;
+  width: 54px;
+  height: 54px;
+  font-size: 1.3em;
   border: none;
   border-radius: 4px;
   background: #e0e0e0;
@@ -244,23 +247,26 @@ html, body {
   background: #bdbdbd;
 }
 .add-btn {
-  width: 80%;
   width: 100%;
-  max-width: 1800px;
-  width: 100%;
+  max-width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   font-size: 1.1em;
   margin-bottom: 12px;
   border-radius: 4px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  border: none;
+  background: #1976d2;
+  color: #fff;
   cursor: pointer;
-  margin-bottom: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.2s;
+  height: 48px;
+  padding: 0 12px;
+  font-weight: 500;
 }
 .add-btn:hover {
-  background: #388e3c;
+  background: #1565c0;
 }
 .pos-summary {
   font-size: 1.3em;
@@ -276,18 +282,29 @@ html, body {
 }
 .pos-actions {
   display: flex;
+  flex-direction: row;
   gap: 12px;
+  align-items: stretch;
+  width: 100%;
+  max-width: 240px;
+  margin-top: 8px;
   justify-content: flex-end;
+  align-self: flex-end;
 }
 .pos-actions button {
-  padding: 10px 20px;
-  font-size: 1.1em;
+  height: 48px;
+  width: 50%;
+  font-size: 1.05em;
   border: none;
   border-radius: 4px;
   background: #1976d2;
   color: #fff;
   cursor: pointer;
   transition: background 0.2s;
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .pos-actions button:hover {
   background: #1565c0;
