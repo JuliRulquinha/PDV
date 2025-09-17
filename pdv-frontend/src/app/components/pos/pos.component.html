@@ -1,6 +1,34 @@
 
 <div class="pos-container">
   <h2 class="pos-title">Caixa Supermercado</h2>
+  <ng-container *ngIf="products.length">
+    <ng-container *ngIf="products[products.length-1] as lastProduct">
+      <div *ngIf="lastProduct.imageUrl" class="pos-product-preview" style="display:flex;align-items:center;justify-content:center;margin-bottom:16px;gap:32px;">
+        <div>
+          <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:220px;max-height:220px;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
+          <div style="font-weight:bold;font-size:1.2em;margin-top:8px;">{{ lastProduct.nome }}</div>
+        </div>
+        <div class="pos-info-cards-grid">
+          <div class="pos-info-card">
+            <div class="pos-info-header">Valor de Custo</div>
+            <div class="pos-info-value">R$ {{ lastProduct.valorCusto !== undefined && lastProduct.valorCusto !== null ? lastProduct.valorCusto.toFixed(2) : '-' }}</div>
+          </div>
+          <div class="pos-info-card">
+            <div class="pos-info-header">Valor de Venda</div>
+            <div class="pos-info-value">R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
+          </div>
+          <div class="pos-info-card">
+            <div class="pos-info-header">Marca</div>
+            <div class="pos-info-value">{{ lastProduct.marca || '-' }}</div>
+          </div>
+          <div class="pos-info-card">
+            <div class="pos-info-header">Modelo</div>
+            <div class="pos-info-value">{{ lastProduct.modelo || '-' }}</div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </ng-container>
   <div class="pos-main">
     <div class="pos-products-card">
       <table>
@@ -17,9 +45,9 @@
           <tr *ngFor="let p of products; trackBy: trackById">
             <td>{{ p.id }}</td>
             <td>{{ p.nome }}</td>
-            <td>R$ {{ p.valorVenda.toFixed(2) }}</td>
+            <td>R$ {{ p.valorVenda != null ? p.valorVenda.toFixed(2) : '-' }}</td>
             <td>{{ p.quantidade }}</td>
-            <td>R$ {{ (p.valorVenda * p.quantidade).toFixed(2) }}</td>
+            <td>R$ {{ p.valorVenda != null ? (p.valorVenda * p.quantidade).toFixed(2) : '-' }}</td>
           </tr>
         </tbody>
       </table>
@@ -31,11 +59,24 @@
           <button *ngFor="let n of [1,2,3,4,5,6,7,8,9,0]" (click)="codigoProduto += n">{{n}}</button>
           <button (click)="codigoProduto = codigoProduto.slice(0, -1)">⌫</button>
         </div>
-        <button class="add-btn" (click)="adicionarProduto()">Adicionar Produto</button>
+  <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
+  <button class="add-btn" (click)="adicionarProduto()">Adicionar Produto</button>
       </div>
-      <div class="pos-summary">
-        <label>Total:</label>
-        <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
+      <div class="pos-payment-panel" style="margin-bottom:16px;">
+        <label for="tipoPagamento" style="font-weight:bold;">Tipo de pagamento:</label>
+        <select id="tipoPagamento" class="pos-input" [(ngModel)]="tipoPagamento" style="margin-bottom:8px;width:100%;">
+          <option value="dinheiro">Dinheiro</option>
+          <option value="cartao">Cartão</option>
+          <option value="pix">Pix</option>
+        </select>
+        <label for="valorRecebido" style="font-weight:bold;">Valor recebido:</label>
+        <input id="valorRecebido" type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" placeholder="Valor recebido" style="margin-bottom:8px;width:100%;" />
+        <div style="font-weight:bold;">Troco:</div>
+        <div style="font-size:1.2em;color:#2e7d32;margin-bottom:8px;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</div>
+        <div class="pos-summary">
+          <label>Total:</label>
+          <span class="pos-total">R$ {{ total.toFixed(2) }}</span>
+        </div>
       </div>
       <div class="pos-actions">
         <button (click)="finalizarVenda()">Finalizar Venda</button>

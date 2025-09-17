@@ -11,8 +11,8 @@ export interface Produto {
   marca?: string;
   modelo?: string;
   quantidade: number;
-  valorCusto?: number; // Use number for BigDecimal
-  valorVenda: number; // Use number for BigDecimal
+  valorCusto?: number; // <-- make optional
+  valorVenda?: number; // <-- make optional
   imageUrl?: string;
   validade?: Date;
   dimensoes?: Dimensoes;
@@ -49,6 +49,9 @@ export interface Dimensoes {
   styleUrls: ['./pos.component.css']
 })
 export class PosComponent implements OnInit{
+  tipoPagamento: string = 'dinheiro';
+  valorRecebido: number = 0;
+  quantidadeProduto: number = 1;
   trackById(index: number, item: Produto) {
     return item.id;
   }
@@ -61,33 +64,31 @@ export class PosComponent implements OnInit{
   codigoProduto: string = '';
 
   products: Produto[] = [
-    { id: 2, nome: 'Arroz', valorVenda: 20.00, quantidade: 2 },
-    { id: 3, nome: 'Feijão', valorVenda: 20.00, quantidade: 2 },
   ];
 
   adicionarProduto() {
     debugger;
     const code = Number(this.codigoProduto);
-    if (!code) {
-      alert('Digite um código válido!');
+    const qtd = Number(this.quantidadeProduto);
+    if (!code || !qtd || qtd < 1) {
+      alert('Digite um código e quantidade válidos!');
       return;
     }
     this.productService.getProductById(code).subscribe({
-    next: (data: Produto) => {
-     
-        this.products.push(data);
-      
-      this.codigoProduto = ''; // limpa o input
-    },
-    error: (err) => {
-      console.error(err);
-      alert('Produto não encontrado!');
-    }
-  });
+      next: (data: Produto) => {
+        this.products.push({ ...data, quantidade: qtd });
+        this.codigoProduto = '';
+        this.quantidadeProduto = 1;
+      },
+      error: (err) => {
+        console.error(err);
+        alert('Produto não encontrado!');
+      }
+    });
   }
 
   get total() {
-    return this.products.reduce((sum, p) => sum + p.valorVenda * p.quantidade, 0);
+    return this.products.reduce((sum, p) => sum + (p.valorVenda ?? 0) * p.quantidade, 0);
   }
 
   finalizarVenda() {
