@@ -190,11 +190,19 @@ html, body {
 }
 .pos-products-card th, .pos-products-card td {
   border: 1px solid #ddd;
-  padding: 12px 24px;
+  padding: 6px 12px;
   text-align: center;
-  font-size: 1.1em;
+  font-size: 1em;
   white-space: normal;
   overflow-wrap: break-word;
+  height: 32px;
+}
+/* Table header styling for product list */
+.pos-products-card th {
+  background: #1976d2;
+  color: #fff;
+  font-weight: bold;
+  border: 1px solid #1565c0;
 }
 .pos-side-panel {
   flex: 1;
@@ -227,11 +235,11 @@ html, body {
     display: block;
 }
 .keypad-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 6px;
-    margin-bottom: 14px;
-    justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 14px;
+  margin-bottom: 14px;
+  justify-content: center;
 }
 .keypad-grid button {
   width: 54px;
