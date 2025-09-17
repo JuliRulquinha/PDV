@@ -43,7 +43,7 @@ export interface Dimensoes {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule // <-- aqui
+    FormsModule
   ],
   templateUrl: './pos.component.html',
   styleUrls: ['./pos.component.css']

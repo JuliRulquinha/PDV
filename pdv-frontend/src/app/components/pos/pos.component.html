@@ -3,30 +3,33 @@
   <h2 class="pos-title">Caixa Supermercado</h2>
   <ng-container *ngIf="products.length">
     <ng-container *ngIf="products[products.length-1] as lastProduct">
-      <div *ngIf="lastProduct.imageUrl" class="pos-product-preview" style="display:flex;align-items:center;justify-content:center;margin-bottom:16px;gap:32px;">
-        <div>
-          <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:320px;max-height:320px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
-          <div style="font-weight:bold;font-size:1.2em;margin-top:8px;">{{ lastProduct.nome }}</div>
+  <div *ngIf="lastProduct.imageUrl" style="max-width:700px;width:100%;margin:0 auto;margin-bottom:16px;">
+    <div style="display:flex;align-items:center;gap:32px;width:100%;">
+      <div style="flex:1;min-width:220px;max-width:340px;">
+        <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:340px;max-height:340px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
+        <div style="font-weight:bold;font-size:1.2em;margin-top:8px;">{{ lastProduct.nome }}</div>
+      </div>
+      <div class="pos-info-cards-grid" style="flex:1;min-width:220px;max-width:340px;">
+        <div class="pos-info-card">
+          <div class="pos-info-header">Valor de Custo</div>
+          <div class="pos-info-value">R$ {{ lastProduct.valorCusto !== undefined && lastProduct.valorCusto !== null ? lastProduct.valorCusto.toFixed(2) : '-' }}</div>
         </div>
-        <div class="pos-info-cards-grid">
-          <div class="pos-info-card">
-            <div class="pos-info-header">Valor de Custo</div>
-            <div class="pos-info-value">R$ {{ lastProduct.valorCusto !== undefined && lastProduct.valorCusto !== null ? lastProduct.valorCusto.toFixed(2) : '-' }}</div>
-          </div>
-          <div class="pos-info-card">
-            <div class="pos-info-header">Valor de Venda</div>
-            <div class="pos-info-value">R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
-          </div>
-          <div class="pos-info-card">
-            <div class="pos-info-header">Marca</div>
-            <div class="pos-info-value">{{ lastProduct.marca || '-' }}</div>
-          </div>
-          <div class="pos-info-card">
-            <div class="pos-info-header">Modelo</div>
-            <div class="pos-info-value">{{ lastProduct.modelo || '-' }}</div>
-          </div>
+        <div class="pos-info-card">
+          <div class="pos-info-header">Valor de Venda</div>
+          <div class="pos-info-value">R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
+        </div>
+        <div class="pos-info-card">
+          <div class="pos-info-header">Marca</div>
+          <div class="pos-info-value">{{ lastProduct.marca || '-' }}</div>
+        </div>
+        <div class="pos-info-card">
+          <div class="pos-info-header">Modelo</div>
+          <div class="pos-info-value">{{ lastProduct.modelo || '-' }}</div>
         </div>
       </div>
+    </div>
+  </div>
+        <!-- Removido duplicação dos info cards e fechamento correto das divs -->
     </ng-container>
   </ng-container>
   <div class="pos-main">
