@@ -6,8 +6,9 @@
       <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:8px;gap:16px;">
         <span style="font-weight:bold;font-size:1.5em;text-align:left;">{{ lastProduct.nome }}</span>
         <div style="display:flex;align-items:center;gap:0;">
-          <input type="text" class="pos-input" placeholder="" style="width:220px;border:none;box-shadow:none;outline:none;" />
-          <span style="margin-left:-32px;cursor:pointer;"><i class="material-icons" style="font-family: 'Material Icons'; font-style: normal; font-weight: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;">search</i></span>
+          <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
+          <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:220px;border:none;box-shadow:none;outline:none;" />
+          <span style="margin-left:-32px;cursor:pointer;" (click)="adicionarProduto()"><i class="material-icons" style="font-family: 'Material Icons'; font-style: normal; font-weight: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;">search</i></span>
         </div>
       </div>
       <!-- Imagem, infos e lista de produtos lado a lado, com código alinhado ao cabeçalho da lista -->
@@ -52,6 +53,7 @@
               <span style="width:120px;text-align:center;display:inline-block;position:relative;left:-12px;">PREÇO</span>
               <span style="width:100px;text-align:left;display:inline-block;position:relative;left:48px;">QTD</span>
               <span style="width:140px;text-align:center;display:inline-block;">TOTAL</span>
+              
             </div>
             <!-- Área scrollável dos itens -->
             <div style="overflow-y:auto;max-height:340px;display:flex;flex-direction:column;">
@@ -68,8 +70,13 @@
             </div>
             <!-- Total, valor recebido, troco e total de itens fixos na base do componente -->
             <div style="display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;margin-top:auto;gap:32px;background:#fff;padding:24px 32px 24px 32px;position:absolute;left:0;right:0;bottom:0;">
-              <div style="font-size:1.2em;font-weight:bold;">Itens: {{ products.length }}</div>
+              
+              <div class="pos-actions">
+        <button (click)="finalizarVenda()">Finalizar Venda</button>
+        <button (click)="cancelar()">Cancelar</button>
+      </div>
               <div style="display:flex;flex-direction:column;align-items:flex-end;">
+                <div style="font-size:1.2em;font-weight:bold;">Itens: {{ products.length }}</div>
                 <div style="font-size:1.2em;font-weight:bold;">Total: R$ {{ total.toFixed(2) }}</div>
                 <div style="margin-top:8px;">Valor recebido: <input type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" placeholder="Valor recebido" style="width:120px;" /></div>
                   <div style="margin-top:8px;font-size:1.25em;">Troco: <span style="font-weight:bold;color:#2e7d32;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</span></div>
@@ -78,21 +85,7 @@
           </div>
         </div>
       </div>
-      <!-- Teclas de atalho -->
       
     </ng-container>
   </ng-container>
-  <div class="pos-main" style="display:flex;gap:32px;">
-    <!-- Painel lateral -->
-    <div class="pos-side-panel">
-      <div class="pos-keypad">
-        <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:180px;" />
-        <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
-        <button class="add-btn" (click)="adicionarProduto()">Adicionar Produto</button>
-      </div>
-      <div class="pos-actions">
-        <button (click)="finalizarVenda()">Finalizar Venda</button>
-        <button (click)="cancelar()">Cancelar</button>
-      </div>
-    </div>
-  </div>
+ 
