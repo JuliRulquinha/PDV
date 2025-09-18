@@ -1,92 +1,78 @@
 
-<div class="pos-container">
-  <h2 class="pos-title">Caixa Supermercado</h2>
+<div class="pos-container" style="padding:32px;">
   <ng-container *ngIf="products.length">
     <ng-container *ngIf="products[products.length-1] as lastProduct">
-  <div *ngIf="lastProduct.imageUrl" style="max-width:700px;width:100%;margin:0 auto;margin-bottom:16px;">
-    <div style="display:flex;align-items:center;gap:32px;width:100%;">
-      <div style="flex:1;min-width:220px;max-width:340px;">
-        <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:340px;max-height:340px;width:100%;border-radius:12px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;" />
-        <div style="font-weight:bold;font-size:1.2em;margin-top:8px;">{{ lastProduct.nome }}</div>
-      </div>
-      <div class="pos-info-cards-grid" style="flex:1;min-width:220px;max-width:340px;">
-        <div class="pos-info-card">
-          <div class="pos-info-header">Valor de Custo</div>
-          <div class="pos-info-value">R$ {{ lastProduct.valorCusto !== undefined && lastProduct.valorCusto !== null ? lastProduct.valorCusto.toFixed(2) : '-' }}</div>
-        </div>
-        <div class="pos-info-card">
-          <div class="pos-info-header">Valor de Venda</div>
-          <div class="pos-info-value">R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
-        </div>
-        <div class="pos-info-card">
-          <div class="pos-info-header">Marca</div>
-          <div class="pos-info-value">{{ lastProduct.marca || '-' }}</div>
-        </div>
-        <div class="pos-info-card">
-          <div class="pos-info-header">Modelo</div>
-          <div class="pos-info-value">{{ lastProduct.modelo || '-' }}</div>
+      <!-- Nome do produto e barra de pesquisa na mesma linha -->
+      <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:8px;gap:16px;">
+        <span style="font-weight:bold;font-size:1.5em;text-align:left;">{{ lastProduct.nome }}</span>
+        <div style="display:flex;align-items:center;gap:0;">
+          <input type="text" class="pos-input" placeholder="" style="width:220px;border:none;box-shadow:none;outline:none;" />
+          <span style="margin-left:-32px;cursor:pointer;"><i class="material-icons" style="font-family: 'Material Icons'; font-style: normal; font-weight: normal; font-size: 24px; line-height: 1; letter-spacing: normal; text-transform: none; display: inline-block; white-space: nowrap; direction: ltr; -webkit-font-feature-settings: 'liga'; -webkit-font-smoothing: antialiased;">search</i></span>
         </div>
       </div>
-    </div>
-  </div>
-        <!-- Removido duplicação dos info cards e fechamento correto das divs -->
+      <!-- Imagem, infos e lista de produtos lado a lado, com código alinhado ao cabeçalho da lista -->
+  <div style="display:flex;align-items:flex-start;gap:8px;width:100%;margin-bottom:8px;">
+  <div style="display:flex;flex-direction:column;gap:0;min-width:480px;margin-right:12px;">
+          <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:530px;max-width:530px;margin-bottom:14px;"><strong>CÓDIGO:</strong> {{ lastProduct.id }}</div>
+          <div style="display:flex;flex-direction:row;gap:22px;">
+            <div style="width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;">
+              <img [src]="lastProduct.imageUrl" alt="Foto do produto" style="max-width:90%;max-height:90%;object-fit:contain;" />
+            </div>
+            <div style="display:flex;flex-direction:column;gap:14px;min-width:209px;">
+              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>VALOR DE CUSTO:</strong> R$ {{ lastProduct.valorCusto !== undefined && lastProduct.valorCusto !== null ? lastProduct.valorCusto.toFixed(2) : '-' }}</div>
+              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>VALOR DE VENDA:</strong> R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
+              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>MARCA:</strong> {{ lastProduct.marca || '-' }}</div>
+              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>MODELO:</strong> {{ lastProduct.modelo || '-' }}</div>
+              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>QTD:</strong> {{ lastProduct.quantidade }}</div>
+            </div>
+          </div>
+        </div>
+        <!-- Lista de produtos à direita -->
+        <div class="pos-products-card" style="flex:2;min-height:600px;max-height:600px;background:#fff;padding:16px;min-width:340px;display:flex;flex-direction:column;position:relative;">
+          <div *ngIf="products.length" style="display:flex;flex-direction:column;height:100%;">
+            <!-- Cabeçalho da lista fixo -->
+            <div style="display:flex;align-items:center;margin-bottom:8px;padding-bottom:8px;font-weight:bold;color:#1976d2;border-bottom:1px solid #e0e0e0;position:sticky;top:0;z-index:2;background:#fff;">
+              <span style="width:80px;text-align:center;display:inline-block;">ID</span>
+              <span style="width:200px;text-align:center;display:inline-block;position:relative;left:-12px;">PRODUTO</span>
+              <span style="width:120px;text-align:center;display:inline-block;position:relative;left:-12px;">PREÇO</span>
+              <span style="width:100px;text-align:left;display:inline-block;position:relative;left:48px;">QTD</span>
+              <span style="width:140px;text-align:center;display:inline-block;">TOTAL</span>
+            </div>
+            <!-- Área scrollável dos itens -->
+            <div style="overflow-y:auto;max-height:340px;display:flex;flex-direction:column;">
+              <ng-container *ngFor="let p of products; trackBy: trackById">
+                <div style="display:flex;align-items:center;margin-bottom:18px;padding-bottom:8px;">
+                  <span style="width:80px;font-weight:bold;text-align:center;display:inline-block;">{{ p.id }}</span>
+                  <span style="width:200px;text-align:center;display:inline-block;">{{ p.nome }}</span>
+                  <span style="width:120px;text-align:center;display:inline-block;">R$ {{ p.valorVenda != null ? p.valorVenda.toFixed(2) : '-' }}</span>
+                  <span style="width:32px;text-align:center;font-weight:bold;display:inline-block;">x</span>
+                  <span style="width:100px;text-align:left;display:inline-block;position:relative;left:48px;">{{ p.quantidade }}</span>
+                  <span style="width:140px;text-align:center;display:inline-block;">R$ {{ p.valorVenda != null ? (p.valorVenda * p.quantidade).toFixed(2) : '-' }}</span>
+                </div>
+              </ng-container>
+            </div>
+            <!-- Total, valor recebido, troco e total de itens fixos na base do componente -->
+            <div style="display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;margin-top:auto;gap:32px;background:#fff;padding:24px 32px 24px 32px;position:absolute;left:0;right:0;bottom:0;">
+              <div style="font-size:1.2em;font-weight:bold;">Itens: {{ products.length }}</div>
+              <div style="display:flex;flex-direction:column;align-items:flex-end;">
+                <div style="font-size:1.2em;font-weight:bold;">Total: R$ {{ total.toFixed(2) }}</div>
+                <div style="margin-top:8px;">Valor recebido: <input type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" placeholder="Valor recebido" style="width:120px;" /></div>
+                  <div style="margin-top:8px;font-size:1.25em;">Troco: <span style="font-weight:bold;color:#2e7d32;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Teclas de atalho -->
+      <div style="width:100%;margin-bottom:16px;text-align:center;">
+        <span style="margin-right:16px;">F2 - Buscar</span>
+        <span style="margin-right:16px;">F3 - Adicionar</span>
+        <span>F4 - Finalizar</span>
+      </div>
     </ng-container>
   </ng-container>
-  <div class="pos-main">
-    <div style="display:flex;flex-direction:column;align-items:flex-start;">
-      <div class="pos-products-card">
-        <div style="max-height:220px;overflow-y:auto;">
-          <table style="width:100%;border-collapse:collapse;">
-            <thead style="position:sticky;top:0;z-index:2;background:#fff;">
-              <tr>
-                <th>Código</th>
-                <th>Produto</th>
-                <th>Preço</th>
-                <th>Qtd</th>
-                <th>Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr *ngFor="let p of products; trackBy: trackById">
-                <td>{{ p.id }}</td>
-                <td>{{ p.nome.length > 10 ? (p.nome | slice:0:10) + '...' : p.nome }}</td>
-                <td>R$ {{ p.valorVenda != null ? p.valorVenda.toFixed(2) : '-' }}</td>
-                <td>{{ p.quantidade }}</td>
-                <td>R$ {{ p.valorVenda != null ? (p.valorVenda * p.quantidade).toFixed(2) : '-' }}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-      <div class="pos-payment-horizontal-panel">
-        <div style="display:flex;align-items:flex-start;justify-content:flex-start;width:100%;padding:18px 24px;background:#f5f5f5;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.08);margin:8px 0 0 0;gap:32px;">
-          <div style="display:flex;flex-direction:column;gap:8px;min-width:220px;max-width:320px;flex:1;">
-            <label for="tipoPagamento" style="font-weight:bold;">Tipo de pagamento:</label>
-            <select id="tipoPagamento" class="pos-input" [(ngModel)]="tipoPagamento" style="margin-bottom:8px;width:180px;">
-              <option value="dinheiro">Dinheiro</option>
-              <option value="cartao">Cartão</option>
-              <option value="pix">Pix</option>
-            </select>
-            <label for="valorRecebido" style="font-weight:bold;">Valor recebido:</label>
-            <input id="valorRecebido" type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" placeholder="Valor recebido" style="margin-bottom:8px;width:180px;" />
-          </div>
-          <div style="display:flex;flex-direction:column;align-items:center;gap:8px;min-width:180px;max-width:300px;flex:1;">
-            <div class="pos-troco-panel" style="margin-bottom:12px;">
-              <div style="display:flex;flex-direction:row;align-items:center;gap:12px;width:100%;max-width:340px;margin-top:24px;">
-                <span style="font-weight:bold;font-size:1.3em;">Troco:</span>
-                <span style="font-size:1.7em;color:#2e7d32;white-space:nowrap;">R$ {{ (valorRecebido - total) > 0 ? (valorRecebido - total).toFixed(2) : '0.00' }}</span>
-              </div>
-            </div>
-            <div class="pos-summary" style="font-size:1.7em;white-space:nowrap;">
-              <div style="display:flex;flex-direction:row;align-items:center;gap:16px;">
-                <label style="vertical-align:middle;">Total:</label>
-                <span class="pos-total" style="font-size:1.3em;vertical-align:middle;">R$ {{ total.toFixed(2) }}</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+  <div class="pos-main" style="display:flex;gap:32px;">
+    <!-- Painel lateral -->
     <div class="pos-side-panel">
       <div class="pos-keypad">
         <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:180px;" />

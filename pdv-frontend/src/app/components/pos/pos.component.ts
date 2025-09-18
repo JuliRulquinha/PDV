@@ -52,11 +52,20 @@ export class PosComponent implements OnInit{
   tipoPagamento: string = 'dinheiro';
   valorRecebido: number = 0;
   quantidadeProduto: number = 1;
+  lastProduct?: Produto;
+  searchTerm: string = '';
+
   trackById(index: number, item: Produto) {
     return item.id;
   }
+
   ngOnInit() {
     // Optionally, load initial products or setup
+    this.updateLastProduct();
+  }
+
+  updateLastProduct() {
+    this.lastProduct = this.products.length ? this.products[this.products.length - 1] : undefined;
   }
 
   productService = inject(ProductService);
@@ -79,6 +88,7 @@ export class PosComponent implements OnInit{
         this.products.push({ ...data, quantidade: qtd });
         this.codigoProduto = '';
         this.quantidadeProduto = 1;
+        this.updateLastProduct();
       },
       error: (err) => {
         console.error(err);
