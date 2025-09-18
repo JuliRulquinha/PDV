@@ -89,11 +89,7 @@
     </div>
     <div class="pos-side-panel">
       <div class="pos-keypad">
-  <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:180px;" />
-        <div class="keypad-grid">
-          <button *ngFor="let n of [1,2,3,4,5,6,7,8,9,0]" (click)="codigoProduto += n">{{n}}</button>
-          <button (click)="codigoProduto = codigoProduto.slice(0, -1)">⌫</button>
-        </div>
+        <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:180px;" />
         <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
         <button class="add-btn" (click)="adicionarProduto()">Adicionar Produto</button>
       </div>
