@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
 export interface Produto {
-  id: number;
-  nome: string;
+  id?: number;
+  nome?: string;
   fornecedor?: Fornecedor;
   categoria?: Categoria;
   marca?: string;
