@@ -324,3 +324,22 @@ html, body {
 .pos-actions button:last-child {
   background: #b71c1c;
 }
+.botoes-de-atalho{
+  margin-top: 20px;
+  background: #fff;
+  border-radius: 8px;
+  padding: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  margin-bottom:16px;
+  text-align:start;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); 
+  gap: 10px; 
+  
+}
+
+div.botoes-de-atalho > span{
+  padding: 2px 2px;
+  margin: 5px;
+  
+}

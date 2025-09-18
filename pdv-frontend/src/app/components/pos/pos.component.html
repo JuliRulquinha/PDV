@@ -23,9 +23,24 @@
               <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>VALOR DE VENDA:</strong> R$ {{ lastProduct.valorVenda !== undefined && lastProduct.valorVenda !== null ? lastProduct.valorVenda.toFixed(2) : '-' }}</div>
               <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>MARCA:</strong> {{ lastProduct.marca || '-' }}</div>
               <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>MODELO:</strong> {{ lastProduct.modelo || '-' }}</div>
-              <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;"><strong>QTD:</strong> {{ lastProduct.quantidade }}</div>
+
+              
             </div>
+            
           </div>
+          <div class="botoes-de-atalho">
+        <span ><b>F1</b> - Produto</span>
+        <span ><b>F2</b> - Cliente</span>
+        <span ><b>F3</b> - Cancelar</span>
+        <span ><b>F4</b> - Quantidade</span>
+        <span ><b>F5</b> - Excluir</span>
+        <span ><b>F6</b> - Finalizar</span>
+        <span ><b>F7</b> - Zoom tela</span>
+        <span ><b>F8</b> - Alterar</span>
+        <span ><b>F9</b> - Trocar Usuário</span>
+        <span ><b>F10</b> - Lançar valor</span>
+        <span><b>ESC</b> - Sair</span>
+      </div>
         </div>
         <!-- Lista de produtos à direita -->
         <div class="pos-products-card" style="flex:2;min-height:600px;max-height:600px;background:#fff;padding:16px;min-width:340px;display:flex;flex-direction:column;position:relative;">
@@ -64,11 +79,7 @@
         </div>
       </div>
       <!-- Teclas de atalho -->
-      <div style="width:100%;margin-bottom:16px;text-align:center;">
-        <span style="margin-right:16px;">F2 - Buscar</span>
-        <span style="margin-right:16px;">F3 - Adicionar</span>
-        <span>F4 - Finalizar</span>
-      </div>
+      
     </ng-container>
   </ng-container>
   <div class="pos-main" style="display:flex;gap:32px;">
