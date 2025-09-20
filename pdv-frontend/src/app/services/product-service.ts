@@ -9,9 +9,9 @@ import { Produto } from '../components/pos/pos.component';
 export class ProductService {
   http = inject(HttpClient);
 
-  getProducts(): Observable<Produto>{
-    return this.http.get<Produto>("http://localhost:8080/api/produtos");
-  }
+  getProducts(): Observable<Produto[]> {
+  return this.http.get<Produto[]>("http://localhost:8080/api/produtos");
+}
 
   getProductById(id: number):Observable<Produto>{
     return this.http.get<Produto>("http://localhost:8080/api/produtos/"+id);

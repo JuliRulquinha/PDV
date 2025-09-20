@@ -1,1 +1,123 @@
-<p>lista-produtos works!</p>
+<div class="lista-produto-container" style="padding: 16px;">
+
+  <!-- Botão de cadastro -->
+  <button (click)="novoProduto()" *ngIf="!produtoSelecionado && !novoCadastro">Cadastrar Produto</button>
+
+  <!-- Lista de Produtos -->
+  <h2>Lista de Produtos</h2>
+  <table border="1" width="100%" style="margin-bottom: 24px;">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Fornecedor</th>
+        <th>Categoria</th>
+        <th>Marca</th>
+        <th>Modelo</th>
+        <th>Qtd</th>
+        <th>Valor Venda</th>
+        <th>Ações</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of produtos">
+        <td>{{ p.id }}</td>
+        <td>{{ p.nome }}</td>
+        <td>{{ p.fornecedor?.nome }}</td>
+        <td>{{ p.categoria?.nome }}</td>
+        <td>{{ p.marca }}</td>
+        <td>{{ p.modelo }}</td>
+        <td>{{ p.quantidade }}</td>
+        <td *ngIf="p.valorVenda">R$ {{ p.valorVenda | number:'1.2-2' }}</td>
+        <td *ngIf="!p.valorVenda">-</td>
+        <td>
+          <button (click)="editarProduto(p)">Editar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Formulário (Cadastro ou Edição) -->
+  <div *ngIf="produtoSelecionado || novoCadastro">
+    <h2>{{ novoCadastro ? 'Cadastrar Produto' : 'Editar Produto: ' + produtoSelecionado?.nome }}</h2>
+
+    <form [formGroup]="formProduto" (ngSubmit)="salvarProduto()">
+      <div>
+        <label>Nome:</label>
+        <input type="text" formControlName="nome">
+      </div>
+
+      <div>
+        <label>Fornecedor:</label>
+        <select formControlName="fornecedor">
+          <option [ngValue]="null">Selecione...</option>
+          <option *ngFor="let f of fornecedores" [ngValue]="f">{{ f.nome }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Categoria:</label>
+        <select formControlName="categoria">
+          <option [ngValue]="null">Selecione...</option>
+          <option *ngFor="let c of categorias" [ngValue]="c">{{ c.nome }}</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Marca:</label>
+        <input type="text" formControlName="marca">
+      </div>
+
+      <div>
+        <label>Modelo:</label>
+        <input type="text" formControlName="modelo">
+      </div>
+
+      <div>
+        <label>Quantidade:</label>
+        <input type="number" formControlName="quantidade">
+      </div>
+
+      <div>
+        <label>Valor Custo:</label>
+        <input type="number" formControlName="valorCusto">
+      </div>
+
+      <div>
+        <label>Valor Venda:</label>
+        <input type="number" formControlName="valorVenda">
+      </div>
+
+      <div>
+        <label>Imagem (URL):</label>
+        <input type="text" formControlName="imageUrl">
+      </div>
+
+      <div>
+        <label>Validade:</label>
+        <input type="date" formControlName="validade">
+      </div>
+
+      <!-- Dimensões -->
+      <fieldset formGroupName="dimensoes">
+        <legend>Dimensões</legend>
+        <div>
+          <label>Largura:</label>
+          <input type="number" formControlName="largura">
+        </div>
+        <div>
+          <label>Altura:</label>
+          <input type="number" formControlName="altura">
+        </div>
+        <div>
+          <label>Profundidade:</label>
+          <input type="number" formControlName="profundidade">
+        </div>
+      </fieldset>
+
+      <button type="submit">{{ novoCadastro ? 'Salvar' : 'Atualizar' }}</button>
+      <button type="button" (click)="cancelarEdicao()">Cancelar</button>
+    </form>
+  </div>
+
+</div>

@@ -1,0 +1,313 @@
+FORNECEDORES
+
+{
+  "name": "Fornecedor ABC",
+  "telefone": "(11) 99999-8888",
+  "email": "contato@fornecedorabc.com",
+  "enderecos": [
+    {
+      "rua": "Rua das Flores",
+      "numero": 123,
+      "cep": "01000-000",
+      "complemento": "Bloco A, apto 45"
+    },
+    {
+      "rua": "Avenida Central",
+      "numero": 456,
+      "cep": "20000-000",
+      "complemento": "Sala 201"
+    }
+  ]
+}
+
+{
+  "name": "Distribuidora XPTO",
+  "telefone": "(21) 98888-7777",
+  "email": "contato@distribuidoraxpto.com",
+  "enderecos": [
+    {
+      "rua": "Rua Marechal Deodoro",
+      "numero": 250,
+      "cep": "22000-123",
+      "complemento": "Loja 5"
+    }
+  ]
+}
+
+{
+  "name": "Distribuidora laLuna",
+  "telefone": "(41) 98688-7778",
+  "email": "contato@distribuidoralaluna.com",
+  "enderecos": [
+    {
+      "rua": "Rua Da Conceição",
+      "numero": 250,
+      "cep": "22050-123",
+      "complemento": "Loja 6"
+    }
+  ]
+}
+
+
+{
+  "name": "Fábrica de Móveis União",
+  "telefone": "(41) 96666-5555",
+  "email": "vendas@moveisuniao.com",
+  "enderecos": [
+    {
+      "rua": "Rua das Indústrias",
+      "numero": 321,
+      "cep": "80000-111",
+      "complemento": "Bloco C"
+    },
+    {
+      "rua": "Avenida Paraná",
+      "numero": 1200,
+      "cep": "80200-222",
+      "complemento": "Prédio Administrativo"
+    },
+    {
+      "rua": "Travessa das Araucárias",
+      "numero": 78,
+      "cep": "80300-333",
+      "complemento": ""
+    }
+  ]
+}
+
+CLIENTES
+
+{
+  "name": "João Silva",
+  "telefone": "(11) 98888-7777",
+  "email": "joao.silva@email.com",
+  "enderecos": [
+    {
+      "rua": "Rua das Palmeiras",
+      "numero": 101,
+      "cep": "01311-000",
+      "complemento": "Apto 12"
+    }
+  ]
+}
+
+{
+  "name": "Maria Oliveira",
+  "telefone": "(21) 97777-6666",
+  "email": "maria.oliveira@email.com",
+  "enderecos": [
+    {
+      "rua": "Avenida Atlântica",
+      "numero": 2000,
+      "cep": "22021-001",
+      "complemento": "Cobertura"
+    },
+    {
+      "rua": "Rua Barata Ribeiro",
+      "numero": 456,
+      "cep": "22040-002",
+      "complemento": "Bloco B"
+    }
+  ]
+}
+
+{
+  "name": "Carlos Pereira",
+  "telefone": "(31) 96666-5555",
+  "email": "carlos.pereira@email.com",
+  "enderecos": [
+    {
+      "rua": "Rua dos Andradas",
+      "numero": 78,
+      "cep": "30120-003",
+      "complemento": "Sala 405"
+    }
+  ]
+}
+
+{
+  "name": "Ana Souza",
+  "telefone": "(41) 95555-4444",
+  "email": "ana.souza@email.com",
+  "enderecos": [
+    {
+      "rua": "Rua XV de Novembro",
+      "numero": 1500,
+      "cep": "80020-310",
+      "complemento": ""
+    },
+    {
+      "rua": "Avenida Batel",
+      "numero": 222,
+      "cep": "80240-090",
+      "complemento": "Loja 1"
+    },
+    {
+      "rua": "Travessa Nestor de Castro",
+      "numero": 35,
+      "cep": "80020-335",
+      "complemento": "Fundos"
+    }
+  ]
+}
+
+
+CATEGORIAS
+
+{
+  "nome": "Eletrônicos",
+  "descricao": "Produtos de tecnologia como celulares, notebooks e acessórios"
+}
+
+{
+  "nome": "Alimentos",
+  "descricao": "Produtos alimentícios frescos e industrializados"
+}
+
+{
+  "nome": "Móveis",
+  "descricao": "Sofás, mesas, cadeiras e outros móveis para casa e escritório"
+}
+
+{
+  "nome": "Roupas",
+  "descricao": "Vestuário masculino, feminino e infantil"
+}
+
+PRODUTOS
+
+{
+  "nome": "Notebook Dell Inspiron",
+  "fornecedor": {
+    "id": 1
+  },
+  "categoria": {
+    "id": 1
+  },
+  "marca": "Dell",
+  "modelo": "Inspiron 15 3000",
+  "quantidade": 20,
+  "valorCusto": 2500.00,
+  "valorVenda": 3200.00,
+  "imageUrl": "https://meusite.com/imagens/notebook-dell.jpg",
+  "validade": "2027-12-31",
+  "dimensoes": {
+    "peso": 2.5,
+    "altura": 2.0,
+    "largura": 35.0
+  }
+}
+
+{
+  "nome": "Camiseta Básica",
+  "fornecedor": {
+    "id": 2
+  },
+  "categoria": {
+    "id": 4
+  },
+  "marca": "Hering",
+  "modelo": "Unissex Algodão",
+  "quantidade": 100,
+  "valorCusto": 20.00,
+  "valorVenda": 49.90,
+  "imageUrl": "https://meusite.com/imagens/camiseta-basica.jpg",
+  "validade": "2026-06-01",
+  "dimensoes": {
+    "peso": 0.2,
+    "altura": 1.0,
+    "largura": 30.0
+  }
+}
+
+{
+  "nome": "Geladeira Frost Free",
+  "fornecedor": {
+    "id": 3
+  },
+  "categoria": {
+    "id": 3
+  },
+  "marca": "Brastemp",
+  "modelo": "Inverse 540L",
+  "quantidade": 5,
+  "valorCusto": 3500.00,
+  "valorVenda": 4599.90,
+  "imageUrl": "https://meusite.com/imagens/geladeira-brastemp.jpg",
+  "validade": "2030-01-01",
+  "dimensoes": {
+    "peso": 75.0,
+    "altura": 180.0,
+    "largura": 75.0
+  }
+}
+
+{
+  "nome": "Smartphone Samsung Galaxy S23",
+  "fornecedor": { "id": 1 },
+  "categoria": { "id": 1 },
+  "marca": "Samsung",
+  "modelo": "Galaxy S23",
+  "quantidade": 50,
+  "valorCusto": 3500.00,
+  "valorVenda": 4299.99,
+  "imageUrl": "https://meusite.com/imagens/galaxy-s23.jpg",
+  "validade": "2028-12-31",
+  "dimensoes": { "peso": 0.168, "altura": 0.8, "largura": 7.5 }
+}
+
+{
+  "nome": "Sofá 3 Lugares",
+  "fornecedor": { "id": 3 },
+  "categoria": { "id": 3 },
+  "marca": "Tok&Stok",
+  "modelo": "Londres",
+  "quantidade": 10,
+  "valorCusto": 1200.00,
+  "valorVenda": 1899.90,
+  "imageUrl": "https://meusite.com/imagens/sofa-3lugares.jpg",
+  "validade": "2035-01-01",
+  "dimensoes": { "peso": 35.0, "altura": 85.0, "largura": 220.0 }
+}
+
+{
+  "nome": "Cafeteira Expresso Nespresso",
+  "fornecedor": { "id": 2 },
+  "categoria": { "id": 1 },
+  "marca": "Nespresso",
+  "modelo": "Essenza Mini",
+  "quantidade": 30,
+  "valorCusto": 450.00,
+  "valorVenda": 699.90,
+  "imageUrl": "https://meusite.com/imagens/cafeteira-nespresso.jpg",
+  "validade": "2027-06-30",
+  "dimensoes": { "peso": 2.4, "altura": 20.0, "largura": 12.0 }
+}
+
+{
+  "nome": "Tênis Corrida Nike Air Zoom",
+  "fornecedor": { "id": 4 },
+  "categoria": { "id": 4 },
+  "marca": "Nike",
+  "modelo": "Air Zoom Pegasus 40",
+  "quantidade": 60,
+  "valorCusto": 300.00,
+  "valorVenda": 499.90,
+  "imageUrl": "https://meusite.com/imagens/tenis-nike.jpg",
+  "validade": "2026-12-31",
+  "dimensoes": { "peso": 0.25, "altura": 12.0, "largura": 10.0 }
+}
+
+{
+  "nome": "Ar Condicionado Split 12.000 BTUs",
+  "fornecedor": { "id": 3 },
+  "categoria": { "id": 3 },
+  "marca": "LG",
+  "modelo": "Dual Inverter",
+  "quantidade": 15,
+  "valorCusto": 1800.00,
+  "valorVenda": 2499.90,
+  "imageUrl": "https://meusite.com/imagens/ar-condicionado-lg.jpg",
+  "validade": "2030-01-01",
+  "dimensoes": { "peso": 32.0, "altura": 29.0, "largura": 80.0 }
+}

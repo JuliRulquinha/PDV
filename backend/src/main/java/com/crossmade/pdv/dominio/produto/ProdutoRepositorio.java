@@ -11,4 +11,5 @@ public interface ProdutoRepositorio {
     List<Produto> buscarPorCategoria(String categoria);
     List<Produto> listarTodos();
     void deletar(Integer id);
+    Produto atualizar(Integer id, Produto produto);
 }

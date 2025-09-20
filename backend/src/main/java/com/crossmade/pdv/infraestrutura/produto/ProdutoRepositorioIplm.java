@@ -51,4 +51,13 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
         return repositorio.findAll();
     }
 
+    @Override
+    public Produto atualizar(Integer id,  Produto produto) {
+        var existente = repositorio.findById(id);
+        if(existente.isEmpty()){
+            return null;
+        }
+        produto.setId(id);
+        return repositorio.save(produto);
+    }
 }
