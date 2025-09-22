@@ -5,7 +5,9 @@ import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.dominio.produto.Produto;
 import com.crossmade.pdv.infraestrutura.produto.ProdutoRepositorioIplm;
+import org.springframework.stereotype.Component;
 
+@Component
 public class AtualizarProdutoHandler {
  private final ProdutoRepositorioIplm repositorio;
 

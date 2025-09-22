@@ -6,7 +6,6 @@ import java.sql.Date;
 import com.crossmade.pdv.dominio.produto.Dimensoes;
 
 public record AtualizarProdutoCommand (
-    Integer id,
     String nome,
     Integer categoria_id,
     Integer fornecedor_id,

@@ -35,7 +35,7 @@ export interface Dimensoes {
   // define fields as needed, e.g.:
   largura: number;
   altura: number;
-  profundidade: number;
+  peso: number;
 }
 
 @Component({

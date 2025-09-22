@@ -52,8 +52,36 @@ export class ListaProdutos {
         profundidade: [null]
       })
     });
+    var product: Produto = {
+      nome: "Cimento Portland CP-II",
+  fornecedor: {
+    id: 1,
+    nome: "Fornecedor ABC"
+  },
+  categoria: {
+    id: 2,
+    nome: "Materiais de Construção"
+  },
+  marca: "Votoran",
+  modelo: "CP-II E-32",
+  quantidade: 50,
+  valorCusto: 28.50,
+  valorVenda: 39.90,
+  imageUrl: "https://example.com/images/cimento.jpg",
+  validade: new Date("2026-12-31"),
+  dimensoes: {
+    largura: 30,
+    altura: 50,
+    peso: 15
+  }
+    };
+   
+       this.productService.saveProduct(product).subscribe(saved => {
+    console.log("Produto salvo:", saved);
+  
+    });
+    
 
-    // Carregar produtos sempre que a página for aberta
     this.loadProducts();
   }
 
