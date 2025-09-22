@@ -113,20 +113,42 @@ export class ListaProdutos {
     this.formProduto.patchValue(p);
   }
 
-  salvarProduto(): void {
-    const produto: Produto = this.formProduto.value;
+ salvarProduto(): void {
+  console.log('submit disparado', this.formProduto.value);
 
-    if (this.novoCadastro) {
-      console.log('Cadastrar produto', produto);
-      // TODO: chamar productService.createProduct(produto)
-    } else if (this.produtoSelecionado) {
-      console.log('Atualizar produto', produto);
-      // TODO: chamar productService.updateProduct(produto)
-    }
-
-    this.cancelarEdicao();
-    this.loadProducts();
+  if (this.formProduto.invalid) {
+    this.formProduto.markAllAsTouched();
+    return;
   }
+
+  const produto: Produto = { ...this.formProduto.value };
+
+  // Converte validade para Date se veio como string do input
+  if (produto.validade) {
+    produto.validade = new Date(produto.validade);
+  }
+
+  if (this.novoCadastro) {
+    this.productService.saveProduct(produto).subscribe({
+      next: (saved) => {
+        console.log('Produto cadastrado:', saved);
+        this.loadProducts();
+        this.cancelarEdicao();
+      },
+      error: (err) => console.error('Erro ao cadastrar produto', err)
+    });
+  } else if (this.produtoSelecionado) {
+    produto.id = this.produtoSelecionado.id; // garante que o ID está definido
+    this.productService.updateProduct(produto).subscribe({
+      next: (updated) => {
+        console.log('Produto atualizado:', updated);
+        this.loadProducts();
+        this.cancelarEdicao();
+      },
+      error: (err) => console.error('Erro ao atualizar produto', err)
+    });
+  }
+}
 
   cancelarEdicao(): void {
     this.produtoSelecionado = null;
