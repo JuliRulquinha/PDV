@@ -4,11 +4,11 @@ import { ListaProdutos } from './components/lista-produtos/lista-produtos';
 
 
 export const routes: Routes = [
-    // {
-    //     path: '',
-    //     redirectTo: 'checkout',
-    //     pathMatch: 'full'
-    // },
+    {
+        path: '',
+        redirectTo: 'checkout',
+        pathMatch: 'full'
+    },
     {
         path: 'checkout',
         component: PosComponent 
