@@ -1,0 +1,13 @@
+  <div class="pesquisa" style="padding:32px;">
+
+  <!-- Barra de pesquisa -->
+  <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:8px;gap:16px;">
+    <span style="font-weight:bold;font-size:1.5em;text-align:left;">-</span>
+    <div style="display:flex;align-items:center;gap:0;">
+      <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
+      <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:220px;border:none;box-shadow:none;outline:none;" />
+      <span style="margin-left:-32px;cursor:pointer;" (click)="adicionarProduto()">
+        <i class="material-icons" style="font-family:'Material Icons';font-style:normal;font-weight:normal;font-size:24px;line-height:1;">search</i>
+      </span>
+    </div>
+  </div>

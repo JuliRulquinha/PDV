@@ -1,4 +1,4 @@
-
+/* 
 
 @media (max-width: 1024px) and (orientation: landscape) {
   .pesquisa{
@@ -108,7 +108,7 @@
     padding: 8px;
     overflow-x: hidden;
 }
-/* Product preview image: fit and scale for wide images */
+
 .pos-product-preview img {
   object-fit: contain;
   width: 220px;
@@ -120,7 +120,7 @@
 html, body {
   background: #e3f2fd;
 }
-/* Horizontal payment/troco panel styles */
+
 .pos-payment-horizontal-panel {
   width: 100%;
   max-width: 700px;
@@ -129,7 +129,7 @@ html, body {
   justify-content: flex-start;
   align-items: stretch;
 }
-/* Info cards grid: 2x2 */
+
 .pos-info-cards-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -137,7 +137,7 @@ html, body {
   gap: 16px;
   margin-top: 8px;
 }
-/* Product info cards for preview */
+
 .pos-info-card {
   background: #fff;
   border-radius: 8px;
@@ -225,7 +225,7 @@ html, body {
   overflow-wrap: break-word;
   height: 32px;
 }
-/* Table header styling for product list */
+ Table header styling for product list 
 .pos-products-card th {
   background: #1976d2;
   color: #fff;
@@ -366,4 +366,38 @@ div.botoes-de-atalho > span{
   padding: 2px 2px;
   margin: 5px;
   
+}*/
+
+.pos-container {
+    width: 80%;
+    box-sizing: border-box;
+    padding: 8px;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius: 15px;
+    padding:32px;
+  }
+
+.pos-container-grid {
+  display: flex;
+  gap: 16px;
+  
+}
+
+/* Coluna da esquerda */
+.pos-container-grid > app-pesquisa-de-produtos,
+.pos-container-grid > app-lista-produtos {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Coluna da direita */
+.pos-container-grid > app-checkout-display,
+.pos-container-grid > app-opcoes-venda {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 }

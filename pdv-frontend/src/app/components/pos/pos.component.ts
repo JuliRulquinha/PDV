@@ -1,7 +1,11 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, Input, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos';
+import { CheckoutDisplay } from '../checkout-display/checkout-display';
+import { ListaProdutos } from '../lista-produtos/lista-produtos';
+import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
 
 export interface Produto {
   id?: number;
@@ -43,17 +47,18 @@ export interface Dimensoes {
   standalone: true,
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    PesquisaDeProdutos,
+    CheckoutDisplay,
+    ListaProdutos
   ],
   templateUrl: './pos.component.html',
   styleUrls: ['./pos.component.css']
 })
 export class PosComponent implements OnInit{
-  tipoPagamento: string = 'dinheiro';
-  valorRecebido: number = 0;
-  quantidadeProduto: number = 1;
-  lastProduct?: Produto;
-  searchTerm: string = '';
+  @Input() lastProduct?: Produto;
+  @Input() products: Produto[] = [
+  ];
 
   trackById(index: number, item: Produto) {
     return item.id;
@@ -68,46 +73,6 @@ export class PosComponent implements OnInit{
     this.lastProduct = this.products.length ? this.products[this.products.length - 1] : undefined;
   }
 
-  productService = inject(ProductService);
-
-  codigoProduto: string = '';
-
-  products: Produto[] = [
-  ];
-
-  adicionarProduto() {
-    debugger;
-    const code = Number(this.codigoProduto);
-    const qtd = Number(this.quantidadeProduto);
-    if (!code || !qtd || qtd < 1) {
-      alert('Digite um código e quantidade válidos!');
-      return;
-    }
-    this.productService.getProductById(code).subscribe({
-      next: (data: Produto) => {
-        this.products.push({ ...data, quantidade: qtd });
-        this.codigoProduto = '';
-        this.quantidadeProduto = 1;
-        this.updateLastProduct();
-      },
-      error: (err) => {
-        console.error(err);
-        alert('Produto não encontrado!');
-      }
-    });
-  }
-
-  get total() {
-    return this.products.reduce((sum, p) => sum + (p.valorVenda ?? 0) * p.quantidade, 0);
-  }
-
-  finalizarVenda() {
-    alert('Venda finalizada!');
-    this.products = [];
-  }
-
-  cancelar() {
-    alert('Venda cancelada!');
-    this.products = [];
-  }
+  
 }
+
