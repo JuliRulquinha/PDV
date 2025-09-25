@@ -53,7 +53,8 @@ export interface Dimensoes {
     ListaProdutos
   ],
   templateUrl: './pos.component.html',
-  styleUrls: ['./pos.component.css']
+  styleUrls: ['./pos.component.css'],
+  
 })
 export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;

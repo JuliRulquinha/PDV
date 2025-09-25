@@ -2,6 +2,10 @@ import { Component, Input } from '@angular/core';
 import { Produto } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { addProduto } from '../../store/produto.actions';
+import { selectAllProdutos, selectLastProduto } from '../../store/produto.selectors';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -12,15 +16,9 @@ import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
 })
 export class ListaProdutos {
 
-  @Input() product?: Produto;  // <-- This is required
-  products: Produto[] = [];
+ lastProduct$: Observable<Produto | undefined>;
 
-  // Optional: automatically push new product into products array
-  set addProduct(prod: Produto | undefined) {
-    if (prod) this.products.push({ ...prod });
-  }
-
-   trackById(index: number, item: Produto) {
-    return item.id;
+  constructor(private store: Store) {
+    this.lastProduct$ = this.store.select(selectLastProduto);
   }
 }

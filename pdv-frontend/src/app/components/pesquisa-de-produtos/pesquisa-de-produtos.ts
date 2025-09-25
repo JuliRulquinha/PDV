@@ -1,27 +1,24 @@
-import { Component, EventEmitter, inject, Output } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ProductService } from '../../services/product-service';
 import { Produto } from '../pos/pos.component';
+import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { addProduto } from '../../store/produto.actions';
 
 @Component({
   selector: 'app-pesquisa-de-produtos',
+  standalone: true,
   imports: [CommonModule, ReactiveFormsModule, FormsModule],
   templateUrl: './pesquisa-de-produtos.html',
-  styleUrls: ['./pesquisa-de-produtos.css'] // Corrigi: era styleUrl
+  styleUrls: ['./pesquisa-de-produtos.css']
 })
 export class PesquisaDeProdutos {
-
-  @Output() produtoAdicionado = new EventEmitter<Produto>();
-
   quantidadeProduto: number = 1;
-  lastProduct?: Produto;
-  searchTerm: string = '';
   codigoProduto: string = '';
 
   productService = inject(ProductService);
-
-  products: Produto[] = [];
+  store = inject(Store);
 
   adicionarProduto() {
     const code = Number(this.codigoProduto);
@@ -35,12 +32,9 @@ export class PesquisaDeProdutos {
     this.productService.getProductById(code).subscribe({
       next: (data: Produto) => {
         const produtoComQtd = { ...data, quantidade: qtd };
-        this.products.push(produtoComQtd);
+        this.store.dispatch(addProduto({ produto: produtoComQtd }));
         this.codigoProduto = '';
         this.quantidadeProduto = 1;
-
-        // Emitindo para o componente pai
-        this.produtoAdicionado.emit(produtoComQtd);
       },
       error: (err) => {
         console.error(err);
