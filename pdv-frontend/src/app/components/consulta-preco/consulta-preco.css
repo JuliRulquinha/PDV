@@ -1,0 +1,10 @@
+.consulta-container{
+    width:fit-content;
+    box-sizing: border-box;
+    padding: 8px;
+    overflow-x: hidden;
+    background-color: white;
+    border-radius: 15px;
+    padding:32px;
+     box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+}
