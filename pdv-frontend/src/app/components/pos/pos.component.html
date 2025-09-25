@@ -123,11 +123,11 @@
  
   <div class="pos-container">
    <div>
-      <app-pesquisa-de-produtos></app-pesquisa-de-produtos>
+      <app-pesquisa-de-produtos (produtoAdicionado)="onProdutoAdicionado($event)"></app-pesquisa-de-produtos>
     </div>
    <div class="pos-container-grid">
-    <app-checkout-display></app-checkout-display>
-    <app-lista-produtos></app-lista-produtos>
+    <app-checkout-display [lastProduct]="lastProduct"></app-checkout-display>
+    <app-lista-produtos [product]="lastProduct"></app-lista-produtos>
    </div> 
     
    

@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Produto } from '../pos/pos.component';
 
 @Component({
   selector: 'app-checkout-display',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './checkout-display.css'
 })
 export class CheckoutDisplay {
-
+ @Input() lastProduct?: Produto;
 }

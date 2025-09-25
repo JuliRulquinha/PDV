@@ -57,22 +57,31 @@ export interface Dimensoes {
 })
 export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;
-  @Input() products: Produto[] = [
-  ];
+  @Input() products: Produto[] = [];
+
+  ngOnInit() {
+    this.updateLastProduct();
+  }
 
   trackById(index: number, item: Produto) {
     return item.id;
-  }
-
-  ngOnInit() {
-    // Optionally, load initial products or setup
-    this.updateLastProduct();
   }
 
   updateLastProduct() {
     this.lastProduct = this.products.length ? this.products[this.products.length - 1] : undefined;
   }
 
-  
+  // Método para receber do filho
+  onProdutoAdicionado(produto: Produto) {
+    this.products.push(produto); // adiciona à lista
+    this.updateLastProduct();    // atualiza o lastProduct
+  }
+
+  searchProduct(id: number) {
+  const found = this.products.find(p => p.id === id);
+  if (found) {
+    this.lastProduct = found;
+  }
+}
 }
 
