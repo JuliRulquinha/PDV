@@ -1,27 +1,45 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
 import { Produto } from '../pos/pos.component';
+import { selectAllProdutos } from '../../store/produto.selectors';
+import { clearProdutos } from '../../store/produto.actions'; // vamos criar essa ação
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-opcoes-venda',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, FormsModule],
   templateUrl: './opcoes-venda.html',
-  styleUrl: './opcoes-venda.css'
+  styleUrls: ['./opcoes-venda.css']
 })
 export class OpcoesVenda {
-  tipoPagamento: string = 'dinheiro';
   valorRecebido: number = 0;
+  produtos$: Observable<Produto[]>;
 
-    finalizarVenda(products: Produto[]) {
-    alert('Venda finalizada!');
-    products = [];
+  constructor(private store: Store) {
+    this.produtos$ = this.store.select(selectAllProdutos);
   }
 
-  cancelar(products: Produto[]) {
-    alert('Venda cancelada!');
-    products = [];
-  }
-
-  getTotal(products: Produto[]) {
+  getTotal(products: Produto[]): number {
     return products.reduce((sum, p) => sum + (p.valorVenda ?? 0) * p.quantidade, 0);
+  }
+
+  getTroco(products: Produto[]): number {
+    const total = this.getTotal(products);
+    return this.valorRecebido > total ? this.valorRecebido - total : 0;
+  }
+
+  finalizarVenda() {
+    alert('Venda finalizada!');
+    this.store.dispatch(clearProdutos());
+    this.valorRecebido = 0;
+  }
+
+  cancelar() {
+    alert('Venda cancelada!');
+    this.store.dispatch(clearProdutos());
+    this.valorRecebido = 0;
   }
 }

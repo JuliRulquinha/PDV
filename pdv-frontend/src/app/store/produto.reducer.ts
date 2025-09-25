@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
-import { addProduto, clearProdutos } from './produto.actions';
+
 import { Produto } from '../components/pos/pos.component';
+import { clearProdutos, addProduto } from './produto.actions';
+
+
+
+
 
 export interface ProdutoState {
   produtos: Produto[];
@@ -9,6 +14,8 @@ export interface ProdutoState {
 export const initialState: ProdutoState = {
   produtos: []
 };
+
+
 
 export const produtoReducer = createReducer(
   initialState,
