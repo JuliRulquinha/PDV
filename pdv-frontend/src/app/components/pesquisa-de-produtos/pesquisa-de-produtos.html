@@ -2,7 +2,13 @@
 
   <!-- Barra de pesquisa -->
   <div style="display:flex;align-items:center;justify-content:space-between;width:100%;margin-bottom:8px;gap:16px;">
-    <span style="font-weight:bold;font-size:1.5em;text-align:left;">-</span>
+    <span style="font-weight:bold;font-size:1.5em;text-align:left;">
+      @if (lastProduct$ | async; as lastProduct) {
+        {{ lastProduct.nome }}
+      } @else {
+        - Nenhum produto pesquisado
+      }
+    </span>
     <div style="display:flex;align-items:center;gap:0;">
       <input type="number" min="1" class="pos-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" style="margin-top:8px;width:80px;" />
       <input type="text" class="pos-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" style="width:220px;border:none;box-shadow:none;outline:none;" />

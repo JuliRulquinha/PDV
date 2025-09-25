@@ -5,6 +5,8 @@ import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { addProduto } from '../../store/produto.actions';
+import { selectLastProduto } from '../../store/produto.selectors';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-pesquisa-de-produtos',
@@ -17,8 +19,14 @@ export class PesquisaDeProdutos {
   quantidadeProduto: number = 1;
   codigoProduto: string = '';
 
+  lastProduct$: Observable<Produto | undefined>;
+
   productService = inject(ProductService);
   store = inject(Store);
+
+  constructor() {
+    this.lastProduct$ = this.store.select(selectLastProduto);
+  }
 
   adicionarProduto() {
     const code = Number(this.codigoProduto);
