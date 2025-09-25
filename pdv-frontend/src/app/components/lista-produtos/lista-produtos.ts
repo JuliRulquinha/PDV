@@ -16,9 +16,15 @@ import { selectAllProdutos, selectLastProduto } from '../../store/produto.select
 })
 export class ListaProdutos {
 
- lastProduct$: Observable<Produto | undefined>;
+  produtos$: Observable<Produto[]>;       // lista acumulativa
+  lastProduct$: Observable<Produto | undefined>; // último produto adicionado
 
   constructor(private store: Store) {
+    this.produtos$ = this.store.select(selectAllProdutos);
     this.lastProduct$ = this.store.select(selectLastProduto);
+  }
+
+  trackById(index: number, item: Produto) {
+    return item.id ?? index;
   }
 }
