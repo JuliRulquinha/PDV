@@ -4,7 +4,7 @@
     
     <!-- Código do produto -->
     <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:530px;max-width:530px;margin-bottom:14px;">
-      <strong>CÓDIGO:</strong> {{ lastProduct?.id ?? '-' }}
+      <strong>CÓDIGO:</strong> {{ (lastProduct$ | async)?.id ?? '-' }}
     </div>
 
     <!-- Imagem e detalhes -->
@@ -13,8 +13,8 @@
       <!-- Imagem do produto -->
       <div style="width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;">
         <img 
-          [src]="lastProduct?.imageUrl ?? 'https://via.placeholder.com/150'" 
-          alt="{{ lastProduct?.nome ?? 'Produto' }}" 
+          [src]="(lastProduct$ | async)?.imageUrl ?? 'https://via.placeholder.com/150'" 
+          alt="{{ (lastProduct$ | async)?.nome ?? 'Produto' }}" 
           style="max-width:90%;max-height:90%;object-fit:contain;" 
         />
       </div>
@@ -22,16 +22,16 @@
       <!-- Informações do produto -->
       <div style="display:flex;flex-direction:column;gap:14px;min-width:209px;">
         <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
-          <strong>VALOR DE CUSTO:</strong> R$ {{ lastProduct?.valorCusto ?? '-' }}
+          <strong>VALOR DE CUSTO:</strong> R$ {{ (lastProduct$ | async)?.valorCusto ?? '-' }}
         </div>
         <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
-          <strong>VALOR DE VENDA:</strong> R$ {{ lastProduct?.valorVenda ?? '-' }}
+          <strong>VALOR DE VENDA:</strong> R$ {{ (lastProduct$ | async)?.valorVenda ?? '-' }}
         </div>
         <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
-          <strong>MARCA:</strong> {{ lastProduct?.marca ?? '-' }}
+          <strong>MARCA:</strong> {{ (lastProduct$ | async)?.marca ?? '-' }}
         </div>
         <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
-          <strong>MODELO:</strong> {{ lastProduct?.modelo ?? '-' }}
+          <strong>MODELO:</strong> {{ (lastProduct$ | async)?.modelo ?? '-' }}
         </div>
       </div>
 
