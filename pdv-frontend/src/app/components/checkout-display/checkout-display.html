@@ -11,13 +11,22 @@
     <div style="display:flex;flex-direction:row;gap:22px;">
       
       <!-- Imagem do produto -->
-      <div style="width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;">
-        <img 
-          [src]="(lastProduct$ | async)?.imageUrl ?? 'https://via.placeholder.com/150'" 
-          alt="{{ (lastProduct$ | async)?.nome ?? 'Produto' }}" 
-          style="max-width:90%;max-height:90%;object-fit:contain;" 
-        />
-      </div>
+     <div style="width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;">
+  @if (lastProduct$ | async; as lastProduct) {
+    <img 
+      [src]="lastProduct.imageUrl ?? 'https://via.placeholder.com/150'" 
+      [alt]="lastProduct.nome ?? 'Produto'" 
+      style="max-width:90%;max-height:90%;object-fit:contain;" 
+    />
+  } @else {
+    <img 
+      src="https://via.placeholder.com/150" 
+      
+      style="max-width:90%;max-height:90%;object-fit:contain;" 
+    />
+  }
+</div>
+
 
       <!-- Informações do produto -->
       <div style="display:flex;flex-direction:column;gap:14px;min-width:209px;">

@@ -15,31 +15,34 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['./opcoes-venda.css']
 })
 export class OpcoesVenda {
-  valorRecebido: number = 0;
   produtos$: Observable<Produto[]>;
+  tipoPagamento: string = 'dinheiro';
+  valorRecebido: number = 0;
 
   constructor(private store: Store) {
+    // aqui você pega todos os produtos do NgRx
     this.produtos$ = this.store.select(selectAllProdutos);
   }
 
-  getTotal(products: Produto[]): number {
-    return products.reduce((sum, p) => sum + (p.valorVenda ?? 0) * p.quantidade, 0);
+ finalizarVenda() {
+  this.store.dispatch(clearProdutos()); // limpa imediatamente
+  this.valorRecebido = 0;
+  // Agora sim alerta
+  setTimeout(() => alert('Venda finalizada!'), 0); 
+}
+
+cancelar() {
+  this.store.dispatch(clearProdutos());
+  this.valorRecebido = 0;
+  setTimeout(() => alert('Venda cancelada!'), 0);
+}
+
+  getTotal(produtos: Produto[] = []) {
+    return produtos.reduce((sum, p) => sum + (p.valorVenda ?? 0) * (p.quantidade ?? 1), 0);
   }
 
-  getTroco(products: Produto[]): number {
-    const total = this.getTotal(products);
+  getTroco(produtos: Produto[] = []) {
+    const total = this.getTotal(produtos);
     return this.valorRecebido > total ? this.valorRecebido - total : 0;
-  }
-
-  finalizarVenda() {
-    alert('Venda finalizada!');
-    this.store.dispatch(clearProdutos());
-    this.valorRecebido = 0;
-  }
-
-  cancelar() {
-    alert('Venda cancelada!');
-    this.store.dispatch(clearProdutos());
-    this.valorRecebido = 0;
   }
 }

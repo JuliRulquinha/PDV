@@ -9,6 +9,6 @@ export const selectAllProdutos = createSelector(
 );
 
 export const selectLastProduto = createSelector(
-  selectProdutoState,
-  (state: ProdutoState) => state.produtos[state.produtos.length - 1]
+   selectAllProdutos,
+  (produtos) => produtos && produtos.length ? produtos[produtos.length - 1] : undefined
 );

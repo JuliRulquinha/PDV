@@ -1,31 +1,24 @@
-<ng-container *ngIf="produtos$ | async as produtos">
-  <div style="display:flex; flex-direction:row; align-items:flex-end; justify-content:space-between; gap:32px; background:#fff; padding:24px 32px; position:absolute; left:0; right:0; bottom:0;">
-
-    <!-- Botões -->
-    <div class="pos-actions">
-      <button (click)="finalizarVenda()">Finalizar Venda</button>
-      <button (click)="cancelar()">Cancelar</button>
-    </div>
-
-    <!-- Resumo -->
-    <div style="display:flex; flex-direction:column; align-items:flex-end; gap:8px;">
-      <div style="font-size:1.2em; font-weight:bold;">
-        Itens: {{ produtos.length }}
-      </div>
-      <div style="font-size:1.2em; font-weight:bold;">
-        Total: R$ {{ getTotal(produtos) | number:'1.2-2' }}
-      </div>
-      <div>
-        Valor recebido:
-        <input type="number" min="0" class="pos-input" placeholder="Valor recebido" [(ngModel)]="valorRecebido" style="width:120px;" />
-      </div>
-      <div style="font-size:1.25em;">
-        Troco: 
-        <span style="font-weight:bold; color:#2e7d32;">
-          R$ {{ getTroco(produtos) | number:'1.2-2' }}
-        </span>
-      </div>
-    </div>
-
+<div style="display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;margin-top:auto;gap:32px;background:#fff;padding:24px 32px 24px 32px;position:absolute;left:0;right:0;bottom:0;">
+  <div class="pos-actions">
+    <button (click)="finalizarVenda()">Finalizar Venda</button>
+    <button (click)="cancelar()">Cancelar</button>
   </div>
-</ng-container>
+
+  <div style="display:flex;flex-direction:column;align-items:flex-end;">
+    <div style="font-size:1.2em;font-weight:bold;">
+      Itens: {{ (produtos$ | async)?.length ?? 0 }}
+    </div>
+    <div style="font-size:1.2em;font-weight:bold;">
+      Total: R$ {{ getTotal((produtos$ | async) ?? []) | number:'1.2-2' }}
+    </div>
+    <div style="margin-top:8px;">
+      Valor recebido:
+      <input type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" style="width:120px;" />
+    </div>
+    <div style="margin-top:8px;font-size:1.25em;">
+      Troco: <span style="font-weight:bold;color:#2e7d32;">
+        R$ {{ getTroco((produtos$ | async) ?? []) | number:'1.2-2' }}
+      </span>
+    </div>
+  </div>
+</div>
