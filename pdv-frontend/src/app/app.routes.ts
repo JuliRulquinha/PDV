@@ -21,10 +21,6 @@ export const routes: Routes = [
         component: ControleDeEstoque
     },
     {
-        path: 'consulta',
-        component: ConsultaPreco
-    },
-    {
         path: 'login',
         component: PaginaLogin
     }
