@@ -131,5 +131,9 @@
     <app-lista-produtos ></app-lista-produtos>
    </div> 
     
+   @if(mostrarConsultaPreco) {
+      <app-consulta-preco (fechar)="fecharConsulta()"></app-consulta-preco> 
+
+   }
    
   </div>

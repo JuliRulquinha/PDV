@@ -15,7 +15,9 @@ import { CommonModule } from '@angular/common';
 export class CheckoutDisplay {
   lastProduct$: Observable<Produto | undefined>;
 
+
   constructor(private store: Store) {
     this.lastProduct$ = this.store.select(selectLastProduto);
   }
+
 }

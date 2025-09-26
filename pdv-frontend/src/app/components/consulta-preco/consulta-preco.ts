@@ -1,11 +1,6 @@
-import { Component, inject } from '@angular/core';
-import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
-import { selectLastProduto } from '../../store/produto.selectors';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Produto } from '../pos/pos.component';
-import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos';
 import { ProductService } from '../../services/product-service';
-import { addProduto } from '../../store/produto.actions';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -42,5 +37,11 @@ export class ConsultaPreco {
         alert('Produto não encontrado!');
       }
     });
+  }
+
+  @Output() fechar = new EventEmitter<void>();
+
+  fecharConsulta() {
+    this.fechar.emit();
   }
 }

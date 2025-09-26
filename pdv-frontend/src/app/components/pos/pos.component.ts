@@ -1,11 +1,10 @@
-import { Component, inject, Input, OnInit } from '@angular/core';
-import { ProductService } from '../../services/product-service';
+import { Component, HostListener, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos';
 import { CheckoutDisplay } from '../checkout-display/checkout-display';
 import { ListaProdutos } from '../lista-produtos/lista-produtos';
-import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
+import { ConsultaPreco } from '../consulta-preco/consulta-preco';
 
 export interface Produto {
   id?: number;
@@ -50,7 +49,8 @@ export interface Dimensoes {
     FormsModule,
     PesquisaDeProdutos,
     CheckoutDisplay,
-    ListaProdutos
+    ListaProdutos, 
+    ConsultaPreco
   ],
   templateUrl: './pos.component.html',
   styleUrls: ['./pos.component.css'],
@@ -59,6 +59,8 @@ export interface Dimensoes {
 export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;
   @Input() products: Produto[] = [];
+
+    mostrarConsultaPreco = false;
 
   ngOnInit() {
     this.updateLastProduct();
@@ -82,6 +84,23 @@ export class PosComponent implements OnInit{
   const found = this.products.find(p => p.id === id);
   if (found) {
     this.lastProduct = found;
+  }
+}
+
+  consultar() {
+    this.mostrarConsultaPreco = true;
+  }
+
+  fecharConsulta() {
+    this.mostrarConsultaPreco = false;
+  }
+
+  @HostListener('window:keydown', ['$event'])
+onKeyDown(event: KeyboardEvent) {
+  console.log('Tecla pressionada:', event.key);
+
+  if (event.key === 'F11') {
+    this.consultar();
   }
 }
 }
