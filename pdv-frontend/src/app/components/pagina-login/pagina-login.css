@@ -55,3 +55,13 @@
   background-color: #0d6efd;
   transform: translateY(-2px);
 }
+
+.error {
+  color: red;          /* texto vermelho */
+  font-size: 0.85rem;  /* menor que o texto normal */
+  margin-top: 4px;     /* espaço acima da mensagem */
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;   /* opcional: destaca o input inválido */
+}
