@@ -1,53 +1,46 @@
-<div style="display:flex;align-items:flex-start;gap:8px;width:100%;margin-bottom:8px;">
+<div class="produto-detalhe-container">
   <!-- Coluna esquerda -->
-  <div style="display:flex;flex-direction:column;gap:0;min-width:480px;margin-right:12px;">
-    
+  <div class="produto-detalhe-coluna">
+
     <!-- Código do produto -->
-    <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:530px;max-width:530px;margin-bottom:14px;">
+    <div class="pos-info-card destaque">
       <strong>CÓDIGO:</strong> {{ (lastProduct$ | async)?.id ?? '-' }}
     </div>
 
     <!-- Imagem e detalhes -->
-    <div style="display:flex;flex-direction:row;gap:22px;">
+    <div class="produto-detalhe-conteudo">
       
       <!-- Imagem do produto -->
-     <div style="width:280px;height:280px;display:flex;align-items:center;justify-content:center;background:#f9f9f9;border-radius:16px;box-shadow:0 2px 12px rgba(0,0,0,0.12);margin-bottom:8px;">
-  @if (lastProduct$ | async; as lastProduct) {
-    <img 
-      [src]="lastProduct.imageUrl ?? 'https://via.placeholder.com/150'" 
-      [alt]="lastProduct.nome ?? 'Produto'" 
-      style="max-width:90%;max-height:90%;object-fit:contain;" 
-    />
-  } @else {
-    <img 
-      src="https://via.placeholder.com/150" 
-      
-      style="max-width:90%;max-height:90%;object-fit:contain;" 
-    />
-  }
-</div>
-
+      <div class="produto-imagem">
+        @if (lastProduct$ | async; as lastProduct) {
+          <img 
+            [src]="lastProduct.imageUrl ?? 'https://via.placeholder.com/150'" 
+            [alt]="lastProduct.nome ?? 'Produto'" 
+          />
+        } @else {
+          <img src="https://via.placeholder.com/150" />
+        }
+      </div>
 
       <!-- Informações do produto -->
-      <div style="display:flex;flex-direction:column;gap:14px;min-width:209px;">
-        <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
+      <div class="pos-info-cards-grid">
+        <div class="pos-info-card">
           <strong>VALOR DE CUSTO:</strong> R$ {{ (lastProduct$ | async)?.valorCusto ?? '-' }}
         </div>
-        <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
+        <div class="pos-info-card">
           <strong>VALOR DE VENDA:</strong> R$ {{ (lastProduct$ | async)?.valorVenda ?? '-' }}
         </div>
-        <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
+        <div class="pos-info-card">
           <strong>MARCA:</strong> {{ (lastProduct$ | async)?.marca ?? '-' }}
         </div>
-        <div class="pos-info-card" style="font-size:1.0875em;padding:13.92px 17.4px;min-width:191px;">
+        <div class="pos-info-card">
           <strong>MODELO:</strong> {{ (lastProduct$ | async)?.modelo ?? '-' }}
         </div>
       </div>
-
     </div>
 
     <!-- Botões de atalho -->
-    <div class="botoes-de-atalho" >
+    <div class="botoes-de-atalho">
       <span><b>F1</b> - Produto</span>
       <span><b>F2</b> - Cliente</span>
       <span><b>F3</b> - Cancelar</span>
@@ -58,7 +51,7 @@
       <span><b>F8</b> - Alterar</span>
       <span><b>F9</b> - Trocar Usuário</span>
       <span><b>F10</b> - Lançar valor</span>
-      <span ><b>F11</b> - Consultar </span>
+      <span><b>F11</b> - Consultar</span>
       <span><b>ESC</b> - Sair</span>
     </div>
 

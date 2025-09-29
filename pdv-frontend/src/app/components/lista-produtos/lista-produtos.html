@@ -1,47 +1,33 @@
-<div class="pos-products-card" 
-     style="flex:2; min-height:600px; max-height:600px; background:#fff; padding:16px; min-width:340px; display:flex; flex-direction:column; position:relative;">
+<div class="pos-products-card">
 
-  <div style="display:flex; flex-direction:column; height:100%;">
+  <div class="pos-products-wrapper">
 
     <!-- Cabeçalho fixo -->
-    <div style="display:flex; align-items:center; margin-bottom:8px; padding-bottom:8px; font-weight:bold; color:#1976d2; border-bottom:1px solid #e0e0e0; position:sticky; top:0; z-index:2; background:#fff;">
-      <span style="width:80px; text-align:center;">ID</span>
-      <span style="width:200px; text-align:center;">PRODUTO</span>
-      <span style="width:120px; text-align:center;">PREÇO</span>
-      <span style="width:100px; text-align:left;">QTD</span>
-      <span style="width:140px; text-align:center;">TOTAL</span>
+    <div class="pos-products-header">
+      <span>ID</span>
+      <span>PRODUTO</span>
+      <span>PREÇO</span>
+      <span>x</span>
+      <span>QTD</span>
+      <span>TOTAL</span>
     </div>
 
     <!-- Lista de produtos acumulados do store -->
-    <div style="overflow-y:auto; max-height:340px; display:flex; flex-direction:column;">
-      <div *ngFor="let produto of produtos$ | async; trackBy: trackById" 
-           style="display:flex; align-items:center; margin-bottom:18px; padding-bottom:8px;">
-        <span style="width:80px; font-weight:bold; text-align:center;">
-          {{ produto.id ?? '-' }}
-        </span>
-        <span style="width:200px; text-align:center;">
-          {{ produto.nome ?? '-' }}
-        </span>
-        <span style="width:120px; text-align:center;">
-          R$ {{ produto.valorVenda ?? 0 | number:'1.2-2' }}
-        </span>
-        <span style="width:32px; text-align:center; font-weight:bold;">x</span>
-        <span style="width:100px; text-align:left;">
-          {{ produto.quantidade ?? 1 }}
-        </span>
-        <span style="width:140px; text-align:center;">
-          R$ {{ ((produto.quantidade ?? 1) * (produto.valorVenda ?? 0)) | number:'1.2-2' }}
-        </span>
+    <div class="pos-products-list">
+      <div *ngFor="let produto of produtos$ | async; trackBy: trackById" class="pos-products-row">
+        <span class="col-id">{{ produto.id ?? '-' }}</span>
+        <span class="col-nome">{{ produto.nome ?? '-' }}</span>
+        <span class="col-preco">R$ {{ produto.valorVenda ?? 0 | number:'1.2-2' }}</span>
+        <span class="col-x">x</span>
+        <span class="col-qtd">{{ produto.quantidade ?? 1 }}</span>
+        <span class="col-total">R$ {{ ((produto.quantidade ?? 1) * (produto.valorVenda ?? 0)) | number:'1.2-2' }}</span>
       </div>
-
-      <!-- Componente de opções de venda -->
-      <app-opcoes-venda></app-opcoes-venda>
     </div>
 
-    <!-- Opcional: mostrar último produto destacado -->
-    <div *ngIf="lastProduct$ | async as last" style="margin-top:auto; padding-top:8px; border-top:1px solid #e0e0e0; font-weight:bold;">
-      Último produto: {{ last.nome }} x {{ last.quantidade ?? 1 }}
-    </div>
+    <!-- Componente de opções de venda sempre visível -->
+   
 
-  </div>
+    
+
+  </div> <app-opcoes-venda></app-opcoes-venda>
 </div>

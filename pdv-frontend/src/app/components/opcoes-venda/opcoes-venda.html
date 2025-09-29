@@ -1,24 +1,23 @@
-<div style="display:flex;flex-direction:row;align-items:flex-end;justify-content:space-between;margin-top:auto;gap:32px;background:#fff;padding:24px 32px 24px 32px;position:absolute;left:0;right:0;bottom:0;">
-  <div class="pos-actions">
-    <button (click)="finalizarVenda()">Finalizar Venda</button>
-    <button (click)="cancelar()">Cancelar</button>
+<div class="pos-footer">
+ 
+<div class="pos-actions">
+    <button class="pos-btn pos-btn-finalizar" (click)="finalizarVenda()">Finalizar Venda</button>
+    <button class="pos-btn pos-btn-cancelar" (click)="cancelar()">Cancelar</button>
   </div>
-
-  <div style="display:flex;flex-direction:column;align-items:flex-end;">
-    <div style="font-size:1.2em;font-weight:bold;">
+  <div class="pos-summary">
+    <div class="pos-summary-item">
       Itens: {{ (produtos$ | async)?.length ?? 0 }}
     </div>
-    <div style="font-size:1.2em;font-weight:bold;">
+    <div class="pos-summary-item">
       Total: R$ {{ getTotal((produtos$ | async) ?? []) | number:'1.2-2' }}
     </div>
-    <div style="margin-top:8px;">
+    <div class="pos-summary-item">
       Valor recebido:
-      <input type="number" min="0" class="pos-input" [(ngModel)]="valorRecebido" style="width:120px;" />
+      <input type="number" min="0" class="pos-input valor-recebido" [(ngModel)]="valorRecebido" />
     </div>
-    <div style="margin-top:8px;font-size:1.25em;">
-      Troco: <span style="font-weight:bold;color:#2e7d32;">
-        R$ {{ getTroco((produtos$ | async) ?? []) | number:'1.2-2' }}
-      </span>
+    <div class="pos-summary-item troco">
+      Troco: <span>R$ {{ getTroco((produtos$ | async) ?? []) | number:'1.2-2' }}</span>
     </div>
-  </div>
+  </div> 
+  
 </div>

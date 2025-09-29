@@ -1,0 +1,55 @@
+/* Cabeçalho com 6 colunas */
+.pos-products-header {
+  display: grid;
+  grid-template-columns: 
+    50px   /* ID */
+    200px  /* PRODUTO */
+    100px  /* PREÇO */
+    30px   /* x */
+    80px   /* QTD */
+    140px; /* TOTAL */
+  align-items: center;
+  padding: 10px 0;
+  font-weight: bold;
+  color: #fff;
+  background: #1976d2;
+  border-radius: 8px;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  text-align: center;
+  font-size: 0.9em;
+}
+
+/* Linha de produto alinhada com o cabeçalho */
+.pos-products-row {
+  display: grid;
+  grid-template-columns: 
+    50px   /* ID */
+    200px  /* PRODUTO */
+    100px  /* PREÇO */
+    30px   /* x */
+    80px   /* QTD */
+    140px; /* TOTAL */
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 0.9em;
+  font-family: monospace;
+  text-align: center;
+}
+
+.col-id { text-align: center; }
+.col-nome { text-align: center; } /* centraliza nome do produto */
+.col-preco,
+.col-total { text-align: center; font-weight: bold; }
+.col-x { text-align: center; font-weight: bold; color: #666; }
+.col-qtd { text-align: center; }
+
+/* Lista de produtos com scroll */
+.pos-products-list {
+  overflow-y: auto;height: 320px;
+  max-height: 320px;  
+  margin-bottom: 12px;
+ 
+}

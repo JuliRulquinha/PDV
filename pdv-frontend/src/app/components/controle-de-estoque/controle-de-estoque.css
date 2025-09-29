@@ -151,3 +151,72 @@
   display: flex;
   gap: 12px;
 }
+
+/* =========================
+   Responsividade Tablet/Mobile
+   ========================= */
+@media (max-width: 768px) {
+  /* Container com menos padding */
+  .lista-produto-container {
+    padding: 12px;
+  }
+
+  /* Botões ocupando mais espaço */
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  /* Tabela vira cards */
+  .tabela-produtos,
+  .tabela-produtos thead,
+  .tabela-produtos tbody,
+  .tabela-produtos th,
+  .tabela-produtos td,
+  .tabela-produtos tr {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela-produtos thead {
+    display: none; /* esconder cabeçalho */
+  }
+
+  .tabela-produtos tr {
+    background: white;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .tabela-produtos td {
+    border: none;
+    padding: 6px 0;
+  }
+
+  .tabela-produtos td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #1e3a8a;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Formulário em 1 coluna */
+  .form-produto {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
+}
