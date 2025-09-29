@@ -102,6 +102,9 @@ onKeyDown(event: KeyboardEvent) {
   if (event.key === 'F11') {
     this.consultar();
   }
-}
+
+  if (event.key === 'Escape') {
+    this.fecharConsulta();
+}}
 }
 

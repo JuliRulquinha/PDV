@@ -5,10 +5,12 @@
   align-items: flex-end;          /* Alinha a base dos dois blocos */
   padding: 24px 32px;
   background: #fff;
-  box-shadow: 0 -2px 10px rgba(0,0,0,0.08);
+ 
   gap: 32px;
   flex-shrink: 0; /* Não ocupa toda a altura do pai */
   height: auto;   /* Apenas o necessário */
+  border-radius: 8px;
+  border: 1px solid #ccc;
 }
 
 /* Botões */

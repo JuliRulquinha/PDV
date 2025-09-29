@@ -13,7 +13,8 @@
   font-weight: bold;
   color: #fff;
   background: #1976d2;
-  border-radius: 8px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
   position: sticky;
   top: 0;
   z-index: 2;
@@ -37,6 +38,7 @@
   font-size: 0.9em;
   font-family: monospace;
   text-align: center;
+  
 }
 
 .col-id { text-align: center; }
@@ -48,8 +50,10 @@
 
 /* Lista de produtos com scroll */
 .pos-products-list {
-  overflow-y: auto;height: 320px;
-  max-height: 320px;  
+  overflow-y: auto;height: 348px;
+  max-height: 348px;  
   margin-bottom: 12px;
- 
+   border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+    border: 1px solid #ccc;
 }

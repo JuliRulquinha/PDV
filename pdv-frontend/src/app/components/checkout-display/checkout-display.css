@@ -1,11 +1,14 @@
 /* Container geral */
 .produto-detalhe-container {
+  background-color:  #1976d2;
+  padding: 15px;
   display: flex;
   align-items: flex-start;
   gap: 16px;
   width: 100%;
   margin-bottom: 16px;
   flex-wrap: wrap; /* garante que em telas menores, as colunas quebrem */
+  border-radius: 8px;
 }
 
 /* Coluna */
