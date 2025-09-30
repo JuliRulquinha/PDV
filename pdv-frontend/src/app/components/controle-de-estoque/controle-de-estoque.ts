@@ -13,10 +13,13 @@ import { RouterLink } from '@angular/router';
 })
 export class ControleDeEstoque {
  
+  pagina:number = 0;
   produtos: Produto[] = [];
   formProduto!: FormGroup;
   produtoSelecionado: Produto | null = null;
-  novoCadastro = false; // controla se é cadastro novo
+  novoCadastro = false; 
+  pageSize: number = 10;  
+  isLastPage: boolean = false;
 
   fornecedores: Fornecedor[] = [
     { id: 1, nome: 'Fornecedor A' },
@@ -87,14 +90,18 @@ export class ControleDeEstoque {
   }
 
   loadProducts(): void {
-    this.productService.getProducts().subscribe({
-      next: (data) => {
-        this.produtos = Array.isArray(data) ? data : [data];
-      },
-      error: (err) => console.error('Erro ao carregar produtos', err)
-    });
+    this.productService.getProducts(this.pagina).subscribe({
+    next: (data) => {
+      this.produtos = Array.isArray(data) ? data : [data];
+
+      // Se retornou menos produtos que o limite → é a última página
+      this.isLastPage = this.produtos.length < this.pageSize;
+    },
+    error: (err) => console.error('Erro ao carregar produtos', err)
+  });
   }
 
+  
   // Chamado quando clica no botão "Cadastrar Produto"
   novoProduto(): void {
     this.novoCadastro = true;
@@ -156,4 +163,18 @@ export class ControleDeEstoque {
     this.novoCadastro = false;
     this.formProduto.reset({ quantidade: 0 });
   }
+
+proximaPagina(): void {
+  if (!this.isLastPage) {
+    this.pagina++;
+    this.loadProducts();
+  }
+}
+
+paginaAnterior(): void {
+  if (this.pagina > 0) {
+    this.pagina--;
+    this.loadProducts();
+  }
+}
 }

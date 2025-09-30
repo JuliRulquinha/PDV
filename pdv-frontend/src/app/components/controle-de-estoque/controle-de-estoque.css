@@ -27,6 +27,14 @@
   color: white;
 }
 
+button.btn-primary:disabled {
+  background-color: #6c757d !important; /* cinza Bootstrap */
+  border-color: #6c757d !important;
+  color: #fff !important;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
 .btn-primary:hover {
   background: #1e40af;
 }

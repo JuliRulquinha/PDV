@@ -9,7 +9,7 @@ public interface ProdutoRepositorio {
     List<Produto> buscarTodos();
     List<Produto> buscarPorNome(String nome);
     List<Produto> buscarPorCategoria(String categoria);
-    List<Produto> listarTodos();
+    List<Produto> listarTodos(int pagina);
     void deletar(Integer id);
     Produto atualizar(Integer id, Produto produto);
 }

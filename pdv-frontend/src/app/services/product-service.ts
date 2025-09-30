@@ -10,8 +10,8 @@ export class ProductService {
   baseUrl = "http://localhost:8080/api/produtos";
   http = inject(HttpClient);
 
-  getProducts(): Observable<Produto[]> {
-    return this.http.get<Produto[]>(this.baseUrl);
+  getProducts(pagina: number): Observable<Produto[]> {
+    return this.http.get<Produto[]>(`${this.baseUrl}?pagina=${pagina}`);
   }
 
   getProductById(id: number):Observable<Produto>{

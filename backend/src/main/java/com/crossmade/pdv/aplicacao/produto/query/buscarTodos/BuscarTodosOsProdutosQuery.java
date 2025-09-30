@@ -1,5 +1,5 @@
 package com.crossmade.pdv.aplicacao.produto.query.buscarTodos;
 
-public record BuscarTodosOsProdutosQuery () {
+public record BuscarTodosOsProdutosQuery (int pagina) {
 
 }

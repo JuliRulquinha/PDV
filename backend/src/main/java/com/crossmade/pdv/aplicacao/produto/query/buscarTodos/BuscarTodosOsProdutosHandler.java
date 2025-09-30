@@ -17,6 +17,6 @@ public class BuscarTodosOsProdutosHandler {
     }
 
     public List<Produto> handle(BuscarTodosOsProdutosQuery query){
-        return repositorio.buscarTodos();
+        return repositorio.listarTodos(query.pagina());
     }
 }

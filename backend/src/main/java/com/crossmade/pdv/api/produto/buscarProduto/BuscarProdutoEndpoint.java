@@ -42,10 +42,10 @@ public class BuscarProdutoEndpoint {
 
 
     @GetMapping
-    public ResponseEntity<List<Produto>> buscarTodos(){
+    public ResponseEntity<List<Produto>> buscarTodos(@RequestParam int pagina){
 
         try {
-            var query = new BuscarTodosOsProdutosQuery();
+            var query = new BuscarTodosOsProdutosQuery(pagina);
             var produtosDeDb = buscarTodosOsProdutosHandler.handle(query);
             return ResponseEntity.ok(produtosDeDb);
         } catch (Exception e) {
