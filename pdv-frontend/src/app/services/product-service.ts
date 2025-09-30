@@ -3,6 +3,12 @@ import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Produto } from '../components/pos/pos.component';
 
+
+export interface ListaProdutoDto{
+  contagem: number;
+  produtos: Produto[],
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -10,8 +16,8 @@ export class ProductService {
   baseUrl = "http://localhost:8080/api/produtos";
   http = inject(HttpClient);
 
-  getProducts(pagina: number): Observable<Produto[]> {
-    return this.http.get<Produto[]>(`${this.baseUrl}?pagina=${pagina}`);
+  getProducts(pagina: number): Observable<ListaProdutoDto> {
+    return this.http.get<ListaProdutoDto>(`${this.baseUrl}?pagina=${pagina}`);
   }
 
   getProductById(id: number):Observable<Produto>{

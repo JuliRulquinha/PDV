@@ -13,7 +13,9 @@ import { RouterLink } from '@angular/router';
 })
 export class ControleDeEstoque {
  
+
   pagina:number = 0;
+  contagem:number= 0;
   produtos: Produto[] = [];
   formProduto!: FormGroup;
   produtoSelecionado: Produto | null = null;
@@ -56,34 +58,7 @@ export class ControleDeEstoque {
         profundidade: [null]
       })
     });
-    var product: Produto = {
-      nome: "Cimento Portland CP-II",
-  fornecedor: {
-    id: 1,
-    nome: "Fornecedor ABC"
-  },
-  categoria: {
-    id: 2,
-    nome: "Materiais de Construção"
-  },
-  marca: "Votoran",
-  modelo: "CP-II E-32",
-  quantidade: 50,
-  valorCusto: 28.50,
-  valorVenda: 39.90,
-  imageUrl: "https://example.com/images/cimento.jpg",
-  validade: new Date("2026-12-31"),
-  dimensoes: {
-    largura: 30,
-    altura: 50,
-    peso: 15
-  }
-    };
-   
-       this.productService.saveProduct(product).subscribe(saved => {
-    console.log("Produto salvo:", saved);
-  
-    });
+ 
     
 
     this.loadProducts();
@@ -92,10 +67,13 @@ export class ControleDeEstoque {
   loadProducts(): void {
     this.productService.getProducts(this.pagina).subscribe({
     next: (data) => {
-      this.produtos = Array.isArray(data) ? data : [data];
+      debugger;
+      this.produtos = Array.isArray(data.produtos) ? data.produtos : [data.produtos];
 
+      this.contagem = data.contagem;
       // Se retornou menos produtos que o limite → é a última página
       this.isLastPage = this.produtos.length < this.pageSize;
+      
     },
     error: (err) => console.error('Erro ao carregar produtos', err)
   });
@@ -177,4 +155,22 @@ paginaAnterior(): void {
     this.loadProducts();
   }
 }
+
+primeiraPagina(){
+
+  if (this.pagina > 0) {
+    this.pagina = 0;
+    this.loadProducts();
+  }
+
+}
+
+ultimaPagina(){
+
+  if(!this.isLastPage){
+    this.pagina = Math.floor(this.contagem/this.pageSize);
+    this.loadProducts();
+  }
+}
+
 }

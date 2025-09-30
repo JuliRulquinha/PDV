@@ -12,4 +12,5 @@ public interface ProdutoRepositorio {
     List<Produto> listarTodos(int pagina);
     void deletar(Integer id);
     Produto atualizar(Integer id, Produto produto);
+    int retornarContagem();
 }

@@ -60,4 +60,9 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
         produto.setId(id);
         return repositorio.save(produto);
     }
+
+    @Override
+    public int retornarContagem() {
+        return repositorio.getCount();
+    }
 }

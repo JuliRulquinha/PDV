@@ -2,6 +2,7 @@ package com.crossmade.pdv.api.produto.buscarProduto;
 
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -42,7 +43,7 @@ public class BuscarProdutoEndpoint {
 
 
     @GetMapping
-    public ResponseEntity<List<Produto>> buscarTodos(@RequestParam int pagina){
+    public ResponseEntity<ListaProdutoDto> buscarTodos(@RequestParam int pagina){
 
         try {
             var query = new BuscarTodosOsProdutosQuery(pagina);

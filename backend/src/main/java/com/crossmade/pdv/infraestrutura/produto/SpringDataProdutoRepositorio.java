@@ -32,5 +32,13 @@ public interface SpringDataProdutoRepositorio extends JpaRepository<Produto, Int
     )
     public List<Produto> paginate(@Param(value = "pagina") int pagina);
 
+    @Query(
+            value = """
+            SELECT count(*) FROM produtos p
+        """,
+            nativeQuery = true
+    )
+    public int getCount();
+
     public List<Produto> findByNomeContaining(String nome);
 }
