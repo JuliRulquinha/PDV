@@ -1,12 +1,12 @@
 package com.crossmade.pdv.dominio.categoria;
 
-import java.util.List;
+import com.crossmade.pdv.aplicacao.categoria.dtos.ListaCategoriaDto;
 
 
 public interface CategoriaRepositorio {
 
     Categoria salvar(Categoria categoria);
     Categoria buscarPorId(Integer id);
-    List<Categoria> listarTodas();
+    ListaCategoriaDto listarTodas();
     void deletar(Integer id);
 }

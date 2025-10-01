@@ -1,6 +1,8 @@
 package com.crossmade.pdv.infraestrutura.fornecedor;
 
 import java.util.List;
+
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.ListaFornecedoresDto;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
@@ -27,8 +29,9 @@ public class FornecedorRepositorioIplm implements FornecedorRepositorio{
     }
 
     @Override
-    public List<Fornecedor> listarTodos() {
-        return repositorio.findAll();
+    public ListaFornecedoresDto listarTodos() {
+        var lista = repositorio.findAll();
+        return new ListaFornecedoresDto(lista);
     }
 
     @Override

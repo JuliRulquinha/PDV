@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Produto } from '../pos/pos.component';
-import { ProductService } from '../../services/product-service';
+import { ServicoProduto } from '../../services/servico-produto';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
@@ -13,7 +13,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 export class ConsultaPreco {
 
    codigoProduto: string = '';
-   productService = inject(ProductService);
+   productService = inject(ServicoProduto);
    produto? : Produto;
 
   pesquisarProduto() {
@@ -25,7 +25,7 @@ export class ConsultaPreco {
       return;
     }
 
-    this.productService.getProductById(code).subscribe({
+    this.productService.buscarProdutoPorId(code).subscribe({
       next: (data: Produto) => {
 
         this.produto = data;

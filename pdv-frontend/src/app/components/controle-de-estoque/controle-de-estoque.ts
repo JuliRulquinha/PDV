@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ProductService } from '../../services/product-service';
+import { ServicoProduto } from '../../services/servico-produto';
 import { Produto, Fornecedor, Categoria } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import { ServicoCategoria } from '../../services/servico-categoria';
+import { ServicoFornecedor } from '../../services/servico-fornecedor';
 
 @Component({
   selector: 'app-controle-de-estoque',
@@ -24,19 +26,14 @@ export class ControleDeEstoque {
   totalPaginas: number = 0;
   isLastPage: boolean = false;
 
-  fornecedores: Fornecedor[] = [
-    { id: 1, nome: 'Fornecedor A' },
-    { id: 2, nome: 'Fornecedor B' }
-  ];
+  fornecedores: Fornecedor[] = [];
 
-  categorias: Categoria[] = [
-    { id: 1, nome: 'Elétrica' },
-    { id: 2, nome: 'Hidráulica' },
-    { id: 3, nome: 'Ferramentas' }
-  ];
+  categorias: Categoria[] = [];
 
   constructor(
-    private productService: ProductService,
+    private servicoProduto: ServicoProduto,
+    private servicoCategoria: ServicoCategoria,
+    private servicoFornecedor: ServicoFornecedor,
     private fb: FormBuilder
   ) {}
 
@@ -60,15 +57,19 @@ export class ControleDeEstoque {
       })
     });
  
-    
+    Promise.all([
+      this.buscarCategorias(),
+      this.buscarFornecedores(),
+      this.carregarProdutos()
+    ])
 
-    this.loadProducts();
+   
+    
   }
 
-  loadProducts(): void {
-    this.productService.getProducts(this.pagina).subscribe({
+  carregarProdutos(): void {
+    this.servicoProduto.buscarProdutos(this.pagina).subscribe({
     next: (data) => {
-      debugger;
       this.produtos = Array.isArray(data.produtos) ? data.produtos : [data.produtos];
 
       this.contagem = data.contagem;
@@ -81,7 +82,23 @@ export class ControleDeEstoque {
   });
   }
 
-  
+  buscarCategorias(): void {
+    this.servicoCategoria.buscarCategorias().subscribe({
+      next: (data) => {
+        this.categorias = Array.isArray(data.categorias) ? data.categorias : [data.categorias];
+        console.log(this.categorias);
+      }
+    });
+  }
+
+  buscarFornecedores(): void{
+    this.servicoFornecedor.buscarFornecedores().subscribe({
+      next: (data) => {
+        this.fornecedores = Array.isArray(data.fornecedores)? data.fornecedores : [data.fornecedores];
+        console.log(this.fornecedores);
+      }
+    });
+  }
   // Chamado quando clica no botão "Cadastrar Produto"
   novoProduto(): void {
     this.novoCadastro = true;
@@ -117,20 +134,20 @@ export class ControleDeEstoque {
   }
 
   if (this.novoCadastro) {
-    this.productService.saveProduct(produto).subscribe({
+    this.servicoProduto.salvarProduto(produto).subscribe({
       next: (saved) => {
         alert('Produto cadastrado com sucesso!');
-        this.loadProducts();
+        this.carregarProdutos();
         this.cancelarEdicao();
       },
       error: (err) => console.error('Erro ao cadastrar produto', err)
     });
   } else if (this.produtoSelecionado) {
     produto.id = this.produtoSelecionado.id; // garante que o ID está definido
-    this.productService.updateProduct(produto).subscribe({
+    this.servicoProduto.atualizarProduto(produto).subscribe({
       next: (updated) => {
         alert('Produto atualizado com sucesso');
-        this.loadProducts();
+        this.carregarProdutos();
         this.cancelarEdicao();
       },
       error: (err) => console.error('Erro ao atualizar produto', err)
@@ -147,14 +164,14 @@ export class ControleDeEstoque {
 proximaPagina(): void {
   if (!this.isLastPage) {
     this.pagina++;
-    this.loadProducts();
+    this.carregarProdutos();
   }
 }
 
 paginaAnterior(): void {
   if (this.pagina > 0) {
     this.pagina--;
-    this.loadProducts();
+    this.carregarProdutos();
   }
 }
 
@@ -162,7 +179,7 @@ primeiraPagina(){
 
   if (this.pagina > 0) {
     this.pagina = 0;
-    this.loadProducts();
+    this.carregarProdutos();
   }
 
 }
@@ -171,14 +188,14 @@ ultimaPagina(){
 
   if(!this.isLastPage){
     this.pagina = Math.floor(this.contagem/this.pageSize);
-    this.loadProducts();
+    this.carregarProdutos();
   }
 }
 
 irParaPagina(p: number): void {
   if (p >= 0 && p < this.totalPaginas) {
     this.pagina = p;
-    this.loadProducts();
+    this.carregarProdutos();
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ProductService } from '../../services/product-service';
+import { ServicoProduto } from '../../services/servico-produto';
 import { Produto } from '../pos/pos.component';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
@@ -21,7 +21,7 @@ export class PesquisaDeProdutos {
 
   lastProduct$: Observable<Produto | undefined>;
 
-  productService = inject(ProductService);
+  productService = inject(ServicoProduto);
   store = inject(Store);
 
   constructor() {
@@ -37,7 +37,7 @@ export class PesquisaDeProdutos {
       return;
     }
 
-    this.productService.getProductById(code).subscribe({
+    this.productService.buscarProdutoPorId(code).subscribe({
       next: (data: Produto) => {
         const produtoComQtd = { ...data, quantidade: qtd };
         this.store.dispatch(addProduto({ produto: produtoComQtd }));

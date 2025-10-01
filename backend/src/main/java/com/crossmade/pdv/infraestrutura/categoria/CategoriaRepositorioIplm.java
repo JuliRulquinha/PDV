@@ -1,8 +1,7 @@
 package com.crossmade.pdv.infraestrutura.categoria;
 
-import java.util.List;
 
-
+import com.crossmade.pdv.aplicacao.categoria.dtos.ListaCategoriaDto;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.categoria.Categoria;
@@ -28,8 +27,9 @@ public class CategoriaRepositorioIplm implements CategoriaRepositorio{
     }
 
     @Override
-    public List<Categoria> listarTodas() {
-       return repositorio.findAll();
+    public ListaCategoriaDto listarTodas() {
+        var lista = repositorio.findAll();
+        return new ListaCategoriaDto(lista);
     }
 
     @Override
