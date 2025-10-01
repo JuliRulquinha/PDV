@@ -119,7 +119,7 @@ export class ControleDeEstoque {
   if (this.novoCadastro) {
     this.productService.saveProduct(produto).subscribe({
       next: (saved) => {
-        console.log('Produto cadastrado:', saved);
+        alert('Produto cadastrado com sucesso!');
         this.loadProducts();
         this.cancelarEdicao();
       },
@@ -129,7 +129,7 @@ export class ControleDeEstoque {
     produto.id = this.produtoSelecionado.id; // garante que o ID está definido
     this.productService.updateProduct(produto).subscribe({
       next: (updated) => {
-        console.log('Produto atualizado:', updated);
+        alert('Produto atualizado com sucesso');
         this.loadProducts();
         this.cancelarEdicao();
       },

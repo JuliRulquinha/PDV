@@ -24,9 +24,11 @@ public interface SpringDataProdutoRepositorio extends JpaRepository<Produto, Int
 
     @Query(
             value = """
-            SELECT * FROM produtos p
-            OFFSET (10 * :pagina)
-            LIMIT 10;
+            SELECT *\s
+                                     FROM produtos p
+                                     ORDER BY p.id
+                                     OFFSET (10 * :pagina)
+                                     LIMIT 10;
         """,
             nativeQuery = true
     )
