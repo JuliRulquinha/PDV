@@ -135,7 +135,7 @@
 
  <button class="btn btn-primary"
           type="button"
-          style="margin-top: 6px;"
+          
           (click)="primeiraPagina()"
           [disabled]="pagina === 0">
     <<
@@ -143,15 +143,23 @@
 
   <button class="btn btn-primary"
           type="button"
-          style="margin-top: 6px;"
+          
           (click)="paginaAnterior()"
           [disabled]="pagina === 0">
     <
   </button>
 
+   @for (p of paginas; track p) {
+    <button [class.active]="pagina === p"
+             class="btn btn-primary"
+            (click)="irParaPagina(p)">
+      {{ p + 1 }}
+    </button>
+  }
+
   <button class="btn btn-primary"
           type="button"
-          style="margin-top: 6px;"
+         
           (click)="proximaPagina()"
           [disabled]="isLastPage">
     >
@@ -161,7 +169,7 @@
 
   <button class="btn btn-primary"
           type="button"
-          style="margin-top: 6px;"
+         
           (click)="ultimaPagina()"
           [disabled]="isLastPage">
     >>

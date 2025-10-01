@@ -21,6 +21,7 @@ export class ControleDeEstoque {
   produtoSelecionado: Produto | null = null;
   novoCadastro = false; 
   pageSize: number = 10;  
+  totalPaginas: number = 0;
   isLastPage: boolean = false;
 
   fornecedores: Fornecedor[] = [
@@ -71,6 +72,7 @@ export class ControleDeEstoque {
       this.produtos = Array.isArray(data.produtos) ? data.produtos : [data.produtos];
 
       this.contagem = data.contagem;
+      this.totalPaginas = Math.ceil(this.contagem / this.pageSize);
       // Se retornou menos produtos que o limite → é a última página
       this.isLastPage = this.produtos.length < this.pageSize;
       
@@ -173,4 +175,15 @@ ultimaPagina(){
   }
 }
 
+irParaPagina(p: number): void {
+  if (p >= 0 && p < this.totalPaginas) {
+    this.pagina = p;
+    this.loadProducts();
+  }
+
+}
+
+get paginas(): number[] {
+  return Array.from({ length: this.totalPaginas }, (_, i) => i);
+}
 }

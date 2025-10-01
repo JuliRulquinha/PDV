@@ -20,6 +20,9 @@
   cursor: pointer;
   font-weight: 600;
   transition: all 0.2s ease;
+  margin-top: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .btn-primary {
