@@ -1,5 +1,6 @@
 package com.crossmade.pdv.api.categoria.cadastrarCategoria;
 
+import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoria;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -8,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crossmade.pdv.aplicacao.categoria.command.cadastrar.CadastrarCategoriaCommand;
 import com.crossmade.pdv.aplicacao.categoria.command.cadastrar.CadastrarCategoriaHandler;
-import com.crossmade.pdv.dominio.categoria.Categoria;
 
 
 @RestController
@@ -23,7 +23,7 @@ public class CadastrarCategoriaEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<Categoria> cadastrar(@RequestBody CadastrarCategoriaCommand comando){
+    public ResponseEntity<DtoVisualizarCategoria> cadastrar(@RequestBody CadastrarCategoriaCommand comando){
         try {
             var categoria = handler.handle(comando);
             return ResponseEntity.ok(categoria);
