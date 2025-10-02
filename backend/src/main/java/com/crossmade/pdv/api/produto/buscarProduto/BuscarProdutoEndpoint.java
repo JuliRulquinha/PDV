@@ -2,6 +2,7 @@ package com.crossmade.pdv.api.produto.buscarProduto;
 
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
 import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,7 +58,7 @@ public class BuscarProdutoEndpoint {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Produto> buscarPorId(@PathVariable Integer id){
+    public ResponseEntity<DtoVisualizarProduto> buscarPorId(@PathVariable Integer id){
 
         try {
             var query = new BuscarPorIdQuery(id);
@@ -72,7 +73,7 @@ public class BuscarProdutoEndpoint {
 
 
     @GetMapping("/nome")
-    public ResponseEntity<List<Produto>>buscarPorNome(@RequestParam String nome) {
+    public ResponseEntity<ListaProdutoDto>buscarPorNome(@RequestParam String nome) {
         try {
             var query = new BuscarPorNomeQuery(nome);
             var produtoDeDb = buscarPorNomeHandler.handle(query);
@@ -85,7 +86,7 @@ public class BuscarProdutoEndpoint {
     }
 
     @GetMapping("/categoria")
-    public ResponseEntity<List<Produto>>buscarPorCategoria(@RequestParam BuscarPorCategoriaQuery query) { 
+    public ResponseEntity<ListaProdutoDto>buscarPorCategoria(@RequestParam BuscarPorCategoriaQuery query) {
         try {
             var produtoDeDb = buscarPorCategoriaHandler.handle(query);
             return ResponseEntity.ok(produtoDeDb);

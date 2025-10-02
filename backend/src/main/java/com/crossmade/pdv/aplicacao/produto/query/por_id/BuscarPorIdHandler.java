@@ -1,5 +1,6 @@
 package com.crossmade.pdv.aplicacao.produto.query.por_id;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.produto.Produto;
@@ -13,7 +14,7 @@ public class BuscarPorIdHandler {
         this.repositorio = repositorio;
     }
    
-    public Produto handle(BuscarPorIdQuery query){
+    public DtoVisualizarProduto handle(BuscarPorIdQuery query){
         return repositorio.buscarPorId(query.id());
     }
 }

@@ -1,5 +1,9 @@
 package com.crossmade.pdv.aplicacao.produto.command.cadastrar;
 
+import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoCadastroProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.categoria.Categoria;
@@ -15,16 +19,12 @@ public class CadastrarProdutoHandler {
         this.repositorio = repositorio;
     }
 
-    public Produto handle(CadastrarProdutoCommand command){
-        Fornecedor fornecedor = new Fornecedor();
-        Categoria categoria = new Categoria();
+    public DtoVisualizarProduto handle(CadastrarProdutoCommand command){
 
-        fornecedor.setId(command.fornecedor_id());
-        categoria.setId(command.categoria_id());
-
-        Produto produto = new Produto(command.nome(), 
-                                      fornecedor,
-                                      categoria,
+        var produto = new DtoCadastroProduto(
+                                      command.nome(),
+                                      command.fornecedor(),
+                                      command.categoria(),
                                       command.marca(),
                                       command.modelo(),
                                       command.quantidade(),

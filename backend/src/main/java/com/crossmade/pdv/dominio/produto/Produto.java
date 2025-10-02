@@ -66,6 +66,7 @@ public class Produto {
     public Produto(String nome,Fornecedor fornecedor, Categoria categoria, String marca, String modelo, int quantidade, BigDecimal valorCusto,
             BigDecimal valorVenda, String imageUrl, Date validade, Dimensoes dimensoes) {
         this.nome = nome;
+        this.fornecedor = fornecedor;
         this.categoria = categoria;
         this.marca = marca;
         this.modelo = modelo;
@@ -75,7 +76,7 @@ public class Produto {
         this.imageUrl = imageUrl;
         this.validade = validade;
         this.dimensoes = dimensoes;
-        this.fornecedor = fornecedor;
+
     }
     public Integer getId() {
         return id;

@@ -6,7 +6,7 @@ import java.util.List;
 
 public record ListaProdutoDto (
         int contagem,
-        List<Produto> produtos
+        List<DtoVisualizarProduto> produtos
 ){
 
 }
