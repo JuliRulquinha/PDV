@@ -2,6 +2,8 @@ package com.crossmade.pdv.aplicacao.produto.query.por_categoria;
 
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.produto.Produto;
@@ -15,7 +17,9 @@ public class BuscarPorCategoriaHandler {
         this.repositorio = repositorio;
     }
    
-    public List<Produto> handle(BuscarPorCategoriaQuery query){
-        return repositorio.buscarPorCategoria(query.categoria());
+    public ListaProdutoDto handle(BuscarPorCategoriaQuery query){
+        var produtos = repositorio.buscarPorCategoria(query.categoria());
+        var contagem = repositorio.retornarContagem();
+        return new ListaProdutoDto(contagem, produtos);
     }
 }

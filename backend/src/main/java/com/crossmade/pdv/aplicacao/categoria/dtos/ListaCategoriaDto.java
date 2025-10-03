@@ -5,6 +5,6 @@ import com.crossmade.pdv.dominio.categoria.Categoria;
 import java.util.List;
 
 public record ListaCategoriaDto(
-        List<Categoria> categorias
+        List<DtoVisualizarCategoria> categorias
 ) {
 }

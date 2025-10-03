@@ -1,5 +1,7 @@
 package com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar;
 
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoCadastrarFornecedor;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
@@ -14,9 +16,8 @@ public class CadastrarFornecedorHandler {
         this.repositorio = repositorio;
     }
 
-    public Fornecedor handle(CadastrarFornecedorCommand command) {
-        Fornecedor fornecedor = new Fornecedor(command.nome(), command.telefone(),command.email());
-        fornecedor.setEnderecos(command.enderecos());
+    public DtoVisualizarFornecedor handle(CadastrarFornecedorCommand command) {
+        DtoCadastrarFornecedor fornecedor = new DtoCadastrarFornecedor(command.nome(), command.telefone(),command.email(),command.enderecos());
         return repositorio.salvar(fornecedor);
     }
 }

@@ -1,12 +1,14 @@
 package com.crossmade.pdv.dominio.categoria;
 
+import com.crossmade.pdv.aplicacao.categoria.dtos.DtoCadastroCategoria;
+import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoria;
 import com.crossmade.pdv.aplicacao.categoria.dtos.ListaCategoriaDto;
 
 
 public interface CategoriaRepositorio {
 
-    Categoria salvar(Categoria categoria);
-    Categoria buscarPorId(Integer id);
+    DtoVisualizarCategoria salvar(DtoCadastroCategoria categoria);
+    DtoVisualizarCategoria buscarPorId(Integer id);
     ListaCategoriaDto listarTodas();
     void deletar(Integer id);
 }

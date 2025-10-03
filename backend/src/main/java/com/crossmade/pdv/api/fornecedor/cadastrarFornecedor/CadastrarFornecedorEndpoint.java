@@ -1,5 +1,6 @@
 package com.crossmade.pdv.api.fornecedor.cadastrarFornecedor;
 
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -21,7 +22,7 @@ public class CadastrarFornecedorEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<Fornecedor> cadastrar(@RequestBody CadastrarFornecedorCommand comando){
+    public ResponseEntity<DtoVisualizarFornecedor> cadastrar(@RequestBody CadastrarFornecedorCommand comando){
         try {
             var fornecedor = handler.handle(comando);
             return ResponseEntity.ok(fornecedor);

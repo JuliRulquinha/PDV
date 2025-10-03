@@ -2,6 +2,8 @@ package com.crossmade.pdv.aplicacao.produto.query.por_nome;
 
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.produto.Produto;
@@ -15,7 +17,10 @@ public class BuscarPorNomeHandler {
         this.repositorio = repositorio;
     }
    
-    public List<Produto> handle(BuscarPorNomeQuery query){
-        return repositorio.buscarPorNome(query.nome());
+    public ListaProdutoDto handle(BuscarPorNomeQuery query){
+        var produtos = repositorio.buscarPorNome(query.nome());
+        var contagem = repositorio.retornarContagem();
+        return new ListaProdutoDto(contagem, produtos);
+
     }
 }

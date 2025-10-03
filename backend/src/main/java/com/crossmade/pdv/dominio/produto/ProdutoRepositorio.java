@@ -1,15 +1,18 @@
 package com.crossmade.pdv.dominio.produto;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoCadastroProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+
 import java.util.List;
 
 
 public interface ProdutoRepositorio {
-    Produto salvar(Produto produto);
-    Produto buscarPorId(Integer id);
-    List<Produto> buscarTodos();
-    List<Produto> buscarPorNome(String nome);
-    List<Produto> buscarPorCategoria(String categoria);
-    List<Produto> listarTodos(int pagina);
+    DtoVisualizarProduto salvar(DtoCadastroProduto produto);
+    DtoVisualizarProduto buscarPorId(Integer id);
+    List<DtoVisualizarProduto> buscarTodos();
+    List<DtoVisualizarProduto> buscarPorNome(String nome);
+    List<DtoVisualizarProduto> buscarPorCategoria(String categoria);
+    List<DtoVisualizarProduto> listarTodos(int pagina);
     void deletar(Integer id);
     Produto atualizar(Integer id, Produto produto);
     int retornarContagem();
