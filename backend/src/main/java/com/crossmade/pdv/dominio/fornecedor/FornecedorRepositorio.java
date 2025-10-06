@@ -4,7 +4,6 @@ import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoCadastrarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.ListaFornecedoresDto;
 
-import java.util.List;
 
 
 public interface FornecedorRepositorio {

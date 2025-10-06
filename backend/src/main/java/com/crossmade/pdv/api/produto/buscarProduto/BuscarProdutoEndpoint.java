@@ -1,9 +1,5 @@
 package com.crossmade.pdv.api.produto.buscarProduto;
 
-import java.util.List;
-
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
-import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import com.crossmade.pdv.aplicacao.produto.query.buscarTodos.BuscarTodosOsProdutosHandler;
 import com.crossmade.pdv.aplicacao.produto.query.buscarTodos.BuscarTodosOsProdutosQuery;
 import com.crossmade.pdv.aplicacao.produto.query.por_categoria.BuscarPorCategoriaHandler;
@@ -20,7 +18,7 @@ import com.crossmade.pdv.aplicacao.produto.query.por_id.BuscarPorIdHandler;
 import com.crossmade.pdv.aplicacao.produto.query.por_id.BuscarPorIdQuery;
 import com.crossmade.pdv.aplicacao.produto.query.por_nome.BuscarPorNomeHandler;
 import com.crossmade.pdv.aplicacao.produto.query.por_nome.BuscarPorNomeQuery;
-import com.crossmade.pdv.dominio.produto.Produto;
+
 
 @RestController
 @RequestMapping("api/produtos")
