@@ -6,4 +6,5 @@ import com.crossmade.pdv.dominio.usuario.Usuario;
 
 public interface SpringDataRepositorioUsuario extends JpaRepository<Usuario, Integer> {
 
+    public Usuario findByNome(String nome);
 }
