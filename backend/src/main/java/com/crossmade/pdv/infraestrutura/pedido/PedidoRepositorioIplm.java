@@ -35,7 +35,6 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
 
     @Override
     public void cancelar(Integer id) {
-        // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'cancelar'");
     }
 

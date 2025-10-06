@@ -7,12 +7,14 @@ import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoria;
 import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
+import com.crossmade.pdv.dominio.categoria.Categoria;
+import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import com.crossmade.pdv.dominio.produto.Dimensoes;
 
 public record CadastrarProdutoCommand (
     String nome,
-    DtoVisualizarCategoria categoria,
-    DtoVisualizarFornecedor fornecedor,
+    Categoria categoria,
+    Fornecedor fornecedor,
     String marca,
     String modelo,
     int quantidade,

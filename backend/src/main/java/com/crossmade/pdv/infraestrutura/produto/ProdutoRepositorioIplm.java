@@ -1,11 +1,7 @@
 package com.crossmade.pdv.infraestrutura.produto;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoCadastroProduto;
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
-import com.crossmade.pdv.aplicacao.produto.mapper.MapperProduto;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.produto.Produto;
@@ -15,34 +11,25 @@ import com.crossmade.pdv.dominio.produto.ProdutoRepositorio;
 public class ProdutoRepositorioIplm implements ProdutoRepositorio{
 
      private final SpringDataProdutoRepositorio repositorio;
-     private final MapperProduto mapper;
 
-    public ProdutoRepositorioIplm(SpringDataProdutoRepositorio repositorio, MapperProduto mapper){
+
+    public ProdutoRepositorioIplm(SpringDataProdutoRepositorio repositorio){
         this.repositorio = repositorio;
-        this.mapper = mapper;
     }
 
     @Override
-    public DtoVisualizarProduto salvar(DtoCadastroProduto dto) {
-
-        Produto salvo = repositorio.save(mapper.dtoDeCadastroParaProduto(dto));
-        return mapper.paraDtoDeVisualizar(salvo);
+    public Produto salvar(Produto produto) {
+        return repositorio.save(produto);
     }
 
     @Override
-    public DtoVisualizarProduto buscarPorId(Integer id) {
-        Produto salvo = repositorio.findById(id).orElse(null);
-        return mapper.paraDtoDeVisualizar(salvo);
+    public Produto buscarPorId(Integer id) {
+        return repositorio.findById(id).orElse(null);
     }
 
     @Override
-    public List<DtoVisualizarProduto> listarTodos(int pagina) {
-        List<DtoVisualizarProduto> dtos =  new ArrayList<>();
-        var produtosDoDb = repositorio.paginate(pagina);
-        for (var produto: produtosDoDb){
-            dtos.add(mapper.paraDtoDeVisualizar(produto));
-        }
-        return dtos;
+    public List<Produto> listarTodos(int pagina) {
+        return repositorio.paginate(pagina);
 
     }
 
@@ -52,33 +39,19 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
     }
 
     @Override
-    public List<DtoVisualizarProduto> buscarPorNome(String nome) {
-        List<DtoVisualizarProduto> dtos =  new ArrayList<>();
-        var produtosDoDb = repositorio.findByNomeContaining(nome);
-        for (var produto: produtosDoDb){
-            dtos.add(mapper.paraDtoDeVisualizar(produto));
-        }
-        return dtos;
+    public List<Produto> buscarPorNome(String nome) {
+        return repositorio.findByNomeContaining(nome);
     }
 
     @Override
-    public List<DtoVisualizarProduto> buscarPorCategoria(String categoria) {
-        List<DtoVisualizarProduto> dtos =  new ArrayList<>();
-        var produtosDoDb = repositorio.findByCategoriaNome(categoria);
-        for (var produto: produtosDoDb){
-            dtos.add(mapper.paraDtoDeVisualizar(produto));
-        }
-        return dtos;
+    public List<Produto> buscarPorCategoria(String categoria) {
+        return repositorio.findByCategoriaNome(categoria);
     }
 
     @Override
-    public List<DtoVisualizarProduto> buscarTodos() {
-        List<DtoVisualizarProduto> dtos =  new ArrayList<>();
-        var produtosDoDb = repositorio.findAll();
-        for (var produto: produtosDoDb){
-            dtos.add(mapper.paraDtoDeVisualizar(produto));
-        }
-        return dtos;
+    public List<Produto> buscarTodos() {
+
+        return repositorio.findAll();
     }
 
     @Override

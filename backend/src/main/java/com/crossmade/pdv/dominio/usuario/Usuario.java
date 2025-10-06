@@ -1,9 +1,9 @@
 package com.crossmade.pdv.dominio.usuario;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
+@Entity
+@Table(name = "usuarios")
 public class Usuario {
 
     @Id()

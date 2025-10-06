@@ -1,6 +1,5 @@
 package com.crossmade.pdv.aplicacao.categoria.mapper;
 
-import com.crossmade.pdv.aplicacao.categoria.dtos.DtoCadastroCategoria;
 import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoria;
 import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
@@ -13,10 +12,6 @@ import java.util.List;
 
 @Service
 public class MapperCategoria {
-
-    public Categoria dtoDeCadastroParaCategoria(DtoCadastroCategoria dto){
-        return new Categoria(dto.nome(), dto.descricao());
-    }
 
     public DtoVisualizarCategoria paraDtoDeVisualizar(Categoria categoria){
         var produtos = categoria.getProdutos();
@@ -46,5 +41,13 @@ public class MapperCategoria {
             ));
         }
         return new DtoVisualizarCategoria(categoria.getNome(), categoria.getDescricao(), produtosDtos);
+    }
+
+    public List<DtoVisualizarCategoria> paraListaDtoVisualizar(List<Categoria> categorias){
+        List<DtoVisualizarCategoria> dtos = new ArrayList<>();
+        for(var categoria: categorias){
+            dtos.add(paraDtoDeVisualizar(categoria));
+        }
+        return dtos;
     }
 }

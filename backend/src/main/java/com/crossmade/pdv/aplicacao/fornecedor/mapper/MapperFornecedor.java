@@ -1,8 +1,6 @@
 package com.crossmade.pdv.aplicacao.fornecedor.mapper;
 
-import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoria;
 import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
-import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoCadastrarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
 import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
@@ -14,9 +12,7 @@ import java.util.List;
 
 @Service
 public class MapperFornecedor {
-    public Fornecedor dtoDeCadastroParaProduto(DtoCadastrarFornecedor dto){
-        return new Fornecedor(dto.nome(), dto.telefone(), dto.email());
-    }
+
 
     public DtoVisualizarFornecedor paraDtoDeVisualizar(Fornecedor fornecedor){
         var produtos = fornecedor.getProdutos();
@@ -57,5 +53,14 @@ public class MapperFornecedor {
                 fornecedor.getEnderecos(),
                 produtosDtos
         );
+    }
+
+    public List<DtoVisualizarFornecedor> paraListaDtoDeVisualizar(List<Fornecedor> fornecedores){
+        List<DtoVisualizarFornecedor> dtos = new ArrayList<>();
+
+        for (var fornecedor: fornecedores){
+            dtos.add(paraDtoDeVisualizar(fornecedor));
+        }
+        return dtos;
     }
 }
