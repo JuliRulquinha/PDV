@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/usuario")
+@RequestMapping("api/usuarios")
 public class BuscarUsuarioPorIdEndpoint {
 
     private final BuscarUsuarioPorIdHandler handler;
@@ -19,7 +19,7 @@ public class BuscarUsuarioPorIdEndpoint {
         this.handler = handler;
     }
 
-    @GetMapping()
+    @GetMapping("{id}")
     public ResponseEntity<DtoVisualizarUsuario> buscarPorId(@PathVariable Integer id){
         try{
             var query = new BuscarUsuarioPorIdQuery(id);

@@ -19,7 +19,7 @@ public class CadastrarUsuarioEndpoint {
         this.handler = handler;
     }
 
-    @PostMapping()
+    @PostMapping("/cadastrar")
     public ResponseEntity<DtoVisualizarUsuario> cadastrar(@RequestBody CadastrarUsuarioCommand command){
         try{
             var response = handler.handle(command);
