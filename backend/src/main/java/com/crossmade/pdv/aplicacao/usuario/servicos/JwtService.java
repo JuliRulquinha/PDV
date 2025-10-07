@@ -3,7 +3,10 @@ package com.crossmade.pdv.aplicacao.usuario.servicos;
 
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+
+import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
 import java.util.Map;
@@ -11,11 +14,14 @@ import java.util.function.Function;
 
 @Service
 public class JwtService {
+    @Value("${jwt.secret}")
+    private String SECRET_KEY;
 
-    private static final String SECRET_KEY = "uma_chave_bem_grande_e_secreta_para_jwt_123456789"; // coloca no application.yml depois
+    @Value("${jwt.expiration}")
+    private long jwtExpirationMs;
 
-    private Key getSignKey() {
-        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes());
+    private Key getSigningKey() {
+        return Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
     }
 
     public String gerarToken(Map<String, Object> claims, String username) {
@@ -23,38 +29,29 @@ public class JwtService {
                 .setClaims(claims)
                 .setSubject(username)
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10h
-                .signWith(getSignKey(), SignatureAlgorithm.HS256)
+                .setExpiration(new Date(System.currentTimeMillis() + jwtExpirationMs))
+                .signWith(getSigningKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
 
-    public String extrairUsername(String token) {
-        return extrairClaim(token, Claims::getSubject);
-    }
-
-    public Date extrairExpiracao(String token) {
-        return extrairClaim(token, Claims::getExpiration);
-    }
-
-    public <T> T extrairClaim(String token, Function<Claims, T> claimsResolver) {
-        final Claims claims = extrairTodosClaims(token);
-        return claimsResolver.apply(claims);
-    }
-
-    private Claims extrairTodosClaims(String token) {
+    public Claims extrairTodosClaims(String token) {
         return Jwts.parserBuilder()
-                .setSigningKey(getSignKey())
+                .setSigningKey(getSigningKey())
                 .build()
                 .parseClaimsJws(token)
                 .getBody();
     }
 
-    public boolean tokenValido(String token, String username) {
-        final String nomeExtraido = extrairUsername(token);
-        return (nomeExtraido.equals(username) && !tokenExpirado(token));
+    public String extrairUsername(String token) {
+        return extrairTodosClaims(token).getSubject();
     }
 
-    private boolean tokenExpirado(String token) {
-        return extrairExpiracao(token).before(new Date());
+    public boolean isTokenValido(String token, String username) {
+        final String tokenUsername = extrairUsername(token);
+        return (tokenUsername.equals(username) && !isTokenExpirado(token));
+    }
+
+    private boolean isTokenExpirado(String token) {
+        return extrairTodosClaims(token).getExpiration().before(new Date());
     }
 }

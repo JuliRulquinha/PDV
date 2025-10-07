@@ -9,3 +9,6 @@ spring:
       ddl-auto: create
     database: postgresql
     show-sql: true
+jwt:
+  secret: 4jF8h2L9kQp3wX6tZr1vB7mY0cD5eS8f
+  expiration: 36000000
