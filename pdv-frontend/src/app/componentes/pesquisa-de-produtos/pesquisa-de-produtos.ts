@@ -7,11 +7,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { addProduto } from '../../store/produto.actions';
 import { selectLastProduto } from '../../store/produto.selectors';
 import { Observable } from 'rxjs';
+import { MenuUsuario } from '../menu-usuario/menu-usuario';
 
 @Component({
   selector: 'app-pesquisa-de-produtos',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, FormsModule],
+  imports: [CommonModule, ReactiveFormsModule, FormsModule, MenuUsuario],
   templateUrl: './pesquisa-de-produtos.html',
   styleUrls: ['./pesquisa-de-produtos.css']
 })
