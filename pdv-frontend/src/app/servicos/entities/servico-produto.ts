@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Produto } from '../components/pos/pos.component';
+import { Produto } from '../../componentes/pos/pos.component';
 
 
 export interface ListaProdutoDto{

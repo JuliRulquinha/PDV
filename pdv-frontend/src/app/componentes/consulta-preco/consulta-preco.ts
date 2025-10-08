@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Produto } from '../pos/pos.component';
-import { ServicoProduto } from '../../services/servico-produto';
+import { ServicoProduto } from '../../servicos/entities/servico-produto';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 

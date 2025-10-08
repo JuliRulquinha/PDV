@@ -1,10 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
 import { Produto } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { addProduto } from '../../store/produto.actions';
 import { selectAllProdutos, selectLastProduto } from '../../store/produto.selectors';
 
 @Component({

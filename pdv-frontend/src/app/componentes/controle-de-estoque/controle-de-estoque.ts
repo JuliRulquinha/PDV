@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ServicoProduto } from '../../services/servico-produto';
+import { ServicoProduto } from '../../servicos/entities/servico-produto';
 import { Produto, Fornecedor, Categoria } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { RouterLink } from '@angular/router';
-import { ServicoCategoria } from '../../services/servico-categoria';
-import { ServicoFornecedor } from '../../services/servico-fornecedor';
+import { ServicoCategoria } from '../../servicos/entities/servico-categoria';
+import { ServicoFornecedor } from '../../servicos/entities/servico-fornecedor';
 
 @Component({
   selector: 'app-controle-de-estoque',

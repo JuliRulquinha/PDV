@@ -1,5 +1,5 @@
 import { inject, Injectable } from '@angular/core';
-import { Categoria } from '../components/pos/pos.component';
+import { Categoria } from '../../componentes/pos/pos.component';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 

@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { Produto } from '../components/pos/pos.component';
+import { Produto } from '../componentes/pos/pos.component';
 import { clearProdutos, addProduto } from './produto.actions';
 
 

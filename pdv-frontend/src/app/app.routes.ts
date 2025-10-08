@@ -1,7 +1,10 @@
 import { Routes } from '@angular/router';
-import { PosComponent } from './components/pos/pos.component';
-import { ControleDeEstoque } from './components/controle-de-estoque/controle-de-estoque';
-import { PaginaLogin } from './components/pagina-login/pagina-login';
+import { PosComponent } from './componentes/pos/pos.component';
+import { ControleDeEstoque } from './componentes/controle-de-estoque/controle-de-estoque';
+import { PaginaLogin } from './componentes/pagina-login/pagina-login';
+import { ServicoAutenticacao } from './servicos/auth/servico-autenticacao';
+import { adminGuard } from './guardas/admin-guard';
+import { usuarioGuard } from './guardas/usuario-guard';
 
 
 export const routes: Routes = [
@@ -12,10 +15,12 @@ export const routes: Routes = [
     },
     {
         path: 'checkout',
+        canActivate: [usuarioGuard, adminGuard],
         component: PosComponent 
     },
     {
         path: 'lista-de-produtos',
+        canActivate: [adminGuard],
         component: ControleDeEstoque
     },
     {

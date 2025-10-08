@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { ServicoProduto } from '../../services/servico-produto';
+import { ServicoProduto } from '../../servicos/entities/servico-produto';
 import { Produto } from '../pos/pos.component';
 import { Store } from '@ngrx/store';
 import { CommonModule } from '@angular/common';
