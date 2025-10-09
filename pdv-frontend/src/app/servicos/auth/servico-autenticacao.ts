@@ -3,6 +3,14 @@ import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 
+import { jwtDecode } from 'jwt-decode';
+
+interface JwtPayload {
+  sub: string;
+  role: string;
+  exp?: number;
+}
+
 export interface UsuarioLogin{
   nome: string,
   senha: string
@@ -29,6 +37,7 @@ export class ServicoAutenticacao{
   baseUrl = "http://localhost:8080/api/auth";
   private tokenKey = 'token'; // nome no localStorage
 
+
   router = inject(Router);
 
   isAuthenticated(): boolean {
@@ -49,7 +58,17 @@ export class ServicoAutenticacao{
   return this.http.post<{ token: string }>(this.baseUrl+"/login", usuario);
 }
 
-  // isAuthenticated(){
+  obterPapelUsuario(): string | null {
+    const token = localStorage.getItem(this.tokenKey);
+  if (!token) return null;
 
-  // }
+  try {
+    const decoded = jwtDecode<any>(token);
+    console.log("Token decodificado:", decoded); // 👈 veja no console
+    return decoded.papel || decoded.role || decoded.roles || null;
+  } catch (e) {
+    console.error('Erro ao decodificar token', e);
+    return null;
+  }
+  }
 }

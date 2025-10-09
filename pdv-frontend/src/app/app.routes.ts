@@ -2,9 +2,9 @@ import { Routes } from '@angular/router';
 import { PosComponent } from './componentes/pos/pos.component';
 import { ControleDeEstoque } from './componentes/controle-de-estoque/controle-de-estoque';
 import { PaginaLogin } from './componentes/pagina-login/pagina-login';
-import { ServicoAutenticacao } from './servicos/auth/servico-autenticacao';
 import { adminGuard } from './guardas/admin-guard';
 import { usuarioGuard } from './guardas/usuario-guard';
+import { AcessoNegado } from './componentes/acesso-negado/acesso-negado';
 
 
 export const routes: Routes = [
@@ -15,7 +15,7 @@ export const routes: Routes = [
     },
     {
         path: 'checkout',
-        canActivate: [usuarioGuard, adminGuard],
+        canActivate: [usuarioGuard],
         component: PosComponent 
     },
     {
@@ -26,5 +26,9 @@ export const routes: Routes = [
     {
         path: 'login',
         component: PaginaLogin
+    },
+    {
+        path: 'acesso-negado',
+        component: AcessoNegado
     }
 ];

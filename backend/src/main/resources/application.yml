@@ -1,14 +1,21 @@
 spring:
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+
   datasource:
-    url:  jdbc:postgresql://localhost:5432/Pdv
+    url: jdbc:postgresql://localhost:5432/Pdv?currentSchema=public
     username: postgres
     password: database123
-    driver-class-name:  org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: create
     database: postgresql
     show-sql: true
+
 jwt:
   secret: 4jF8h2L9kQp3wX6tZr1vB7mY0cD5eS8f
   expiration: 36000000

@@ -1,0 +1,22 @@
+.container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.an-img{
+    background-image: url("../../../../public/9954450.png");
+    background-repeat: no-repeat;
+    height: 210px;
+    width: 250px;
+    background-size:contain;
+}
+
+.warning{
+    font-size: 40px;
+    font-weight: 600;
+    color: rgb(206, 93, 93); 
+    
+}
