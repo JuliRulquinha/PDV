@@ -16,7 +16,7 @@ const authService = inject(ServicoAutenticacao);
   const papel = authService.obterPapelUsuario()?.toUpperCase();
   console.log(papel);
 
-  if (papel === 'ADMIN') {
+  if (papel === 'ROLE_ADMIN') {
     return true; // ✅ acesso liberado
   }
 

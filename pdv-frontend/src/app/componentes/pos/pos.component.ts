@@ -97,7 +97,7 @@ export class PosComponent implements OnInit{
 
   @HostListener('window:keydown', ['$event'])
 onKeyDown(event: KeyboardEvent) {
-  console.log('Tecla pressionada:', event.key);
+  
 
   if (event.key === 'F11') {
     this.consultar();

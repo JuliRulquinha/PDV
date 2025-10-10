@@ -1,16 +1,19 @@
 package com.crossmade.pdv.aplicacao.usuario.servicos;
 
 
-import io.jsonwebtoken.*;
-import io.jsonwebtoken.security.Keys;
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.stereotype.Service;
-
 import java.nio.charset.StandardCharsets;
 import java.security.Key;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.Map;
-import java.util.function.Function;
+
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.SignatureAlgorithm;
+import io.jsonwebtoken.security.Keys;
 
 @Service
 public class JwtService {
@@ -24,7 +27,11 @@ public class JwtService {
         return Keys.hmacShaKeyFor(SECRET_KEY.getBytes(StandardCharsets.UTF_8));
     }
 
-    public String gerarToken(Map<String, Object> claims, String username) {
+    public String gerarToken(Map<String, Object> claims, String username, String papel) {
+
+         claims = new HashMap<>(claims);
+         claims.put("papel", papel);
+
         return Jwts.builder()
                 .setClaims(claims)
                 .setSubject(username)
