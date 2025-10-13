@@ -19,3 +19,17 @@ spring:
 jwt:
   secret: 4jF8h2L9kQp3wX6tZr1vB7mY0cD5eS8f
   expiration: 36000000
+logging:
+  level:
+    root: ERROR
+    com.seuprojeto: DEBUG   # nível de log por pacote
+  file:
+    name: logs/app.log      # caminho completo do arquivo
+    # ou:
+    # path: logs
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+    file: "%d [%thread] %-5level %logger{36} - %msg%n"
+  charset:
+    console: UTF-8
+    file: UTF-8

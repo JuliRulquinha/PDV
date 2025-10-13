@@ -2,9 +2,11 @@ package com.crossmade.pdv.api.usuario.auth;
 
 import java.util.Map;
 
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,7 +31,7 @@ public class AutorizacaoEndpoint {
     }
 
     @PostMapping("login")
-    public Map<String, String> login(@RequestBody Map<String, String> body) {
+    public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> body) {
         try {
             authManager.authenticate(
                     new UsernamePasswordAuthenticationToken(body.get("nome"), body.get("senha"))
@@ -41,13 +43,13 @@ public class AutorizacaoEndpoint {
             String papel = userDetails.getAuthorities()
                 .stream()
                 .findFirst()
-                .map(a -> a.getAuthority())
+                .map(GrantedAuthority::getAuthority)
                 .orElse("USER");
 
             String token = jwtService.gerarToken(Map.of(), body.get("nome"), papel);
-            return Map.of("token", token);
+            return ResponseEntity.ok(Map.of("token", token));
         } catch (AuthenticationException e) {
-            throw new RuntimeException("Credenciais inválidas");
+                return ResponseEntity.status(401).build();
         }
     }
 }

@@ -2,17 +2,22 @@ import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChang
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { provideHttpClient} from '@angular/common/http';
+import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi} from '@angular/common/http';
 import { provideStore } from '@ngrx/store';
 import { provideEffects } from '@ngrx/effects';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { produtoReducer } from './store/produto.reducer';
+import { InterceptorAutorizacao } from './servicos/auth/interceptor-autorizacao';
 
 export const appConfig: ApplicationConfig = {
+
+ 
   providers: [
     provideBrowserGlobalErrorListeners(),
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideHttpClient(),
+
+    { provide: HTTP_INTERCEPTORS, useClass: InterceptorAutorizacao, multi: true },
+    provideHttpClient(withInterceptorsFromDi()),
     provideRouter(routes),
     provideStore(),
     provideEffects(),
