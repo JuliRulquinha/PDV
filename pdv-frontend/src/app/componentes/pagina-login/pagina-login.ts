@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import {ServicoAutenticacao, UsuarioLogin } from '../../servicos/auth/servico-autenticacao';
+import { ServicoAutenticacao } from '../../servicos/auth/servico-autenticacao';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,6 +11,7 @@ import { Router } from '@angular/router';
   styleUrl: './pagina-login.css'
 })
 export class PaginaLogin {
+
   fb = inject(FormBuilder);
   authService = inject(ServicoAutenticacao);
   router = inject(Router);
@@ -31,16 +32,21 @@ export class PaginaLogin {
       return;
     }
 
-    const usuario = this.loginForm.value; // { nome: '...', senha: '...' }
+    const usuario = this.loginForm.value;
 
     this.authService.autenticar(usuario).subscribe({
       next: (resposta) => {
-        this.authService.salvarToken(resposta.token); // salva o JWT
-        this.router.navigate(['/checkout']); // redireciona após login
+        this.authService.salvarToken(resposta.token);
+        this.erroLogin = false; // limpa o erro se o login deu certo
+        this.router.navigate(['/checkout']);
       },
       error: (erro) => {
         console.error('Erro no login:', erro);
-        this.erroLogin = true;
+        if (erro.status === 403) {
+          this.erroLogin = true; // mostra "credenciais inválidas"
+        } else {
+          alert('Ocorreu um erro inesperado. Tente novamente.');
+        }
       }
     });
   }

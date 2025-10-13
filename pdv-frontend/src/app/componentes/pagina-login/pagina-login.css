@@ -65,3 +65,9 @@
 input.ng-invalid.ng-touched {
   border-color: red;   /* opcional: destaca o input inválido */
 }
+
+.erro-login {
+  color: #ff3b30;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
