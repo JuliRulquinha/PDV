@@ -77,8 +77,7 @@ export class ControleDeEstoque {
       // Se retornou menos produtos que o limite → é a última página
       this.isLastPage = this.produtos.length < this.pageSize;
       
-    },
-    error: (err) => console.error('Erro ao carregar produtos', err)
+    }
   });
   }
 
@@ -86,7 +85,6 @@ export class ControleDeEstoque {
     this.servicoCategoria.buscarCategorias().subscribe({
       next: (data) => {
         this.categorias = Array.isArray(data.categorias) ? data.categorias : [data.categorias];
-        console.log(this.categorias);
       }
     });
   }
@@ -95,7 +93,7 @@ export class ControleDeEstoque {
     this.servicoFornecedor.buscarFornecedores().subscribe({
       next: (data) => {
         this.fornecedores = Array.isArray(data.fornecedores)? data.fornecedores : [data.fornecedores];
-        console.log(this.fornecedores);
+        
       }
     });
   }

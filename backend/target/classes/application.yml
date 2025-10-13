@@ -12,7 +12,7 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: postgresql
     show-sql: true
 
@@ -21,8 +21,8 @@ jwt:
   expiration: 36000000
 logging:
   level:
-    root: ERROR
-    com.seuprojeto: DEBUG   # nível de log por pacote
+    root: INFO
+    com.crossmade.pdv: DEBUG   # nível de log por pacote
   file:
     name: logs/app.log      # caminho completo do arquivo
     # ou:
