@@ -22,7 +22,7 @@ export interface VerUsuario{
   papel: Papel
 }
 
- enum Papel{
+ export enum Papel{
     ADMIN,
     USUARIO,
     GERENTE
@@ -33,16 +33,16 @@ export interface VerUsuario{
 })
 
 export class ServicoAutenticacao{
+
   http = inject(HttpClient);
   baseUrl = "http://localhost:8080/api/auth";
-  private tokenKey = 'token'; // nome no localStorage
-
+  private tokenKey = 'token';
 
   router = inject(Router);
 
   isAuthenticated(): boolean {
     const token = localStorage.getItem(this.tokenKey);
-    return !!token; // retorna true se existir token
+    return !!token;
   }
 
   salvarToken(token: string) {
@@ -55,20 +55,28 @@ export class ServicoAutenticacao{
   }
 
   autenticar(usuario: UsuarioLogin): Observable<{ token: string }> {
-  return this.http.post<{ token: string }>(this.baseUrl+"/login", usuario);
-}
+    return this.http.post<{ token: string }>(this.baseUrl+"/login", usuario);
+  }
 
   obterPapelUsuario(): string | null {
     const token = localStorage.getItem(this.tokenKey);
-  if (!token) return null;
+    if (!token) return null;
 
-  try {
-    const decoded = jwtDecode<any>(token);
-    console.log("Token decodificado:", decoded); // 👈 veja no console
-    return decoded.papel || decoded.role || decoded.roles || null;
-  } catch (e) {
-    console.error('Erro ao decodificar token', e);
-    return null;
+    try {
+      const decoded = jwtDecode<any>(token);
+      return decoded.papel || decoded.role || decoded.roles || null;
+    } catch (e) {
+      console.error('Erro ao decodificar token', e);
+      return null;
+    }
   }
+
+  isAdmin(): boolean{
+    return this.obterPapelUsuario() === 'ROLE_ADMIN' ;
   }
+
+  isGerente(): boolean {
+    return this.obterPapelUsuario() === 'ROLE_GERENTE';
+  }
+
 }

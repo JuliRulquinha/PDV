@@ -5,6 +5,8 @@ import { PaginaLogin } from './componentes/pagina-login/pagina-login';
 import { adminGuard } from './guardas/admin-guard';
 import { usuarioGuard } from './guardas/usuario-guard';
 import { AcessoNegado } from './componentes/acesso-negado/acesso-negado';
+import { CadastrarUsuario } from './componentes/cadastrar-usuario/cadastrar-usuario';
+import { gerenteGuard } from './guardas/gerente-guard';
 
 
 export const routes: Routes = [
@@ -24,6 +26,11 @@ export const routes: Routes = [
         component: ControleDeEstoque
     },
     {
+        path: 'cadastrar-usuario',
+        canActivate: [gerenteGuard],
+        component: CadastrarUsuario
+    },
+    {
         path: 'login',
         component: PaginaLogin
     },
@@ -31,4 +38,5 @@ export const routes: Routes = [
         path: 'acesso-negado',
         component: AcessoNegado
     }
+    
 ];

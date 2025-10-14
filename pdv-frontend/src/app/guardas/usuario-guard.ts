@@ -6,12 +6,10 @@ export const usuarioGuard: CanActivateFn = () => {
   const authService = inject(ServicoAutenticacao);
   const router = inject(Router);
 
-  // verifica se está autenticado
   if (authService.isAuthenticated()) {
-    return true; // pode acessar a rota
+    return true; 
   }
 
-  // se não estiver autenticado, redireciona para /login
   router.navigate(['/login']);
   return false;
 }
