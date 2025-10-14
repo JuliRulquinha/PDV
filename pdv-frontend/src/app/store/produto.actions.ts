@@ -7,3 +7,8 @@ export const addProduto = createAction(
 );
 
 export const clearProdutos = createAction('[Produto] Clear Produtos');
+
+export const removerProdutoDaLista = createAction(
+  '[Produto] Remover produto da lista',
+  (props<{ nome: string | undefined}>())
+);

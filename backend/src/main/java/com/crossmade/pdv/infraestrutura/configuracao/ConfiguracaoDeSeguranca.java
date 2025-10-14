@@ -50,7 +50,7 @@ public class ConfiguracaoDeSeguranca {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        //.requestMatchers("/api/usuarios/cadastrar").hasRole("GERENTE")
+                        .requestMatchers("/api/usuarios/cadastrar").hasRole("GERENTE")
                         .requestMatchers(HttpMethod.POST, "/api/produtos/**").hasAnyRole("ADMIN", "GERENTE")
                         .requestMatchers(HttpMethod.PUT, "/api/produtos/**").hasAnyRole("ADMIN", "GERENTE")
                         .requestMatchers(HttpMethod.POST, "/api/categorias/**").hasAnyRole("ADMIN", "GERENTE")

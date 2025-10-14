@@ -81,9 +81,9 @@ export class PosComponent implements OnInit{
   }
 
   searchProduct(id: number) {
-  const found = this.products.find(p => p.id === id);
-  if (found) {
-    this.lastProduct = found;
+    const found = this.products.find(p => p.id === id);
+    if (found) {
+      this.lastProduct = found;
   }
 }
 
@@ -96,10 +96,10 @@ export class PosComponent implements OnInit{
   }
 
   @HostListener('window:keydown', ['$event'])
-onKeyDown(event: KeyboardEvent) {
+  onKeyDown(event: KeyboardEvent) {
   
 
-  if (event.key === 'F11') {
+  if (event.key === 'F2') {
     this.consultar();
   }
 

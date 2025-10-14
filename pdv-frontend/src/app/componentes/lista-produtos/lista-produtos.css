@@ -57,3 +57,22 @@
   border-bottom-right-radius: 8px;
     border: 1px solid #ccc;
 }
+
+.pos-selected-product {
+ display: grid;
+  grid-template-columns: 
+    50px   /* ID */
+    200px  /* PRODUTO */
+    100px  /* PREÇO */
+    30px   /* x */
+    80px   /* QTD */
+    140px; /* TOTAL */
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed #ccc;
+  font-size: 0.9em;
+  font-family: monospace;
+  text-align: center;
+  
+    background-color: rgb(175, 174, 174);
+}
