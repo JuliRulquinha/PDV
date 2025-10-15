@@ -1,11 +1,35 @@
 spring:
+  sql:
+    init:
+      mode: always
+      encoding: UTF-8
+
   datasource:
-    url:  jdbc:postgresql://localhost:5432/Pdv
+    url: jdbc:postgresql://localhost:5432/Pdv?currentSchema=public
     username: postgres
     password: database123
-    driver-class-name:  org.postgresql.Driver
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
-      ddl-auto: create
+      ddl-auto: update
     database: postgresql
     show-sql: true
+
+jwt:
+  secret: 4jF8h2L9kQp3wX6tZr1vB7mY0cD5eS8f
+  expiration: 36000000
+logging:
+  level:
+    root: INFO
+    com.crossmade.pdv: DEBUG   # nível de log por pacote
+  file:
+    name: logs/app.log      # caminho completo do arquivo
+    # ou:
+    # path: logs
+  pattern:
+    console: "%d{HH:mm:ss.SSS} %-5level [%thread] %logger{36} - %msg%n"
+    file: "%d [%thread] %-5level %logger{36} - %msg%n"
+  charset:
+    console: UTF-8
+    file: UTF-8

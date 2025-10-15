@@ -24,6 +24,11 @@ public class RepositorioUsuarioImpl implements UsuarioRepositorio {
     }
 
     @Override
+    public Usuario buscarPorNome(String nome) {
+        return repositorio.findByNome(nome);
+    }
+
+    @Override
     public void deletar(Integer id) {
        repositorio.deleteById(id);
     }

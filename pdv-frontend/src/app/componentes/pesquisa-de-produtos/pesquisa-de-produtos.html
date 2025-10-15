@@ -1,0 +1,26 @@
+<div class="pesquisa">
+
+  <div class="pesquisa-barra">
+    <span class="pesquisa-titulo">
+      @if (lastProduct$ | async; as lastProduct) {
+        {{ lastProduct.nome }}
+      } @else {
+        - Nenhum produto pesquisado
+      }
+    </span>
+
+    <div class="pesquisa-controles">
+      <input type="number" min="1" class="pos-input qtd-input" placeholder="Qtd" [(ngModel)]="quantidadeProduto" />
+      <input type="text" class="pos-input codigo-input" placeholder="Código do produto" [(ngModel)]="codigoProduto" />
+      <button class="btn-pesquisar" (click)="adicionarProduto()">
+        <i class="material-icons">search</i>
+      </button>
+
+     
+    </div>
+
+    <app-menu-usuario></app-menu-usuario>
+
+  </div>
+
+</div>

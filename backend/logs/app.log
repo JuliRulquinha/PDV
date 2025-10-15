@@ -1,0 +1,341 @@
+2025-10-14 13:39:40,003 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 10144 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 13:39:40,013 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 13:39:40,015 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 13:39:41,577 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 13:39:41,727 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 136 ms. Found 7 JPA repository interfaces.
+2025-10-14 13:39:42,893 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 13:39:42,914 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 13:39:42,914 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 13:39:43,057 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 13:39:43,058 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2928 ms
+2025-10-14 13:39:43,348 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 13:39:43,543 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 13:39:43,622 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 13:39:44,420 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 13:39:44,481 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 13:39:44,851 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@4bbc21bd
+2025-10-14 13:39:44,853 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 13:39:45,027 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 13:39:45,066 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 13:39:46,391 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 13:39:46,801 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:39:47,313 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 13:39:47,562 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 13:39:47,634 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 13:39:47,635 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 13:39:47,721 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 13:39:48,416 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 13:39:48,432 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 9.938 seconds (process running for 11.522)
+2025-10-14 13:42:32,400 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 13:42:32,403 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 13:42:32,408 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:42:32,410 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 13:42:32,413 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 13:45:35,591 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 16175 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 13:45:35,593 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 13:45:35,595 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 13:45:36,598 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 13:45:36,693 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 84 ms. Found 7 JPA repository interfaces.
+2025-10-14 13:45:37,335 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 13:45:37,348 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 13:45:37,348 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 13:45:37,389 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 13:45:37,390 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1736 ms
+2025-10-14 13:45:37,558 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 13:45:37,651 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 13:45:37,724 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 13:45:38,080 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 13:45:38,108 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 13:45:38,315 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@17354708
+2025-10-14 13:45:38,318 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 13:45:38,352 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 13:45:38,371 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 13:45:39,511 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 13:45:39,765 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:45:40,126 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 13:45:40,290 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 13:45:40,403 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 13:45:40,404 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 13:45:40,460 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 13:45:41,029 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 13:45:41,039 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 6.27 seconds (process running for 7.178)
+2025-10-14 13:46:45,258 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 13:46:45,258 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 13:46:45,260 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 13:47:59,563 [http-nio-8080-exec-8] ERROR c.c.p.a.u.s.AutenticacaoService - Usuário não encontrado: Juli
+2025-10-14 13:49:38,564 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 13:49:38,567 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 13:49:38,572 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:49:38,574 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 13:49:38,578 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 13:49:42,075 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 18937 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 13:49:42,076 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 13:49:42,078 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 13:49:43,047 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 13:49:43,135 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 79 ms. Found 7 JPA repository interfaces.
+2025-10-14 13:49:43,728 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 13:49:43,740 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 13:49:43,740 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 13:49:43,779 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 13:49:43,779 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1611 ms
+2025-10-14 13:49:43,933 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 13:49:43,985 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 13:49:44,027 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 13:49:44,319 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 13:49:44,347 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 13:49:44,520 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@608b35fa
+2025-10-14 13:49:44,523 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 13:49:44,559 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 13:49:44,579 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 13:49:46,151 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 13:49:46,590 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:49:47,059 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 13:49:47,279 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 13:49:47,384 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 13:49:47,389 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 13:49:47,469 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 13:49:48,274 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 13:49:48,284 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 6.905 seconds (process running for 7.41)
+2025-10-14 13:50:28,983 [http-nio-8080-exec-2] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 13:50:28,983 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 13:50:28,985 [http-nio-8080-exec-2] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 13:50:33,502 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:33,585 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:36,315 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:38,600 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:40,004 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:41,441 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:43,062 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:50,784 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:50,788 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:50:50,800 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 13:53:33,567 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 13:53:33,569 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 13:53:33,574 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:53:33,576 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 13:53:33,580 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 13:53:36,861 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 20990 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 13:53:36,863 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 13:53:36,864 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 13:53:37,976 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 13:53:38,071 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 85 ms. Found 7 JPA repository interfaces.
+2025-10-14 13:53:38,699 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 13:53:38,714 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 13:53:38,714 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 13:53:38,755 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 13:53:38,756 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1799 ms
+2025-10-14 13:53:38,934 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 13:53:38,983 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 13:53:39,014 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 13:53:39,293 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 13:53:39,322 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 13:53:39,497 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@8ac512e
+2025-10-14 13:53:39,500 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 13:53:39,532 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 13:53:39,553 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 13:53:40,613 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 13:53:40,834 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 13:53:41,157 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 13:53:41,314 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 13:53:41,398 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 13:53:41,399 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 13:53:41,468 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 13:53:42,013 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 13:53:42,025 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 5.847 seconds (process running for 6.4)
+2025-10-14 13:53:53,248 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 13:53:53,249 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 13:53:53,250 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 13:53:53,489 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 14:54:27,167 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 14:54:27,248 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 16:32:36,390 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 16:32:36,394 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 16:32:36,406 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 16:32:36,412 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 16:32:36,420 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 16:32:44,048 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 101114 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 16:32:44,052 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 16:32:44,053 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 16:32:45,359 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 16:32:45,511 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 136 ms. Found 7 JPA repository interfaces.
+2025-10-14 16:32:46,365 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 16:32:46,385 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 16:32:46,386 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 16:32:46,473 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 16:32:46,475 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2330 ms
+2025-10-14 16:32:46,765 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 16:32:46,820 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 16:32:46,868 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 16:32:47,229 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 16:32:47,270 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 16:32:47,581 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@5b0e9e0c
+2025-10-14 16:32:47,584 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 16:32:47,626 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 16:32:47,667 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 16:32:49,448 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 16:32:49,707 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 16:32:50,103 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 16:32:50,542 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 16:32:50,843 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 16:32:50,845 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 16:32:51,013 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 16:32:52,448 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 16:32:52,473 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 9.376 seconds (process running for 11.227)
+2025-10-14 16:46:28,139 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 16:46:28,140 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 16:46:28,141 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 16:46:29,004 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 16:46:29,229 [http-nio-8080-exec-3] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.crossmade.pdv.dominio.usuario.Papel` from Object value (token `JsonToken.START_OBJECT`)]
+2025-10-14 16:46:29,528 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 16:46:29,535 [http-nio-8080-exec-2] WARN  o.s.w.s.m.s.DefaultHandlerExceptionResolver - Resolved [org.springframework.http.converter.HttpMessageNotReadableException: JSON parse error: Cannot deserialize value of type `com.crossmade.pdv.dominio.usuario.Papel` from Object value (token `JsonToken.START_OBJECT`)]
+2025-10-14 17:01:37,446 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 17:04:15,845 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 17:06:53,990 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 17:07:46,749 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 17:07:46,752 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 17:07:46,760 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 17:07:46,762 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 17:07:46,765 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 17:07:50,537 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 119748 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 17:07:50,542 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 17:07:50,543 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 17:07:51,740 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 17:07:51,914 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 147 ms. Found 7 JPA repository interfaces.
+2025-10-14 17:07:52,764 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 17:07:52,785 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 17:07:52,785 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 17:07:52,871 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 17:07:52,872 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2235 ms
+2025-10-14 17:07:53,151 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 17:07:53,206 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 17:07:53,250 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 17:07:53,625 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 17:07:53,659 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 17:07:53,917 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e7a9db7
+2025-10-14 17:07:53,919 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 17:07:53,960 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 17:07:53,983 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 17:07:55,752 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 17:07:56,007 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 17:07:56,487 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 17:07:57,002 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 17:07:57,172 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 17:07:57,173 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 17:07:57,299 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 17:07:58,702 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 17:07:58,722 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 9.169 seconds (process running for 10.052)
+2025-10-14 17:08:18,726 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 17:08:18,727 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 17:08:18,728 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 17:08:19,524 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-14 17:08:23,734 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-14 17:08:23,891 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-14 17:08:23,904 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 17:08:23,910 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-14 17:08:23,916 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
+2025-10-14 17:08:26,481 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 120122 (/home/dev2/Documents/Java/pdv/backend/target/classes started by dev2 in /home/dev2/Documents/Java/pdv/backend)
+2025-10-14 17:08:26,483 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-14 17:08:26,484 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-14 17:08:27,581 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-14 17:08:27,695 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 102 ms. Found 7 JPA repository interfaces.
+2025-10-14 17:08:28,671 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-14 17:08:28,690 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-14 17:08:28,691 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-14 17:08:28,771 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-14 17:08:28,772 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2193 ms
+2025-10-14 17:08:28,996 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-14 17:08:29,046 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-14 17:08:29,084 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-14 17:08:29,515 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-14 17:08:29,569 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-14 17:08:29,810 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2e7a9db7
+2025-10-14 17:08:29,812 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-14 17:08:29,844 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-14 17:08:29,869 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
+	Database driver: undefined/unknown
+	Database version: 16.10
+	Autocommit mode: undefined/unknown
+	Isolation level: undefined/unknown
+	Minimum pool size: undefined/unknown
+	Maximum pool size: undefined/unknown
+2025-10-14 17:08:31,533 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-14 17:08:31,817 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-14 17:08:32,182 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-14 17:08:32,576 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-14 17:08:32,735 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-14 17:08:32,735 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-14 17:08:32,903 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-14 17:08:34,309 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-14 17:08:34,327 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 8.892 seconds (process running for 9.838)
+2025-10-14 17:08:49,561 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-14 17:08:49,561 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-14 17:08:49,563 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-14 17:08:50,115 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 17:08:50,199 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 17:09:57,098 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 17:14:36,031 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 17:14:49,387 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 17:15:51,627 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:16:26,670 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:19:52,303 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:24:25,241 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:25:38,197 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:25:39,682 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:28:54,838 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:29:44,148 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:29:47,713 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:29:57,697 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:33:38,376 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:37:53,553 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:37:54,684 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:38:53,504 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:38:58,567 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:39:17,241 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:39:21,758 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:41:15,817 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:41:17,050 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:41:18,136 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli
+2025-10-14 18:41:24,158 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Juli

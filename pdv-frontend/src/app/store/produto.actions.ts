@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { Produto } from '../components/pos/pos.component';
+import { Produto } from '../componentes/pos/pos.component';
 
 export const addProduto = createAction(
   '[Produto] Add Produto',
@@ -7,3 +7,8 @@ export const addProduto = createAction(
 );
 
 export const clearProdutos = createAction('[Produto] Clear Produtos');
+
+export const removerProdutoDaLista = createAction(
+  '[Produto] Remover produto da lista',
+  (props<{ nome: string | undefined}>())
+);
