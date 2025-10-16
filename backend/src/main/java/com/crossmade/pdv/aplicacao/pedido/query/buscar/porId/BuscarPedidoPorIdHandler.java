@@ -1,13 +1,9 @@
-package com.crossmade.pdv.aplicacao.pedido.query.buscar;
-
-import java.util.stream.Collectors;
+package com.crossmade.pdv.aplicacao.pedido.query.buscar.porId;
 
 import org.springframework.stereotype.Component;
 
-import com.crossmade.pdv.aplicacao.cliente.mapper.MapperCliente;
 import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
 import com.crossmade.pdv.aplicacao.pedido.mapper.MapperPedido;
-import com.crossmade.pdv.aplicacao.produto.mapper.MapperProduto;
 import com.crossmade.pdv.infraestrutura.pedido.PedidoRepositorioIplm;
 
 @Component

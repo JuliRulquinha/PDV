@@ -5,7 +5,12 @@ import java.util.List;
 
 import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
+import com.crossmade.pdv.aplicacao.pedido.command.criar.CriarPedidoCommand;
+import com.crossmade.pdv.dominio.categoria.Categoria;
+import com.crossmade.pdv.dominio.cliente.Cliente;
 import com.crossmade.pdv.dominio.endereco.Endereco;
+import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
+import com.crossmade.pdv.dominio.produto.Produto;
 import org.springframework.stereotype.Service;
 
 import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
@@ -61,6 +66,52 @@ public class MapperPedido {
             pedido.getValidade(),
             pedido.getTotal(),
             pedido.getDesconto()
+        );
+    }
+
+    public List<ModeloVisualizacaoPedido> paraListaDeModelos(List<Pedido> pedidos){
+        return pedidos.stream().map(this::paraModeloVisualizacao).toList();
+    }
+
+    public Pedido paraDominio(CriarPedidoCommand modelo){
+
+        List<Produto> produtos = new ArrayList<>();
+
+        for(var produto: modelo.produtos()){
+
+            var fornecedor = new Fornecedor(
+                    produto.fornecedor().nome(),
+                    produto.fornecedor().telefone(),
+                    produto.fornecedor().email()
+            );
+
+            var categoria = new Categoria(produto.categoria().nome(), produto.categoria().descricao());
+
+            produtos.add(
+                    new Produto(
+                            produto.nome(),
+                            fornecedor,
+                            categoria,
+                            produto.marca(),
+                            produto.modelo(),
+                            produto.quantidade(),
+                            produto.valorCusto(),
+                            produto.valorVenda(),
+                            produto.imageUrl(),
+                            produto.validade(),
+                            produto.dimensoes()
+                    )
+            );
+        }
+
+        var cliente = new Cliente(modelo.cliente().nome(), modelo.cliente().telefone(), modelo.cliente().email());
+
+        return new Pedido(
+                produtos,
+                cliente,
+                modelo.validade(),
+                modelo.total(),
+                modelo.desconto()
         );
     }
 }

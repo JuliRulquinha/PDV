@@ -1,8 +1,8 @@
 package com.crossmade.pdv.api.pedido.buscar;
 
 import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
-import com.crossmade.pdv.aplicacao.pedido.query.buscar.BuscarPedidoPorIdHandler;
-import com.crossmade.pdv.aplicacao.pedido.query.buscar.BuscarPedidoPorIdQuery;
+import com.crossmade.pdv.aplicacao.pedido.query.buscar.porId.BuscarPedidoPorIdHandler;
+import com.crossmade.pdv.aplicacao.pedido.query.buscar.porId.BuscarPedidoPorIdQuery;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
