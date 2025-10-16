@@ -2,7 +2,7 @@ package com.crossmade.pdv.aplicacao.cliente.query.buscar.porId;
 
 import org.springframework.stereotype.Component;
 
-import com.crossmade.pdv.aplicacao.cliente.dtos.DtoVisualizarCliente;
+import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 import com.crossmade.pdv.aplicacao.cliente.mapper.MapperCliente;
 import com.crossmade.pdv.infraestrutura.cliente.ClienteRepositorioIplm;
 
@@ -16,7 +16,7 @@ public class BuscarClientePorIdHandler {
         this.mapper = mapper;
     }
 
-    public DtoVisualizarCliente handle(BuscarClientePorIdQuery query) {
+    public ModeloVisualizacaoCliente handle(BuscarClientePorIdQuery query) {
         var cliente = repositorio.buscarPorId(query.id());
         return mapper.paraDtoDeVisualizar(cliente);
     }

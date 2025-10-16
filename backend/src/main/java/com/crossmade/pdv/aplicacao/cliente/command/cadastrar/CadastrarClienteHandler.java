@@ -2,7 +2,7 @@ package com.crossmade.pdv.aplicacao.cliente.command.cadastrar;
 
 import org.springframework.stereotype.Component;
 
-import com.crossmade.pdv.aplicacao.cliente.dtos.DtoVisualizarCliente;
+import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 import com.crossmade.pdv.aplicacao.cliente.mapper.MapperCliente;
 import com.crossmade.pdv.dominio.cliente.Cliente;
 import com.crossmade.pdv.infraestrutura.cliente.ClienteRepositorioIplm;
@@ -18,7 +18,7 @@ public class CadastrarClienteHandler {
         this.mapper = mapper;
     }
 
-    public DtoVisualizarCliente handle(CadastrarClienteCommand command){
+    public ModeloVisualizacaoCliente handle(CadastrarClienteCommand command){
         Cliente cliente = new Cliente(command.nome(),
                                       command.telefone(),
                                       command.email(),

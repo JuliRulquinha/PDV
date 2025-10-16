@@ -2,7 +2,7 @@ package com.crossmade.pdv.aplicacao.orcamento.command.fazer;
 
 import org.springframework.stereotype.Component;
 
-import com.crossmade.pdv.aplicacao.orcamento.dtos.DtoVisualizarOrcamento;
+import com.crossmade.pdv.aplicacao.orcamento.dtos.ModeloVisualizacaoOrcamento;
 import com.crossmade.pdv.aplicacao.orcamento.mapper.MapperOrcamento;
 import com.crossmade.pdv.infraestrutura.orcamento.OrcamentoRepositorioIplm;
 
@@ -19,10 +19,10 @@ public class FazerOrcamentoHandler {
         this.repositorio = repositorio;
     }
 
-    public DtoVisualizarOrcamento handle(FazerOrcamentoCommand command) {
+    public ModeloVisualizacaoOrcamento handle(FazerOrcamentoCommand command) {
         
         var salvo = repositorio.salvar(mapper.paraDominio(command));
 
-        return mapper.paraDtoDeVisualizar(salvo);
+        return mapper.paraModeloDeVisualizacao(salvo);
     }
 }

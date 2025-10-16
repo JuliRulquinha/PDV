@@ -39,6 +39,16 @@ public class Pedido {
     private BigDecimal total;
     private int desconto;
 
+    public StatusPedido getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusPedido status) {
+        this.status = status;
+    }
+
+    private StatusPedido status;
+
     public Pedido() {
     }
 
@@ -48,15 +58,17 @@ public class Pedido {
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
+        this.status = StatusPedido.CRIADO;
     }
     
-    public Pedido(Integer id, List<Produto> produtos, Cliente cliente, Date validade, BigDecimal total, int desconto) {
+    public Pedido(Integer id, List<Produto> produtos, Cliente cliente, Date validade, BigDecimal total, int desconto, StatusPedido status) {
         this.id = id;
         this.produtos = produtos;
         this.cliente = cliente;
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
+        this.status = status;
     }
     public Integer getId() {
         return id;

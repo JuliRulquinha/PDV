@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteCommand;
 import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteHandler;
-import com.crossmade.pdv.aplicacao.cliente.dtos.DtoVisualizarCliente;
+import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 
 
 
@@ -20,11 +20,10 @@ public class CadastrarClienteEndpoint {
 
     public CadastrarClienteEndpoint(CadastrarClienteHandler handler){
         this.handler = handler;
-        
     }
 
     @PostMapping
-    public ResponseEntity<DtoVisualizarCliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
+    public ResponseEntity<ModeloVisualizacaoCliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
         try {
             var cliente = handler.handle(comando);
             return ResponseEntity.ok(cliente);

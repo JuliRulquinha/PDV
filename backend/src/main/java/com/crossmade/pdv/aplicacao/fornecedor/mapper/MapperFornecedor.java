@@ -1,9 +1,9 @@
 package com.crossmade.pdv.aplicacao.fornecedor.mapper;
 
-import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
+import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
-import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import org.springframework.stereotype.Service;
 
@@ -16,9 +16,9 @@ public class MapperFornecedor {
 
     public DtoVisualizarFornecedor paraDtoDeVisualizar(Fornecedor fornecedor){
         var produtos = fornecedor.getProdutos();
-        List<DtoVisualizarProduto> produtosDtos =  new ArrayList<>();
+        List<ModeloVisualizacaoProduto> produtosDtos =  new ArrayList<>();
 
-        var fornecedorVisualizar = new DtoVisualizarFornecedorDentroDeProduto(
+        var fornecedorVisualizar = new ModeloVisualizacaoFornecedorDentroDeProduto(
                 fornecedor.getNome(),
                 fornecedor.getEmail(),
                 fornecedor.getTelefone(),
@@ -26,13 +26,13 @@ public class MapperFornecedor {
         );
         for (var produtosDoFornecedor: produtos){
 
-            var categoriaVisualizar = new DtoVisualizarCategoriaDentroDeProduto(
+            var categoriaVisualizar = new ModeloVisualizacaoCategoriaDentroDeProduto(
                     produtosDoFornecedor.getCategoria().getNome(),
                     produtosDoFornecedor.getCategoria().getDescricao()
             );
 
             produtosDtos.add(
-                    new DtoVisualizarProduto(
+                    new ModeloVisualizacaoProduto(
                             produtosDoFornecedor.getNome(),
                             fornecedorVisualizar,
                             categoriaVisualizar,

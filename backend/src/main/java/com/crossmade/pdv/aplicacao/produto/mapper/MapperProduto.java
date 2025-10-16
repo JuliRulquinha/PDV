@@ -1,10 +1,8 @@
 package com.crossmade.pdv.aplicacao.produto.mapper;
 
-import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
-import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
-import com.crossmade.pdv.dominio.categoria.Categoria;
-import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
+import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.produto.Produto;
 import org.springframework.stereotype.Service;
 
@@ -14,15 +12,15 @@ import java.util.List;
 @Service
 public class MapperProduto {
 
-    public DtoVisualizarProduto paraDtoDeVisualizar(Produto produto){
-        var categoria = new DtoVisualizarCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
-        var fornecedor = new DtoVisualizarFornecedorDentroDeProduto(
+    public ModeloVisualizacaoProduto paraDtoDeVisualizar(Produto produto){
+        var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
+        var fornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
                 produto.getFornecedor().getNome(),
                 produto.getFornecedor().getTelefone(),
                 produto.getFornecedor().getEmail(),
                 produto.getFornecedor().getEnderecos()
         );
-        return new DtoVisualizarProduto(
+        return new ModeloVisualizacaoProduto(
                 produto.getNome(),
                 fornecedor,
                 categoria,
@@ -37,8 +35,8 @@ public class MapperProduto {
         );
     }
 
-    public List<DtoVisualizarProduto> paraListaDtoDeVisualizar(List<Produto> produtos){
-        List<DtoVisualizarProduto> dtos = new ArrayList<>();
+    public List<ModeloVisualizacaoProduto> paraListaDtoDeVisualizar(List<Produto> produtos){
+        List<ModeloVisualizacaoProduto> dtos = new ArrayList<>();
 
         for(var produto: produtos){
 

@@ -1,6 +1,8 @@
 package com.crossmade.pdv.aplicacao.pedido.command.cancelar;
 
-public record CancelarPedidoCommand() {
+public record CancelarPedidoCommand(
+        Integer id
+) {
 
 
 }

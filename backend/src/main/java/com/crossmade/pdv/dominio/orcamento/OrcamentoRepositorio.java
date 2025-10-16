@@ -6,5 +6,6 @@ public interface OrcamentoRepositorio {
     Orcamento salvar(Orcamento orcamento);
     Orcamento buscarPorId(Integer id);
     List<Orcamento> listarTodos();
-    void cancelar(Integer id);
+    Orcamento cancelar(Integer id);
+    Orcamento mudarStatus(Integer id, StatusOcamento status);
 }

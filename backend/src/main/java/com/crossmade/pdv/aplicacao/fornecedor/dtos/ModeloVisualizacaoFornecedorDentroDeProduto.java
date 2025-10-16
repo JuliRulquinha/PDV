@@ -4,7 +4,7 @@ import com.crossmade.pdv.dominio.endereco.Endereco;
 
 import java.util.List;
 
-public record DtoVisualizarFornecedorDentroDeProduto(
+public record ModeloVisualizacaoFornecedorDentroDeProduto(
         String nome,
         String telefone,
         String email,

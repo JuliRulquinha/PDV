@@ -1,6 +1,6 @@
 package com.crossmade.pdv.aplicacao.categoria.dtos;
 
-public record DtoVisualizarCategoriaDentroDeProduto(
+public record ModeloVisualizacaoCategoriaDentroDeProduto(
         String nome,
         String descricao
 ) {

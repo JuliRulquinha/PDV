@@ -1,27 +1,26 @@
-package com.crossmade.pdv.api.orcamento.criar;
+package com.crossmade.pdv.api.pedido.criar;
 
+import com.crossmade.pdv.aplicacao.pedido.command.criar.CriarPedidoCommand;
+import com.crossmade.pdv.aplicacao.pedido.command.criar.CriarPedidoHandler;
+import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossmade.pdv.aplicacao.orcamento.command.fazer.FazerOrcamentoCommand;
-import com.crossmade.pdv.aplicacao.orcamento.command.fazer.FazerOrcamentoHandler;
-import com.crossmade.pdv.aplicacao.orcamento.dtos.ModeloVisualizacaoOrcamento;
-
 @RestController
-@RequestMapping("/api/orcamentos/criar")
-public class FazerOrcamentoEndpoint {
+@RequestMapping("api/pedidos")
+public class CriarPedidoEndpoint {
 
-    private final FazerOrcamentoHandler handler;
-    
-    public FazerOrcamentoEndpoint(FazerOrcamentoHandler handler) {
+    private final CriarPedidoHandler handler;
+
+    public CriarPedidoEndpoint(CriarPedidoHandler handler) {
         this.handler = handler;
     }
 
     @PostMapping
-    public ResponseEntity<ModeloVisualizacaoOrcamento> criar(@RequestBody FazerOrcamentoCommand command) {
+    public ResponseEntity<ModeloVisualizacaoPedido> criar(@RequestBody CriarPedidoCommand command) {
 
         try{
             var dto = handler.handle(command);
@@ -29,7 +28,9 @@ public class FazerOrcamentoEndpoint {
         } catch(Exception e){
             System.out.println(e.getMessage());
         }
+
         return ResponseEntity.badRequest().build();
+
 
     }
 }

@@ -5,12 +5,12 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
-import com.crossmade.pdv.aplicacao.categoria.dtos.DtoVisualizarCategoriaDentroDeProduto;
-import com.crossmade.pdv.aplicacao.cliente.dtos.DtoVisualizarCliente;
-import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedorDentroDeProduto;
+import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
+import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
 import com.crossmade.pdv.aplicacao.orcamento.command.fazer.FazerOrcamentoCommand;
-import com.crossmade.pdv.aplicacao.orcamento.dtos.DtoVisualizarOrcamento;
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.orcamento.dtos.ModeloVisualizacaoOrcamento;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.dominio.cliente.Cliente;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
@@ -19,10 +19,10 @@ import com.crossmade.pdv.dominio.produto.Produto;
 
 @Service
 public class MapperOrcamento {
-    public DtoVisualizarOrcamento paraDtoDeVisualizar(Orcamento orcamento) {
+    public ModeloVisualizacaoOrcamento paraModeloDeVisualizacao(Orcamento orcamento) {
 
-        List<DtoVisualizarProduto> produtosDto = new ArrayList<>();
-        DtoVisualizarCliente clienteDto = new DtoVisualizarCliente(
+        List<ModeloVisualizacaoProduto> modeloVisualizacaoProdutos = new ArrayList<>();
+        ModeloVisualizacaoCliente modeloVisualizacaoCliente = new ModeloVisualizacaoCliente(
             orcamento.getCliente().getnome(), 
             orcamento.getCliente().getTelefone(), 
             orcamento.getCliente().getEmail(),
@@ -31,19 +31,19 @@ public class MapperOrcamento {
 
         for(var produto: orcamento.getProdutos()){
 
-            var fornecedor = new DtoVisualizarFornecedorDentroDeProduto(
+            var modeloVisualizacaoFornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
                 produto.getFornecedor().getNome(),
                 produto.getFornecedor().getTelefone(),
                 produto.getFornecedor().getEmail(),
                 produto.getFornecedor().getEnderecos()
             );
 
-            var categoria = new DtoVisualizarCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
+            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
 
-            produtosDto.add(
-                new DtoVisualizarProduto(
+            modeloVisualizacaoProdutos.add(
+                new ModeloVisualizacaoProduto(
                     produto.getNome(), 
-                    fornecedor, 
+                    modeloVisualizacaoFornecedor,
                     categoria, 
                     produto.getMarca(), 
                     produto.getModelo(), 
@@ -57,19 +57,19 @@ public class MapperOrcamento {
             );
         }
 
-        return new DtoVisualizarOrcamento(
+        return new ModeloVisualizacaoOrcamento(
             orcamento.getId(),
-            produtosDto,
-            clienteDto,
+            modeloVisualizacaoProdutos,
+            modeloVisualizacaoCliente,
             orcamento.getValidade(),
             orcamento.getTotal(),
             orcamento.getDesconto()
         );
     }
 
-    public List<DtoVisualizarOrcamento> paraDtoDeVisualizar(List<Orcamento> orcamentos, List<DtoVisualizarCliente> clientesDto, List<List<DtoVisualizarProduto>> produtosDto) {
+    public List<ModeloVisualizacaoOrcamento> paraModeloDeVisualizacao(List<Orcamento> orcamentos, List<ModeloVisualizacaoCliente> clientesDto, List<List<ModeloVisualizacaoProduto>> produtosDto) {
      return orcamentos.stream()
-            .map(this::paraDtoDeVisualizar)
+            .map(this::paraModeloDeVisualizacao)
             .toList();
     }
 

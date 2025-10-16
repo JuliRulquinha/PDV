@@ -7,5 +7,6 @@ public interface PedidoRepositorio {
     Pedido salvar(Pedido pedido);
     Pedido buscarPorId(Integer id);
     List<Pedido> listarTodos();
-    void cancelar(Integer id);
+    Pedido cancelar(Integer id);
+    Pedido mudarStatus(Integer id, StatusPedido status);
 }

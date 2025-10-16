@@ -1,6 +1,6 @@
 package com.crossmade.pdv.aplicacao.produto.command.cadastrar;
 
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.aplicacao.produto.mapper.MapperProduto;
 import org.springframework.stereotype.Component;
 
@@ -18,7 +18,7 @@ public class CadastrarProdutoHandler {
     }
 
 
-    public DtoVisualizarProduto handle(CadastrarProdutoCommand command){
+    public ModeloVisualizacaoProduto handle(CadastrarProdutoCommand command){
 
         var produto = new Produto(
                   command.nome(),

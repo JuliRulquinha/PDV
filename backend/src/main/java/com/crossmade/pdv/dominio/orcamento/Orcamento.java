@@ -23,8 +23,15 @@ public class Orcamento {
     private Date validade;
     private BigDecimal total;
     private int desconto;
+    private StatusOcamento status;
 
-    
+    public StatusOcamento getStatus() {
+        return status;
+    }
+
+    public void setStatus(StatusOcamento status) {
+        this.status = status;
+    }
 
     public Orcamento() {
     }
@@ -34,15 +41,17 @@ public class Orcamento {
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
+        this.status = StatusOcamento.CRIADO;
     }
     public Orcamento(Integer id, List<Produto> produtos, Cliente cliente, Date validade, BigDecimal total,
-            int desconto) {
+            int desconto, StatusOcamento status) {
         this.id = id;
         this.produtos = produtos;
         this.cliente = cliente;
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
+        this.status = status;
     }
     public Integer getId() {
         return id;

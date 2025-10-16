@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossmade.pdv.aplicacao.orcamento.dtos.DtoVisualizarOrcamento;
+import com.crossmade.pdv.aplicacao.orcamento.dtos.ModeloVisualizacaoOrcamento;
 import com.crossmade.pdv.aplicacao.orcamento.query.buscar.BuscarOrcamentoPorIdHandler;
 import com.crossmade.pdv.aplicacao.orcamento.query.buscar.BuscarOrcamentoPorIdQuery;
 
@@ -22,8 +22,15 @@ public class BuscarOrcamentoEndpoint {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DtoVisualizarOrcamento> buscarPorId(@PathVariable Integer id) {
-        var dto = handler.handle(new BuscarOrcamentoPorIdQuery(id));
-        return ResponseEntity.ok(dto);
+    public ResponseEntity<ModeloVisualizacaoOrcamento> buscarPorId(@PathVariable Integer id) {
+        try{
+            var dto = handler.handle(new BuscarOrcamentoPorIdQuery(id));
+            return ResponseEntity.ok(dto);
+        } catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+        return ResponseEntity.badRequest().build();
+
+
     }
 }

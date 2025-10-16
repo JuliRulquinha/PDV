@@ -5,7 +5,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.aplicacao.cliente.mapper.MapperCliente;
-import com.crossmade.pdv.aplicacao.pedido.dtos.DtoVisualizarPedido;
+import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
 import com.crossmade.pdv.aplicacao.pedido.mapper.MapperPedido;
 import com.crossmade.pdv.aplicacao.produto.mapper.MapperProduto;
 import com.crossmade.pdv.dominio.pedido.Pedido;
@@ -15,17 +15,15 @@ import com.crossmade.pdv.infraestrutura.pedido.PedidoRepositorioIplm;
 public class CriarPedidoHandler {
     private final PedidoRepositorioIplm repositorio;
     private final MapperPedido mapper;
-    private final MapperCliente mapperCliente;
-    private final MapperProduto mapperProduto;
 
-    public CriarPedidoHandler(PedidoRepositorioIplm repositorio, MapperPedido mapper, MapperCliente mapperCliente, MapperProduto mapperProduto) {
+
+    public CriarPedidoHandler(PedidoRepositorioIplm repositorio, MapperPedido mapper) {
         this.repositorio = repositorio;
         this.mapper = mapper;
-        this.mapperCliente = mapperCliente;
-        this.mapperProduto = mapperProduto;
+
     }
 
-    public DtoVisualizarPedido handle(CriarPedidoCommand command) {
+    public ModeloVisualizacaoPedido handle(CriarPedidoCommand command) {
         var pedido = new Pedido(
             command.produtos(),
             command.cliente(),
@@ -34,8 +32,7 @@ public class CriarPedidoHandler {
             command.desconto()
         );
         var salvo = repositorio.salvar(pedido);
-        var clienteDto = mapperCliente.paraDtoDeVisualizar(salvo.getCliente());
-        var produtosDto = salvo.getProdutos().stream().map(mapperProduto::paraDtoDeVisualizar).collect(Collectors.toList());
-        return mapper.paraDtoDeVisualizar(salvo, clienteDto, produtosDto);
+
+        return mapper.paraModeloVisualizacao(salvo);
     }
 }
