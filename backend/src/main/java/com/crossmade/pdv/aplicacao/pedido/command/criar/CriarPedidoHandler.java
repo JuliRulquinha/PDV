@@ -24,13 +24,7 @@ public class CriarPedidoHandler {
     }
 
     public ModeloVisualizacaoPedido handle(CriarPedidoCommand command) {
-        var pedido = new Pedido(
-            command.produtos(),
-            command.cliente(),
-            command.validade(),
-            command.total(),
-            command.desconto()
-        );
+        var pedido = mapper.paraDominio(command);
         var salvo = repositorio.salvar(pedido);
 
         return mapper.paraModeloVisualizacao(salvo);
