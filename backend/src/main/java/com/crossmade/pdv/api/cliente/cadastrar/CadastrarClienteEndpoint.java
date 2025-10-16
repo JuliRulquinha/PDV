@@ -1,4 +1,4 @@
-package com.crossmade.pdv.api.cliente.cadastrarCliente;
+package com.crossmade.pdv.api.cliente.cadastrar;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteCommand;
 import com.crossmade.pdv.aplicacao.cliente.command.cadastrar.CadastrarClienteHandler;
-import com.crossmade.pdv.dominio.cliente.Cliente;
+import com.crossmade.pdv.aplicacao.cliente.dtos.DtoVisualizarCliente;
 
 
 
@@ -24,7 +24,7 @@ public class CadastrarClienteEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<Cliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
+    public ResponseEntity<DtoVisualizarCliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
         try {
             var cliente = handler.handle(comando);
             return ResponseEntity.ok(cliente);

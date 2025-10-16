@@ -1,4 +1,4 @@
-package com.crossmade.pdv.api.orcamento.cancelarOrcamento;
+package com.crossmade.pdv.api.orcamento.cancelar;
 
 import org.springframework.web.bind.annotation.RestController;
 

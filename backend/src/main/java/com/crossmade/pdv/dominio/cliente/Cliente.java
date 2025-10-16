@@ -62,6 +62,18 @@ public class Cliente {
         this.email = email;
         this.enderecos = enderecos;
     }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
+    }
     public Integer getId() {
         return id;
     }
