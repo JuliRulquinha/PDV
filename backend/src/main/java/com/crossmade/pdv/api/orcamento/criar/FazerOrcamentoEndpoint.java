@@ -11,7 +11,7 @@ import com.crossmade.pdv.aplicacao.orcamento.command.fazer.FazerOrcamentoHandler
 import com.crossmade.pdv.aplicacao.orcamento.dtos.ModeloVisualizacaoOrcamento;
 
 @RestController
-@RequestMapping("/api/orcamentos/criar")
+@RequestMapping("/api/orcamentos")
 public class FazerOrcamentoEndpoint {
 
     private final FazerOrcamentoHandler handler;
