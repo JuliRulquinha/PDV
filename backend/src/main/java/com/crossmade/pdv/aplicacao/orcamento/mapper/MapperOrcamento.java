@@ -42,6 +42,7 @@ public class MapperOrcamento {
 
             modeloVisualizacaoProdutos.add(
                 new ModeloVisualizacaoProduto(
+                    produto.getId(),
                     produto.getNome(), 
                     modeloVisualizacaoFornecedor,
                     categoria, 

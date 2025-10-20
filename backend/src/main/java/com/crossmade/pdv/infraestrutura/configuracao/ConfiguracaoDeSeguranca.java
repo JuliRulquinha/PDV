@@ -1,17 +1,14 @@
 package com.crossmade.pdv.infraestrutura.configuracao;
 
-import com.crossmade.pdv.aplicacao.usuario.servicos.AutenticacaoService;
-import com.crossmade.pdv.aplicacao.usuario.servicos.JwtFiltroDeAutenticacao;
+import java.util.List;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
-import org.springframework.security.config.Customizer;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -22,7 +19,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
-import java.util.List;
+import com.crossmade.pdv.aplicacao.usuario.servicos.AutenticacaoService;
+import com.crossmade.pdv.aplicacao.usuario.servicos.JwtFiltroDeAutenticacao;
 
 @Configuration
 //@EnableWebSecurity
@@ -50,7 +48,7 @@ public class ConfiguracaoDeSeguranca {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/api/usuarios/cadastrar").hasRole("GERENTE")
+                        //.requestMatchers("/api/usuarios/cadastrar").hasRole("GERENTE")
                         .requestMatchers(HttpMethod.POST, "/api/produtos/**").hasAnyRole("ADMIN", "GERENTE")
                         .requestMatchers(HttpMethod.PUT, "/api/produtos/**").hasAnyRole("ADMIN", "GERENTE")
                         .requestMatchers(HttpMethod.POST, "/api/pedidos/**").hasAnyRole("ADMIN", "GERENTE")
@@ -63,7 +61,7 @@ public class ConfiguracaoDeSeguranca {
                         .requestMatchers(HttpMethod.GET, "/api/fornecedores/**").hasAnyRole("ADMIN", "GERENTE")
                         .requestMatchers(HttpMethod.GET, "/api/produtos/**").authenticated()
                         .requestMatchers(HttpMethod.GET, "/api/categorias/**").authenticated()
-                        .requestMatchers("/api/auth/**").permitAll()
+                        .requestMatchers("/api/auth/**", "/api/usuarios/cadastrar").permitAll()
                         .anyRequest().authenticated()
                 )
                 .sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

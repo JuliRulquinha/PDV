@@ -10,6 +10,7 @@ public class MapperCliente {
     public ModeloVisualizacaoCliente paraDtoDeVisualizar(Cliente cliente) {
         return new ModeloVisualizacaoCliente(
 
+            cliente.getId(),
             cliente.getnome(),
             cliente.getTelefone(),
             cliente.getEmail(),

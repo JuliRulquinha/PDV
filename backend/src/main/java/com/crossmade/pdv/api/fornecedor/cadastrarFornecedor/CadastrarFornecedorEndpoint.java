@@ -1,6 +1,5 @@
 package com.crossmade.pdv.api.fornecedor.cadastrarFornecedor;
 
-import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar.CadastrarFornecedorCommand;
 import com.crossmade.pdv.aplicacao.fornecedor.command.cadastrar.CadastrarFornecedorHandler;
-import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
+import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 
 @RestController
 @RequestMapping("api/fornecedores")

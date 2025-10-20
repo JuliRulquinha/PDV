@@ -1,10 +1,11 @@
 package com.crossmade.pdv.aplicacao.fornecedor.dtos;
 
-import com.crossmade.pdv.dominio.endereco.Endereco;
-
 import java.util.List;
 
+import com.crossmade.pdv.dominio.endereco.Endereco;
+
 public record ModeloVisualizacaoFornecedorDentroDeProduto(
+        Integer id,
         String nome,
         String telefone,
         String email,

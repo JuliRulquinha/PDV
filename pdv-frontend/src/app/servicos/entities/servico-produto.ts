@@ -26,6 +26,7 @@ export class ServicoProduto {
 
   private mapToCommand(produto: Produto) {
     return {
+      id: produto.id,
       nome: produto.nome,
       categoria_id: produto.categoria?.id,
       fornecedor_id: produto.fornecedor?.id,

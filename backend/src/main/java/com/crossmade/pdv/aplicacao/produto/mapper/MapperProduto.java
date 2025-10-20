@@ -1,26 +1,29 @@
 package com.crossmade.pdv.aplicacao.produto.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
 import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.produto.Produto;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class MapperProduto {
 
     public ModeloVisualizacaoProduto paraDtoDeVisualizar(Produto produto){
-        var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
-        var fornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
-                produto.getFornecedor().getNome(),
-                produto.getFornecedor().getTelefone(),
-                produto.getFornecedor().getEmail(),
-                produto.getFornecedor().getEnderecos()
-        );
+    var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getId(), produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
+    var fornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
+        produto.getFornecedor().getId(),
+        produto.getFornecedor().getNome(),
+        produto.getFornecedor().getTelefone(),
+        produto.getFornecedor().getEmail(),
+        produto.getFornecedor().getEnderecos()
+    );
         return new ModeloVisualizacaoProduto(
+                produto.getId(),
                 produto.getNome(),
                 fornecedor,
                 categoria,

@@ -1,12 +1,9 @@
 package com.crossmade.pdv.aplicacao.produto.query.buscarTodos;
 
-import java.util.List;
+import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import com.crossmade.pdv.aplicacao.produto.mapper.MapperProduto;
-import org.springframework.stereotype.Component;
-
-import com.crossmade.pdv.dominio.produto.Produto;
 import com.crossmade.pdv.infraestrutura.produto.ProdutoRepositorioIplm;
 
 @Component

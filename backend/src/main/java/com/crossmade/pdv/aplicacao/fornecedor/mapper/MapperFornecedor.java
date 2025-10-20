@@ -1,14 +1,15 @@
 package com.crossmade.pdv.aplicacao.fornecedor.mapper;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.springframework.stereotype.Service;
+
 import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.DtoVisualizarFornecedor;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
 import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
-import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Service
 public class MapperFornecedor {
@@ -18,21 +19,24 @@ public class MapperFornecedor {
         var produtos = fornecedor.getProdutos();
         List<ModeloVisualizacaoProduto> produtosDtos =  new ArrayList<>();
 
-        var fornecedorVisualizar = new ModeloVisualizacaoFornecedorDentroDeProduto(
-                fornecedor.getNome(),
-                fornecedor.getEmail(),
-                fornecedor.getTelefone(),
-                fornecedor.getEnderecos()
-        );
+    var fornecedorVisualizar = new ModeloVisualizacaoFornecedorDentroDeProduto(
+        fornecedor.getId(),
+        fornecedor.getNome(),
+        fornecedor.getEmail(),
+        fornecedor.getTelefone(),
+        fornecedor.getEnderecos()
+    );
         for (var produtosDoFornecedor: produtos){
 
-            var categoriaVisualizar = new ModeloVisualizacaoCategoriaDentroDeProduto(
-                    produtosDoFornecedor.getCategoria().getNome(),
-                    produtosDoFornecedor.getCategoria().getDescricao()
-            );
+        var categoriaVisualizar = new ModeloVisualizacaoCategoriaDentroDeProduto(
+            produtosDoFornecedor.getCategoria().getId(),
+            produtosDoFornecedor.getCategoria().getNome(),
+            produtosDoFornecedor.getCategoria().getDescricao()
+        );
 
             produtosDtos.add(
                     new ModeloVisualizacaoProduto(
+                            produtosDoFornecedor.getId(),
                             produtosDoFornecedor.getNome(),
                             fornecedorVisualizar,
                             categoriaVisualizar,
@@ -46,13 +50,14 @@ public class MapperFornecedor {
                             produtosDoFornecedor.getDimensoes()
                     ));
         }
-        return new DtoVisualizarFornecedor(
-                fornecedor.getNome(),
-                fornecedor.getTelefone(),
-                fornecedor.getEmail(),
-                fornecedor.getEnderecos(),
-                produtosDtos
-        );
+    return new DtoVisualizarFornecedor(
+        fornecedor.getId(),
+        fornecedor.getNome(),
+        fornecedor.getTelefone(),
+        fornecedor.getEmail(),
+        fornecedor.getEnderecos(),
+        produtosDtos
+    );
     }
 
     public List<DtoVisualizarFornecedor> paraListaDtoDeVisualizar(List<Fornecedor> fornecedores){

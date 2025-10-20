@@ -3,20 +3,20 @@ package com.crossmade.pdv.aplicacao.pedido.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
+import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 import com.crossmade.pdv.aplicacao.fornecedor.dtos.ModeloVisualizacaoFornecedorDentroDeProduto;
 import com.crossmade.pdv.aplicacao.pedido.command.criar.CriarPedidoCommand;
+import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.categoria.Categoria;
 import com.crossmade.pdv.dominio.cliente.Cliente;
 import com.crossmade.pdv.dominio.endereco.Endereco;
 import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
-import com.crossmade.pdv.dominio.produto.Produto;
-import org.springframework.stereotype.Service;
-
-import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
-import com.crossmade.pdv.aplicacao.pedido.dtos.ModeloVisualizacaoPedido;
-import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.pedido.Pedido;
+import com.crossmade.pdv.dominio.produto.Produto;
 
 @Service
 public class MapperPedido {
@@ -44,17 +44,18 @@ public class MapperPedido {
 
             produtosDto.add(
                     new ModeloVisualizacaoProduto(
-                            produto.getNome(),
-                            fornecedor,
-                            categoria,
-                            produto.getMarca(),
-                            produto.getModelo(),
-                            produto.getQuantidade(),
-                            produto.getValorCusto(),
-                            produto.getValorVenda(),
-                            produto.getImageUrl(),
-                            produto.getValidade(),
-                            produto.getDimensoes()
+                        produto.getId(),
+                        produto.getNome(),
+                        fornecedor,
+                        categoria,
+                        produto.getMarca(),
+                        produto.getModelo(),
+                        produto.getQuantidade(),
+                        produto.getValorCusto(),
+                        produto.getValorVenda(),
+                        produto.getImageUrl(),
+                        produto.getValidade(),
+                        produto.getDimensoes()
                     )
             );
         }
