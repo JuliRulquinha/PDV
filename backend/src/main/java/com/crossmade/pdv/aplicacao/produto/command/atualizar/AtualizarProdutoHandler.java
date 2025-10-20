@@ -1,6 +1,8 @@
 package com.crossmade.pdv.aplicacao.produto.command.atualizar;
 
 
+import com.crossmade.pdv.infraestrutura.categoria.CategoriaRepositorioIplm;
+import com.crossmade.pdv.infraestrutura.fornecedor.FornecedorRepositorioIplm;
 import org.springframework.stereotype.Component;
 
 import com.crossmade.pdv.dominio.categoria.Categoria;
@@ -15,21 +17,21 @@ public class AtualizarProdutoHandler {
 
 
     private final ProdutoRepositorioIplm produtoRepositorio;
+    private final FornecedorRepositorioIplm fornecedorRepositorio;
+    private final CategoriaRepositorioIplm categoriaRepositorioIplm;
     private final EntityManager entityManager;
 
-    public AtualizarProdutoHandler(ProdutoRepositorioIplm produtoRepositorio, EntityManager entityManager) {
+    public AtualizarProdutoHandler(ProdutoRepositorioIplm produtoRepositorio, FornecedorRepositorioIplm fornecedorRepositorio, CategoriaRepositorioIplm categoriaRepositorioIplm, EntityManager entityManager) {
         this.produtoRepositorio = produtoRepositorio;
+        this.fornecedorRepositorio = fornecedorRepositorio;
+        this.categoriaRepositorioIplm = categoriaRepositorioIplm;
         this.entityManager = entityManager;
     }
 
     public Produto handle(Integer id, AtualizarProdutoCommand command) {
-        var categoria = entityManager.getReference(Categoria.class, command.categoria_id());
-        var fornecedor = entityManager.getReference(Fornecedor.class, command.fornecedor_id());
 
         Produto produto = new Produto(
             command.nome(),
-            fornecedor,
-            categoria,
             command.marca(),
             command.modelo(),
             command.quantidade(),

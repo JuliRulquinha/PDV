@@ -61,7 +61,19 @@ public class Produto {
         this.fornecedor = fornecedor;
     }
 
+    public Produto( String nome, String marca, String modelo, int quantidade,
+                   BigDecimal valorCusto, BigDecimal valorVenda, String imageUrl, Date validade, Dimensoes dimensoes) {
+        this.nome = nome;
+        this.marca = marca;
+        this.modelo = modelo;
+        this.quantidade = quantidade;
+        this.valorCusto = valorCusto;
+        this.valorVenda = valorVenda;
+        this.imageUrl = imageUrl;
+        this.validade = validade;
+        this.dimensoes = dimensoes;
 
+    }
 
     public Produto(String nome,Fornecedor fornecedor, Categoria categoria, String marca, String modelo, int quantidade, BigDecimal valorCusto,
             BigDecimal valorVenda, String imageUrl, Date validade, Dimensoes dimensoes) {

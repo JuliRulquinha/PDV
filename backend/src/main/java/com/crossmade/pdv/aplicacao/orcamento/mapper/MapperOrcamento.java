@@ -23,22 +23,24 @@ public class MapperOrcamento {
 
         List<ModeloVisualizacaoProduto> modeloVisualizacaoProdutos = new ArrayList<>();
         ModeloVisualizacaoCliente modeloVisualizacaoCliente = new ModeloVisualizacaoCliente(
-            orcamento.getCliente().getnome(), 
-            orcamento.getCliente().getTelefone(), 
-            orcamento.getCliente().getEmail(),
-            orcamento.getCliente().getEnderecos()
+                orcamento.getCliente().getId(),
+                orcamento.getCliente().getnome(),
+                orcamento.getCliente().getTelefone(),
+                orcamento.getCliente().getEmail(),
+                orcamento.getCliente().getEnderecos()
         );
 
         for(var produto: orcamento.getProdutos()){
 
             var modeloVisualizacaoFornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
-                produto.getFornecedor().getNome(),
-                produto.getFornecedor().getTelefone(),
-                produto.getFornecedor().getEmail(),
-                produto.getFornecedor().getEnderecos()
+                    produto.getFornecedor().getId(),
+                    produto.getFornecedor().getNome(),
+                    produto.getFornecedor().getTelefone(),
+                    produto.getFornecedor().getEmail(),
+                    produto.getFornecedor().getEnderecos()
             );
 
-            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
+            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getId(), produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
 
             modeloVisualizacaoProdutos.add(
                 new ModeloVisualizacaoProduto(

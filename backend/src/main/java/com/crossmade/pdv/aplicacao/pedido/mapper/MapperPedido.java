@@ -25,6 +25,7 @@ public class MapperPedido {
         List<ModeloVisualizacaoProduto> produtosDto = new ArrayList<>();
         List<Endereco> enderecos = pedido.getCliente().getEnderecos();
         ModeloVisualizacaoCliente clienteDto = new ModeloVisualizacaoCliente(
+                pedido.getCliente().getId(),
                 pedido.getCliente().getnome(),
                 pedido.getCliente().getTelefone(),
                 pedido.getCliente().getEmail(),
@@ -34,13 +35,14 @@ public class MapperPedido {
         for(var produto: pedido.getProdutos()){
 
             var fornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
+                    produto.getFornecedor().getId(),
                     produto.getFornecedor().getNome(),
                     produto.getFornecedor().getTelefone(),
                     produto.getFornecedor().getEmail(),
                     produto.getFornecedor().getEnderecos()
             );
 
-            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
+            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getId(), produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
 
             produtosDto.add(
                     new ModeloVisualizacaoProduto(

@@ -15,11 +15,12 @@ import { ServicoFornecedor } from '../../servicos/entities/servico-fornecedor';
 })
 export class ControleDeEstoque {
  
-
+  emEdicao:boolean = false; 
   pagina:number = 0;
   contagem:number= 0;
   produtos: Produto[] = [];
-  formProduto!: FormGroup;
+  formCadastro!: FormGroup;
+  formEdicao!: FormGroup;
   produtoSelecionado: Produto | null = null;
   novoCadastro = false; 
   pageSize: number = 10;  
@@ -38,7 +39,7 @@ export class ControleDeEstoque {
   ) {}
 
   ngOnInit(): void {
-    this.formProduto = this.fb.group({
+    this.formCadastro = this.fb.group({
       id: [null],
       nome: ['', Validators.required],
       fornecedor: [null, Validators.required],
@@ -57,6 +58,23 @@ export class ControleDeEstoque {
       })
     });
  
+    this.formEdicao = this.fb.group({
+      id: [null],
+      nome: ['', Validators.required],
+      marca: [''],
+      modelo: [''],
+      quantidade: [0, [Validators.required, Validators.min(0)]],
+      valorCusto: [null],
+      valorVenda: [null],
+      imageUrl: [''],
+      validade: [null],
+      dimensoes: this.fb.group({
+        largura: [null],
+        altura: [null],
+        profundidade: [null]
+      })
+    })
+
     Promise.all([
       this.buscarCategorias(),
       this.buscarFornecedores(),
@@ -102,7 +120,7 @@ export class ControleDeEstoque {
     this.novoCadastro = true;
     this.produtoSelecionado = null;
 
-    this.formProduto.reset({
+    this.formCadastro.reset({
       quantidade: 0,
       fornecedor: null,
       categoria: null,
@@ -111,20 +129,21 @@ export class ControleDeEstoque {
   }
 
   editarProduto(p: Produto): void {
+    this.emEdicao = true;
     this.produtoSelecionado = p;
     this.novoCadastro = false;
-    this.formProduto.patchValue(p);
+    this.formEdicao.patchValue(p);
   }
 
  salvarProduto(): void {
-  console.log('submit disparado', this.formProduto.value);
+  console.log('submit disparado', this.formCadastro.value);
 
-  if (this.formProduto.invalid) {
-    this.formProduto.markAllAsTouched();
+  if (this.formCadastro.invalid) {
+    this.formCadastro.markAllAsTouched();
     return;
   }
 
-  const produto: Produto = { ...this.formProduto.value };
+  const produto: Produto = { ...this.formCadastro.value };
 
   // Converte validade para Date se veio como string do input
   if (produto.validade) {
@@ -154,9 +173,10 @@ export class ControleDeEstoque {
 }
 
   cancelarEdicao(): void {
+    this.emEdicao = false;
     this.produtoSelecionado = null;
     this.novoCadastro = false;
-    this.formProduto.reset({ quantidade: 0 });
+    this.formEdicao.reset({ quantidade: 0 });
   }
 
 proximaPagina(): void {
