@@ -36,10 +36,19 @@
 }
 
 .pos-btn-finalizar {
-  background: #1976d2;
+  background: #338b01;
   padding: 8px 24px; /* mais largo para o texto */
 }
-.pos-btn-finalizar:hover { background: #1565c0; }
+
+.pos-btn-orcamento {
+   background: #1976d2;
+  padding: 8px 24px;
+}
+
+.pos-btn-finalizar:hover { background: #286902; }
+
+.pos-btn-orcamento:hover { background: #1565c0; }
+
 
 .pos-btn-cancelar {
   background: #b71c1c;

@@ -6,11 +6,12 @@ import { selectAllProdutos } from '../../store/produto.selectors';
 import { clearProdutos } from '../../store/produto.actions'; // vamos criar essa ação
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { MatIconModule } from '@angular/material/icon';
 
 @Component({
   selector: 'app-opcoes-venda',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, MatIconModule],
   templateUrl: './opcoes-venda.html',
   styleUrls: ['./opcoes-venda.css']
 })
@@ -29,6 +30,13 @@ export class OpcoesVenda {
   this.valorRecebido = 0;
   // Agora sim alerta
   setTimeout(() => alert('Venda finalizada!'), 0); 
+}
+
+salvarOrcamento(){
+  this.store.dispatch(clearProdutos()); // limpa imediatamente
+  this.valorRecebido = 0;
+  // Agora sim alerta
+  setTimeout(() => alert('Orçamento salvo!'), 0); 
 }
 
 cancelar() {

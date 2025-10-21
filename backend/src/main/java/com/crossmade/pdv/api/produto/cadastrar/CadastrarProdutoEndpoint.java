@@ -22,7 +22,7 @@ public class CadastrarProdutoEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<ModeloVisualizacaoProduto> cadastrar(@RequestBody CadastrarProdutoCommand comando){
+    public ResponseEntity<ModeloVisualizacaoProduto> cadastrar(@RequestBody CadastrarProdutoCommand comando) {
         try {
             var produto = handler.handle(comando);
             return ResponseEntity.ok(produto);
