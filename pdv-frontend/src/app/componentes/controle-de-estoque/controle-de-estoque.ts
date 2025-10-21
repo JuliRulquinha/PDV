@@ -136,7 +136,6 @@ export class ControleDeEstoque {
   }
 
  salvarProduto(): void {
-  console.log('submit disparado', this.formCadastro.value);
 
   if (this.formCadastro.invalid) {
     this.formCadastro.markAllAsTouched();
@@ -145,7 +144,6 @@ export class ControleDeEstoque {
 
   const produto: Produto = { ...this.formCadastro.value };
 
-  // Converte validade para Date se veio como string do input
   if (produto.validade) {
     produto.validade = new Date(produto.validade);
   }
