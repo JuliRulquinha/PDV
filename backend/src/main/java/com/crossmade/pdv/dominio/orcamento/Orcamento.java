@@ -15,8 +15,8 @@ public class Orcamento {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @ManyToMany
-    private List<Produto> produtos;
+    @OneToMany(mappedBy = "orcamento")
+    private List<ItemDoOrcamento> itens;
     @ManyToOne()
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
@@ -35,18 +35,18 @@ public class Orcamento {
 
     public Orcamento() {
     }
-    public Orcamento(List<Produto> produtos, Cliente cliente, Date validade, BigDecimal total, int desconto) {
-        this.produtos = produtos;
+    public Orcamento(List<ItemDoOrcamento> itens, Cliente cliente, Date validade, BigDecimal total, int desconto) {
+        this.itens = itens;
         this.cliente = cliente;
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
         this.status = StatusOcamento.CRIADO;
     }
-    public Orcamento(Integer id, List<Produto> produtos, Cliente cliente, Date validade, BigDecimal total,
+    public Orcamento(Integer id, List<ItemDoOrcamento> itens, Cliente cliente, Date validade, BigDecimal total,
             int desconto, StatusOcamento status) {
         this.id = id;
-        this.produtos = produtos;
+        this.itens = itens;
         this.cliente = cliente;
         this.validade = validade;
         this.total = total;
@@ -59,11 +59,11 @@ public class Orcamento {
     public void setId(Integer id) {
         this.id = id;
     }
-    public List<Produto> getProdutos() {
-        return produtos;
+    public List<ItemDoOrcamento> getItens() {
+        return itens;
     }
-    public void setProdutos(List<Produto> produtos) {
-        this.produtos = produtos;
+    public void setItens(List<ItemDoOrcamento> itens) {
+        this.itens = itens;
     }
     public Cliente getCliente() {
         return cliente;
@@ -89,6 +89,4 @@ public class Orcamento {
     public void setDesconto(int desconto) {
         this.desconto = desconto;
     }
-
-    
 }

@@ -21,8 +21,6 @@ import com.crossmade.pdv.dominio.produto.Produto;
 @Service
 public class MapperPedido {
     public ModeloVisualizacaoPedido paraModeloVisualizacao(Pedido pedido) {
-
-        List<ModeloVisualizacaoProduto> produtosDto = new ArrayList<>();
         List<Endereco> enderecos = pedido.getCliente().getEnderecos();
         ModeloVisualizacaoCliente clienteDto = new ModeloVisualizacaoCliente(
                 pedido.getCliente().getId(),
@@ -32,39 +30,9 @@ public class MapperPedido {
                 enderecos
         );
 
-        for(var produto: pedido.getProdutos()){
-
-            var fornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
-                    produto.getFornecedor().getId(),
-                    produto.getFornecedor().getNome(),
-                    produto.getFornecedor().getTelefone(),
-                    produto.getFornecedor().getEmail(),
-                    produto.getFornecedor().getEnderecos()
-            );
-
-            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getCategoria().getId(), produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
-
-            produtosDto.add(
-                    new ModeloVisualizacaoProduto(
-                        produto.getId(),
-                        produto.getNome(),
-                        fornecedor,
-                        categoria,
-                        produto.getMarca(),
-                        produto.getModelo(),
-                        produto.getQuantidade(),
-                        produto.getValorCusto(),
-                        produto.getValorVenda(),
-                        produto.getImageUrl(),
-                        produto.getValidade(),
-                        produto.getDimensoes()
-                    )
-            );
-        }
-
         return new ModeloVisualizacaoPedido(
             pedido.getId(),
-            produtosDto,
+            pedido.getItens(),
             clienteDto,
             pedido.getValidade(),
             pedido.getTotal(),
@@ -78,39 +46,10 @@ public class MapperPedido {
 
     public Pedido paraDominio(CriarPedidoCommand modelo){
 
-        List<Produto> produtos = new ArrayList<>();
-
-        for(var produto: modelo.produtos()){
-
-            var fornecedor = new Fornecedor(
-                    produto.fornecedor().nome(),
-                    produto.fornecedor().telefone(),
-                    produto.fornecedor().email()
-            );
-
-            var categoria = new Categoria(produto.categoria().nome(), produto.categoria().descricao());
-
-            produtos.add(
-                    new Produto(
-                            produto.nome(),
-                            fornecedor,
-                            categoria,
-                            produto.marca(),
-                            produto.modelo(),
-                            produto.quantidade(),
-                            produto.valorCusto(),
-                            produto.valorVenda(),
-                            produto.imageUrl(),
-                            produto.validade(),
-                            produto.dimensoes()
-                    )
-            );
-        }
-
         var cliente = new Cliente(modelo.cliente().nome(), modelo.cliente().telefone(), modelo.cliente().email());
 
         return new Pedido(
-                produtos,
+                modelo.itens(),
                 cliente,
                 modelo.validade(),
                 modelo.total(),

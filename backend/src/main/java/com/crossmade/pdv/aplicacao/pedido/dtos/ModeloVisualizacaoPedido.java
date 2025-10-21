@@ -6,10 +6,11 @@ import java.util.List;
 
 import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
+import com.crossmade.pdv.dominio.pedido.ItemDoPedido;
 
 public record ModeloVisualizacaoPedido(
     Integer id,
-    List<ModeloVisualizacaoProduto> produtos,
+    List<ItemDoPedido> itens,
     ModeloVisualizacaoCliente cliente,
     Date validade,
     BigDecimal total,

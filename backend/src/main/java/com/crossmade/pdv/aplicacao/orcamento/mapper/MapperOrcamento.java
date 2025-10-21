@@ -21,7 +21,6 @@ import com.crossmade.pdv.dominio.produto.Produto;
 public class MapperOrcamento {
     public ModeloVisualizacaoOrcamento paraModeloDeVisualizacao(Orcamento orcamento) {
 
-        List<ModeloVisualizacaoProduto> modeloVisualizacaoProdutos = new ArrayList<>();
         ModeloVisualizacaoCliente modeloVisualizacaoCliente = new ModeloVisualizacaoCliente(
                 orcamento.getCliente().getId(),
                 orcamento.getCliente().getnome(),
@@ -30,39 +29,11 @@ public class MapperOrcamento {
                 orcamento.getCliente().getEnderecos()
         );
 
-        for(var produto: orcamento.getProdutos()){
 
-            var modeloVisualizacaoFornecedor = new ModeloVisualizacaoFornecedorDentroDeProduto(
-                    produto.getFornecedor().getId(),
-                    produto.getFornecedor().getNome(),
-                    produto.getFornecedor().getTelefone(),
-                    produto.getFornecedor().getEmail(),
-                    produto.getFornecedor().getEnderecos()
-            );
-
-            var categoria = new ModeloVisualizacaoCategoriaDentroDeProduto(produto.getId(), produto.getCategoria().getNome(), produto.getCategoria().getDescricao());
-
-            modeloVisualizacaoProdutos.add(
-                new ModeloVisualizacaoProduto(
-                    produto.getId(),
-                    produto.getNome(), 
-                    modeloVisualizacaoFornecedor,
-                    categoria, 
-                    produto.getMarca(), 
-                    produto.getModelo(), 
-                    produto.getQuantidade(), 
-                    produto.getValorCusto(), 
-                    produto.getValorVenda(),
-                    produto.getImageUrl(),
-                    produto.getValidade(), 
-                    produto.getDimensoes()
-                )
-            );
-        }
 
         return new ModeloVisualizacaoOrcamento(
             orcamento.getId(),
-            modeloVisualizacaoProdutos,
+            orcamento.getItens(),
             modeloVisualizacaoCliente,
             orcamento.getValidade(),
             orcamento.getTotal(),
@@ -70,44 +41,14 @@ public class MapperOrcamento {
         );
     }
 
-    public List<ModeloVisualizacaoOrcamento> paraModeloDeVisualizacao(List<Orcamento> orcamentos, List<ModeloVisualizacaoCliente> clientesDto, List<List<ModeloVisualizacaoProduto>> produtosDto) {
+    public List<ModeloVisualizacaoOrcamento> paraModeloDeVisualizacao(List<Orcamento> orcamentos) {
      return orcamentos.stream()
             .map(this::paraModeloDeVisualizacao)
             .toList();
     }
 
     public Orcamento paraDominio(FazerOrcamentoCommand orcamento) {
-
-        List<Produto> produtos = new ArrayList<>();
-
-        for(var produto: orcamento.produtos()) {
-
-            var categoria = new Categoria(produto.categoria().nome(), produto.categoria().descricao());
-            var fornecedor = new Fornecedor(
-                produto.fornecedor().nome(),
-                produto.fornecedor().telefone(),
-                produto.fornecedor().email()
-            );
-
-            produtos.add(
-                new Produto(
-                    produto.nome(),
-                    fornecedor,
-                    categoria,
-                    produto.marca(),
-                    produto.modelo(),
-                    produto.quantidade(),
-                    produto.valorCusto(),
-                    produto.valorVenda(),
-                    produto.imageUrl(),
-                    produto.validade(),
-                    produto.dimensoes()
-            ));
-
-        }
-
         var cliente = new Cliente(orcamento.cliente().nome(), orcamento.cliente().telefone(), orcamento.cliente().email());
-
-        return new Orcamento(produtos, cliente, orcamento.validade(), orcamento.total(), orcamento.desconto());
+        return new Orcamento(orcamento.itens(), cliente, orcamento.validade(), orcamento.total(), orcamento.desconto());
     }
 }

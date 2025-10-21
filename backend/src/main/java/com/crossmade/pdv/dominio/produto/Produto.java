@@ -38,8 +38,8 @@ public class Produto {
     private String imageUrl;
     private Date validade;
     private Dimensoes dimensoes;
-    @ManyToMany(mappedBy = "produtos")
-    private List<Pedido> pedidos;
+
+
 
     public Produto() {
     }
