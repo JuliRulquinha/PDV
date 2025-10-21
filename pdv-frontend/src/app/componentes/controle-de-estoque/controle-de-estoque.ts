@@ -42,8 +42,8 @@ export class ControleDeEstoque {
     this.formCadastro = this.fb.group({
       id: [null],
       nome: ['', Validators.required],
-      fornecedor: [null, Validators.required],
-      categoria: [null, Validators.required],
+      fornecedor: [Validators.required],
+      categoria: [Validators.required],
       marca: [''],
       modelo: [''],
       quantidade: [0, [Validators.required, Validators.min(0)]],

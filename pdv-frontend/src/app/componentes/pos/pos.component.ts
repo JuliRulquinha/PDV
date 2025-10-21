@@ -21,17 +21,18 @@ export interface Produto {
   dimensoes?: Dimensoes;
 }
 
-// Example interfaces for related types:
+
 export interface Fornecedor {
   id: number;
   nome: string;
-  // add other fields as needed
+  telefone: string;
+  email: string;
 }
 
 export interface Categoria {
   id: number;
   nome: string;
-  // add other fields as needed
+  descricao: string;
 }
 
 export interface Dimensoes {

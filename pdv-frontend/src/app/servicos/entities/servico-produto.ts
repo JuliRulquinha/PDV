@@ -28,8 +28,17 @@ export class ServicoProduto {
     return {
       id: produto.id,
       nome: produto.nome,
-      categoria_id: produto.categoria?.id,
-      fornecedor_id: produto.fornecedor?.id,
+      categoria: {
+        id: produto.categoria?.id,
+        nome: produto.categoria?.nome,
+        descricao: produto.categoria?.descricao
+      },
+      fornecedor: {
+        id: produto.fornecedor?.id,
+        nome: produto.fornecedor?.nome,
+        telefone: produto.fornecedor?.telefone,
+        email: produto.fornecedor?.email
+      },
       marca: produto.marca,
       modelo: produto.modelo,
       quantidade: produto.quantidade,
