@@ -2,7 +2,7 @@ package com.crossmade.pdv.infraestrutura.orcamento;
 
 import java.util.List;
 
-import com.crossmade.pdv.dominio.orcamento.StatusOcamento;
+import com.crossmade.pdv.dominio.orcamento.StatusOrcamento;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.orcamento.Orcamento;
@@ -36,12 +36,12 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
     @Override
     public Orcamento cancelar(Integer id) {
         var orcamentoDoDb = repositorio.findById(id).orElse(null);
-        orcamentoDoDb.setStatus(StatusOcamento.CANCELADO);
+        orcamentoDoDb.setStatus(StatusOrcamento.CANCELADO);
         return repositorio.save(orcamentoDoDb);
     }
 
     @Override
-    public Orcamento mudarStatus(Integer id, StatusOcamento status) {
+    public Orcamento mudarStatus(Integer id, StatusOrcamento status) {
         var orcamentoDoDb = repositorio.findById(id).orElse(null);
         orcamentoDoDb.setStatus(status);
         return repositorio.save(orcamentoDoDb);

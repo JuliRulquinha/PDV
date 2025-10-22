@@ -29,8 +29,6 @@ public class MapperOrcamento {
                 orcamento.getCliente().getEnderecos()
         );
 
-
-
         return new ModeloVisualizacaoOrcamento(
             orcamento.getId(),
             orcamento.getItens(),
@@ -48,7 +46,7 @@ public class MapperOrcamento {
     }
 
     public Orcamento paraDominio(FazerOrcamentoCommand orcamento) {
-        var cliente = new Cliente(orcamento.cliente().nome(), orcamento.cliente().telefone(), orcamento.cliente().email());
+        var cliente = new Cliente(orcamento.cliente().id(), orcamento.cliente().nome(), orcamento.cliente().telefone(), orcamento.cliente().email());
         return new Orcamento(orcamento.itens(), cliente, orcamento.validade(), orcamento.total(), orcamento.desconto());
     }
 }

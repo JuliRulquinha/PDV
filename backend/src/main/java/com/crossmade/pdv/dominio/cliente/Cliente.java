@@ -63,6 +63,14 @@ public class Cliente {
         this.enderecos = enderecos;
     }
 
+    public Cliente(Integer id, String nome, String telefone, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+
+    }
+
     public String getTelefone() {
         return telefone;
     }

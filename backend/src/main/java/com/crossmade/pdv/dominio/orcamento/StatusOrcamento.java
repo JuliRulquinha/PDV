@@ -1,6 +1,6 @@
 package com.crossmade.pdv.dominio.orcamento;
 
-public enum StatusOcamento {
+public enum StatusOrcamento {
     CRIADO,
     EXPIRADO,
     CANCELADO

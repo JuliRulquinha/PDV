@@ -7,5 +7,5 @@ public interface OrcamentoRepositorio {
     Orcamento buscarPorId(Integer id);
     List<Orcamento> listarTodos();
     Orcamento cancelar(Integer id);
-    Orcamento mudarStatus(Integer id, StatusOcamento status);
+    Orcamento mudarStatus(Integer id, StatusOrcamento status);
 }

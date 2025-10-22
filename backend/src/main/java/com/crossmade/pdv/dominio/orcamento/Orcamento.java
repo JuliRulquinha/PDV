@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import com.crossmade.pdv.dominio.cliente.Cliente;
-import com.crossmade.pdv.dominio.produto.Produto;
 
 import jakarta.persistence.*;
 
@@ -15,21 +14,23 @@ public class Orcamento {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(mappedBy = "orcamento")
+
+    @OneToMany(mappedBy = "orcamento", cascade = CascadeType.ALL)
     private List<ItemDoOrcamento> itens;
+
     @ManyToOne()
     @JoinColumn(name = "cliente_id")
     private Cliente cliente;
     private Date validade;
     private BigDecimal total;
     private int desconto;
-    private StatusOcamento status;
+    private StatusOrcamento status;
 
-    public StatusOcamento getStatus() {
+    public StatusOrcamento getStatus() {
         return status;
     }
 
-    public void setStatus(StatusOcamento status) {
+    public void setStatus(StatusOrcamento status) {
         this.status = status;
     }
 
@@ -41,10 +42,10 @@ public class Orcamento {
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;
-        this.status = StatusOcamento.CRIADO;
+        this.status = StatusOrcamento.CRIADO;
     }
     public Orcamento(Integer id, List<ItemDoOrcamento> itens, Cliente cliente, Date validade, BigDecimal total,
-            int desconto, StatusOcamento status) {
+            int desconto, StatusOrcamento status) {
         this.id = id;
         this.itens = itens;
         this.cliente = cliente;
