@@ -10,7 +10,7 @@ import com.crossmade.pdv.dominio.pedido.ItemDoPedido;
 
 public record CriarPedidoCommand(
     List<ItemDoPedido> itens,
-    ModeloVisualizacaoCliente cliente,
+    Integer cliente_id,
     Date validade,
     BigDecimal total,
     int desconto

@@ -44,10 +44,7 @@ public class MapperPedido {
         return pedidos.stream().map(this::paraModeloVisualizacao).toList();
     }
 
-    public Pedido paraDominio(CriarPedidoCommand modelo){
-
-        var cliente = new Cliente(modelo.cliente().nome(), modelo.cliente().telefone(), modelo.cliente().email());
-
+    public Pedido paraDominio(CriarPedidoCommand modelo, Cliente cliente){
         return new Pedido(
                 modelo.itens(),
                 cliente,

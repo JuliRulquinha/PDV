@@ -24,7 +24,6 @@ public class CadastrarProdutoHandler {
         this.mapper = mapper;
     }
 
-
     public ModeloVisualizacaoProduto handle(CadastrarProdutoCommand command){
 
         var categoria = categoriaRepositorio.buscarPorId(command.categoria_id());

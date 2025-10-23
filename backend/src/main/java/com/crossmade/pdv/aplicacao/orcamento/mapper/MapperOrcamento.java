@@ -45,8 +45,7 @@ public class MapperOrcamento {
             .toList();
     }
 
-    public Orcamento paraDominio(FazerOrcamentoCommand orcamento) {
-        var cliente = new Cliente(orcamento.cliente().id(), orcamento.cliente().nome(), orcamento.cliente().telefone(), orcamento.cliente().email());
+    public Orcamento paraDominio(FazerOrcamentoCommand orcamento, Cliente cliente) {
         return new Orcamento(orcamento.itens(), cliente, orcamento.validade(), orcamento.total(), orcamento.desconto());
     }
 }

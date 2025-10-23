@@ -9,7 +9,6 @@ import com.crossmade.pdv.dominio.cliente.Cliente;
 public class MapperCliente {
     public ModeloVisualizacaoCliente paraDtoDeVisualizar(Cliente cliente) {
         return new ModeloVisualizacaoCliente(
-
             cliente.getId(),
             cliente.getnome(),
             cliente.getTelefone(),

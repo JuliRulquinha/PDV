@@ -11,7 +11,7 @@ import com.crossmade.pdv.dominio.orcamento.ItemDoOrcamento;
 
 public record FazerOrcamentoCommand(
     List<ItemDoOrcamento> itens,
-    ModeloVisualizacaoCliente cliente,
+    Integer cliente_id,
     Date validade,
     BigDecimal total,
     int desconto

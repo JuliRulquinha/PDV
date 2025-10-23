@@ -15,7 +15,7 @@ public class Pedido {
     @Id()
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @OneToMany(mappedBy = "pedido")
+    @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemDoPedido> itens;
     @ManyToOne()
     @JoinColumn(name = "cliente_id")

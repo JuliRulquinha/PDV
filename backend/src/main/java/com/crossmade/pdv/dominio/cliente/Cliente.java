@@ -35,9 +35,7 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente")
     private List<Orcamento> orcamentos;
-    
 
-  
     public Cliente() {
     }
     public Cliente(String nome, String telefone, String email) {
