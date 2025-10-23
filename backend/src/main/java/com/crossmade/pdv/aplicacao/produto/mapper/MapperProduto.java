@@ -3,6 +3,9 @@ package com.crossmade.pdv.aplicacao.produto.mapper;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.command.cadastrar.CadastrarProdutoCommand;
+import com.crossmade.pdv.dominio.categoria.Categoria;
+import com.crossmade.pdv.dominio.fornecedor.Fornecedor;
 import org.springframework.stereotype.Service;
 
 import com.crossmade.pdv.aplicacao.categoria.dtos.ModeloVisualizacaoCategoriaDentroDeProduto;
@@ -35,6 +38,22 @@ public class MapperProduto {
                 produto.getImageUrl(),
                 produto.getValidade(),
                 produto.getDimensoes()
+        );
+    }
+
+    public Produto paraDominio(CadastrarProdutoCommand command, Categoria categoriaGerenciada, Fornecedor fornecedorGerenciado){
+        return new Produto(
+                command.nome(),
+                fornecedorGerenciado,
+                categoriaGerenciada,
+                command.marca(),
+                command.modelo(),
+                command.quantidade(),
+                command.valorCusto(),
+                command.valorVenda(),
+                command.imageUrl(),
+                command.validade(),
+                command.dimensoes()
         );
     }
 

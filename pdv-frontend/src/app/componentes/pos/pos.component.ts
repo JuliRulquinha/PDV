@@ -14,8 +14,8 @@ export interface Produto {
   marca?: string;
   modelo?: string;
   quantidade: number;
-  valorCusto?: number; // <-- make optional
-  valorVenda?: number; // <-- make optional
+  valorCusto?: number; 
+  valorVenda?: number; 
   imageUrl?: string;
   validade?: Date;
   dimensoes?: Dimensoes;
@@ -36,10 +36,10 @@ export interface Categoria {
 }
 
 export interface Dimensoes {
-  // define fields as needed, e.g.:
-  largura: number;
-  altura: number;
   peso: number;
+  altura: number;
+  largura: number;
+  
 }
 
 @Component({

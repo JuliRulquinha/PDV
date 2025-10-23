@@ -9,8 +9,8 @@ import com.crossmade.pdv.dominio.produto.Dimensoes;
 
 public record CadastrarProdutoCommand (
     String nome,
-    Categoria categoria,
-    Fornecedor fornecedor,
+    Integer categoria_id,
+    Integer fornecedor_id,
     String marca,
     String modelo,
     int quantidade,

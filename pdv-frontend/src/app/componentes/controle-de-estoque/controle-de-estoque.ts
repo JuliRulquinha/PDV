@@ -54,7 +54,7 @@ export class ControleDeEstoque {
       dimensoes: this.fb.group({
         largura: [null],
         altura: [null],
-        profundidade: [null]
+        peso: [null]
       })
     });
  
@@ -71,7 +71,7 @@ export class ControleDeEstoque {
       dimensoes: this.fb.group({
         largura: [null],
         altura: [null],
-        profundidade: [null]
+        peso: [null]
       })
     })
 
@@ -100,8 +100,10 @@ export class ControleDeEstoque {
   }
 
   buscarCategorias(): void {
+  
     this.servicoCategoria.buscarCategorias().subscribe({
       next: (data) => {
+        debugger;
         this.categorias = Array.isArray(data.categorias) ? data.categorias : [data.categorias];
       }
     });
@@ -143,6 +145,8 @@ export class ControleDeEstoque {
   }
 
   const produto: Produto = { ...this.formCadastro.value };
+
+  console.log("Produto antes de sair para o backend: ", produto);
 
   if (produto.validade) {
     produto.validade = new Date(produto.validade);

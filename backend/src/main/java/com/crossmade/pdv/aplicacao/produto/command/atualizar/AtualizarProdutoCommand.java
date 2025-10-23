@@ -8,8 +8,6 @@ import com.crossmade.pdv.dominio.produto.Produto;
 
 public record AtualizarProdutoCommand (
     String nome,
-    Integer categoria_id,
-    Integer fornecedor_id,
     String marca,
     String modelo,
     int quantidade,

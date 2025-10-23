@@ -17,15 +17,10 @@ public class AtualizarProdutoHandler {
 
 
     private final ProdutoRepositorioIplm produtoRepositorio;
-    private final FornecedorRepositorioIplm fornecedorRepositorio;
-    private final CategoriaRepositorioIplm categoriaRepositorioIplm;
-    private final EntityManager entityManager;
 
-    public AtualizarProdutoHandler(ProdutoRepositorioIplm produtoRepositorio, FornecedorRepositorioIplm fornecedorRepositorio, CategoriaRepositorioIplm categoriaRepositorioIplm, EntityManager entityManager) {
+
+    public AtualizarProdutoHandler(ProdutoRepositorioIplm produtoRepositorio) {
         this.produtoRepositorio = produtoRepositorio;
-        this.fornecedorRepositorio = fornecedorRepositorio;
-        this.categoriaRepositorioIplm = categoriaRepositorioIplm;
-        this.entityManager = entityManager;
     }
 
     public Produto handle(Integer id, AtualizarProdutoCommand command) {
