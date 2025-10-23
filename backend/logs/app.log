@@ -353,3 +353,8 @@
 2025-10-23 17:21:43,149 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
 2025-10-23 17:24:05,294 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
 2025-10-23 17:24:32,782 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-23 17:40:05,891 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2025-10-23 17:40:05,894 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2025-10-23 17:40:05,900 [SpringApplicationShutdownHook] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Closing JPA EntityManagerFactory for persistence unit 'default'
+2025-10-23 17:40:05,903 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown initiated...
+2025-10-23 17:40:05,913 [SpringApplicationShutdownHook] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Shutdown completed.
