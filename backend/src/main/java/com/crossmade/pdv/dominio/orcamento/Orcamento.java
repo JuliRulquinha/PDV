@@ -44,6 +44,15 @@ public class Orcamento {
         this.desconto = desconto;
         this.status = StatusOrcamento.CRIADO;
     }
+
+    public Orcamento(List<ItemDoOrcamento> itens, Date validade, BigDecimal total, int desconto) {
+        this.itens = itens;
+        this.validade = validade;
+        this.total = total;
+        this.desconto = desconto;
+        this.status = StatusOrcamento.CRIADO;
+    }
+
     public Orcamento(Integer id, List<ItemDoOrcamento> itens, Cliente cliente, Date validade, BigDecimal total,
             int desconto, StatusOrcamento status) {
         this.id = id;

@@ -13,12 +13,13 @@
       <!-- Imagem do produto -->
       <div class="produto-imagem">
         @if (lastProduct$ | async; as lastProduct) {
-          <img 
-            [src]="lastProduct.imageUrl ?? 'https://via.placeholder.com/150'" 
-            [alt]="lastProduct.nome ?? 'Produto'" 
+          <img
+            [src]="lastProduct.imageUrl || '/nao-perfil.gif'"
+            alt="produto"
+            (error)="$event.target.src='/nao-perfil.gif'"
           />
         } @else {
-          <img src="https://via.placeholder.com/150" />
+          <img src="/nao-perfil.gif" />
         }
       </div>
 

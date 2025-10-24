@@ -23,6 +23,7 @@ public class Pedido {
     private Date validade;
     private BigDecimal total;
     private int desconto;
+    private StatusPedido status;
 
     public StatusPedido getStatus() {
         return status;
@@ -32,7 +33,7 @@ public class Pedido {
         this.status = status;
     }
 
-    private StatusPedido status;
+
 
     public Pedido() {
     }
@@ -40,6 +41,14 @@ public class Pedido {
     public Pedido(List<ItemDoPedido> itens, Cliente cliente, Date validade, BigDecimal total, int desconto) {
         this.itens = itens;
         this.cliente = cliente;
+        this.validade = validade;
+        this.total = total;
+        this.desconto = desconto;
+        this.status = StatusPedido.CRIADO;
+    }
+
+    public Pedido(List<ItemDoPedido> itens, Date validade, BigDecimal total, int desconto) {
+        this.itens = itens;
         this.validade = validade;
         this.total = total;
         this.desconto = desconto;

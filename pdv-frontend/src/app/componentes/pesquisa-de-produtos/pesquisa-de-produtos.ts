@@ -16,6 +16,7 @@ import { MenuUsuario } from '../menu-usuario/menu-usuario';
   templateUrl: './pesquisa-de-produtos.html',
   styleUrls: ['./pesquisa-de-produtos.css']
 })
+
 export class PesquisaDeProdutos {
   quantidadeProduto: number = 1;
   codigoProduto: string = '';

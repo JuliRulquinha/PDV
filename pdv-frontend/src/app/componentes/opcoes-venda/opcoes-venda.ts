@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Produto } from '../pos/pos.component';
@@ -7,6 +7,8 @@ import { clearProdutos } from '../../store/produto.actions'; // vamos criar essa
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';
+import { ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
+import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 
 @Component({
   selector: 'app-opcoes-venda',
@@ -20,30 +22,30 @@ export class OpcoesVenda {
   tipoPagamento: string = 'dinheiro';
   valorRecebido: number = 0;
 
+  servicoOrcamento = inject(ServicoOrcamento);
+  servicoPedido = inject(ServicoPedido);
+
   constructor(private store: Store) {
-    // aqui você pega todos os produtos do NgRx
     this.produtos$ = this.store.select(selectAllProdutos);
   }
 
- finalizarVenda() {
-  this.store.dispatch(clearProdutos()); // limpa imediatamente
-  this.valorRecebido = 0;
-  // Agora sim alerta
-  setTimeout(() => alert('Venda finalizada!'), 0); 
-}
+  finalizarVenda() {
+    this.store.dispatch(clearProdutos());
+    this.valorRecebido = 0;
+    setTimeout(() => alert('Venda finalizada!'), 0); 
+  }
 
-salvarOrcamento(){
-  this.store.dispatch(clearProdutos()); // limpa imediatamente
-  this.valorRecebido = 0;
-  // Agora sim alerta
-  setTimeout(() => alert('Orçamento salvo!'), 0); 
-}
+  salvarOrcamento(){
+    this.store.dispatch(clearProdutos());
+    this.valorRecebido = 0;
+    setTimeout(() => alert('Orçamento salvo!'), 0); 
+  }
 
-cancelar() {
-  this.store.dispatch(clearProdutos());
-  this.valorRecebido = 0;
-  setTimeout(() => alert('Venda cancelada!'), 0);
-}
+  cancelar() {
+    this.store.dispatch(clearProdutos());
+    this.valorRecebido = 0;
+    setTimeout(() => alert('Venda cancelada!'), 0);
+  }
 
   getTotal(produtos: Produto[] = []) {
     return produtos.reduce((sum, p) => sum + (p.valorVenda ?? 0) * (p.quantidade ?? 1), 0);

@@ -61,7 +61,7 @@ export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;
   @Input() products: Produto[] = [];
 
-    mostrarConsultaPreco = false;
+  mostrarConsultaPreco = false;
 
   ngOnInit() {
     this.updateLastProduct();
@@ -75,18 +75,17 @@ export class PosComponent implements OnInit{
     this.lastProduct = this.products.length ? this.products[this.products.length - 1] : undefined;
   }
 
-  // Método para receber do filho
   onProdutoAdicionado(produto: Produto) {
-    this.products.push(produto); // adiciona à lista
-    this.updateLastProduct();    // atualiza o lastProduct
+    this.products.push(produto); 
+    this.updateLastProduct();    
   }
 
   searchProduct(id: number) {
     const found = this.products.find(p => p.id === id);
     if (found) {
       this.lastProduct = found;
+    }
   }
-}
 
   consultar() {
     this.mostrarConsultaPreco = true;
@@ -99,13 +98,13 @@ export class PosComponent implements OnInit{
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {
   
+    if (event.key === 'F2') {
+      this.consultar();
+    }
 
-  if (event.key === 'F2') {
-    this.consultar();
+    if (event.key === 'Escape') {
+      this.fecharConsulta();
+    }
   }
-
-  if (event.key === 'Escape') {
-    this.fecharConsulta();
-}}
 }
 
