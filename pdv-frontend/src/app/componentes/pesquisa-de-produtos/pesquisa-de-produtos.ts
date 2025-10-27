@@ -42,6 +42,7 @@ export class PesquisaDeProdutos {
     this.productService.buscarProdutoPorId(code).subscribe({
       next: (data: Produto) => {
         const produtoComQtd = { ...data, quantidade: qtd };
+
         this.store.dispatch(addProduto({ produto: produtoComQtd }));
         this.codigoProduto = '';
         this.quantidadeProduto = 1;

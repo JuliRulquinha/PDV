@@ -22,7 +22,6 @@ public class FazerOrcamentoEndpoint {
 
     @PostMapping
     public ResponseEntity<ModeloVisualizacaoOrcamento> criar(@RequestBody FazerOrcamentoCommand command) {
-
         try{
             var dto = handler.handle(command);
             return ResponseEntity.ok(dto);
@@ -30,6 +29,5 @@ public class FazerOrcamentoEndpoint {
             System.out.println(e.getMessage());
         }
         return ResponseEntity.badRequest().build();
-
     }
 }

@@ -43,6 +43,13 @@ export class ServicoOrcamento {
     }
   }
 
+  criarOrcamento(produtos: Produto[]){
+
+    for(let p of produtos){
+
+    }
+  }
+
   fazerOrcamento(orcamento: Orcamento){
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }

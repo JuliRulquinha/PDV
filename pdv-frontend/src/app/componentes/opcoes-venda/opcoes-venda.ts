@@ -30,6 +30,7 @@ export class OpcoesVenda {
   }
 
   finalizarVenda() {
+
     this.store.dispatch(clearProdutos());
     this.valorRecebido = 0;
     setTimeout(() => alert('Venda finalizada!'), 0); 
