@@ -13,6 +13,3 @@ export const selectLastProduto = createSelector(
   (produtos) => produtos && produtos.length ? produtos[produtos.length - 1] : undefined
 );
 
-// function incrementarQuantidadeDoProduto(produtoEncontrado: Produto, qtd: number): any {
-//   produtoEncontrado.quantidade += qtd ;
-// }

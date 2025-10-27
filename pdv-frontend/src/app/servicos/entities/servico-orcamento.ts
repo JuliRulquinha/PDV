@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Produto } from '../../componentes/pos/pos.component';
+import { Store } from '@ngrx/store';
+import { selectAllProdutos } from '../../store/produto.selectors';
+import { from, map, of, tap } from 'rxjs';
 
 export interface Orcamento{
   id?: number,
@@ -33,22 +36,31 @@ export enum StatusDoOrcamento{
 export class ServicoOrcamento {
   baseUrl = "http://localhost:8080/api/orcamento";
   http = inject(HttpClient);
+  store = inject(Store);
 
-  mapearProdutoParaItem(produto: Produto, quantidade: number, totalDosProdutos: number): ItemDoOrcamento{
+  mapearProdutoParaItem(produto: Produto): ItemDoOrcamento{
     return {
       produto_id: produto.id!,
-      quantidade: quantidade!,
+      quantidade: produto.quantidade!,
       valorUnitario: produto.valorVenda!,
-      total: totalDosProdutos!,
+      total: produto.valorVenda! * produto.quantidade,
     }
   }
+criarOrcamento() {
+  this.store.select(selectAllProdutos).pipe(
+    map(produtos => 
+      produtos.map(p => this.mapearProdutoParaItem(p))
+    ),
+    tap(itensMapeados => {
+      console.log('Itens mapeados:', itensMapeados);
+    })
+  )
+  .subscribe(itens => {
+    console.log('Itens no subscribe:', itens);
+    // aqui você já tem os itens prontos
+  });
+}
 
-  criarOrcamento(produtos: Produto[]){
-
-    for(let p of produtos){
-
-    }
-  }
 
   fazerOrcamento(orcamento: Orcamento){
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
