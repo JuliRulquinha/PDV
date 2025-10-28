@@ -3,12 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { Produto } from '../../componentes/pos/pos.component';
 import { Store } from '@ngrx/store';
 import { selectAllProdutos } from '../../store/produto.selectors';
-import { from, map, of, tap } from 'rxjs';
+import { map, Observable, tap } from 'rxjs';
+import { Cliente } from './servico-cliente';
 
 export interface Orcamento{
   id?: number,
   itens: ItemDoOrcamento[],
-  cliente_id?: number,
+  cliente: Cliente,
   validade: number,
   total: number,
   desconto?: number,
@@ -61,8 +62,13 @@ criarOrcamento() {
   });
 }
 
-
-  fazerOrcamento(orcamento: Orcamento){
+   fazerOrcamento(orcamento: Orcamento){
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }
+
+  atualizarOrcamento(orcamento: Orcamento):Observable<Orcamento>{
+    return new Observable<Orcamento>;
+  }
+
+ 
 }

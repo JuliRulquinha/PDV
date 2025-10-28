@@ -7,6 +7,7 @@ import { usuarioGuard } from './guardas/usuario-guard';
 import { AcessoNegado } from './componentes/acesso-negado/acesso-negado';
 import { CadastrarUsuario } from './componentes/cadastrar-usuario/cadastrar-usuario';
 import { gerenteGuard } from './guardas/gerente-guard';
+import { ListaOrcamentos } from './componentes/lista-orcamentos/lista-orcamentos';
 
 
 export const routes: Routes = [
@@ -30,6 +31,12 @@ export const routes: Routes = [
         canActivate: [gerenteGuard],
         component: CadastrarUsuario
     },
+    {
+        path: 'lista-de-orcamentos',
+        canActivate: [usuarioGuard],
+        component: ListaOrcamentos
+    },
+
     {
         path: 'login',
         component: PaginaLogin
