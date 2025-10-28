@@ -1,22 +1,22 @@
-2025-10-27 14:53:56,855 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 35542 (/home/dev2/Documents/Java/PDV/backend/target/classes started by dev2 in /home/dev2/Documents/Java/PDV/backend)
-2025-10-27 14:53:56,871 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
-2025-10-27 14:53:56,873 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
-2025-10-27 14:53:57,848 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
-2025-10-27 14:53:57,976 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 116 ms. Found 7 JPA repository interfaces.
-2025-10-27 14:53:58,688 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
-2025-10-27 14:53:58,708 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
-2025-10-27 14:53:58,709 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
-2025-10-27 14:53:58,763 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
-2025-10-27 14:53:58,763 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1813 ms
-2025-10-27 14:53:58,951 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
-2025-10-27 14:53:59,004 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
-2025-10-27 14:53:59,039 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
-2025-10-27 14:53:59,346 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
-2025-10-27 14:53:59,375 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
-2025-10-27 14:53:59,582 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@40b31a16
-2025-10-27 14:53:59,584 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
-2025-10-27 14:53:59,618 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
-2025-10-27 14:53:59,643 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
+2025-10-28 14:20:34,715 [main] INFO  com.crossmade.pdv.PdvApplication - Starting PdvApplication using Java 21.0.8 with PID 9675 (/home/dev2/Documents/Java/PDV/backend/target/classes started by dev2 in /home/dev2/Documents/Java/PDV/backend)
+2025-10-28 14:20:34,725 [main] DEBUG com.crossmade.pdv.PdvApplication - Running with Spring Boot v3.5.4, Spring v6.2.9
+2025-10-28 14:20:34,728 [main] INFO  com.crossmade.pdv.PdvApplication - No active profile set, falling back to 1 default profile: "default"
+2025-10-28 14:20:35,946 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2025-10-28 14:20:36,049 [main] INFO  o.s.d.r.c.RepositoryConfigurationDelegate - Finished Spring Data repository scanning in 92 ms. Found 7 JPA repository interfaces.
+2025-10-28 14:20:36,746 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8080 (http)
+2025-10-28 14:20:36,761 [main] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2025-10-28 14:20:36,761 [main] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.43]
+2025-10-28 14:20:36,808 [main] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2025-10-28 14:20:36,809 [main] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 1985 ms
+2025-10-28 14:20:37,033 [main] INFO  o.h.jpa.internal.util.LogHelper - HHH000204: Processing PersistenceUnitInfo [name: default]
+2025-10-28 14:20:37,144 [main] INFO  org.hibernate.Version - HHH000412: Hibernate ORM core version 6.6.22.Final
+2025-10-28 14:20:37,204 [main] INFO  o.h.c.i.RegionFactoryInitiator - HHH000026: Second-level cache disabled
+2025-10-28 14:20:37,633 [main] INFO  o.s.o.j.p.SpringPersistenceUnitInfo - No LoadTimeWeaver setup: ignoring JPA class transformer
+2025-10-28 14:20:37,701 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Starting...
+2025-10-28 14:20:37,950 [main] INFO  com.zaxxer.hikari.pool.HikariPool - HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@31006a75
+2025-10-28 14:20:37,952 [main] INFO  com.zaxxer.hikari.HikariDataSource - HikariPool-1 - Start completed.
+2025-10-28 14:20:38,041 [main] WARN  org.hibernate.orm.deprecation - HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2025-10-28 14:20:38,086 [main] INFO  o.hibernate.orm.connections.pooling - HHH10001005: Database info:
 	Database JDBC URL [Connecting through datasource 'HikariDataSource (HikariPool-1)']
 	Database driver: undefined/unknown
 	Database version: 16.10
@@ -24,43 +24,21 @@
 	Isolation level: undefined/unknown
 	Minimum pool size: undefined/unknown
 	Maximum pool size: undefined/unknown
-2025-10-27 14:54:00,863 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
-2025-10-27 14:54:01,109 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
-2025-10-27 14:54:01,466 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
-2025-10-27 14:54:01,716 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
-2025-10-27 14:54:01,812 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
-2025-10-27 14:54:01,815 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
-2025-10-27 14:54:01,853 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
-2025-10-27 14:54:02,414 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
-2025-10-27 14:54:02,424 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 6.462 seconds (process running for 7.123)
-2025-10-27 14:54:12,883 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
-2025-10-27 14:54:12,884 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
-2025-10-27 14:54:12,885 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
-2025-10-27 14:54:13,198 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 14:54:13,277 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 14:54:51,159 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 14:54:59,057 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 15:26:52,488 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:10:34,022 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:10:40,029 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:10:44,219 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:10:48,772 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:10:52,333 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:54:55,870 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:00,203 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:07,871 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:25,015 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:29,796 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:33,172 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:55:36,109 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:57:06,738 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:57:09,586 [http-nio-8080-exec-8] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 17:57:14,290 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:04:06,575 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:04:10,314 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:04:17,074 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:05:01,693 [http-nio-8080-exec-9] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:05:07,544 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:05:11,009 [http-nio-8080-exec-3] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:05:15,315 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
-2025-10-27 18:05:24,232 [http-nio-8080-exec-7] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:20:39,347 [main] INFO  o.h.e.t.j.p.i.JtaPlatformInitiator - HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2025-10-28 14:20:39,808 [main] INFO  o.s.o.j.LocalContainerEntityManagerFactoryBean - Initialized JPA EntityManagerFactory for persistence unit 'default'
+2025-10-28 14:20:40,242 [main] DEBUG c.c.p.a.u.s.JwtFiltroDeAutenticacao - Filter 'jwtFiltroDeAutenticacao' configured for use
+2025-10-28 14:20:40,466 [main] INFO  o.s.d.j.r.query.QueryEnhancerFactory - Hibernate is in classpath; If applicable, HQL parser will be used.
+2025-10-28 14:20:40,581 [main] INFO  o.s.s.c.a.a.c.InitializeAuthenticationProviderBeanManagerConfigurer$InitializeAuthenticationProviderManagerConfigurer - Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2025-10-28 14:20:40,582 [main] WARN  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used by Spring Security for automatically configuring username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider. If the current configuration is intentional, to turn off this warning, increase the logging level of 'org.springframework.security.config.annotation.authentication.configuration.InitializeUserDetailsBeanManagerConfigurer' to ERROR
+2025-10-28 14:20:40,613 [main] WARN  o.s.b.a.o.j.JpaBaseConfiguration$JpaWebConfiguration - spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2025-10-28 14:20:41,367 [main] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8080 (http) with context path '/'
+2025-10-28 14:20:41,376 [main] INFO  com.crossmade.pdv.PdvApplication - Started PdvApplication in 7.469 seconds (process running for 8.126)
+2025-10-28 14:22:42,763 [http-nio-8080-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2025-10-28 14:22:42,763 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2025-10-28 14:22:42,765 [http-nio-8080-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2025-10-28 14:22:43,123 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:22:43,206 [http-nio-8080-exec-2] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:24:03,729 [http-nio-8080-exec-5] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:24:07,265 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:30:35,061 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:30:38,970 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina

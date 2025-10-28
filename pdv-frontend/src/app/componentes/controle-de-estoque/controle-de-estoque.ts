@@ -80,9 +80,6 @@ export class ControleDeEstoque {
       this.buscarFornecedores(),
       this.carregarProdutos()
     ])
-
-   
-    
   }
 
   carregarProdutos(): void {
@@ -181,46 +178,46 @@ export class ControleDeEstoque {
     this.formEdicao.reset({ quantidade: 0 });
   }
 
-proximaPagina(): void {
-  if (!this.isLastPage) {
-    this.pagina++;
-    this.carregarProdutos();
-  }
-}
-
-paginaAnterior(): void {
-  if (this.pagina > 0) {
-    this.pagina--;
-    this.carregarProdutos();
-  }
-}
-
-primeiraPagina(){
-
-  if (this.pagina > 0) {
-    this.pagina = 0;
-    this.carregarProdutos();
+  proximaPagina(): void {
+    if (!this.isLastPage) {
+      this.pagina++;
+      this.carregarProdutos();
+    }
   }
 
-}
-
-ultimaPagina(){
-
-  if(!this.isLastPage){
-    this.pagina = Math.floor(this.contagem/this.pageSize);
-    this.carregarProdutos();
-  }
-}
-
-irParaPagina(p: number): void {
-  if (p >= 0 && p < this.totalPaginas) {
-    this.pagina = p;
-    this.carregarProdutos();
+  paginaAnterior(): void {
+    if (this.pagina > 0) {
+      this.pagina--;
+      this.carregarProdutos();
+    }
   }
 
-}
+  primeiraPagina(){
 
-get paginas(): number[] {
-  return Array.from({ length: this.totalPaginas }, (_, i) => i);
-}
+    if (this.pagina > 0) {
+      this.pagina = 0;
+      this.carregarProdutos();
+    }
+
+  }
+
+  ultimaPagina(){
+
+    if(!this.isLastPage){
+      this.pagina = Math.floor(this.contagem/this.pageSize);
+      this.carregarProdutos();
+    }
+  }
+
+  irParaPagina(p: number): void {
+    if (p >= 0 && p < this.totalPaginas) {
+      this.pagina = p;
+      this.carregarProdutos();
+    }
+
+  }
+
+  get paginas(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, i) => i);
+  }
 }
