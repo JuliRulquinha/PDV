@@ -3,13 +3,13 @@ import { inject, Injectable } from '@angular/core';
 import { Produto } from '../../componentes/pos/pos.component';
 import { Store } from '@ngrx/store';
 import { selectAllProdutos } from '../../store/produto.selectors';
-import { map, Observable, tap } from 'rxjs';
+import { filter, map, Observable, tap } from 'rxjs';
 import { Cliente } from './servico-cliente';
 
 export interface Orcamento{
   id?: number,
   itens: ItemDoOrcamento[],
-  cliente: Cliente,
+  cliente?: Cliente,
   validade: number,
   total: number,
   desconto?: number,
@@ -49,6 +49,7 @@ export class ServicoOrcamento {
   }
 criarOrcamento() {
   this.store.select(selectAllProdutos).pipe(
+    filter(produtos => produtos.length > 0),
     map(produtos => 
       produtos.map(p => this.mapearProdutoParaItem(p))
     ),
@@ -58,7 +59,7 @@ criarOrcamento() {
   )
   .subscribe(itens => {
     console.log('Itens no subscribe:', itens);
-    // aqui você já tem os itens prontos
+    
   });
 }
 
@@ -70,5 +71,4 @@ criarOrcamento() {
     return new Observable<Orcamento>;
   }
 
- 
 }

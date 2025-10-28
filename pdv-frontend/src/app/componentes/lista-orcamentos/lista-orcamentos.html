@@ -6,8 +6,9 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Nome</th>
+        <th>Cliente</th>
         <th>Validade</th>
+        <th>Itens</th>
         <th>Total</th>
         <th>Status</th>
         <th>Ações</th>
@@ -16,7 +17,9 @@
     <tbody>
      <tr *ngFor="let o of orcamentos">
   <td data-label="ID">{{ o.id }}</td>
+  <td data-label="Cliente">{{ o.cliente?.nome }}</td>
   <td data-label="Validade">{{ o.validade }}</td>
+  <td data-label="Itens">{{ o.itens }}</td>
   <td data-label="Total">{{ o.total }}</td>
   <td data-label="Status">{{ o.status }}</td>
  
