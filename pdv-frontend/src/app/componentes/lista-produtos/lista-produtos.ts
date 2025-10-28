@@ -2,7 +2,7 @@ import { Component, HostListener, inject } from '@angular/core';
 import { Produto } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
-import { props, Store } from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { selectAllProdutos, selectLastProduto } from '../../store/produto.selectors';
 import { removerProdutoDaLista } from '../../store/produto.actions';

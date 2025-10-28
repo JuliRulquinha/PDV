@@ -42,3 +42,6 @@
 2025-10-28 14:24:07,265 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
 2025-10-28 14:30:35,061 [http-nio-8080-exec-10] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
 2025-10-28 14:30:38,970 [http-nio-8080-exec-1] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:59:44,246 [http-nio-8080-exec-4] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:59:50,918 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
+2025-10-28 14:59:51,000 [http-nio-8080-exec-6] INFO  c.c.p.a.u.s.AutenticacaoService - Usuário logado com sucesso: Janaina
