@@ -21,6 +21,7 @@ export class OpcoesVenda {
   produtos$: Observable<Produto[]>;
   tipoPagamento: string = 'dinheiro';
   valorRecebido: number = 0;
+  quantidadeDeItens: number = 0;
 
   servicoOrcamento = inject(ServicoOrcamento);
   servicoPedido = inject(ServicoPedido);
@@ -47,6 +48,10 @@ export class OpcoesVenda {
     this.store.dispatch(clearProdutos());
     this.valorRecebido = 0;
     setTimeout(() => alert('Venda cancelada!'), 0);
+  }
+
+  totalDeItens(produtos: Produto[] = []) {
+    return produtos.reduce((sum, p) => sum + (p.quantidade ?? 0), 0);
   }
 
   getTotal(produtos: Produto[] = []) {

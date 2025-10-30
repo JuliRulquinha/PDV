@@ -1,0 +1,112 @@
+
+.cadastro-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  font-family: Arial, sans-serif;
+}
+
+.cadastro-box {
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+  width: 350px;
+  text-align: center;
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  appearance: none; /* remove a setinha padrão */
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center; /* respeita o padding */
+  background-size: 10px 6px;
+}
+
+
+.cadastro-btn {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pular-btn{
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background-color: #8015d8;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pular-btn:hover{
+  background-color: #591294;
+  transform: translateY(-2px);
+}
+
+.cadastro-btn:hover {
+  background-color: #0d6efd;
+  transform: translateY(-2px);
+}
+
+.btns-div{
+  display: flex;
+  gap: 5px;
+}
+
+.error {
+  color: red;          /* texto vermelho */
+  font-size: 0.85rem;  /* menor que o texto normal */
+  margin-top: 4px;     /* espaço acima da mensagem */
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;   /* opcional: destaca o input inválido */
+}
+
+.erro-cadastro {
+  color: #ff3b30;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}

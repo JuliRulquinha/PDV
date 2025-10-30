@@ -19,8 +19,8 @@
         <span class="col-nome">{{ produto.nome ?? '-' }}</span>
         <span class="col-preco">R$ {{ produto.valorVenda ?? 0 | number:'1.2-2' }}</span>
         <span class="col-x">x</span>
-        <span class="col-qtd">{{ produto.quantidade ?? 1 }}</span>
-        <span class="col-total">R$ {{ ((produto.quantidade ?? 1) * (produto.valorVenda ?? 0)) | number:'1.2-2' }}</span>
+        <span class="col-qtd">{{ produto.quantidade }}</span>
+        <span class="col-total">R$ {{ ((produto.quantidade) * (produto.valorVenda ?? 0)) | number:'1.2-2' }}</span>
       </div>
     </div>
 

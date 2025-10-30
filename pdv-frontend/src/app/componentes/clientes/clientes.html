@@ -1,0 +1,43 @@
+
+  <div class="cadastro-box">
+    <p style="font-size: 20px; margin-bottom: 15px;"><b>Dados do Cliente</b></p>
+    <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+
+     
+      <div class="form-group">
+        <label for="nome"><b>Nome</b></label>
+        <input id="nome" type="text" formControlName="nome" />
+        
+        <div class="error" *ngIf="(cadastroForm.get('nome')?.touched || submitted) && cadastroForm.get('nome')?.invalid">
+          <small *ngIf="cadastroForm.get('nome')?.errors?.['required']">Nome é obrigatório</small>
+          <small *ngIf="cadastroForm.get('nome')?.errors?.['minlength']">Nome deve ter pelo menos 3 caracteres</small>     
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="telefone"><b>Telefone</b></label>
+        <input id="telefone" type="text" formControlName="telefone" />
+        
+        <div class="error" *ngIf="(cadastroForm.get('telefone')?.touched || submitted) && cadastroForm.get('telefone')?.invalid">
+          <small *ngIf="cadastroForm.get('telefone')?.errors?.['required']">Telefone é obrigatório</small>
+          
+        </div>
+        
+      </div>
+
+      <div class="form-group">
+        <label for="endereco"><b>Endereço</b></label>
+        <input id="endereco" type="text" formControlName="endereco" />
+        
+       
+        </div>
+        <p *ngIf="erroCadastro" class="erro-cadastro">Credenciais inválidas</p>
+    
+        <div class="btns-div">
+            <button type="submit" class="cadastro-btn">Confirmar</button>
+            <button  class="pular-btn">Pular</button>
+        </div>
+      
+    </form>
+  </div>
+

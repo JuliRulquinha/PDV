@@ -22,9 +22,13 @@ public class FazerOrcamentoHandler {
 
     public ModeloVisualizacaoOrcamento handle(FazerOrcamentoCommand command) {
 
-        var cliente = clienteRepositorio.buscarPorId(command.cliente_id());
-        var salvo = orcamentoRepositorio.salvar(mapper.paraDominio(command, cliente));
+        if(command.cliente_id() != null){
+            var cliente = clienteRepositorio.buscarPorId(command.cliente_id());
+            var salvo = orcamentoRepositorio.salvar(mapper.paraDominio(command, cliente));
+            return mapper.paraModeloDeVisualizacao(salvo);
+        }
 
+        var salvo = orcamentoRepositorio.salvar(mapper.paraDominio(command));
         return mapper.paraModeloDeVisualizacao(salvo);
     }
 }

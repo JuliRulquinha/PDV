@@ -48,4 +48,8 @@ public class MapperOrcamento {
     public Orcamento paraDominio(FazerOrcamentoCommand orcamento, Cliente cliente) {
         return new Orcamento(orcamento.itens(), cliente, orcamento.validade(), orcamento.total(), orcamento.desconto());
     }
+
+    public Orcamento paraDominio(FazerOrcamentoCommand orcamento) {
+        return new Orcamento(orcamento.itens(), orcamento.validade(), orcamento.total(), orcamento.desconto());
+    }
 }

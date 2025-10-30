@@ -135,7 +135,7 @@
 
   <div *ngIf="produtoSelecionado" class="form-container">
     <h2 class="titulo">
-      {{ novoCadastro ? 'Cadastrar Produto' : 'Editar Produto: ' + produtoSelecionado?.nome }}
+      {{ novoCadastro ? 'Cadastrar Produto' : 'Editar Produto: ' + produtoSelecionado.nome }}
     </h2>
 
     <form [formGroup]="formCadastro" (ngSubmit)="salvarProduto()" class="form-produto">

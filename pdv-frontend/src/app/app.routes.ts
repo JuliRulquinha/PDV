@@ -9,6 +9,7 @@ import { CadastrarUsuario } from './componentes/cadastrar-usuario/cadastrar-usua
 import { gerenteGuard } from './guardas/gerente-guard';
 import { ListaOrcamentos } from './componentes/lista-orcamentos/lista-orcamentos';
 import { ListaPedidos } from './componentes/lista-pedidos/lista-pedidos';
+import { Clientes } from './componentes/clientes/clientes';
 
 
 export const routes: Routes = [
@@ -43,6 +44,10 @@ export const routes: Routes = [
         component: ListaPedidos
     },
 
+    {
+        path: 'clientes',
+        component: Clientes
+    },
     {
         path: 'login',
         component: PaginaLogin
