@@ -1,5 +1,6 @@
 
-  <div class="cadastro-box">
+  <div class="modal-overlay">
+  <div class="modal-box">
     <p style="font-size: 20px; margin-bottom: 15px;"><b>Dados do Cliente</b></p>
     <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
 
@@ -35,7 +36,7 @@
     
         <div class="btns-div">
             <button type="submit" class="cadastro-btn">Confirmar</button>
-            <button  class="pular-btn">Pular</button>
+            <button type="button" class="pular-btn" (click)="pular()">Pular</button>
         </div>
       
     </form>

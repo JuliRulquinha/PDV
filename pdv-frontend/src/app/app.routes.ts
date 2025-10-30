@@ -44,10 +44,7 @@ export const routes: Routes = [
         component: ListaPedidos
     },
 
-    {
-        path: 'clientes',
-        component: Clientes
-    },
+    
     {
         path: 'login',
         component: PaginaLogin

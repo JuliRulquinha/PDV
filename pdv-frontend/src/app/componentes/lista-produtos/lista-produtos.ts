@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, Output } from '@angular/core';
 import { Produto } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
@@ -18,6 +18,7 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 })
 export class ListaProdutos {
 
+  @Output() finalizarVendaEvento = new EventEmitter();
   produtos$: Observable<Produto[]>;
   lastProduct$: Observable<Produto | undefined>;
   produtoSelecionado!: Produto | null; 
@@ -50,5 +51,9 @@ export class ListaProdutos {
       this.produtoSelecionado = null;
       }
     }
+  }
+
+  mostrarModalDoCliente(){
+    this.finalizarVendaEvento.emit();
   }
 }

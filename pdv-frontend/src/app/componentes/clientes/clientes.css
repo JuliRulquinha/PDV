@@ -1,20 +1,22 @@
 
 .cadastro-container {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
-  font-family: Arial, sans-serif;
+  width: fit-content;
+  box-sizing: border-box;
+  padding: 8px;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 15px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
 }
 
 .cadastro-box {
   background: #fff;
-  padding: 40px 30px;
-  border-radius: 15px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.2);
-  width: 350px;
-  text-align: center;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }
 
 .form-group {
@@ -109,4 +111,25 @@ input.ng-invalid.ng-touched {
   color: #ff3b30;
   margin-top: 10px;
   font-size: 0.9rem;
+}
+
+/* overlay escuro no fundo */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* garante que fique por cima */
+}
+
+/* caixinha central */
+.modal-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
 }

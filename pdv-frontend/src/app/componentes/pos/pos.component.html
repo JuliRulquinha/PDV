@@ -127,13 +127,16 @@
       <app-pesquisa-de-produtos></app-pesquisa-de-produtos>
     </div>
    <div class="pos-container-grid">
-    <app-checkout-display></app-checkout-display>
-    <app-lista-produtos ></app-lista-produtos>
+    <app-checkout-display ></app-checkout-display>
+    <app-lista-produtos (finalizarVendaEvento)="mostrarModalDoCliente()" ></app-lista-produtos>
    </div> 
     
    @if(mostrarConsultaPreco) {
       <app-consulta-preco (fechar)="fecharConsulta()"></app-consulta-preco> 
+   }
 
+   @if(mostrarModalCliente){
+    <app-clientes (pularInputDeCliente)="pularInputCliente()" ></app-clientes>
    }
    
   </div>

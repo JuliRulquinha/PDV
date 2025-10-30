@@ -5,6 +5,7 @@ import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos
 import { CheckoutDisplay } from '../checkout-display/checkout-display';
 import { ListaProdutos } from '../lista-produtos/lista-produtos';
 import { ConsultaPreco } from '../consulta-preco/consulta-preco';
+import { Clientes } from '../clientes/clientes';
 
 export interface Produto {
   id?: number;
@@ -51,7 +52,8 @@ export interface Dimensoes {
     PesquisaDeProdutos,
     CheckoutDisplay,
     ListaProdutos, 
-    ConsultaPreco
+    ConsultaPreco,
+    Clientes
   ],
   templateUrl: './pos.component.html',
   styleUrls: ['./pos.component.css'],
@@ -62,6 +64,7 @@ export class PosComponent implements OnInit{
   @Input() products: Produto[] = [];
 
   mostrarConsultaPreco = false;
+  mostrarModalCliente = false;
 
   ngOnInit() {
     this.updateLastProduct();
@@ -94,6 +97,15 @@ export class PosComponent implements OnInit{
   fecharConsulta() {
     this.mostrarConsultaPreco = false;
   }
+
+  mostrarModalDoCliente(){
+    this.mostrarModalCliente = true;
+  }
+
+  pularInputCliente(){
+    this.mostrarModalCliente = false;
+  }
+
 
   @HostListener('window:keydown', ['$event'])
   onKeyDown(event: KeyboardEvent) {

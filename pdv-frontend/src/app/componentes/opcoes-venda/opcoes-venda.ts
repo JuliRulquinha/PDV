@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Produto } from '../pos/pos.component';
@@ -18,6 +18,9 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
   styleUrls: ['./opcoes-venda.css']
 })
 export class OpcoesVenda {
+
+  @Output() finalizarVendaEvento = new EventEmitter();
+
   produtos$: Observable<Produto[]>;
   tipoPagamento: string = 'dinheiro';
   valorRecebido: number = 0;
@@ -31,10 +34,7 @@ export class OpcoesVenda {
   }
 
   finalizarVenda() {
-
-    this.store.dispatch(clearProdutos());
-    this.valorRecebido = 0;
-    setTimeout(() => alert('Venda finalizada!'), 0); 
+    this.finalizarVendaEvento.emit();
   }
 
   salvarOrcamento(){

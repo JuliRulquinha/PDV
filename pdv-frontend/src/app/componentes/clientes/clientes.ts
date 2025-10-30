@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
 import { Cliente, ServicoCliente } from '../../servicos/entities/servico-cliente';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -15,6 +15,8 @@ export class Clientes implements OnInit{
   ngOnInit(): void {
     this.buscarClientes();
   }
+
+  @Output() pularInputDeCliente = new EventEmitter();
   fb = inject(FormBuilder);
   servicoCliente = inject(ServicoCliente);
   router = inject(Router);
@@ -70,5 +72,9 @@ export class Clientes implements OnInit{
         }
       }
      });
+  }
+
+  pular(){
+    this.pularInputDeCliente.emit();
   }
 }
