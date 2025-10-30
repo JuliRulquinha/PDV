@@ -10,7 +10,7 @@ export interface Orcamento{
   id?: number,
   itens: ItemDoOrcamento[],
   cliente?: Cliente,
-  validade: number,
+  validade: Date,
   total: number,
   desconto?: number,
   status: StatusDoOrcamento
@@ -22,7 +22,7 @@ export interface ItemDoOrcamento{
   produto_id: number,
   quantidade: number,
   valorUnitario: number | undefined,
-  total: number | undefined
+  total: number
 }
 
 export enum StatusDoOrcamento{
@@ -35,7 +35,7 @@ export enum StatusDoOrcamento{
   providedIn: 'root'
 })
 export class ServicoOrcamento {
-  baseUrl = "http://localhost:8080/api/orcamento";
+  baseUrl = "http://localhost:8080/api/orcamentos";
   http = inject(HttpClient);
   store = inject(Store);
 
@@ -47,23 +47,38 @@ export class ServicoOrcamento {
       total: produto.valorVenda! * produto.quantidade,
     }
   }
-criarOrcamento() {
-  this.store.select(selectAllProdutos).pipe(
-    filter(produtos => produtos.length > 0),
-    map(produtos => 
-      produtos.map(p => this.mapearProdutoParaItem(p))
-    ),
-    tap(itensMapeados => {
-      console.log('Itens mapeados:', itensMapeados);
-    })
-  )
-  .subscribe(itens => {
-    console.log('Itens no subscribe:', itens);
-    
-  });
-}
+  criarOrcamento(): Orcamento {
+    let itens: ItemDoOrcamento[] = [];
+    let total: number = 0;
+    this.store.select(selectAllProdutos).pipe(
+      filter(produtos => produtos.length > 0),
+      map(produtos => 
+        produtos.map(p => this.mapearProdutoParaItem(p))
+      ),
+      tap(itensMapeados => {
+        console.log('Itens mapeados:', itensMapeados);
+      })
+    )
+    .subscribe(itensDoStore => {
+      itens = itensDoStore;
 
-   fazerOrcamento(orcamento: Orcamento){
+      for(var i of itens){
+        total += i.total;
+      }
+      
+    });
+
+    let data = new Date();
+    return {
+      itens: itens,
+      validade: data,
+      total: total,
+      status: StatusDoOrcamento.CRIADO
+    }
+  }
+
+   fazerOrcamento(){
+    let orcamento = this.criarOrcamento();
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }
 

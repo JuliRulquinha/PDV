@@ -1,0 +1,72 @@
+.lista-orcamento-container {
+  padding: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.titulo {
+  font-size: 20px;
+  margin-bottom: 12px;
+}
+
+.tabela-produtos {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 16px;
+}
+
+.tabela-produtos th,
+.tabela-produtos td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.form-container {
+  margin-top: 16px;
+  background: #fff;
+  padding: 12px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+.form-group {
+  margin-bottom: 10px;
+}
+
+.form-actions {
+  margin-top: 12px;
+}
+
+.btn {
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background-color: #1976d2;
+  color: #fff;
+}
+
+.btn-cancel {
+  background-color: #e0e0e0;
+}
+
+.btn-edit {
+  background: transparent;
+  color: #1976d2;
+  border: 1px solid #1976d2;
+  padding: 4px 8px;
+}
+
+.dimensoes {
+  margin-top: 8px;
+  border: 1px solid #eaeaea;
+  padding: 8px;
+}
+
+.active {
+  background-color: #004ba0;
+}

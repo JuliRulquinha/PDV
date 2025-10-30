@@ -77,39 +77,39 @@ export class ListaOrcamentos {
 
   salvarOrcamento(): void {
 
-  if (this.formEdicao.invalid) {
-    this.formEdicao.markAllAsTouched();
-    return;
-  }
+  // if (this.formEdicao.invalid) {
+  //   this.formEdicao.markAllAsTouched();
+  //   return;
+  // }
 
-  const orcamento: Orcamento = { ...this.formEdicao.value };
+  // const orcamento: Orcamento = { ...this.formEdicao.value };
 
-  console.log("Orçamento antes de sair para o backend: ", orcamento);
+  // console.log("Orçamento antes de sair para o backend: ", orcamento);
 
-  if (orcamento.validade) {
-    //orcamento.validade = new Date(orcamento.validade);
-  }
+  // if (orcamento.validade) {
+  //   //orcamento.validade = new Date(orcamento.validade);
+  // }
 
-  if (this.emEdicao) {
-    this.servicoOrcamento.fazerOrcamento(orcamento).subscribe({
-      next: (saved) => {
-        alert('Produto cadastrado com sucesso!');
-        this.carregarProdutos();
-        this.cancelarEdicao();
-      },
-      error: (err) => console.error('Erro ao cadastrar produto', err)
-    });
-  } else if (this.orcamentoSelecionado) {
-    orcamento.id = this.orcamentoSelecionado.id; // garante que o ID está definido
-    this.servicoOrcamento.atualizarOrcamento(orcamento).subscribe({
-      next: (updated) => {
-        alert('Produto atualizado com sucesso');
-        this.carregarProdutos();
-        this.cancelarEdicao();
-      },
-      error: (err) => console.error('Erro ao atualizar produto', err)
-    });
-  }
+  // if (this.emEdicao) {
+  //   this.servicoOrcamento.fazerOrcamento().subscribe({
+  //     next: (saved) => {
+  //       alert('Produto cadastrado com sucesso!');
+  //       this.carregarProdutos();
+  //       this.cancelarEdicao();
+  //     },
+  //     error: (err) => console.error('Erro ao cadastrar produto', err)
+  //   });
+  // } else if (this.orcamentoSelecionado) {
+  //   orcamento.id = this.orcamentoSelecionado.id; // garante que o ID está definido
+  //   this.servicoOrcamento.atualizarOrcamento(orcamento).subscribe({
+  //     next: (updated) => {
+  //       alert('Produto atualizado com sucesso');
+  //       this.carregarProdutos();
+  //       this.cancelarEdicao();
+  //     },
+  //     error: (err) => console.error('Erro ao atualizar produto', err)
+  //   });
+  // }
 }
 
   cancelarEdicao(): void {

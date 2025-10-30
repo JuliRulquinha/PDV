@@ -4,8 +4,6 @@ import java.math.BigDecimal;
 import java.sql.Date;
 import java.util.List;
 
-import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
-import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.orcamento.ItemDoOrcamento;
 
 

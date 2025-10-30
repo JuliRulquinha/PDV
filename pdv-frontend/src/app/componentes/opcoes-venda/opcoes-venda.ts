@@ -37,7 +37,7 @@ export class OpcoesVenda {
   }
 
   salvarOrcamento(){
-    this.servicoOrcamento.criarOrcamento();
+    this.servicoOrcamento.fazerOrcamento().subscribe();
     this.store.dispatch(clearProdutos());
     this.valorRecebido = 0;
     setTimeout(() => alert('Orçamento salvo!'), 0); 
