@@ -44,6 +44,15 @@ public class MapperPedido {
         return pedidos.stream().map(this::paraModeloVisualizacao).toList();
     }
 
+    public Pedido paraDominio(CriarPedidoCommand modelo){
+        return new Pedido(
+                modelo.itens(),
+                modelo.validade(),
+                modelo.total(),
+                modelo.desconto()
+        );
+    }
+
     public Pedido paraDominio(CriarPedidoCommand modelo, Cliente cliente){
         return new Pedido(
                 modelo.itens(),

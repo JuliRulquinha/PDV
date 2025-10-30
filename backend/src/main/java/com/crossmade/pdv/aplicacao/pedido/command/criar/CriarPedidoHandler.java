@@ -28,10 +28,12 @@ public class CriarPedidoHandler {
 
     public ModeloVisualizacaoPedido handle(CriarPedidoCommand command) {
 
-        var cliente = clienteRepositorio.buscarPorId(command.cliente_id());
+        if(command.cliente_id() != null){
+            var cliente = clienteRepositorio.buscarPorId(command.cliente_id());
+            var salvo = pedidoRepositorio.salvar(mapper.paraDominio(command, cliente));
+        }
 
-        var salvo = pedidoRepositorio.salvar(mapper.paraDominio(command, cliente));
-
+        var salvo = pedidoRepositorio.salvar(mapper.paraDominio(command));
         return mapper.paraModeloVisualizacao(salvo);
     }
 }

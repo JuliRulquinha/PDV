@@ -136,7 +136,7 @@
    }
 
    @if(mostrarModalCliente){
-    <app-clientes (pularInputDeCliente)="pularInputCliente()" ></app-clientes>
+    <app-clientes (pularInputDeCliente)="pularInputCliente()" (confirmarCompra)="finalizarACompra()"></app-clientes>
    }
    
   </div>

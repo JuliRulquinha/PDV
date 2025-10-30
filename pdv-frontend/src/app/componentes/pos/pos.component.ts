@@ -1,4 +1,4 @@
-import { Component, HostListener, Input, OnInit } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos';
@@ -6,6 +6,7 @@ import { CheckoutDisplay } from '../checkout-display/checkout-display';
 import { ListaProdutos } from '../lista-produtos/lista-produtos';
 import { ConsultaPreco } from '../consulta-preco/consulta-preco';
 import { Clientes } from '../clientes/clientes';
+import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 
 export interface Produto {
   id?: number;
@@ -63,6 +64,8 @@ export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;
   @Input() products: Produto[] = [];
 
+  servicoDePedido = inject(ServicoPedido);
+
   mostrarConsultaPreco = false;
   mostrarModalCliente = false;
 
@@ -116,6 +119,12 @@ export class PosComponent implements OnInit{
 
     if (event.key === 'Escape') {
       this.fecharConsulta();
+    }
+  }
+
+  finalizarACompra(){
+    if(confirm("Deseja finalizar a compra?")){
+      this.servicoDePedido.fazerPedido().subscribe();
     }
   }
 }

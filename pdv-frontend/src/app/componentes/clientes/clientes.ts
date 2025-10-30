@@ -17,6 +17,8 @@ export class Clientes implements OnInit{
   }
 
   @Output() pularInputDeCliente = new EventEmitter();
+  @Output() confirmarCompra = new EventEmitter();
+
   fb = inject(FormBuilder);
   servicoCliente = inject(ServicoCliente);
   router = inject(Router);
@@ -61,7 +63,8 @@ export class Clientes implements OnInit{
       next: (resposta) => {
         console.log("Cliente cadastrado: " + resposta)
         this.erroCadastro = false; 
-        this.router.navigate(['/checkout']);
+        this.confirmarCompra.emit();
+        
       },
       error: (erro) => {
         
@@ -72,9 +75,12 @@ export class Clientes implements OnInit{
         }
       }
      });
+
+     
   }
 
   pular(){
     this.pularInputDeCliente.emit();
+    this.confirmarCompra.emit();
   }
 }
