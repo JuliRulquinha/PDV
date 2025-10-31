@@ -16,8 +16,8 @@ export class Clientes implements OnInit{
     this.buscarClientes();
   }
 
-  @Output() pularInputDeCliente = new EventEmitter();
-  @Output() confirmarCompra = new EventEmitter();
+  @Output() pularInputDeCliente = new EventEmitter<'pedido'| 'orcamento'>();
+
 
   fb = inject(FormBuilder);
   servicoCliente = inject(ServicoCliente);
@@ -39,13 +39,6 @@ export class Clientes implements OnInit{
     endereco: ['']
   });
 
-  // papeis = [
-  //   { label: 'Selecione um papel', value: '' },
-  //   { label: 'Administrador', value: Papel.ADMIN },
-  //   { label: 'Usuário', value: Papel.cliente },
-  //   { label: 'Gerente', value: Papel.GERENTE }
-  // ];
-
   submitted = false;
   erroCadastro = false;
 
@@ -63,7 +56,6 @@ export class Clientes implements OnInit{
       next: (resposta) => {
         console.log("Cliente cadastrado: " + resposta)
         this.erroCadastro = false; 
-        this.confirmarCompra.emit();
         
       },
       error: (erro) => {
@@ -77,8 +69,7 @@ export class Clientes implements OnInit{
      });
   }
 
-  pular(){
-    this.pularInputDeCliente.emit();
-    this.confirmarCompra.emit();
+  pular(tipo: 'pedido'|'orcamento'){
+    this.pularInputDeCliente.emit(tipo);
   }
 }

@@ -19,6 +19,8 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 export class ListaProdutos {
 
   @Output() finalizarVendaEvento = new EventEmitter();
+  @Output() criarOrcamentoEvento = new EventEmitter();
+
   produtos$: Observable<Produto[]>;
   lastProduct$: Observable<Produto | undefined>;
   produtoSelecionado!: Produto | null; 
@@ -53,7 +55,11 @@ export class ListaProdutos {
     }
   }
 
-  mostrarModalDoCliente(){
+  mostrarModalDoClienteParaPedido(){
     this.finalizarVendaEvento.emit();
+  }
+
+  mostrarModalDoClienteParaOrcamento(){
+    this.criarOrcamentoEvento.emit();
   }
 }

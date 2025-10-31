@@ -32,21 +32,11 @@ export class ListaPedidos {
 
   ngOnInit(): void {
  
-    this.formEdicao = this.fb.group({
-      id: [null],
-      nome: ['', Validators.required],
-      marca: [''],
-      modelo: [''],
-      quantidade: [0, [Validators.required, Validators.min(0)]],
-      valorCusto: [null],
-      valorVenda: [null],
-      imageUrl: [''],
+     this.formEdicao = this.fb.group({
+      cliente: [''],
+      itens: [],
+      total: [null],
       validade: [null],
-      dimensoes: this.fb.group({
-        largura: [null],
-        altura: [null],
-        peso: [null]
-      })
     })
 
     this.carregarPedidos();

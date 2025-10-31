@@ -20,6 +20,7 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 export class OpcoesVenda {
 
   @Output() finalizarVendaEvento = new EventEmitter();
+  @Output() criarOrcamentoEvento = new EventEmitter();
 
   produtos$: Observable<Produto[]>;
   tipoPagamento: string = 'dinheiro';
@@ -38,10 +39,7 @@ export class OpcoesVenda {
   }
 
   salvarOrcamento(){
-    this.servicoOrcamento.fazerOrcamento().subscribe();
-    this.store.dispatch(clearProdutos());
-    this.valorRecebido = 0;
-    setTimeout(() => alert('Orçamento salvo!'), 0); 
+    this.criarOrcamentoEvento.emit();
   }
 
   cancelar() {

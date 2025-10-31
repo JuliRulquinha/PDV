@@ -7,6 +7,7 @@ import { ListaProdutos } from '../lista-produtos/lista-produtos';
 import { ConsultaPreco } from '../consulta-preco/consulta-preco';
 import { Clientes } from '../clientes/clientes';
 import { ServicoPedido } from '../../servicos/entities/servico-pedido';
+import { ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
 
 export interface Produto {
   id?: number;
@@ -65,6 +66,7 @@ export class PosComponent implements OnInit{
   @Input() products: Produto[] = [];
 
   servicoDePedido = inject(ServicoPedido);
+  servicoDeOrcamento = inject(ServicoOrcamento);
 
   mostrarConsultaPreco = false;
   mostrarModalCliente = false;
@@ -122,9 +124,15 @@ export class PosComponent implements OnInit{
     }
   }
 
-  finalizarACompra(){
+  finalizarCompra(){
     if(confirm("Deseja finalizar a compra?")){
       this.servicoDePedido.fazerPedido().subscribe();
+    }
+  }
+
+  fazerOrcamento(){
+    if(confirm("Deseja salvar o orçamento?")){
+      this.servicoDeOrcamento.fazerOrcamento().subscribe();
     }
   }
 }
