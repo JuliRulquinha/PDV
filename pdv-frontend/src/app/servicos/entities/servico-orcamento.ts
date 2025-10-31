@@ -6,6 +6,11 @@ import { selectAllProdutos } from '../../store/produto.selectors';
 import { filter, map, Observable, tap } from 'rxjs';
 import { Cliente } from './servico-cliente';
 
+export interface ListaDeOrcamentos{
+  contagem: number,
+  orcamentos: Orcamento[]
+}
+
 export interface Orcamento{
   id?: number,
   itens: ItemDoOrcamento[],
@@ -68,10 +73,13 @@ export class ServicoOrcamento {
       
     });
 
-    let data = new Date();
+    let dataAtual = new Date();
+    let dataProximoMes = new Date(dataAtual);
+
+    dataProximoMes.setMonth(dataProximoMes.getMonth() + 1);
     return {
       itens: itens,
-      validade: data,
+      validade: dataProximoMes,
       total: total,
       status: StatusDoOrcamento.CRIADO
     }
@@ -84,6 +92,10 @@ export class ServicoOrcamento {
 
   atualizarOrcamento(orcamento: Orcamento):Observable<Orcamento>{
     return new Observable<Orcamento>;
+  }
+
+  buscarOrcamentos(pagina: number){
+    return this.http.get<ListaDeOrcamentos>(`${this.baseUrl}?pagina=${pagina}`);
   }
 
 }

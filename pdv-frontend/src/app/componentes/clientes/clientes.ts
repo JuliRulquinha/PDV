@@ -75,8 +75,6 @@ export class Clientes implements OnInit{
         }
       }
      });
-
-     
   }
 
   pular(){

@@ -29,8 +29,8 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
     }
 
     @Override
-    public List<Orcamento> listarTodos() {
-        return repositorio.findAll();
+    public List<Orcamento> listarTodos(int pagina) {
+        return repositorio.paginate(pagina);
     }
 
     @Override
@@ -47,4 +47,8 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
         return repositorio.save(orcamentoDoDb);
     }
 
+    @Override
+    public int retornarContagem() {
+        return repositorio.getCount();
+    }
 }

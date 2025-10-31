@@ -30,7 +30,6 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
     @Override
     public List<Produto> listarTodos(int pagina) {
         return repositorio.paginate(pagina);
-
     }
 
     @Override

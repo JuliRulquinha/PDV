@@ -2,12 +2,12 @@ import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
 import { Orcamento, ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-lista-orcamentos',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, DatePipe],
   templateUrl: './lista-orcamentos.html',
   styleUrl: './lista-orcamentos.css'
 })
@@ -49,23 +49,21 @@ export class ListaOrcamentos {
       })
     })
 
-    Promise.all([
-      
-    ])
+    this.carregarOrcamentos();
+    
   }
 
-  carregarProdutos(): void {
-  //   this.servicoOrcamento.buscarProdutos(this.pagina).subscribe({
-  //   next: (data) => {
-  //     this.produtos = Array.isArray(data.produtos) ? data.produtos : [data.produtos];
+  carregarOrcamentos(): void {
+    this.servicoOrcamento.buscarOrcamentos(this.pagina).subscribe({
+    next: (data) => {
+      this.orcamentos = Array.isArray(data.orcamentos) ? data.orcamentos : [data.orcamentos];
 
-  //     this.contagem = data.contagem;
-  //     this.totalPaginas = Math.ceil(this.contagem / this.pageSize);
-  //     // Se retornou menos produtos que o limite → é a última página
-  //     this.isLastPage = this.produtos.length < this.pageSize;
+      this.contagem = data.contagem;
+      this.totalPaginas = Math.ceil(this.contagem / this.pageSize);
+      this.isLastPage = this.orcamentos.length < this.pageSize;
       
-  //   }
-  // });
+    }
+  });
   }
 
   
@@ -121,14 +119,14 @@ export class ListaOrcamentos {
   proximaPagina(): void {
     if (!this.isLastPage) {
       this.pagina++;
-      this.carregarProdutos();
+      this.carregarOrcamentos();
     }
   }
 
   paginaAnterior(): void {
     if (this.pagina > 0) {
       this.pagina--;
-      this.carregarProdutos();
+      this.carregarOrcamentos();
     }
   }
 
@@ -136,7 +134,7 @@ export class ListaOrcamentos {
 
     if (this.pagina > 0) {
       this.pagina = 0;
-      this.carregarProdutos();
+      this.carregarOrcamentos();
     }
 
   }
@@ -145,16 +143,15 @@ export class ListaOrcamentos {
 
     if(!this.isLastPage){
       this.pagina = Math.floor(this.contagem/this.pageSize);
-      this.carregarProdutos();
+      this.carregarOrcamentos();
     }
   }
 
   irParaPagina(p: number): void {
     if (p >= 0 && p < this.totalPaginas) {
       this.pagina = p;
-      this.carregarProdutos();
+      this.carregarOrcamentos();
     }
-
   }
 
   get paginas(): number[] {

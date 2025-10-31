@@ -31,6 +31,7 @@ public class MapperOrcamento {
                     modeloVisualizacaoCliente,
                     orcamento.getValidade(),
                     orcamento.getTotal(),
+                    orcamento.getStatus(),
                     orcamento.getDesconto()
             );
         }
@@ -42,6 +43,7 @@ public class MapperOrcamento {
                 null,
                 orcamento.getValidade(),
                 orcamento.getTotal(),
+                orcamento.getStatus(),
                 orcamento.getDesconto()
         );
     }

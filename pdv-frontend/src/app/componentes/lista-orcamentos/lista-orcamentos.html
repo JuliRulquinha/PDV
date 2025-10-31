@@ -15,19 +15,17 @@
       </tr>
     </thead>
     <tbody>
-     <tr *ngFor="let o of orcamentos">
-  <td data-label="ID">{{ o.id }}</td>
-  <td data-label="Cliente">{{ o.cliente?.nome }}</td>
-  <td data-label="Validade">{{ o.validade }}</td>
-  <td data-label="Itens">{{ o.itens }}</td>
-  <td data-label="Total">{{ o.total }}</td>
-  <td data-label="Status">{{ o.status }}</td>
- 
- 
-  <td data-label="Ações">
-    <button class="btn btn-edit" (click)="editarOrcamento(o)">✏️ Editar</button>
-  </td>
-</tr>
+      <tr *ngFor="let o of orcamentos">
+        <td data-label="ID">{{ o.id }}</td>
+        <td data-label="Cliente">{{ o.cliente?.nome || 'Cliente não identificado'}}</td>
+        <td data-label="Validade">{{ o.validade | date:'dd/MM/yyyy'}}</td>
+        <td data-label="Itens">{{ o.itens }}</td>
+        <td data-label="Total">R$ {{ o.total | number:'1.2-2'}}</td>
+        <td data-label="Status">{{ o.status }}</td>
+        <td data-label="Ações">
+          <button class="btn btn-edit" (click)="editarOrcamento(o)">✏️ Editar</button>
+        </td>
+      </tr>
 
     </tbody>
   </table>

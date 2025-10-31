@@ -7,6 +7,7 @@ import java.util.List;
 import com.crossmade.pdv.aplicacao.cliente.dtos.ModeloVisualizacaoCliente;
 import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.dominio.orcamento.ItemDoOrcamento;
+import com.crossmade.pdv.dominio.orcamento.StatusOrcamento;
 
 public record ModeloVisualizacaoOrcamento(
     Integer id,
@@ -14,5 +15,6 @@ public record ModeloVisualizacaoOrcamento(
     ModeloVisualizacaoCliente cliente,
     Date validade,
     BigDecimal total,
+    StatusOrcamento status,
     int desconto
 ) {}

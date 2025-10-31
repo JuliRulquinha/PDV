@@ -1,4 +1,4 @@
-package com.crossmade.pdv.aplicacao.orcamento.query.buscar;
+package com.crossmade.pdv.aplicacao.orcamento.query.buscar.porId;
 
 import org.springframework.stereotype.Component;
 
