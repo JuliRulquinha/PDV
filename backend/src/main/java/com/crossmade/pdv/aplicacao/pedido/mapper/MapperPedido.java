@@ -30,17 +30,19 @@ public class MapperPedido {
                     clienteDto,
                     pedido.getValidade(),
                     pedido.getTotal(),
+                    pedido.getStatus(),
                     pedido.getDesconto()
             );
         }
 
         return new ModeloVisualizacaoPedido(
-            pedido.getId(),
-            pedido.getItens(),
-            null,
-            pedido.getValidade(),
-            pedido.getTotal(),
-            pedido.getDesconto()
+                pedido.getId(),
+                pedido.getItens(),
+                null,
+                pedido.getValidade(),
+                pedido.getTotal(),
+                pedido.getStatus(),
+                pedido.getDesconto()
         );
     }
 

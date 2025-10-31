@@ -1,4 +1,4 @@
-<div class="lista-orcamento-container">
+<div class="lista-pedidos-container">
 
 
   <h2 class="titulo" *ngIf="!emEdicao">Lista de Pedidos</h2>
@@ -15,65 +15,41 @@
       </tr>
     </thead>
     <tbody>
-     <tr *ngFor="let p of pedidos">
-  <td data-label="ID">{{ p.id }}</td>
-  <td data-label="Cliente">{{ p.cliente?.nome }}</td>
-  <td data-label="Validade">{{ p.validade }}</td>
-  <td data-label="Itens">{{ p.itens }}</td>
-  <td data-label="Total">{{ p.total }}</td>
-  <td data-label="Status">{{ p.status }}</td>
- 
-  
-  <td data-label="Ações">
-    <button class="btn btn-edit" (click)="editarPedido(p)">✏️ Editar</button>
-  </td>
-</tr>
+      <tr *ngFor="let p of pedidos">
+        <td data-label="ID">{{ p.id }}</td>
+        <td data-label="Cliente">{{ p.cliente?.nome || 'Cliente não identificado'}}</td>
+        <td data-label="Validade">{{ p.validade | date:'dd/MM/yyyy'}}</td>
+        <td data-label="Itens">{{ p.itens }}</td>
+        <td data-label="Total">R$ {{ p.total | number:'1.2-2'}}</td>
+        <td data-label="Status">{{ p.status }}</td>
+        <td data-label="Ações">
+          <button class="btn btn-edit" (click)="editarPedido(p)">✏️ Editar</button>
+        </td>
+      </tr>
 
     </tbody>
   </table>
 
-
+ 
+  
 
   <div *ngIf="pedidoSelecionado" class="form-container">
     <h2 class="titulo">
-      Editar Pedido
+      Editar Orçamento
     </h2>
 
-    <form [formGroup]="formEdicao" (ngSubmit)="salvarPedido()" class="form-orcamento">
+    <form [formGroup]="formEdicao" (ngSubmit)="salvarPedido()" class="form-pedidos">
+    
       <div class="form-group">
-        <label>Nome:</label>
-        <input type="text" formControlName="nome">
+        <label>Itens:</label>
+        <input type="number" formControlName="itens">
       </div>
 
       <div class="form-group">
-        <label>Marca:</label>
-        <input type="text" formControlName="marca">
+        <label>Total:</label>
+        <input type="number" formControlName="total">
       </div>
 
-      <div class="form-group">
-        <label>Modelo:</label>
-        <input type="text" formControlName="modelo">
-      </div>
-
-      <div class="form-group">
-        <label>Quantidade:</label>
-        <input type="number" formControlName="quantidade">
-      </div>
-
-      <div class="form-group">
-        <label>Valor Custo:</label>
-        <input type="number" formControlName="valorCusto">
-      </div>
-
-      <div class="form-group">
-        <label>Valor Venda:</label>
-        <input type="number" formControlName="valorVenda">
-      </div>
-
-      <div class="form-group">
-        <label>Imagem (URL):</label>
-        <input type="text" formControlName="imageUrl">
-      </div>
 
       <div class="form-group">
         <label>Validade:</label>
@@ -81,21 +57,7 @@
       </div>
 
       <!-- Dimensões -->
-      <fieldset formGroupName="dimensoes" class="dimensoes">
-        <legend>Dimensões</legend>
-        <div class="form-group">
-          <label>Largura:</label>
-          <input type="number" formControlName="largura">
-        </div>
-        <div class="form-group">
-          <label>Altura:</label>
-          <input type="number" formControlName="altura">
-        </div>
-        <div class="form-group">
-          <label>Profundidade:</label>
-          <input type="number" formControlName="profundidade">
-        </div>
-      </fieldset>
+   
 
       <div class="form-actions">
         <button type="submit" class="btn btn-primary">Atualizar</button>
@@ -151,3 +113,5 @@
 </div>
 
 </div>
+
+

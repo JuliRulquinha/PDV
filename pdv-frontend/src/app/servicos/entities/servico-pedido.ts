@@ -6,6 +6,11 @@ import { selectAllProdutos } from '../../store/produto.selectors';
 import { filter, map, Observable, tap, take, switchMap } from 'rxjs';
 import { Cliente } from './servico-cliente';
 
+export interface ListaPedidos{
+  contagem: number,
+  pedidos: Pedido[]
+}
+
 export interface Pedido{
   id?: number,
   itens: ItemDoPedido[],
@@ -69,6 +74,10 @@ export class ServicoPedido {
         return pedido;
       })
     );
+  }
+
+  buscarPedidos(pagina: number){
+    return this.http.get<ListaPedidos>(`${this.baseUrl}?pagina=${pagina}`);
   }
 
   fazerPedido(){

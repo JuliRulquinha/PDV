@@ -6,7 +6,8 @@ import java.util.List;
 public interface PedidoRepositorio {
     Pedido salvar(Pedido pedido);
     Pedido buscarPorId(Integer id);
-    List<Pedido> listarTodos();
+    List<Pedido> listarTodos(int pagina);
     Pedido cancelar(Integer id);
     Pedido mudarStatus(Integer id, StatusPedido status);
+    public int retornarContagem();
 }

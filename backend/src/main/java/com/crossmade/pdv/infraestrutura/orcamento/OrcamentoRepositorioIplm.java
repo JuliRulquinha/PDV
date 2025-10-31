@@ -30,7 +30,7 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
 
     @Override
     public List<Orcamento> listarTodos(int pagina) {
-        return repositorio.paginate(pagina);
+        return repositorio.paginar(pagina);
     }
 
     @Override

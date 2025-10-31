@@ -1,72 +1,233 @@
-.lista-orcamento-container {
-  padding: 16px;
-  max-width: 1100px;
-  margin: 0 auto;
+/* Container */
+.lista-pedidos-container {
+  padding: 24px;
+  background: #f8fbff;
+  font-family: Arial, sans-serif;
+  color: #2c3e50;
 }
 
+/* Título */
 .titulo {
-  font-size: 20px;
-  margin-bottom: 12px;
-}
-
-.tabela-produtos {
-  width: 100%;
-  border-collapse: collapse;
+  color: #1e3a8a;
   margin-bottom: 16px;
 }
 
-.tabela-produtos th,
-.tabela-produtos td {
-  border: 1px solid #ddd;
-  padding: 8px;
-  text-align: left;
-}
-
-.form-container {
-  margin-top: 16px;
-  background: #fff;
-  padding: 12px;
-  border-radius: 6px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-}
-
-.form-group {
-  margin-bottom: 10px;
-}
-
-.form-actions {
-  margin-top: 12px;
-}
-
+/* Botões */
 .btn {
-  padding: 6px 12px;
-  border-radius: 4px;
+  padding: 8px 16px;
+  border-radius: 6px;
   border: none;
   cursor: pointer;
+  font-weight: 600;
+  transition: all 0.2s ease;
+  margin-top: 6px;
+  margin-left: 3px;
+  margin-right: 3px;
 }
 
 .btn-primary {
-  background-color: #1976d2;
-  color: #fff;
+  background: #2563eb;
+  color: white;
 }
 
-.btn-cancel {
-  background-color: #e0e0e0;
+button.btn-primary:disabled {
+  background-color: #6c757d !important; /* cinza Bootstrap */
+  border-color: #6c757d !important;
+  color: #fff !important;
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.btn-primary:hover {
+  background: #1e40af;
+}
+
+.btn-secondary {
+  background: #e2e8f0;
+  color: #1e3a8a;
+}
+
+.btn-secondary:hover {
+  background: #cbd5e1;
 }
 
 .btn-edit {
-  background: transparent;
-  color: #1976d2;
-  border: 1px solid #1976d2;
-  padding: 4px 8px;
+  background: #38bdf8;
+  color: white;
 }
 
-.dimensoes {
-  margin-top: 8px;
-  border: 1px solid #eaeaea;
+.btn-edit:hover {
+  background: #0284c7;
+}
+
+.btn-cancel {
+  background: #f87171;
+  color: white;
+}
+
+.btn-cancel:hover {
+  background: #dc2626;
+}
+
+.actions {
+  margin-bottom: 20px;
+  display: flex;
+  gap: 12px;
+}
+
+/* Tabela */
+.tabela-produtos {
+  width: 100%;
+  border-collapse: collapse;
+  background: white;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.tabela-produtos th {
+  background: #1e3a8a;
+  color: white;
+  padding: 12px;
+  text-align: left;
+}
+
+.tabela-produtos td {
+  padding: 10px;
+  border-top: 1px solid #e2e8f0;
+}
+
+.tabela-produtos tr:nth-child(even) {
+  background: #f1f5f9;
+}
+
+.tabela-produtos tr:hover {
+  background: #e0f2fe;
+}
+
+/* Formulário */
+.form-container {
+  background: white;
+  padding: 20px;
+  margin-top: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.form-pedidos {
+  display: grid;
+  gap: 16px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  margin-bottom: 4px;
+  font-weight: 600;
+  color: #1e3a8a;
+}
+
+.form-group input,
+.form-group select {
   padding: 8px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
 }
 
-.active {
-  background-color: #004ba0;
+.form-group input:focus,
+.form-group select:focus {
+  border-color: #2563eb;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(37,99,235,0.2);
+}
+
+/* Fieldset dimensões */
+.dimensoes {
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  padding: 12px;
+}
+
+.dimensoes legend {
+  padding: 0 8px;
+  color: #2563eb;
+  font-weight: 600;
+}
+
+/* Ações do form */
+.form-actions {
+  display: flex;
+  gap: 12px;
+}
+
+/* =========================
+   Responsividade Tablet/Mobile
+   ========================= */
+@media (max-width: 768px) {
+  /* Container com menos padding */
+  .lista-pedidos-container {
+    padding: 12px;
+  }
+
+  /* Botões ocupando mais espaço */
+  .actions {
+    flex-direction: column;
+  }
+
+  .actions .btn {
+    width: 100%;
+  }
+
+  /* Tabela vira cards */
+  .tabela-produtos,
+  .tabela-produtos thead,
+  .tabela-produtos tbody,
+  .tabela-produtos th,
+  .tabela-produtos td,
+  .tabela-produtos tr {
+    display: block;
+    width: 100%;
+  }
+
+  .tabela-produtos thead {
+    display: none; /* esconder cabeçalho */
+  }
+
+  .tabela-produtos tr {
+    background: white;
+    margin-bottom: 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+  }
+
+  .tabela-produtos td {
+    border: none;
+    padding: 6px 0;
+  }
+
+  .tabela-produtos td::before {
+    content: attr(data-label);
+    font-weight: bold;
+    color: #1e3a8a;
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  /* Formulário em 1 coluna */
+  .form-pedidos {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    flex-direction: column;
+  }
+
+  .form-actions .btn {
+    width: 100%;
+  }
 }

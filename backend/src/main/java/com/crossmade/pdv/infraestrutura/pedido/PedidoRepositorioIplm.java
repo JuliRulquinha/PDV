@@ -30,8 +30,8 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
     }
 
     @Override
-    public List<Pedido> listarTodos() {
-        return repositorio.findAll();
+    public List<Pedido> listarTodos(int pagina) {
+        return repositorio.paginar(pagina);
     }
 
     @Override
@@ -48,4 +48,8 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
         return repositorio.save(pedidoDoDb);
     }
 
+    @Override
+    public int retornarContagem() {
+        return repositorio.getCount();
+    }
 }

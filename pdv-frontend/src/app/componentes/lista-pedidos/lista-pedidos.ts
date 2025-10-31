@@ -3,7 +3,7 @@ import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angula
 
 import { Pedido, ServicoPedido } from '../../servicos/entities/servico-pedido';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-lista-pedidos',
@@ -49,23 +49,21 @@ export class ListaPedidos {
       })
     })
 
-    Promise.all([
-      
-    ])
+    this.carregarPedidos();
   }
 
   carregarPedidos(): void {
-  //   this.servicoPedido.buscarPedidos(this.pagina).subscribe({
-  //   next: (data) => {
-  //     this.pedidos = Array.isArray(data.pedidos) ? data.pedidos : [data.pedidos];
+    this.servicoPedido.buscarPedidos(this.pagina).subscribe({
+    next: (data) => {
+      this.pedidos = Array.isArray(data.pedidos) ? data.pedidos : [data.pedidos];
 
-  //     this.contagem = data.contagem;
-  //     this.totalPaginas = Math.ceil(this.contagem / this.pageSize);
-  //     // Se retornou menos produtos que o limite → é a última página
-  //     this.isLastPage = this.pedidos.length < this.pageSize;
+      this.contagem = data.contagem;
+      this.totalPaginas = Math.ceil(this.contagem / this.pageSize);
+      // Se retornou menos produtos que o limite → é a última página
+      this.isLastPage = this.pedidos.length < this.pageSize;
       
-  //   }
-  // });
+    }
+  });
   }
 
   editarPedido(p: Pedido): void {
