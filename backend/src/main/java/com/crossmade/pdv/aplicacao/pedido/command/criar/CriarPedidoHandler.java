@@ -31,6 +31,7 @@ public class CriarPedidoHandler {
         if(command.cliente_id() != null){
             var cliente = clienteRepositorio.buscarPorId(command.cliente_id());
             var salvo = pedidoRepositorio.salvar(mapper.paraDominio(command, cliente));
+            return mapper.paraModeloVisualizacao(salvo);
         }
 
         var salvo = pedidoRepositorio.salvar(mapper.paraDominio(command));
