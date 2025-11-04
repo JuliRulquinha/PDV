@@ -1,4 +1,4 @@
-import { Component, HostListener, inject, Input, OnInit } from '@angular/core';
+import { Component, HostListener, inject, Input, OnInit, ViewChild } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { PesquisaDeProdutos } from '../pesquisa-de-produtos/pesquisa-de-produtos';
@@ -64,6 +64,7 @@ export interface Dimensoes {
 export class PosComponent implements OnInit{
   @Input() lastProduct?: Produto;
   @Input() products: Produto[] = [];
+  @ViewChild('clientesRef') clientesRef!: Clientes;
 
   servicoDePedido = inject(ServicoPedido);
   servicoDeOrcamento = inject(ServicoOrcamento);

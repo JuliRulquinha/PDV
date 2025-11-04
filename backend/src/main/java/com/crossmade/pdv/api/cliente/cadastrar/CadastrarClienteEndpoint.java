@@ -22,7 +22,7 @@ public class CadastrarClienteEndpoint {
         this.handler = handler;
     }
 
-    @PostMapping
+    @PostMapping("/cadastrar")
     public ResponseEntity<ModeloVisualizacaoCliente> cadastrar(@RequestBody CadastrarClienteCommand comando){
         try {
             var cliente = handler.handle(comando);

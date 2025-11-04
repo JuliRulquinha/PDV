@@ -33,6 +33,11 @@ public class ClienteRepositorioIplm implements ClienteRepositorio{
     }
 
     @Override
+    public List<Cliente> listarTodos(String nome) {
+        return repositorio.findByNomeContaining(nome);
+    }
+
+    @Override
     public void deletar(Integer id) {
         repositorio.deleteById(id);
     }

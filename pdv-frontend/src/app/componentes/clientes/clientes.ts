@@ -1,8 +1,17 @@
-import { Component, EventEmitter, inject, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, inject, Input, OnInit, Output } from '@angular/core';
 import { Cliente, ServicoCliente } from '../../servicos/entities/servico-cliente';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
+import { ServicoPedido } from '../../servicos/entities/servico-pedido';
+// import {
+//   MatSnackBar,
+//   MatSnackBarAction,
+//   MatSnackBarActions,
+//   MatSnackBarLabel,
+//   MatSnackBarRef,
+// } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-clientes',
@@ -16,11 +25,15 @@ export class Clientes implements OnInit{
     this.buscarClientes();
   }
 
+  @Input() tipoDeCriacao?: 'pedido' | 'orcamento';
   @Output() pularInputDeCliente = new EventEmitter<'pedido'| 'orcamento'>();
+  
 
-
+  //private _snackBar = inject(MatSnackBar);
   fb = inject(FormBuilder);
   servicoCliente = inject(ServicoCliente);
+  servicoOrcamento = inject(ServicoOrcamento);
+  servicoPedido = inject(ServicoPedido);
   router = inject(Router);
   
   clientes: Cliente[] = [];
@@ -69,7 +82,32 @@ export class Clientes implements OnInit{
      });
   }
 
-  pular(tipo: 'pedido'|'orcamento'){
-    this.pularInputDeCliente.emit(tipo);
+  pular(){
+    this.pularInputDeCliente.emit(this.tipoDeCriacao);
+  }
+
+  confirmar(){
+    if(this.tipoDeCriacao === "orcamento"){
+      return this.salvarOrcamento();
+    }
+
+    if(this.tipoDeCriacao === "pedido"){
+      return this.salvarPedido();
+    }
+    
+  }
+
+  
+
+  salvarPedido() {
+    if(confirm("Deseja finalizar a compra?")){
+      this.servicoPedido.fazerPedido().subscribe();
+    }
+  }
+
+  salvarOrcamento(){
+    if(confirm("Deseja salvar o orçamento?")){
+      this.servicoOrcamento.fazerOrcamento().subscribe();
+    }
   }
 }

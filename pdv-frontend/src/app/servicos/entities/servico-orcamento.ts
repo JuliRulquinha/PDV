@@ -52,7 +52,7 @@ export class ServicoOrcamento {
       total: produto.valorVenda! * produto.quantidade,
     }
   }
-  criarOrcamento(): Orcamento {
+  criarOrcamento(cliente?: Cliente): Orcamento {
     let itens: ItemDoOrcamento[] = [];
     let total: number = 0;
     this.store.select(selectAllProdutos).pipe(
@@ -77,6 +77,17 @@ export class ServicoOrcamento {
     let dataProximoMes = new Date(dataAtual);
 
     dataProximoMes.setMonth(dataProximoMes.getMonth() + 1);
+
+    if(!!cliente){
+      return {
+        itens: itens,
+        cliente,
+        validade: dataProximoMes,
+        total: total,
+        status: StatusDoOrcamento.CRIADO
+      }
+    }
+
     return {
       itens: itens,
       validade: dataProximoMes,
@@ -85,7 +96,7 @@ export class ServicoOrcamento {
     }
   }
 
-   fazerOrcamento(){
+   fazerOrcamento(cliente?: Cliente){
     let orcamento = this.criarOrcamento();
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }

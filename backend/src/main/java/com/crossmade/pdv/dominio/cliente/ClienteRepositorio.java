@@ -7,5 +7,6 @@ public interface ClienteRepositorio {
     Cliente salvar(Cliente cliente);
     Cliente buscarPorId(Integer id);
     List<Cliente> listarTodos();
+    List<Cliente> listarTodos(String nome);
     void deletar(Integer id);
 }

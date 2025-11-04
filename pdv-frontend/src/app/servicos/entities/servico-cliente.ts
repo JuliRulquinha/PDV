@@ -1,6 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 
+export interface ListaDeClientes{
+  clientes: Cliente[]
+}
 
 export interface Cliente{
   id?: number,
@@ -28,12 +31,19 @@ export class ServicoCliente {
     return this.http.get<Cliente[]>(this.baseUrl);
   }
 
+  buscarPorNome(nome: string){
+    return this.http.post<ListaDeClientes>(this.baseUrl, nome,
+    {
+      headers: { 'Content-Type': 'text/plain' }
+    });
+  }
+
   buscarPorId(id: number){
     return this.http.get<Cliente>(`${this.baseUrl}/${id}`);
   }
 
   cadastrar(cliente: Cliente){
-    return this.http.post(this.baseUrl, cliente);
+    return this.http.post(this.baseUrl+"/cadastrar", cliente);
   }
 
 }

@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { Produto } from '../pos/pos.component';
 import { selectAllProdutos } from '../../store/produto.selectors';
-import { clearProdutos } from '../../store/produto.actions'; // vamos criar essa ação
+import { clearProdutos } from '../../store/produto.actions'; 
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { MatIconModule } from '@angular/material/icon';

@@ -35,7 +35,9 @@
         <p *ngIf="erroCadastro" class="erro-cadastro">Credenciais inválidas</p>
     
         <div class="btns-div">
-            <button type="submit" class="cadastro-btn">Confirmar</button>
+            <button type="submit" class="cadastro-btn" (click)="confirmar()">Confirmar</button>
+
+            
             <button type="button" class="pular-btn" (click)="pular()">Pular</button>
         </div>
       
