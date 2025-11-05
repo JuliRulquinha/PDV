@@ -57,29 +57,45 @@
 
 
 .cadastro-btn {
+
+   display: inline-flex;              /* permite alinhar ícone + texto */
+  align-items: center;               /* alinha verticalmente */
+  justify-content: center;           /* centraliza conteúdo */
+  gap: 6px;  
+
   width: 100%;
   padding: 14px;
   border: none;
   border-radius: 12px;
   background-color: #1e90ff;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
 .pular-btn{
+
+  display: inline-flex;              /* permite alinhar ícone + texto */
+  align-items: center;               /* alinha verticalmente */
+  justify-content: center;           /* centraliza conteúdo */
+  gap: 6px;   
+
   width: 100%;
   padding: 14px;
   border: none;
   border-radius: 12px;
   background-color: #8015d8;
   color: white;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   cursor: pointer;
   transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cadastro-btn:disabled{
+  background-color: #3d4c61;
 }
 
 .pular-btn:hover{
@@ -87,7 +103,7 @@
   transform: translateY(-2px);
 }
 
-.cadastro-btn:hover {
+.cadastro-btn:hover:not(:disabled) {
   background-color: #0d6efd;
   transform: translateY(-2px);
 }

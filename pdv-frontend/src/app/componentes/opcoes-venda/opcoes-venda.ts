@@ -1,6 +1,6 @@
 import { Component, EventEmitter, inject, Output } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, firstValueFrom } from 'rxjs';
 import { Produto } from '../pos/pos.component';
 import { selectAllProdutos } from '../../store/produto.selectors';
 import { clearProdutos } from '../../store/produto.actions'; 
@@ -19,8 +19,9 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 })
 export class OpcoesVenda {
 
-  @Output() finalizarVendaEvento = new EventEmitter();
-  @Output() criarOrcamentoEvento = new EventEmitter();
+  @Output() abrirModalEvento = new EventEmitter();
+  @Output() fazerPedidoEvento = new EventEmitter();
+  @Output() fazerOrcamentoEvento = new EventEmitter();
 
   produtos$: Observable<Produto[]>;
   tipoPagamento: string = 'dinheiro';
@@ -34,12 +35,25 @@ export class OpcoesVenda {
     this.produtos$ = this.store.select(selectAllProdutos);
   }
 
-  finalizarVenda() {
-    this.finalizarVendaEvento.emit();
+  async finalizarVenda() {
+    const produtos = await firstValueFrom(this.produtos$);
+    if (this.totalDeItens(produtos) > 0) {
+      this.abrirModalEvento.emit();
+      this.fazerPedidoEvento.emit();
+    } else {
+      // feedback ao usuário
+      setTimeout(() => alert('Adicione ao menos 1 item ao pedido.'), 0);
+    }
   }
 
-  salvarOrcamento(){
-    this.criarOrcamentoEvento.emit();
+  async salvarOrcamento(){
+    const produtos = await firstValueFrom(this.produtos$);
+    if (this.totalDeItens(produtos) > 0) {
+      this.abrirModalEvento.emit();
+      this.fazerOrcamentoEvento.emit();
+    } else {
+      setTimeout(() => alert('Adicione ao menos 1 item ao orçamento.'), 0);
+    }
   }
 
   cancelar() {

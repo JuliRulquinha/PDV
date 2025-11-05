@@ -9,8 +9,7 @@ export interface Cliente{
   id?: number,
   nome: string,
   telefone: string,
-  email?: string,
-  enderecos?: Endereco[]
+  endereco: string
 }
 
 export interface Endereco{

@@ -128,7 +128,7 @@
     </div>
    <div class="pos-container-grid">
     <app-checkout-display ></app-checkout-display>
-    <app-lista-produtos (finalizarVendaEvento)="mostrarModalDoCliente()" ></app-lista-produtos>
+    <app-lista-produtos (abrirModalEvento)="mostrarModalDoCliente()" (fazerPedidoEvento)="salvarPedido()" (fazerOrcamentoEvento)="salvarOrcamento()"></app-lista-produtos>
    </div> 
     
    @if(mostrarConsultaPreco) {
@@ -136,7 +136,8 @@
    }
 
    @if(mostrarModalCliente){
-    <app-clientes (pularInputDeCliente)="pularInputCliente()"></app-clientes>
+    <app-clientes *ngIf="mostrarModalCliente"
+  [tipoDeCriacao]="tipoDeCriacao" (pularInputDeCliente)="pularInputCliente()"></app-clientes>
    }
    
   </div>

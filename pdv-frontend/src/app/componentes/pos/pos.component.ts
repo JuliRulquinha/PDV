@@ -66,9 +66,7 @@ export class PosComponent implements OnInit{
   @Input() products: Produto[] = [];
   @ViewChild('clientesRef') clientesRef!: Clientes;
 
-  servicoDePedido = inject(ServicoPedido);
-  servicoDeOrcamento = inject(ServicoOrcamento);
-
+  tipoDeCriacao?: 'pedido' | 'orcamento';
   mostrarConsultaPreco = false;
   mostrarModalCliente = false;
 
@@ -122,19 +120,19 @@ export class PosComponent implements OnInit{
 
     if (event.key === 'Escape') {
       this.fecharConsulta();
+      this.mostrarModalCliente = false;
     }
   }
 
-  finalizarCompra(){
-    if(confirm("Deseja finalizar a compra?")){
-      this.servicoDePedido.fazerPedido().subscribe();
-    }
+  salvarPedido() {
+    this.tipoDeCriacao = 'pedido';
+    this.mostrarModalCliente = true;
   }
 
-  fazerOrcamento(){
-    if(confirm("Deseja salvar o orçamento?")){
-      this.servicoDeOrcamento.fazerOrcamento().subscribe();
-    }
+  salvarOrcamento() {
+    this.tipoDeCriacao = 'orcamento';
+    this.mostrarModalCliente = true;
   }
 }
+
 

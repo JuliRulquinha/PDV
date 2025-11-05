@@ -26,5 +26,5 @@
 
     <!-- Componente de opções de venda sempre visível -->
 
-  </div> <app-opcoes-venda  (finalizarVendaEvento)="mostrarModalDoClienteParaPedido()" (criarOrcamentoEvento)="mostrarModalDoClienteParaOrcamento()"></app-opcoes-venda>
+  </div> <app-opcoes-venda (abrirModalEvento)="abrirModal()" (fazerPedidoEvento)="sinalizarCriacaoDePedido()" (fazerOrcamentoEvento)="sinalizarCriacaoDeOrcamento()"></app-opcoes-venda>
 </div>

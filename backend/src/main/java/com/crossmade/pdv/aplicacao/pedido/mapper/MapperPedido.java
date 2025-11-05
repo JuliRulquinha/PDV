@@ -20,8 +20,7 @@ public class MapperPedido {
                     cliente.getId(),
                     cliente.getnome(),
                     cliente.getTelefone(),
-                    cliente.getEmail(),
-                    cliente.getEnderecos()
+                    cliente.getEndereco()
             );
 
             return new ModeloVisualizacaoPedido(

@@ -8,6 +8,5 @@ public record ModeloVisualizacaoCliente(
     Integer id,
     String nome,
     String telefone,
-    String email,
-    List<Endereco> enderecos
+    String endereco
 ) {}

@@ -18,8 +18,9 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 })
 export class ListaProdutos {
 
-  @Output() finalizarVendaEvento = new EventEmitter();
-  @Output() criarOrcamentoEvento = new EventEmitter();
+  @Output() abrirModalEvento = new EventEmitter();
+  @Output() fazerPedidoEvento = new EventEmitter();
+  @Output() fazerOrcamentoEvento = new EventEmitter();
 
   produtos$: Observable<Produto[]>;
   lastProduct$: Observable<Produto | undefined>;
@@ -55,11 +56,15 @@ export class ListaProdutos {
     }
   }
 
-  mostrarModalDoClienteParaPedido(){
-    this.finalizarVendaEvento.emit();
+  abrirModal(){
+    this.abrirModalEvento.emit();
   }
 
-  mostrarModalDoClienteParaOrcamento(){
-    this.criarOrcamentoEvento.emit();
+  sinalizarCriacaoDePedido(){
+    this.fazerPedidoEvento.emit();
+  }
+
+  sinalizarCriacaoDeOrcamento(){
+    this.fazerOrcamentoEvento.emit();
   }
 }

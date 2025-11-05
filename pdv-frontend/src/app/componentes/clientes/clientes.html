@@ -35,10 +35,8 @@
         <p *ngIf="erroCadastro" class="erro-cadastro">Credenciais inválidas</p>
     
         <div class="btns-div">
-            <button type="submit" class="cadastro-btn" (click)="confirmar()">Confirmar</button>
-
-            
-            <button type="button" class="pular-btn" (click)="pular()">Pular</button>
+            <button type="button" class="pular-btn" (click)="pular()"><mat-icon>double_arrow</mat-icon><span >Pular</span></button>
+            <button type="submit" [disabled]="cadastroForm.invalid || !cadastroForm.touched" class="cadastro-btn" (click)="confirmar()"><mat-icon>check_circle</mat-icon><span style="margin-left: 4px;">Confirmar</span> </button>
         </div>
       
     </form>

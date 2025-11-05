@@ -21,8 +21,7 @@ public class CadastrarClienteHandler {
     public ModeloVisualizacaoCliente handle(CadastrarClienteCommand command){
         Cliente cliente = new Cliente(command.nome(),
                                       command.telefone(),
-                                      command.email(),
-                                      command.enderecos()
+                                      command.endereco()
 
         );
         var salvo = repositorio.salvar(cliente);

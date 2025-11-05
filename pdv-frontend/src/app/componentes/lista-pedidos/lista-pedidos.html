@@ -8,10 +8,9 @@
         <th>ID</th>
         <th>Cliente</th>
         <th>Validade</th>
-        <th>Itens</th>
+
         <th>Total</th>
         <th>Status</th>
-        <th>Ações</th>
       </tr>
     </thead>
     <tbody>
@@ -19,12 +18,10 @@
         <td data-label="ID">{{ p.id }}</td>
         <td data-label="Cliente">{{ p.cliente?.nome || 'Cliente não identificado'}}</td>
         <td data-label="Validade">{{ p.validade | date:'dd/MM/yyyy'}}</td>
-        <td data-label="Itens">{{ p.itens }}</td>
+        
         <td data-label="Total">R$ {{ p.total | number:'1.2-2'}}</td>
         <td data-label="Status">{{ p.status }}</td>
-        <td data-label="Ações">
-          <button class="btn btn-edit" (click)="editarPedido(p)">✏️ Editar</button>
-        </td>
+        
       </tr>
 
     </tbody>

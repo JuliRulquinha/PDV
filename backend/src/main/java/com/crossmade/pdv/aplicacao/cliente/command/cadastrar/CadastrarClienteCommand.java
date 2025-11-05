@@ -7,8 +7,7 @@ import com.crossmade.pdv.dominio.endereco.Endereco;
 public record CadastrarClienteCommand(
     String nome,
     String telefone,
-    String email,
-    List<Endereco> enderecos
+    String endereco
 ){
 
 }

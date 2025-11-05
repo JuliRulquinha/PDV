@@ -96,7 +96,7 @@ export class ServicoOrcamento {
     }
   }
 
-   fazerOrcamento(cliente?: Cliente){
+  fazerOrcamento(cliente?: Cliente){
     let orcamento = this.criarOrcamento();
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }

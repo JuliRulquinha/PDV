@@ -14,8 +14,7 @@ public class MapperCliente {
             cliente.getId(),
             cliente.getnome(),
             cliente.getTelefone(),
-            cliente.getEmail(),
-            cliente.getEnderecos()
+            cliente.getEndereco()
         );
     }
 
