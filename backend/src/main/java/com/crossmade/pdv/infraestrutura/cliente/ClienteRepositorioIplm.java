@@ -28,6 +28,11 @@ public class ClienteRepositorioIplm implements ClienteRepositorio{
     }
 
     @Override
+    public Cliente buscarPorNome(String nome) {
+        return repositorio.findByNome(nome);
+    }
+
+    @Override
     public List<Cliente> listarTodos() {
         return repositorio.findAll();
     }

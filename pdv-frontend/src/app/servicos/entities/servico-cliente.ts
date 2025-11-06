@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
 
 export interface ListaDeClientes{
   clientes: Cliente[]
@@ -25,6 +26,12 @@ export interface Endereco{
 export class ServicoCliente {
   baseUrl = "http://localhost:8080/api/clientes";
   http = inject(HttpClient);
+  private subject = new BehaviorSubject(false);
+  clienteObservable$ = this.subject.asObservable();
+
+  notificarConclusao(){
+    this.subject.next(true);
+  }
 
   buscar(){
     return this.http.get<Cliente[]>(this.baseUrl);

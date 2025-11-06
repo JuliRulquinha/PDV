@@ -8,4 +8,5 @@ import java.util.List;
 
 public interface SpringDataClienteRepositorio extends JpaRepository<Cliente, Integer>{
     List<Cliente> findByNomeContaining(String nome);
+    Cliente findByNome(String nome);
 }

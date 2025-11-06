@@ -1,13 +1,14 @@
-import { Component, EventEmitter, HostListener, inject, Output } from '@angular/core';
+import { Component, EventEmitter, HostListener, inject, OnInit, Output } from '@angular/core';
 import { Produto } from '../pos/pos.component';
 import { CommonModule } from '@angular/common';
 import { OpcoesVenda } from '../opcoes-venda/opcoes-venda';
 import { Store } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { selectAllProdutos, selectLastProduto } from '../../store/produto.selectors';
-import { removerProdutoDaLista } from '../../store/produto.actions';
+import { clearProdutos, removerProdutoDaLista } from '../../store/produto.actions';
 import { ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
 import { ServicoPedido } from '../../servicos/entities/servico-pedido';
+import { ServicoCliente } from '../../servicos/entities/servico-cliente';
 
 @Component({
   selector: 'app-lista-produtos',
@@ -16,7 +17,7 @@ import { ServicoPedido } from '../../servicos/entities/servico-pedido';
   templateUrl: './lista-produtos.html',
   styleUrls: ['./lista-produtos.css']
 })
-export class ListaProdutos {
+export class ListaProdutos implements OnInit {
 
   @Output() abrirModalEvento = new EventEmitter();
   @Output() fazerPedidoEvento = new EventEmitter();
@@ -25,13 +26,18 @@ export class ListaProdutos {
   produtos$: Observable<Produto[]>;
   lastProduct$: Observable<Produto | undefined>;
   produtoSelecionado!: Produto | null; 
+  subscriptionCliente? : Subscription;
 
   servicoOrcamento = inject(ServicoOrcamento);
   servicoPedido = inject(ServicoPedido);
-
+  servicoCliente = inject(ServicoCliente);
+  
   constructor(private store: Store) {
     this.produtos$ = this.store.select(selectAllProdutos);
     this.lastProduct$ = this.store.select(selectLastProduto);
+  }
+  ngOnInit(): void {
+   //TODO: preciso fazer a lista se limpar apos a criação do orçamento ou pedido
   }
 
   trackById(index: number, item: Produto) {

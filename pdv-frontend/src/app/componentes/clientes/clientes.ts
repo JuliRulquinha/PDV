@@ -41,6 +41,7 @@ export class Clientes implements OnInit {
   snackBar = inject(MatSnackBar);
   
   clientes: Cliente[] = [];
+  clienteSelecionado?: Cliente;
 
   cadastroForm: FormGroup = this.fb.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -77,7 +78,9 @@ export class Clientes implements OnInit {
 
     const cliente = this.cadastroForm.value;
 
-    this.servicoCliente.cadastrar(cliente).subscribe({
+    debugger;
+    if(!this.clienteSelecionado){
+      this.servicoCliente.cadastrar(cliente).subscribe({
       next: (resposta) => {
         this.erroCadastro = false;
         this.showSuccess('Cliente cadastrado com sucesso!');
@@ -91,14 +94,22 @@ export class Clientes implements OnInit {
         } else {
           this.showError('Ocorreu um erro inesperado. Tente novamente.');
         }
+      }, complete: () =>{
+        this.cadastroForm.reset();
+        this.cadastroForm.clearValidators();
+        this.servicoCliente.notificarConclusao();
       }
-    });
+    });}
+    this.cadastroForm.reset();
+    this.cadastroForm.clearValidators();
+    this.servicoCliente.notificarConclusao();
   }
 
   selecionarCliente(cliente: Cliente) {
     if (!cliente) return;
     
     // Atualiza os campos do formulário
+    this.clienteSelecionado = cliente;
     this.cadastroForm.patchValue({
       nome: cliente.nome,  // Passa o objeto cliente completo
       telefone: cliente.telefone || '',
@@ -130,7 +141,8 @@ export class Clientes implements OnInit {
 
   salvarOrcamento() {
     if (confirm('Deseja salvar o orçamento?')) {
-      this.servicoOrcamento.fazerOrcamento().subscribe({
+      
+      this.servicoOrcamento.fazerOrcamento(this.clienteSelecionado).subscribe({
         next: () => this.showSuccess('Orçamento salvo com sucesso!'),
         error: () => this.showError('Falha ao salvar o orçamento.')
       });

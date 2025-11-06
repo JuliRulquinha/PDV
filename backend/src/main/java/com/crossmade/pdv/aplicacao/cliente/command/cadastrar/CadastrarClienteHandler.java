@@ -19,13 +19,20 @@ public class CadastrarClienteHandler {
     }
 
     public ModeloVisualizacaoCliente handle(CadastrarClienteCommand command){
-        Cliente cliente = new Cliente(command.nome(),
-                                      command.telefone(),
-                                      command.endereco()
 
-        );
-        var salvo = repositorio.salvar(cliente);
+        var possivelCliente = repositorio.buscarPorNome(command.nome());
 
-        return mapper.paraDtoDeVisualizar(salvo);
+        if(possivelCliente == null || !possivelCliente.getTelefone().equals(command.telefone())){
+            Cliente cliente = new Cliente(command.nome(),
+                    command.telefone(),
+                    command.endereco()
+
+            );
+            var salvo = repositorio.salvar(cliente);
+
+            return mapper.paraDtoDeVisualizar(salvo);
+        }
+
+        return mapper.paraDtoDeVisualizar(possivelCliente);
     }
 }

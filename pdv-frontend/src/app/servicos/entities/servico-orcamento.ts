@@ -14,7 +14,7 @@ export interface ListaDeOrcamentos{
 export interface Orcamento{
   id?: number,
   itens: ItemDoOrcamento[],
-  cliente?: Cliente,
+  cliente_id?: number,
   validade: Date,
   total: number,
   desconto?: number,
@@ -81,7 +81,7 @@ export class ServicoOrcamento {
     if(!!cliente){
       return {
         itens: itens,
-        cliente,
+        cliente_id: cliente.id,
         validade: dataProximoMes,
         total: total,
         status: StatusDoOrcamento.CRIADO
@@ -97,7 +97,7 @@ export class ServicoOrcamento {
   }
 
   fazerOrcamento(cliente?: Cliente){
-    let orcamento = this.criarOrcamento();
+    let orcamento = this.criarOrcamento(cliente);
     return this.http.post<Orcamento>(this.baseUrl, orcamento);
   }
 

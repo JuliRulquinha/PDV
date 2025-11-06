@@ -8,6 +8,8 @@ import { ConsultaPreco } from '../consulta-preco/consulta-preco';
 import { Clientes } from '../clientes/clientes';
 import { ServicoPedido } from '../../servicos/entities/servico-pedido';
 import { ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
+import { ServicoCliente } from '../../servicos/entities/servico-cliente';
+import { Subscription } from 'rxjs';
 
 export interface Produto {
   id?: number;
@@ -66,12 +68,21 @@ export class PosComponent implements OnInit{
   @Input() products: Produto[] = [];
   @ViewChild('clientesRef') clientesRef!: Clientes;
 
+  servicoCliente = inject(ServicoCliente);
+
+  subscriptionCliente? : Subscription;
   tipoDeCriacao?: 'pedido' | 'orcamento';
   mostrarConsultaPreco = false;
   mostrarModalCliente = false;
 
   ngOnInit() {
     this.updateLastProduct();
+    this.subscriptionCliente = this.servicoCliente.clienteObservable$.subscribe(
+      ()=>{
+        this.mostrarModalCliente = false;
+        
+      }
+    );
   }
 
   trackById(index: number, item: Produto) {
