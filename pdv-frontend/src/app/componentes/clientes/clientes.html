@@ -5,33 +5,32 @@
     <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
 
      
-      <div class="form-group">
-        <label for="nome"><b>Nome</b></label>
-        <input id="nome" type="text" formControlName="nome" />
-        
-        <div class="error" *ngIf="(cadastroForm.get('nome')?.touched || submitted) && cadastroForm.get('nome')?.invalid">
-          <small *ngIf="cadastroForm.get('nome')?.errors?.['required']">Nome é obrigatório</small>
-          <small *ngIf="cadastroForm.get('nome')?.errors?.['minlength']">Nome deve ter pelo menos 3 caracteres</small>     
-        </div>
-      </div>
 
-      <div class="form-group">
-        <label for="telefone"><b>Telefone</b></label>
-        <input id="telefone" type="text" formControlName="telefone" />
-        
-        <div class="error" *ngIf="(cadastroForm.get('telefone')?.touched || submitted) && cadastroForm.get('telefone')?.invalid">
-          <small *ngIf="cadastroForm.get('telefone')?.errors?.['required']">Telefone é obrigatório</small>
-          
-        </div>
-        
-      </div>
+  <mat-form-field class="example-full-width">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput formControlName="nome" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selecionarCliente($event.option.value)">
+      @for (cliente of clientes ; track $index) {
+        <mat-option [value]="cliente">{{cliente.nome}}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
 
-      <div class="form-group">
-        <label for="endereco"><b>Endereço</b></label>
-        <input id="endereco" type="text" formControlName="endereco" />
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefone</mat-label>
+        <input type="text" matInput formControlName="telefone">
+        <mat-error *ngIf="cadastroForm.get('telefone')?.errors?.['required']">
+          Telefone é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Endereço</mat-label>
+        <input type="text" matInput formControlName="endereco">
         
-       
-        </div>
+       </mat-form-field>
+        
         <p *ngIf="erroCadastro" class="erro-cadastro">Credenciais inválidas</p>
     
         <div class="btns-div">
@@ -40,5 +39,6 @@
         </div>
       
     </form>
+  </div>
   </div>
 

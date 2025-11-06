@@ -30,15 +30,6 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 })
 export class Clientes implements OnInit {
 
-  ngOnInit(): void {
-      this.cadastroForm.get('nome')?.valueChanges.subscribe(valor => {
-      if (valor && valor.length >= 2) {
-        var clientes = this.buscarPossiveisClientes(valor);
-        console.log(clientes);
-      }
-    });
-  }
-
   @Input() tipoDeCriacao?: 'pedido' | 'orcamento';
   @Output() pularInputDeCliente = new EventEmitter();
 
@@ -49,18 +40,7 @@ export class Clientes implements OnInit {
   router = inject(Router);
   snackBar = inject(MatSnackBar);
   
-  clientes: Cliente[] = [
-    { nome: 'Juliana Souza', telefone: '11987654321', endereco: 'Rua das Flores, 120' },
-    { nome: 'Julius Ferreira', telefone: '21988776655', endereco: 'Avenida Central, 45' },
-    { nome: 'Julio Andrade', telefone: '31999887766', endereco: 'Rua São Pedro, 78' },
-    { nome: 'Juliette Lima', telefone: '41988779966', endereco: 'Praça da Paz, 12' },
-    { nome: 'Marcos Silva', telefone: '11955667788', endereco: 'Rua Nova Esperança, 100' },
-    { nome: 'Carla Menezes', telefone: '21966554433', endereco: 'Travessa Alegre, 23' },
-    { nome: 'Rafael Costa', telefone: '31977889900', endereco: 'Rua das Palmeiras, 54' },
-    { nome: 'Beatriz Rocha', telefone: '41999887755', endereco: 'Rua do Sol, 8' },
-    { nome: 'Fernando Almeida', telefone: '51966778899', endereco: 'Rua das Acácias, 33' },
-    { nome: 'Isabela Nunes', telefone: '61988997766', endereco: 'Avenida Brasil, 250' }
-  ];
+  clientes: Cliente[] = [];
 
   cadastroForm: FormGroup = this.fb.group({
     nome: ['', [Validators.required, Validators.minLength(3)]],
@@ -70,6 +50,16 @@ export class Clientes implements OnInit {
 
   submitted = false;
   erroCadastro = false;
+
+
+  ngOnInit(): void {
+    this.cadastroForm.get('nome')?.valueChanges.subscribe(valor => {
+      // Se o valor for um objeto Cliente, não dispara a busca
+      if (typeof valor === 'string' && valor.length >= 2) {
+        this.buscarPossiveisClientes(valor);
+      }
+    });
+  }
 
   buscarClientes() {
     this.servicoCliente.buscar().subscribe(clientesDoDb => {
@@ -103,6 +93,20 @@ export class Clientes implements OnInit {
         }
       }
     });
+  }
+
+  selecionarCliente(cliente: Cliente) {
+    if (!cliente) return;
+    
+    // Atualiza os campos do formulário
+    this.cadastroForm.patchValue({
+      nome: cliente.nome,  // Passa o objeto cliente completo
+      telefone: cliente.telefone || '',
+      endereco: cliente.endereco || ''
+    });
+
+    // Marca o form como touched para habilitar o botão de confirmar
+    this.cadastroForm.markAsTouched();
   }
 
   confirmar() {
@@ -168,5 +172,10 @@ export class Clientes implements OnInit {
       duration: 4000,
       panelClass: ['snackbar-error']
     });
+  }
+
+  displayFn(cliente: Cliente | string | null): string {
+    if (!cliente) return '';
+    return typeof cliente === 'object' ? cliente.nome : cliente;
   }
 }
