@@ -1,12 +1,13 @@
 <div class="pos-footer">
  
 <div class="pos-actions">
-    <button class="pos-btn pos-btn-finalizar" (click)="finalizarVenda()">Finalizar Venda</button>
-    <button class="pos-btn pos-btn-cancelar" (click)="cancelar()">Cancelar</button>
+    <button class="pos-btn pos-btn-finalizar" (click)="finalizarVenda()"><mat-icon>point_of_sale</mat-icon> <span style="margin-left: 4px;">Finalizar Venda</span></button>
+     <button class="pos-btn pos-btn-orcamento" (click)="salvarOrcamento()"><mat-icon>save</mat-icon> <span style="margin-left: 4px;">Salvar Orçamento</span></button>
+    <button class="pos-btn pos-btn-cancelar" (click)="cancelar()"><mat-icon>cancel</mat-icon> <span style="margin-left: 4px;">Cancelar</span></button>
   </div>
   <div class="pos-summary">
     <div class="pos-summary-item">
-      Itens: {{ (produtos$ | async)?.length ?? 0 }}
+      Itens: {{ totalDeItens((produtos$ | async) ?? [])}}
     </div>
     <div class="pos-summary-item">
       Total: R$ {{ getTotal((produtos$ | async) ?? []) | number:'1.2-2' }}

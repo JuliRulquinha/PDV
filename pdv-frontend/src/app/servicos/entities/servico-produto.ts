@@ -1,12 +1,26 @@
 import { HttpClient } from '@angular/common/http';
 import { inject, Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Produto } from '../../componentes/pos/pos.component';
+import { Dimensoes, Produto } from '../../componentes/pos/pos.component';
 
 
 export interface ListaProdutoDto{
   contagem: number;
-  produtos: Produto[],
+  produtos: Produto[]
+}
+
+export interface CadastroDeProdutoCommand{
+  nome?: string,
+  categoria_id?: number,
+  fornecedor_id?: number,
+  marca?: string,
+  modelo?: string,
+  quantidade?: number,
+  valorCusto?: number,
+  valorVenda?: number,
+  imageUrl?: string,
+  validade?: string,
+  dimensoes?: Dimensoes
 }
 
 @Injectable({
@@ -24,18 +38,18 @@ export class ServicoProduto {
     return this.http.get<Produto>(this.baseUrl+"/"+id);
   }
 
-  private mapToCommand(produto: Produto) {
-    return {
+  private mapToCommand(produto: Produto):CadastroDeProdutoCommand {
+    return { 
       nome: produto.nome,
-      categoria_id: produto.categoria?.id,
-      fornecedor_id: produto.fornecedor?.id,
+      categoria_id: produto?.categoria?.id,
+      fornecedor_id: produto?.fornecedor?.id, 
       marca: produto.marca,
       modelo: produto.modelo,
       quantidade: produto.quantidade,
       valorCusto: produto.valorCusto,
       valorVenda: produto.valorVenda,
       imageUrl: produto.imageUrl,
-      validade: produto.validade ? produto.validade.toISOString() : null,
+      validade: produto.validade ? produto.validade.toISOString() : undefined,
       dimensoes: produto.dimensoes
     };
   }

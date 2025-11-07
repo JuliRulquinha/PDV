@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import com.crossmade.pdv.aplicacao.produto.dtos.ListaProdutoDto;
 import com.crossmade.pdv.aplicacao.produto.query.buscarTodos.BuscarTodosOsProdutosHandler;
 import com.crossmade.pdv.aplicacao.produto.query.buscarTodos.BuscarTodosOsProdutosQuery;
@@ -56,7 +56,7 @@ public class BuscarProdutoEndpoint {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<DtoVisualizarProduto> buscarPorId(@PathVariable Integer id){
+    public ResponseEntity<ModeloVisualizacaoProduto> buscarPorId(@PathVariable Integer id){
 
         try {
             var query = new BuscarPorIdQuery(id);

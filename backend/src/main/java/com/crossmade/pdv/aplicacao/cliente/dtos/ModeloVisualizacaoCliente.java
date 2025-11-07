@@ -1,0 +1,12 @@
+package com.crossmade.pdv.aplicacao.cliente.dtos;
+
+import java.util.List;
+
+import com.crossmade.pdv.dominio.endereco.Endereco;
+
+public record ModeloVisualizacaoCliente(
+    Integer id,
+    String nome,
+    String telefone,
+    String endereco
+) {}

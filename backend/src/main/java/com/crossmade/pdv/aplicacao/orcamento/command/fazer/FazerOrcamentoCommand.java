@@ -1,5 +1,18 @@
 package com.crossmade.pdv.aplicacao.orcamento.command.fazer;
 
-public class FazerOrcamentoCommand {
+import java.math.BigDecimal;
+import java.sql.Date;
+import java.util.List;
+
+import com.crossmade.pdv.dominio.orcamento.ItemDoOrcamento;
+
+
+public record FazerOrcamentoCommand(
+    List<ItemDoOrcamento> itens,
+    Integer cliente_id,
+    Date validade,
+    BigDecimal total,
+    int desconto
+) {
 
 }

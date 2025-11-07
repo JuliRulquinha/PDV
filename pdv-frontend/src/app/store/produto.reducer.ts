@@ -14,10 +14,24 @@ export const initialState: ProdutoState = {
 
 export const produtoReducer = createReducer(
   initialState,
-  on(addProduto, (state, { produto }) => ({
-    ...state,
-    produtos: [...state.produtos, produto]
-  })),
+  on(addProduto, (state, { produto }) => {
+    // If product with same id already exists, increment its quantidade
+    // otherwise append the new product.
+    const existingIndex = state.produtos.findIndex(p => p.id === produto.id);
+    if (existingIndex !== -1) {
+      const updated = state.produtos.map(p => {
+        if (p.id === produto.id) {
+          const existingQtd = typeof p.quantidade === 'number' ? p.quantidade : 0;
+          const addedQtd = typeof produto.quantidade === 'number' ? produto.quantidade : 0;
+          return { ...p, quantidade: existingQtd + addedQtd };
+        }
+        return p;
+      });
+      return { ...state, produtos: updated };
+    }
+
+    return { ...state, produtos: [...state.produtos, produto] };
+  }),
 
   on(clearProdutos, state => ({
     ...state,

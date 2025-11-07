@@ -2,6 +2,7 @@ package com.crossmade.pdv.infraestrutura.orcamento;
 
 import java.util.List;
 
+import com.crossmade.pdv.dominio.orcamento.StatusOrcamento;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.orcamento.Orcamento;
@@ -28,14 +29,26 @@ public class OrcamentoRepositorioIplm implements OrcamentoRepositorio{
     }
 
     @Override
-    public List<Orcamento> listarTodos() {
-        return repositorio.findAll();
+    public List<Orcamento> listarTodos(int pagina) {
+        return repositorio.paginar(pagina);
     }
 
     @Override
-    public void cancelar(Integer id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'cancelar'");
+    public Orcamento cancelar(Integer id) {
+        var orcamentoDoDb = repositorio.findById(id).orElse(null);
+        orcamentoDoDb.setStatus(StatusOrcamento.CANCELADO);
+        return repositorio.save(orcamentoDoDb);
     }
 
+    @Override
+    public Orcamento mudarStatus(Integer id, StatusOrcamento status) {
+        var orcamentoDoDb = repositorio.findById(id).orElse(null);
+        orcamentoDoDb.setStatus(status);
+        return repositorio.save(orcamentoDoDb);
+    }
+
+    @Override
+    public int retornarContagem() {
+        return repositorio.getCount();
+    }
 }

@@ -5,6 +5,8 @@ import java.util.List;
 public interface OrcamentoRepositorio {
     Orcamento salvar(Orcamento orcamento);
     Orcamento buscarPorId(Integer id);
-    List<Orcamento> listarTodos();
-    void cancelar(Integer id);
+    List<Orcamento> listarTodos(int pagina);
+    Orcamento cancelar(Integer id);
+    Orcamento mudarStatus(Integer id, StatusOrcamento status);
+    public int retornarContagem();
 }

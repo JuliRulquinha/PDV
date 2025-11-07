@@ -3,6 +3,7 @@ package com.crossmade.pdv.infraestrutura.pedido;
 import java.util.List;
 
 
+import com.crossmade.pdv.dominio.pedido.StatusPedido;
 import org.springframework.stereotype.Repository;
 
 import com.crossmade.pdv.dominio.pedido.Pedido;
@@ -29,13 +30,26 @@ public class PedidoRepositorioIplm implements PedidoRepositorio{
     }
 
     @Override
-    public List<Pedido> listarTodos() {
-        return repositorio.findAll();
+    public List<Pedido> listarTodos(int pagina) {
+        return repositorio.paginar(pagina);
     }
 
     @Override
-    public void cancelar(Integer id) {
-        throw new UnsupportedOperationException("Unimplemented method 'cancelar'");
+    public Pedido cancelar(Integer id) {
+        var pedidoDoDb = repositorio.findById(id).orElse(null);
+        pedidoDoDb.setStatus(StatusPedido.CANCELADO);
+        return repositorio.save(pedidoDoDb);
     }
 
+    @Override
+    public Pedido mudarStatus(Integer id, StatusPedido status) {
+        var pedidoDoDb = repositorio.findById(id).orElse(null);
+        pedidoDoDb.setStatus(status);
+        return repositorio.save(pedidoDoDb);
+    }
+
+    @Override
+    public int retornarContagem() {
+        return repositorio.getCount();
+    }
 }

@@ -1,0 +1,44 @@
+
+  <div class="modal-overlay">
+  <div class="modal-box">
+    <p style="font-size: 20px; margin-bottom: 15px;"><b>Dados do Cliente</b></p>
+    <form [formGroup]="cadastroForm" (ngSubmit)="cadastrar()">
+
+     
+
+  <mat-form-field class="example-full-width">
+    <mat-label>Nome</mat-label>
+    <input type="text" matInput formControlName="nome" [matAutocomplete]="auto">
+    <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="selecionarCliente($event.option.value)">
+      @for (cliente of clientes ; track $index) {
+        <mat-option [value]="cliente">{{cliente.nome}}</mat-option>
+      }
+    </mat-autocomplete>
+  </mat-form-field>
+
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Telefone</mat-label>
+        <input type="text" matInput formControlName="telefone">
+        <mat-error *ngIf="cadastroForm.get('telefone')?.errors?.['required']">
+          Telefone é obrigatório
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field class="example-full-width">
+        <mat-label>Endereço</mat-label>
+        <input type="text" matInput formControlName="endereco">
+        
+       </mat-form-field>
+        
+        <p *ngIf="erroCadastro" class="erro-cadastro">Credenciais inválidas</p>
+    
+        <div class="btns-div">
+            <button type="button" class="pular-btn" (click)="pular()"><mat-icon>double_arrow</mat-icon><span >Pular</span></button>
+            <button type="submit" [disabled]="cadastroForm.invalid || !cadastroForm.touched" class="cadastro-btn" (click)="confirmar()"><mat-icon>check_circle</mat-icon><span style="margin-left: 4px;">Confirmar</span> </button>
+        </div>
+      
+    </form>
+  </div>
+  </div>
+

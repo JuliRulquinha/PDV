@@ -1,12 +1,13 @@
 package com.crossmade.pdv.aplicacao.categoria.dtos;
 
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
-
 import java.util.List;
 
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
+
 public record DtoVisualizarCategoria(
+        Integer id,
         String nome,
         String descricao,
-        List<DtoVisualizarProduto> produtos
+        List<ModeloVisualizacaoProduto> produtos
 ) {
 }

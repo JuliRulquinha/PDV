@@ -9,8 +9,8 @@
   </div>
 
   <!-- Lista de Produtos -->
-  <h2 class="titulo">Lista de Produtos</h2>
-  <table class="tabela-produtos">
+  <h2 class="titulo" *ngIf="!emEdicao && !novoCadastro">Lista de Produtos</h2>
+  <table class="tabela-produtos" *ngIf="!emEdicao && !novoCadastro">
     <thead>
       <tr>
         <th>ID</th>
@@ -43,13 +43,13 @@
     </tbody>
   </table>
 
-  <!-- Formulário (Cadastro ou Edição) -->
-  <div *ngIf="produtoSelecionado || novoCadastro" class="form-container">
+ 
+  <div *ngIf="novoCadastro" class="form-container">
     <h2 class="titulo">
       {{ novoCadastro ? 'Cadastrar Produto' : 'Editar Produto: ' + produtoSelecionado?.nome }}
     </h2>
 
-    <form [formGroup]="formProduto" (ngSubmit)="salvarProduto()" class="form-produto">
+    <form [formGroup]="formCadastro" (ngSubmit)="salvarProduto()" class="form-produto">
       <div class="form-group">
         <label>Nome:</label>
         <input type="text" formControlName="nome">
@@ -69,6 +69,79 @@
           <option [ngValue]="null">Selecione...</option>
           <option *ngFor="let c of categorias" [ngValue]="c">{{ c.nome }}</option>
         </select>
+      </div>
+
+      <div class="form-group">
+        <label>Marca:</label>
+        <input type="text" formControlName="marca">
+      </div>
+
+      <div class="form-group">
+        <label>Modelo:</label>
+        <input type="text" formControlName="modelo">
+      </div>
+
+      <div class="form-group">
+        <label>Quantidade:</label>
+        <input type="number" formControlName="quantidade">
+      </div>
+
+      <div class="form-group">
+        <label>Valor Custo:</label>
+        <input type="number" formControlName="valorCusto">
+      </div>
+
+      <div class="form-group">
+        <label>Valor Venda:</label>
+        <input type="number" formControlName="valorVenda">
+      </div>
+
+      <div class="form-group">
+        <label>Imagem (URL):</label>
+        <input type="text" formControlName="imageUrl">
+      </div>
+
+      <div class="form-group">
+        <label>Validade:</label>
+        <input type="date" formControlName="validade">
+      </div>
+
+      <!-- Dimensões -->
+      <fieldset formGroupName="dimensoes" class="dimensoes">
+        <legend>Dimensões</legend>
+        <div class="form-group">
+          <label>Largura:</label>
+          <input type="number" formControlName="largura">
+        </div>
+        <div class="form-group">
+          <label>Altura:</label>
+          <input type="number" formControlName="altura">
+        </div>
+        <div class="form-group">
+          <label>Peso:</label>
+          <input type="number" formControlName="peso">
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">{{ novoCadastro ? 'Salvar' : 'Atualizar' }}</button>
+        <button type="button" class="btn btn-cancel" (click)="cancelarEdicao()">Cancelar</button>
+      </div>
+    </form>
+
+    
+  </div>
+<div>
+
+  <div *ngIf="produtoSelecionado" class="form-container">
+    <h2 class="titulo">
+      {{ novoCadastro ? 'Cadastrar Produto' : 'Editar Produto: ' + produtoSelecionado.nome }}
+    </h2>
+
+    <form [formGroup]="formCadastro" (ngSubmit)="salvarProduto()" class="form-produto">
+      <div class="form-group">
+        <label>Nome:</label>
+        <input type="text" formControlName="nome">
       </div>
 
       <div class="form-group">

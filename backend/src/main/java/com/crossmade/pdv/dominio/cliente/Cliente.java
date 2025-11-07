@@ -26,6 +26,7 @@ public class Cliente {
     private String nome;
     private String telefone;
     private String email;
+    private String endereco;
     @ElementCollection
     @CollectionTable(name = "cliente_enderecos",
             joinColumns = @JoinColumn(name = "cliente_id"))
@@ -35,16 +36,20 @@ public class Cliente {
 
     @OneToMany(mappedBy = "cliente")
     private List<Orcamento> orcamentos;
-    
 
-  
+
+
     public Cliente() {
     }
-    public Cliente(String nome, String telefone, String email) {
+    public Cliente(String nome, String telefone) {
         this.nome = nome;
         this.telefone = telefone;
-        this.email = email;
+    }
 
+    public Cliente(String nome, String telefone, String endereco) {
+        this.nome = nome;
+        this.telefone = telefone;
+        this.endereco = endereco;
     }
 
       public Cliente( String nome, String telefone, String email, List<Endereco> enderecos) {
@@ -61,6 +66,26 @@ public class Cliente {
         this.telefone = telefone;
         this.email = email;
         this.enderecos = enderecos;
+    }
+
+    public Cliente(Integer id, String nome, String telefone, String email) {
+        this.id = id;
+        this.nome = nome;
+        this.telefone = telefone;
+        this.email = email;
+
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public List<Endereco> getEnderecos() {
+        return enderecos;
     }
     public Integer getId() {
         return id;
@@ -79,5 +104,12 @@ public class Cliente {
     }
     public void setPedidos(List<Pedido> pedidos) {
         this.pedidos = pedidos;
+    }
+    public String getEndereco() {
+        return endereco;
+    }
+
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 }

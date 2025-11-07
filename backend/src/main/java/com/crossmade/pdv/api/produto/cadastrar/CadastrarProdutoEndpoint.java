@@ -1,6 +1,6 @@
 package com.crossmade.pdv.api.produto.cadastrar;
 
-import com.crossmade.pdv.aplicacao.produto.dtos.DtoVisualizarProduto;
+import com.crossmade.pdv.aplicacao.produto.dtos.ModeloVisualizacaoProduto;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.crossmade.pdv.aplicacao.produto.command.cadastrar.CadastrarProdutoCommand;
 import com.crossmade.pdv.aplicacao.produto.command.cadastrar.CadastrarProdutoHandler;
-import com.crossmade.pdv.dominio.produto.Produto;
 
 
 @RestController
@@ -23,7 +22,7 @@ public class CadastrarProdutoEndpoint {
     }
 
     @PostMapping
-    public ResponseEntity<DtoVisualizarProduto> cadastrar(@RequestBody CadastrarProdutoCommand comando){
+    public ResponseEntity<ModeloVisualizacaoProduto> cadastrar(@RequestBody CadastrarProdutoCommand comando) {
         try {
             var produto = handler.handle(comando);
             return ResponseEntity.ok(produto);

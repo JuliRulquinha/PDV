@@ -26,7 +26,7 @@ export class CadastrarUsuario {
 
 
   papeis = [
-  { label: 'Selecione um papel', value: '' },
+  { label: 'Selecione uma função', value: '' },
   { label: 'Administrador', value: Papel.ADMIN },
   { label: 'Usuário', value: Papel.USUARIO },
   { label: 'Gerente', value: Papel.GERENTE },
@@ -34,33 +34,6 @@ export class CadastrarUsuario {
 
   submitted = false;
   erroCadastro = false;
-
-  // login() {
-  //   this.submitted = true;
-
-  //   if (this.cadastroForm.invalid) {
-  //     this.cadastroForm.markAllAsTouched();
-  //     return;
-  //   }
-
-  //   const usuario = this.cadastroForm.value;
-
-  //   this.authService.autenticar(usuario).subscribe({
-  //     next: (resposta) => {
-  //       this.authService.salvarToken(resposta.token);
-  //       this.erroLogin = false; 
-  //       this.router.navigate(['/checkout']);
-  //     },
-  //     error: (erro) => {
-        
-  //       if (erro.status === 403) {
-  //         this.erroLogin = true; 
-  //       } else {
-  //         alert('Ocorreu um erro inesperado. Tente novamente.');
-  //       }
-  //     }
-  //   });
-  // }
 
   cadastrar(){
     this.submitted = true;

@@ -15,11 +15,12 @@ import { ServicoFornecedor } from '../../servicos/entities/servico-fornecedor';
 })
 export class ControleDeEstoque {
  
-
+  emEdicao:boolean = false; 
   pagina:number = 0;
   contagem:number= 0;
   produtos: Produto[] = [];
-  formProduto!: FormGroup;
+  formCadastro!: FormGroup;
+  formEdicao!: FormGroup;
   produtoSelecionado: Produto | null = null;
   novoCadastro = false; 
   pageSize: number = 10;  
@@ -38,11 +39,11 @@ export class ControleDeEstoque {
   ) {}
 
   ngOnInit(): void {
-    this.formProduto = this.fb.group({
+    this.formCadastro = this.fb.group({
       id: [null],
       nome: ['', Validators.required],
-      fornecedor: [null, Validators.required],
-      categoria: [null, Validators.required],
+      fornecedor: [Validators.required],
+      categoria: [Validators.required],
       marca: [''],
       modelo: [''],
       quantidade: [0, [Validators.required, Validators.min(0)]],
@@ -53,18 +54,32 @@ export class ControleDeEstoque {
       dimensoes: this.fb.group({
         largura: [null],
         altura: [null],
-        profundidade: [null]
+        peso: [null]
       })
     });
  
+    this.formEdicao = this.fb.group({
+      id: [null],
+      nome: ['', Validators.required],
+      marca: [''],
+      modelo: [''],
+      quantidade: [0, [Validators.required, Validators.min(0)]],
+      valorCusto: [null],
+      valorVenda: [null],
+      imageUrl: [''],
+      validade: [null],
+      dimensoes: this.fb.group({
+        largura: [null],
+        altura: [null],
+        peso: [null]
+      })
+    })
+
     Promise.all([
       this.buscarCategorias(),
       this.buscarFornecedores(),
       this.carregarProdutos()
     ])
-
-   
-    
   }
 
   carregarProdutos(): void {
@@ -82,8 +97,10 @@ export class ControleDeEstoque {
   }
 
   buscarCategorias(): void {
+  
     this.servicoCategoria.buscarCategorias().subscribe({
       next: (data) => {
+        debugger;
         this.categorias = Array.isArray(data.categorias) ? data.categorias : [data.categorias];
       }
     });
@@ -102,7 +119,7 @@ export class ControleDeEstoque {
     this.novoCadastro = true;
     this.produtoSelecionado = null;
 
-    this.formProduto.reset({
+    this.formCadastro.reset({
       quantidade: 0,
       fornecedor: null,
       categoria: null,
@@ -111,22 +128,23 @@ export class ControleDeEstoque {
   }
 
   editarProduto(p: Produto): void {
+    this.emEdicao = true;
     this.produtoSelecionado = p;
     this.novoCadastro = false;
-    this.formProduto.patchValue(p);
+    this.formEdicao.patchValue(p);
   }
 
  salvarProduto(): void {
-  console.log('submit disparado', this.formProduto.value);
 
-  if (this.formProduto.invalid) {
-    this.formProduto.markAllAsTouched();
+  if (this.formCadastro.invalid) {
+    this.formCadastro.markAllAsTouched();
     return;
   }
 
-  const produto: Produto = { ...this.formProduto.value };
+  const produto: Produto = { ...this.formCadastro.value };
 
-  // Converte validade para Date se veio como string do input
+  console.log("Produto antes de sair para o backend: ", produto);
+
   if (produto.validade) {
     produto.validade = new Date(produto.validade);
   }
@@ -154,51 +172,52 @@ export class ControleDeEstoque {
 }
 
   cancelarEdicao(): void {
+    this.emEdicao = false;
     this.produtoSelecionado = null;
     this.novoCadastro = false;
-    this.formProduto.reset({ quantidade: 0 });
+    this.formEdicao.reset({ quantidade: 0 });
   }
 
-proximaPagina(): void {
-  if (!this.isLastPage) {
-    this.pagina++;
-    this.carregarProdutos();
-  }
-}
-
-paginaAnterior(): void {
-  if (this.pagina > 0) {
-    this.pagina--;
-    this.carregarProdutos();
-  }
-}
-
-primeiraPagina(){
-
-  if (this.pagina > 0) {
-    this.pagina = 0;
-    this.carregarProdutos();
+  proximaPagina(): void {
+    if (!this.isLastPage) {
+      this.pagina++;
+      this.carregarProdutos();
+    }
   }
 
-}
-
-ultimaPagina(){
-
-  if(!this.isLastPage){
-    this.pagina = Math.floor(this.contagem/this.pageSize);
-    this.carregarProdutos();
-  }
-}
-
-irParaPagina(p: number): void {
-  if (p >= 0 && p < this.totalPaginas) {
-    this.pagina = p;
-    this.carregarProdutos();
+  paginaAnterior(): void {
+    if (this.pagina > 0) {
+      this.pagina--;
+      this.carregarProdutos();
+    }
   }
 
-}
+  primeiraPagina(){
 
-get paginas(): number[] {
-  return Array.from({ length: this.totalPaginas }, (_, i) => i);
-}
+    if (this.pagina > 0) {
+      this.pagina = 0;
+      this.carregarProdutos();
+    }
+
+  }
+
+  ultimaPagina(){
+
+    if(!this.isLastPage){
+      this.pagina = Math.floor(this.contagem/this.pageSize);
+      this.carregarProdutos();
+    }
+  }
+
+  irParaPagina(p: number): void {
+    if (p >= 0 && p < this.totalPaginas) {
+      this.pagina = p;
+      this.carregarProdutos();
+    }
+
+  }
+
+  get paginas(): number[] {
+    return Array.from({ length: this.totalPaginas }, (_, i) => i);
+  }
 }

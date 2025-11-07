@@ -32,7 +32,7 @@ public interface SpringDataProdutoRepositorio extends JpaRepository<Produto, Int
         """,
             nativeQuery = true
     )
-    public List<Produto> paginate(@Param(value = "pagina") int pagina);
+    public List<Produto> paginar(@Param(value = "pagina") int pagina);
 
     @Query(
             value = """

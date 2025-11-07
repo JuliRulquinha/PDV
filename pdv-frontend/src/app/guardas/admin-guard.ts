@@ -14,7 +14,7 @@ const authService = inject(ServicoAutenticacao);
   const papel = authService.obterPapelUsuario()?.toUpperCase();
   console.log(papel);
 
-  if (papel === 'ROLE_ADMIN') {
+  if (papel === 'ROLE_ADMIN' || papel === 'ROLE_GERENTE') {
     return true;
   }
 

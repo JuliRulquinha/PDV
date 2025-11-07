@@ -1,0 +1,174 @@
+
+.cadastro-container {
+  width: fit-content;
+  box-sizing: border-box;
+  padding: 8px;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 15px;
+  padding: 32px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 1);
+}
+
+.cadastro-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+  margin-bottom: 20px;
+  text-align: left;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: 500;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.form-group select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  box-sizing: border-box;
+  appearance: none; /* remove a setinha padrão */
+  -webkit-appearance: none; /* Safari */
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath fill='%23666' d='M0 0l5 6 5-6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 12px center; /* respeita o padding */
+  background-size: 10px 6px;
+}
+
+
+.cadastro-btn {
+
+   display: inline-flex;              /* permite alinhar ícone + texto */
+  align-items: center;               /* alinha verticalmente */
+  justify-content: center;           /* centraliza conteúdo */
+  gap: 6px;  
+
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background-color: #1e90ff;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.pular-btn{
+
+  display: inline-flex;              /* permite alinhar ícone + texto */
+  align-items: center;               /* alinha verticalmente */
+  justify-content: center;           /* centraliza conteúdo */
+  gap: 6px;   
+
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background-color: #8015d8;
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.cadastro-btn:disabled{
+  background-color: #3d4c61;
+}
+
+.pular-btn:hover{
+  background-color: #591294;
+  transform: translateY(-2px);
+}
+
+.cadastro-btn:hover:not(:disabled) {
+  background-color: #0d6efd;
+  transform: translateY(-2px);
+}
+
+.btns-div{
+  display: flex;
+  gap: 5px;
+}
+
+.error {
+  color: red;          /* texto vermelho */
+  font-size: 0.85rem;  /* menor que o texto normal */
+  margin-top: 4px;     /* espaço acima da mensagem */
+}
+
+input.ng-invalid.ng-touched {
+  border-color: red;   /* opcional: destaca o input inválido */
+}
+
+.erro-cadastro {
+  color: #ff3b30;
+  margin-top: 10px;
+  font-size: 0.9rem;
+}
+
+/* overlay escuro no fundo */
+.modal-overlay {
+  position: fixed;
+  inset: 0; /* top:0, right:0, bottom:0, left:0 */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000; /* garante que fique por cima */
+}
+
+/* caixinha central */
+.modal-box {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.example-form {
+  min-width: 150px;
+  max-width: 500px;
+  width: 100%;
+}
+
+.example-full-width {
+  width: 100%;
+}
+
+:host ::ng-deep .mat-mdc-form-field {
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+:host ::ng-deep .mat-mdc-form-field-subscript-wrapper {
+  margin-bottom: -1em;
+}
+
+:host ::ng-deep .mdc-text-field--outlined {
+  --mdc-outlined-text-field-container-height: 48px;
+}

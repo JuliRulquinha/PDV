@@ -1,0 +1,118 @@
+<div class="lista-pedidos-container">
+
+
+  <h1 class="titulo" *ngIf="!emEdicao">Lista de Pedidos</h1>
+
+  <div class="actions">
+    <button class="btn btn-secondary" routerLink="/checkout">🏠 Início</button>
+  </div>
+  <table class="tabela-produtos" *ngIf="!emEdicao">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Cliente</th>
+        <th>Validade</th>
+
+        <th>Total</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let p of pedidos">
+        <td data-label="ID">{{ p.id }}</td>
+        <td data-label="Cliente">{{ p.cliente?.nome || 'Cliente não identificado'}}</td>
+        <td data-label="Validade">{{ p.validade | date:'dd/MM/yyyy'}}</td>
+        
+        <td data-label="Total">R$ {{ p.total | number:'1.2-2'}}</td>
+        <td data-label="Status">{{ p.status }}</td>
+        
+      </tr>
+
+    </tbody>
+  </table>
+
+ 
+  
+
+  <div *ngIf="pedidoSelecionado" class="form-container">
+    <h2 class="titulo">
+      Editar Orçamento
+    </h2>
+
+    <form [formGroup]="formEdicao" (ngSubmit)="salvarPedido()" class="form-pedidos">
+    
+      <div class="form-group">
+        <label>Itens:</label>
+        <input type="number" formControlName="itens">
+      </div>
+
+      <div class="form-group">
+        <label>Total:</label>
+        <input type="number" formControlName="total">
+      </div>
+
+
+      <div class="form-group">
+        <label>Validade:</label>
+        <input type="date" formControlName="validade">
+      </div>
+
+      <!-- Dimensões -->
+   
+
+      <div class="form-actions">
+        <button type="submit" class="btn btn-primary">Atualizar</button>
+        <button type="button" class="btn btn-cancel" (click)="cancelarEdicao()">Cancelar</button>
+      </div>
+    </form>
+
+    
+  </div>
+<div>
+
+ <button class="btn btn-primary"
+          type="button"
+          
+          (click)="primeiraPagina()"
+          [disabled]="pagina === 0">
+    <<
+  </button>
+
+  <button class="btn btn-primary"
+          type="button"
+          
+          (click)="paginaAnterior()"
+          [disabled]="pagina === 0">
+    <
+  </button>
+
+   @for (p of paginas; track p) {
+    <button [class.active]="pagina === p"
+             class="btn btn-primary"
+            (click)="irParaPagina(p)">
+      {{ p + 1 }}
+    </button>
+  }
+
+  <button class="btn btn-primary"
+          type="button"
+         
+          (click)="proximaPagina()"
+          [disabled]="isLastPage">
+    >
+  </button>
+
+  
+
+  <button class="btn btn-primary"
+          type="button"
+         
+          (click)="ultimaPagina()"
+          [disabled]="isLastPage">
+    >>
+  </button>
+</div>
+
+</div>
+
+

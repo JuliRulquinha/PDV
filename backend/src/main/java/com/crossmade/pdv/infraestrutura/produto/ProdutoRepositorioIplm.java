@@ -29,8 +29,7 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
 
     @Override
     public List<Produto> listarTodos(int pagina) {
-        return repositorio.paginate(pagina);
-
+        return repositorio.paginar(pagina);
     }
 
     @Override
@@ -55,11 +54,19 @@ public class ProdutoRepositorioIplm implements ProdutoRepositorio{
     }
 
     @Override
-    public Produto atualizar(Integer id,  Produto produto) {
-        var existente = repositorio.findById(id);
-        if(existente.isEmpty()){
+    public Produto atualizar(Integer id, Produto produto) {
+        var produtoDb = repositorio.findById(id).orElse(null);
+        if(produtoDb == null){
             return null;
         }
+
+        var categoria = produtoDb.getCategoria();
+
+        if(categoria != null){
+            produto.setCategoria(produtoDb.getCategoria());
+        }
+
+        produto.setFornecedor(produtoDb.getFornecedor());
         produto.setId(id);
         return repositorio.save(produto);
     }

@@ -370,16 +370,13 @@ div.botoes-de-atalho > span{
 
 
 .pos-container {
-    
-    
-    box-sizing: border-box;
-    padding: 8px;
-    overflow-x: hidden;
-    background-color: white;
-    border-radius: 15px;
-    padding:32px;
-    
-  }
+  box-sizing: border-box;
+  padding: 8px;
+  overflow-x: hidden;
+  background-color: white;
+  border-radius: 15px;
+  padding:32px;    
+}
 
 .pos-container-grid {
   display: flex;
