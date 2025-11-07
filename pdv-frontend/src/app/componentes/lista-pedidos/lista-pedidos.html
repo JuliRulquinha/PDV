@@ -1,7 +1,11 @@
 <div class="lista-pedidos-container">
 
 
-  <h2 class="titulo" *ngIf="!emEdicao">Lista de Pedidos</h2>
+  <h1 class="titulo" *ngIf="!emEdicao">Lista de Pedidos</h1>
+
+  <div class="actions">
+    <button class="btn btn-secondary" routerLink="/checkout">🏠 Início</button>
+  </div>
   <table class="tabela-produtos" *ngIf="!emEdicao">
     <thead>
       <tr>

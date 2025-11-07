@@ -1,12 +1,16 @@
 <div class="lista-orcamento-container">
 
 
-  <h2 class="titulo" *ngIf="!emEdicao">Lista de Orçamentos</h2>
+  <h1 class="titulo" *ngIf="!emEdicao">Lista de Orçamentos</h1>
+
+   <div class="actions">
+    <button class="btn btn-secondary" routerLink="/checkout">🏠 Início</button>
+  </div>
   <table class="tabela-produtos" *ngIf="!emEdicao">
     <thead>
       <tr>
         <th>ID</th>
-        <!-- <th>Cliente</th> -->
+        <th>Cliente</th> 
         <th>Validade</th>
         <th>Itens</th>
         <th>Total</th>
@@ -17,7 +21,7 @@
     <tbody>
       <tr *ngFor="let o of orcamentos">
         <td data-label="ID">{{ o.id }}</td>
-        <!-- <td data-label="Cliente">{{ cliente?.nome || 'Cliente não identificado'}}</td>  -->
+        <td data-label="Cliente">{{ o.cliente?.nome || 'Cliente não identificado'}}</td>  
         <td data-label="Validade">{{ o.validade | date:'dd/MM/yyyy'}}</td>
         <td data-label="Itens">{{ o.itens }}</td>
         <td data-label="Total">R$ {{ o.total | number:'1.2-2'}}</td>

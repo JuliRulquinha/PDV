@@ -8,7 +8,17 @@ import { Cliente } from './servico-cliente';
 
 export interface ListaDeOrcamentos{
   contagem: number,
-  orcamentos: Orcamento[]
+  orcamentos: VisualizarOrcamento[]
+}
+
+export interface VisualizarOrcamento{
+  id?: number,
+  itens: ItemDoOrcamento[],
+  cliente?: Cliente,
+  validade: Date,
+  total: number,
+  desconto?: number,
+  status: StatusDoOrcamento
 }
 
 export interface Orcamento{

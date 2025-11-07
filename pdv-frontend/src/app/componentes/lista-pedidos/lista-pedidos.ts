@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
-import { Pedido, ServicoPedido } from '../../servicos/entities/servico-pedido';
+import { Pedido, ServicoPedido, VisualizarPedido } from '../../servicos/entities/servico-pedido';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
   selector: 'app-lista-pedidos',
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [CommonModule, ReactiveFormsModule, RouterLink],
   templateUrl: './lista-pedidos.html',
   styleUrl: './lista-pedidos.css'
 })
@@ -16,10 +17,10 @@ export class ListaPedidos {
   emEdicao: boolean= false;
   pagina:number = 0;
   contagem:number= 0;
-  pedidos: Pedido[] = [];
+  pedidos: VisualizarPedido[] = [];
   
   formEdicao!: FormGroup;
-  pedidoSelecionado: Pedido | null = null;
+  pedidoSelecionado: VisualizarPedido | null = null;
   pageSize: number = 10;  
   totalPaginas: number = 0;
   isLastPage: boolean = false;

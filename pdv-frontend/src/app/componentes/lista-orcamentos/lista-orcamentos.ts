@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 
-import { Orcamento, ServicoOrcamento } from '../../servicos/entities/servico-orcamento';
+import { Orcamento, ServicoOrcamento, VisualizarOrcamento } from '../../servicos/entities/servico-orcamento';
 import { CommonModule, DatePipe } from '@angular/common';
-import { RouterLink } from '@angular/router';
+
 
 @Component({
   selector: 'app-lista-orcamentos',
@@ -16,10 +16,10 @@ export class ListaOrcamentos {
   emEdicao: boolean= false;
   pagina:number = 0;
   contagem:number= 0;
-  orcamentos: Orcamento[] = [];
+  orcamentos: VisualizarOrcamento[] = [];
   
   formEdicao!: FormGroup;
-  orcamentoSelecionado: Orcamento | null = null;
+  orcamentoSelecionado: VisualizarOrcamento | null = null;
   pageSize: number = 10;  
   totalPaginas: number = 0;
   isLastPage: boolean = false;

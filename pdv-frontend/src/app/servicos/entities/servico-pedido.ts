@@ -8,7 +8,17 @@ import { Cliente } from './servico-cliente';
 
 export interface ListaPedidos{
   contagem: number,
-  pedidos: Pedido[]
+  pedidos: VisualizarPedido[]
+}
+
+export interface VisualizarPedido{
+  id?: number,
+  itens: ItemDoPedido[],
+  cliente?: Cliente,
+  validade: Date,
+  total: number,
+  desconto?: number,
+  status: StatusDoPedido
 }
 
 export interface Pedido{
