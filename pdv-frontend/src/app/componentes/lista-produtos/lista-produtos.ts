@@ -37,7 +37,11 @@ export class ListaProdutos implements OnInit {
     this.lastProduct$ = this.store.select(selectLastProduto);
   }
   ngOnInit(): void {
-   //TODO: preciso fazer a lista se limpar apos a criação do orçamento ou pedido
+   this.subscriptionCliente = this.servicoCliente.clienteObservable$.subscribe(
+      ()=>{
+        this.store.dispatch(clearProdutos());
+      }
+    );
   }
 
   trackById(index: number, item: Produto) {

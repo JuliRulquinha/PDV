@@ -80,7 +80,6 @@ export class PosComponent implements OnInit{
     this.subscriptionCliente = this.servicoCliente.clienteObservable$.subscribe(
       ()=>{
         this.mostrarModalCliente = false;
-        
       }
     );
   }

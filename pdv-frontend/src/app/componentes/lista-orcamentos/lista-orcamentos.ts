@@ -56,7 +56,6 @@ export class ListaOrcamentos {
   });
   }
 
-  
   editarOrcamento(o: Orcamento): void {
     this.emEdicao = true;
     this.orcamentoSelecionado = o;

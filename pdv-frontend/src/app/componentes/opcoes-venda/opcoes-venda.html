@@ -7,7 +7,7 @@
   </div>
   <div class="pos-summary">
     <div class="pos-summary-item">
-      Itens: {{ totalDeItens((produtos$ | async) ?? []) ?? 0 }}
+      Itens: {{ totalDeItens((produtos$ | async) ?? [])}}
     </div>
     <div class="pos-summary-item">
       Total: R$ {{ getTotal((produtos$ | async) ?? []) | number:'1.2-2' }}

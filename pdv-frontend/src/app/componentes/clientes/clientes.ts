@@ -22,8 +22,7 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatIconModule, 
     MatFormFieldModule,
     MatInputModule,
-    MatAutocompleteModule,
-    AsyncPipe
+    MatAutocompleteModule
   ],
   templateUrl: './clientes.html',
   styleUrl: './clientes.css'

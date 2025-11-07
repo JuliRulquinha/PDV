@@ -6,7 +6,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>Cliente</th>
+        <!-- <th>Cliente</th> -->
         <th>Validade</th>
         <th>Itens</th>
         <th>Total</th>
@@ -17,7 +17,7 @@
     <tbody>
       <tr *ngFor="let o of orcamentos">
         <td data-label="ID">{{ o.id }}</td>
-        <td data-label="Cliente">{{ o.cliente?.nome || 'Cliente não identificado'}}</td>
+        <!-- <td data-label="Cliente">{{ cliente?.nome || 'Cliente não identificado'}}</td>  -->
         <td data-label="Validade">{{ o.validade | date:'dd/MM/yyyy'}}</td>
         <td data-label="Itens">{{ o.itens }}</td>
         <td data-label="Total">R$ {{ o.total | number:'1.2-2'}}</td>
