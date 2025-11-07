@@ -102,7 +102,7 @@ export class ServicoOrcamento {
   }
 
   atualizarOrcamento(orcamento: Orcamento):Observable<Orcamento>{
-    return new Observable<Orcamento>;
+    return this.http.put<Orcamento>(`${this.baseUrl}/${orcamento.id}`, orcamento);
   }
 
   buscarOrcamentos(pagina: number){

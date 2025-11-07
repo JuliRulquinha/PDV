@@ -14,7 +14,7 @@ export interface ListaPedidos{
 export interface Pedido{
   id?: number,
   itens: ItemDoPedido[],
-  cliente?: Cliente,
+  cliente_id?: number,
   validade: Date,
   total: number,
   desconto?: number,
@@ -56,7 +56,7 @@ export class ServicoPedido {
     }
   }
 
-  criarPedido(): Observable<Pedido> {
+  criarPedido(cliente?: Cliente): Observable<Pedido> {
     // Map the current store products into a Pedido payload and emit once
     return this.store.select(selectAllProdutos).pipe(
       filter(produtos => produtos.length > 0),
@@ -65,6 +65,18 @@ export class ServicoPedido {
       map((itens: ItemDoPedido[]) => {
         const total = itens.reduce((acc, it) => acc + (it.total || 0), 0);
         const data = new Date();
+
+        if(!!cliente){
+          const pedido: Pedido = {
+            itens,
+            cliente_id: cliente.id,
+            validade: data,
+            total,
+            status: StatusDoPedido.CRIADO
+          };
+          return pedido;
+        }
+
         const pedido: Pedido = {
           itens,
           validade: data,
@@ -80,9 +92,9 @@ export class ServicoPedido {
     return this.http.get<ListaPedidos>(`${this.baseUrl}?pagina=${pagina}`);
   }
 
-  fazerPedido(){
+  fazerPedido(cliente?: Cliente){
     // Create the pedido from the store, then POST it to the backend
-    return this.criarPedido().pipe(
+    return this.criarPedido(cliente).pipe(
       switchMap(pedido => this.http.post<Pedido>(this.baseUrl, pedido))
     );
   }

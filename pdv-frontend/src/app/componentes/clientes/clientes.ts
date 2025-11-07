@@ -131,7 +131,7 @@ export class Clientes implements OnInit {
 
   salvarPedido() {
     if (confirm('Deseja finalizar a compra?')) {
-      this.servicoPedido.fazerPedido().subscribe({
+      this.servicoPedido.fazerPedido(this.clienteSelecionado).subscribe({
         next: () => this.showSuccess('Pedido finalizado com sucesso!'),
         error: () => this.showError('Falha ao finalizar o pedido.')
       });
